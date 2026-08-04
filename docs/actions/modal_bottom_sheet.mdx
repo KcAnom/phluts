@@ -1,0 +1,130 @@
+---
+title: "Modal Bottom Sheet Action"
+description: "Documentation for Modal Bottom Sheet Action"
+---
+
+The `PhlutsModalBottomSheetAction` class is used to display a modal bottom sheet in Phluts applications.
+
+## Properties
+
+| Property            | Type                          | Description                                                                 |
+|---------------------|-------------------------------|-----------------------------------------------------------------------------|
+| widget              | `PhlutsWidget`                  | The widget to display inside the modal bottom sheet.                        |
+| request             | `PhlutsNetworkRequest`          | The network request to perform before displaying the modal bottom sheet.    |
+| assetPath           | `String`                      | The asset path of the widget to display inside the modal bottom sheet.      |
+| backgroundColor     | `PhlutsColor`                   | The background color of the modal bottom sheet.                             |
+| barrierLabel        | `String`                      | The semantic label for the modal barrier.                                   |
+| elevation           | `double`                      | The elevation of the modal bottom sheet.                                    |
+| shape               | `PhlutsBorder`                  | The shape of the modal bottom sheet.                                        |
+| constraints         | `PhlutsBoxConstraints`          | The constraints for the modal bottom sheet.                                 |
+| barrierColor        | `PhlutsColor`                   | The color of the modal barrier.                                             |
+| isScrollControlled  | `bool`                        | Whether the modal bottom sheet is scroll controlled. Defaults to `false`.   |
+| useRootNavigator    | `bool`                        | Whether to use the root navigator. Defaults to `false`.                     |
+| isDismissible       | `bool`                        | Whether the modal bottom sheet is dismissible. Defaults to `true`.          |
+| enableDrag          | `bool`                        | Whether the modal bottom sheet can be dragged. Defaults to `true`.          |
+| showDragHandle      | `bool`                        | Whether to show a drag handle on the modal bottom sheet.                    |
+| useSafeArea         | `bool`                        | Whether to use the safe area. Defaults to `false`.                          |
+
+## Examples
+
+### Modal Bottom Sheet with a Widget
+
+<CodeGroup>
+```dart Dart
+PhlutsModalBottomSheetAction(
+  widget: PhlutsContainer(
+    height: 200,
+    color: PhlutsColors.amber,
+    child: PhlutsCenter(
+      child: PhlutsColumn(
+        mainAxisAlignment: PhlutsMainAxisAlignment.center,
+        mainAxisSize: PhlutsMainAxisSize.min,
+        children: [
+          PhlutsText(data: 'Modal BottomSheet'),
+          PhlutsElevatedButton(
+            child: PhlutsText(data: 'Close BottomSheet'),
+            onPressed: PhlutsNavigateAction(navigationStyle: NavigationStyle.pop),
+          ),
+        ],
+      ),
+    ),
+  ),
+)
+```
+
+```json JSON
+{
+  "actionType": "showModalBottomSheet",
+  "widget": {
+    "type": "container",
+    "height": 200,
+    "color": "amber",
+    "child": {
+      "type": "center",
+      "child": {
+        "type": "column",
+        "mainAxisAlignment": "center",
+        "mainAxisSize": "min",
+        "children": [
+          {
+            "type": "text",
+            "data": "Modal BottomSheet"
+          },
+          {
+            "type": "elevatedButton",
+            "child": {
+              "type": "text",
+              "data": "Close BottomSheet"
+            },
+            "onPressed": {
+              "actionType": "navigate",
+              "navigationStyle": "pop"
+            }
+          }
+        ]
+      }
+    }
+  }
+}
+```
+</CodeGroup>
+
+### Modal Bottom Sheet with an Asset Path
+
+<CodeGroup>
+```dart Dart
+PhlutsModalBottomSheetAction(
+  assetPath: 'assets/widgets/modal_bottom_sheet.json',
+)
+```
+
+```json JSON
+{
+  "actionType": "showModalBottomSheet",
+  "assetPath": "assets/widgets/modal_bottom_sheet.json"
+}
+```
+</CodeGroup>
+
+### Modal Bottom Sheet with a Network Request
+
+<CodeGroup>
+```dart Dart
+PhlutsModalBottomSheetAction(
+  request: PhlutsNetworkRequest(
+    url: 'https://example.com/api',
+    method: Method.get,
+  ),
+)
+```
+
+```json JSON
+{
+  "actionType": "showModalBottomSheet",
+  "request": {
+    "url": "https://example.com/api",
+    "method": "get"
+  }
+}
+```
+</CodeGroup>

@@ -1,0 +1,97 @@
+---
+title: "ClipOval"
+description: "Documentation for ClipOval"
+---
+
+import { PLAYGROUND_BASE_URL } from "/snippets/playground_base.mdx";
+
+export const clipOvalPreviewJson = {
+  "type": "clipOval",
+  "clipBehavior": "antiAlias",
+  "child": {
+    "type": "image",
+    "src": "https://placehold.co/600x400",
+    "width": 200,
+    "height": 200,
+    "fit": "cover"
+  }
+};
+export const clipOvalPreviewSrc = `${PLAYGROUND_BASE_URL}/embed`;
+
+Phluts ClipOval allows you to build the Flutter ClipOval widget using JSON. It clips its child using an oval shape, which is useful for creating circular or oval UI elements.
+To know more about the ClipOval widget in Flutter, refer to the [official documentation](https://api.flutter.dev/flutter/widgets/ClipOval-class.html).
+
+## Properties
+
+| Property     | Type                   | Default     | Description                                                 |
+|--------------|------------------------|-------------|-------------------------------------------------------------|
+| clipBehavior | `PhlutsClip`             | `antiAlias` | The clipping behavior when content extends beyond the oval. |
+| child        | `PhlutsWidget`           | Required    | The widget to clip with an oval shape.                      |
+
+## Example
+
+<Tabs sync={false}>
+  <Tab title="Dart">
+
+```dart
+PhlutsClipOval(
+  clipBehavior: PhlutsClip.antiAlias,
+  child: PhlutsImage(
+    src: 'https://placehold.co/600x400',
+    width: 200,
+    height: 200,
+    fit: PhlutsBoxFit.cover,
+  ),
+)
+```
+
+  </Tab>
+  <Tab title="JSON">
+
+```json
+{
+  "type": "clipOval",
+  "clipBehavior": "antiAlias",
+  "child": {
+    "type": "image",
+    "src": "https://placehold.co/600x400",
+    "width": 200,
+    "height": 200,
+    "fit": "cover"
+  }
+}
+```
+
+  </Tab>
+  <Tab title="Preview">
+    <Frame>
+      <iframe
+        id="phluts"
+        src={clipOvalPreviewSrc}
+        title="Phluts Playground"
+        className="w-full rounded-xl border-0"
+        style={{ height: "640px" }}
+        loading="lazy"
+        onLoad={(event) => {
+          const iframe = event.currentTarget;
+          const targetOrigin = PLAYGROUND_BASE_URL;
+          const message = {
+            type: "phluts-preview-json",
+            payload: clipOvalPreviewJson
+          };
+
+          let attempts = 0;
+          const maxAttempts = 12;
+          const interval = setInterval(() => {
+            iframe.contentWindow?.postMessage(message, targetOrigin);
+            attempts += 1;
+
+            if (attempts >= maxAttempts) {
+              clearInterval(interval);
+            }
+          }, 250);
+        }}
+      />
+    </Frame>
+  </Tab>
+</Tabs>

@@ -1,0 +1,117 @@
+---
+title: "TextButton"
+description: "Documentation for TextButton"
+---
+
+import { PLAYGROUND_BASE_URL } from "/snippets/playground_base.mdx";
+
+export const textButtonPreviewJson = {
+  "type": "textButton",
+  "onPressed": {},
+  "onLongPress": {},
+  "onHover": {},
+  "onFocusChange": {},
+  "style": {
+    "backgroundColor": "#FFC107",
+    "foregroundColor": "#000000"
+  },
+  "autofocus": false,
+  "clipBehavior": "none",
+  "child": {
+    "type": "text",
+    "data": "Click Me!"
+  }
+};
+export const textButtonPreviewSrc = `${PLAYGROUND_BASE_URL}/embed`;
+
+The Phluts Text Button allows you to build a Flutter text button widget using JSON.
+To know more about the text button widget in Flutter, refer to the [official documentation](https://api.flutter.dev/flutter/material/TextButton-class.html).
+
+## Properties
+
+| Property         | Type                    | Description                                                                        |
+|------------------|-------------------------|------------------------------------------------------------------------------------|
+| onPressed        | `PhlutsAction`            | The callback that is called when the button is tapped.                             |
+| onLongPress      | `PhlutsAction`            | The callback that is called when the button is long-pressed.                       |
+| onHover          | `PhlutsAction`            | The callback that is called when the button is hovered over.                       |
+| onFocusChange    | `PhlutsAction`            | The callback that is called when the button's focus changes.                       |
+| style            | `PhlutsButtonStyle`       | The style to apply to the button.                                                  |
+| autofocus        | `bool`                  | Whether the button should be focused when the page is loaded. Defaults to `false`. |
+| clipBehavior     | `PhlutsClip`              | Determines how the content should be clipped. Defaults to `Clip.none`.             |
+| isSemanticButton | `bool`                  | Determine whether this subtree represents a button. Defaults to `true`.            |
+| child            | `PhlutsWidget`            | The widget to display inside the button.                                           |
+
+## Example
+
+<Tabs sync={false}>
+  <Tab title="Dart">
+
+```dart
+PhlutsTextButton(
+  onPressed: PhlutsNoneAction(),
+  style: PhlutsButtonStyle(
+    backgroundColor: PhlutsColors.amber,
+    foregroundColor: PhlutsColors.black,
+  ),
+  autofocus: false,
+  clipBehavior: PhlutsClip.none,
+  child: PhlutsText(data: 'Click Me!'),
+)
+```
+
+  </Tab>
+  <Tab title="JSON">
+
+```json
+{
+  "type": "textButton",
+  "onPressed": {},
+  "onLongPress": {},
+  "onHover": {},
+  "onFocusChange": {},
+  "style": {
+    "backgroundColor": "#FFC107",
+    "foregroundColor": "#000000"
+  },
+  "autofocus": false,
+  "clipBehavior": "none",
+  "child": {
+    "type": "text",
+    "data": "Click Me!"
+  }
+}
+```
+
+  </Tab>
+  <Tab title="Preview">
+    <Frame>
+      <iframe
+        id="phluts"
+        src={textButtonPreviewSrc}
+        title="Phluts Playground"
+        className="w-full rounded-xl border-0"
+        style={{ height: "640px" }}
+        loading="lazy"
+        onLoad={(event) => {
+          const iframe = event.currentTarget;
+          const targetOrigin = PLAYGROUND_BASE_URL;
+          const message = {
+            type: "phluts-preview-json",
+            payload: textButtonPreviewJson
+          };
+
+          let attempts = 0;
+          const maxAttempts = 12;
+          const interval = setInterval(() => {
+            iframe.contentWindow?.postMessage(message, targetOrigin);
+            attempts += 1;
+
+            if (attempts >= maxAttempts) {
+              clearInterval(interval);
+            }
+          }, 250);
+        }}
+      />
+    </Frame>
+  </Tab>
+</Tabs>

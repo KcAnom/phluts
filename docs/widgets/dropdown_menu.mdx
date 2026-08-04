@@ -1,0 +1,205 @@
+---
+title: "DropdownMenu"
+description: "Documentation for DropdownMenu"
+---
+
+import { PLAYGROUND_BASE_URL } from "/snippets/playground_base.mdx";
+
+export const dropdownMenuPreviewJson = {
+  "type": "dropdownMenu",
+  "label": {
+    "type": "text",
+    "data": "Select an option"
+  },
+  "hintText": "Please select",
+  "width": 200,
+  "inputFormatters": [
+    {
+      "type": "deny",
+      "rule": "\\s"
+    }
+  ],
+  "dropdownMenuEntries": [
+    {
+      "value": "option1",
+      "label": "Option 1",
+      "leadingIcon": {
+        "type": "icon",
+        "icon": "home"
+      }
+    },
+    {
+      "value": "option2",
+      "label": "Option 2",
+      "leadingIcon": {
+        "type": "icon",
+        "icon": "settings"
+      }
+    },
+    {
+      "value": "option3",
+      "label": "Option 3",
+      "leadingIcon": {
+        "type": "icon",
+        "icon": "favorite"
+      }
+    }
+  ]
+};
+export const dropdownMenuPreviewSrc = `${PLAYGROUND_BASE_URL}/embed`;
+
+The Phluts DropdownMenu allows you to build a Flutter DropdownMenu widget using JSON.
+To know more about the DropdownMenu widget in Flutter, refer to
+the [official documentation](https://api.flutter.dev/flutter/material/DropdownMenu-class.html).
+
+## Properties
+
+| Property             | Type                            | Description                                               |
+|----------------------|---------------------------------|-----------------------------------------------------------|
+| dropdownMenuEntries  | `List<PhlutsDropdownMenuEntries>` | The entries to display in the dropdown menu.              |
+| initialSelection     | `dynamic`                       | The initial selection value.                              |
+| enabled              | `bool`                          | Whether the dropdown menu is enabled. Defaults to `true`. |
+| label                | `PhlutsWidget`                    | The label to display for the dropdown menu.               |
+| leadingIcon          | `PhlutsWidget`                    | The icon to display at the start of the dropdown menu.    |
+| trailingIcon         | `PhlutsWidget`                    | The icon to display at the end of the dropdown menu.      |
+| hintText             | `String`                        | The hint text to display when no selection is made.       |
+| errorText            | `String`                        | The error text to display when there is an error.         |
+| width                | `double`                        | The width of the dropdown menu.                           |
+| menuHeight           | `double`                        | The height of the dropdown menu.                          |
+| inputDecorationTheme | `PhlutsInputDecorationTheme`      | The theme to use for the input decoration.                |
+| textStyle            | `PhlutsTextStyle`                 | The text style to use for the dropdown menu.              |
+| enableFilter         | `bool`                          | Whether to enable filtering. Defaults to `true`.          |
+| enableSearch         | `bool`                          | Whether to enable search. Defaults to `true`.             |
+| requestFocusOnTap    | `bool`                          | Whether to request focus on tap. Defaults to `true`.      |
+| inputFormatters      | `List<PhlutsInputFormatter>`      | Input formatters for editable dropdown text. Supports `allow`, `deny`, and `mask`. |
+
+## DropdownMenuEntry
+
+The Phluts DropdownMenuEntry allows you to build a Flutter DropdownMenuEntry widget using JSON.
+To know more about the DropdownMenuEntry widget in Flutter, refer to
+the [official documentation](https://api.flutter.dev/flutter/material/DropdownMenuEntry-class.html).
+
+## Properties
+
+| Property     | Type                    | Description                                        |
+|--------------|-------------------------|----------------------------------------------------|
+| value        | `dynamic`               | The value associated with this entry.              |
+| label        | `String`                | The label to display for this entry.               |
+| enabled      | `bool`                  | Whether this entry is enabled. Defaults to `true`. |
+| leadingIcon  | `PhlutsWidget`            | The icon to display at the start of this entry.    |
+| trailingIcon | `PhlutsWidget`            | The icon to display at the end of this entry.      |
+| style        | `PhlutsButtonStyle`       | The style to use for this entry.                   |
+
+## Example
+
+<Tabs sync={false}>
+  <Tab title="Dart">
+
+```dart
+PhlutsDropdownMenu(
+  label: PhlutsText(data: 'Select an option'),
+  hintText: 'Please select',
+  width: 200,
+  inputFormatters: [
+    PhlutsInputFormatter(type: PhlutsInputFormatterType.deny, rule: r'\s'),
+  ],
+  dropdownMenuEntries: [
+    PhlutsDropdownMenuEntry(
+      value: 'option1',
+      label: 'Option 1',
+      leadingIcon: PhlutsIcon(icon: 'home'),
+    ),
+    PhlutsDropdownMenuEntry(
+      value: 'option2',
+      label: 'Option 2',
+      leadingIcon: PhlutsIcon(icon: 'settings'),
+    ),
+    PhlutsDropdownMenuEntry(
+      value: 'option3',
+      label: 'Option 3',
+      leadingIcon: PhlutsIcon(icon: 'favorite'),
+    ),
+  ],
+)
+```
+
+  </Tab>
+  <Tab title="JSON">
+
+```json
+{
+  "type": "dropdownMenu",
+  "label": {
+    "type": "text",
+    "data": "Select an option"
+  },
+  "hintText": "Please select",
+  "width": 200,
+  "inputFormatters": [
+    {
+      "type": "deny",
+      "rule": "\\s"
+    }
+  ],
+  "dropdownMenuEntries": [
+    {
+      "value": "option1",
+      "label": "Option 1",
+      "leadingIcon": {
+        "type": "icon",
+        "icon": "home"
+      }
+    },
+    {
+      "value": "option2",
+      "label": "Option 2",
+      "leadingIcon": {
+        "type": "icon",
+        "icon": "settings"
+      }
+    },
+    {
+      "value": "option3",
+      "label": "Option 3",
+      "leadingIcon": {
+        "type": "icon",
+        "icon": "favorite"
+      }
+    }
+  ]
+}
+```
+
+  </Tab>
+  <Tab title="Preview">
+    <Frame>
+      <iframe
+        id="phluts"
+        src={dropdownMenuPreviewSrc}
+        title="Phluts Playground"
+        className="w-full rounded-xl border-0"
+        style={{ height: "640px" }}
+        loading="lazy"
+        onLoad={(event) => {
+          const iframe = event.currentTarget;
+          const targetOrigin = PLAYGROUND_BASE_URL;
+          const message = {
+            type: "phluts-preview-json",
+            payload: dropdownMenuPreviewJson
+          };
+
+          let attempts = 0;
+          const maxAttempts = 12;
+          const interval = setInterval(() => {
+            iframe.contentWindow?.postMessage(message, targetOrigin);
+            attempts += 1;
+
+            if (attempts >= maxAttempts) {
+              clearInterval(interval);
+            }
+          }, 250);
+        }}
+      />
+    </Frame>
+  </Tab>
+</Tabs>

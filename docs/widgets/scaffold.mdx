@@ -1,0 +1,198 @@
+---
+title: "Scaffold"
+description: "Documentation for Scaffold"
+---
+
+import { PLAYGROUND_BASE_URL } from "/snippets/playground_base.mdx";
+
+export const scaffoldPreviewJson = {
+  "type": "scaffold",
+  "appBar": {
+    "type": "appBar",
+    "title": {
+      "type": "text",
+      "data": "App Bar Title"
+    }
+  },
+  "body": {
+    "type": "center",
+    "child": {
+      "type": "text",
+      "data": "Hello, World!"
+    }
+  },
+  "floatingActionButton": {
+    "type": "floatingActionButton",
+    "child": {
+      "type": "icon",
+      "icon": "add"
+    },
+    "onPressed": {
+      "type": "function",
+      "name": "onFabPressed"
+    }
+  },
+  "backgroundColor": "#FFFFFF",
+  "drawer": {
+    "type": "drawer",
+    "child": {
+      "type": "column",
+      "children": [
+        {
+          "type": "text",
+          "data": "Drawer Item 1"
+        },
+        {
+          "type": "text",
+          "data": "Drawer Item 2"
+        }
+      ]
+    }
+  }
+};
+export const scaffoldPreviewSrc = `${PLAYGROUND_BASE_URL}/embed`;
+
+The Phluts Scaffold allows you to build a Flutter scaffold widget using JSON.
+To know more about the scaffold widget in Flutter, refer to the [official documentation](https://api.flutter.dev/flutter/material/Scaffold-class.html).
+
+## Properties
+
+| Property                       | Type                                 | Description                                                                             |
+|--------------------------------|--------------------------------------|-----------------------------------------------------------------------------------------|
+| appBar                         | `PhlutsWidget`                         | The app bar widget of the scaffold.                                                     |
+| body                           | `PhlutsWidget`                         | The body widget of the scaffold.                                                        |
+| floatingActionButton           | `PhlutsWidget`                         | The floating action button widget of the scaffold.                                      |
+| floatingActionButtonLocation   | `PhlutsFloatingActionButtonLocation`   | The location of the floating action button.                                             |
+| persistentFooterButtons        | `List<PhlutsWidget>`                   | The persistent footer buttons of the scaffold.                                          |
+| persistentFooterAlignment      | `PhlutsAlignmentDirectional`           | The alignment of the persistent footer buttons.                                         |
+| drawer                         | `PhlutsWidget`                         | The drawer widget of the scaffold.                                                      |
+| onDrawerChanged                | `PhlutsAction`                         | Action called when the drawer is opened or closed.                                      |
+| endDrawer                      | `PhlutsWidget`                         | The end drawer widget of the scaffold.                                                  |
+| onEndDrawerChanged             | `PhlutsAction`                         | Action called when the end drawer is opened or closed.                                  |
+| bottomNavigationBar            | `PhlutsWidget`                         | The bottom navigation bar widget of the scaffold.                                       |
+| bottomSheet                    | `PhlutsWidget`                         | The bottom sheet widget of the scaffold.                                                |
+| backgroundColor                | `PhlutsColor`                          | The background color of the scaffold.                                                   |
+| resizeToAvoidBottomInset       | `bool`                               | Whether the scaffold should resize to avoid the bottom inset.                           |
+| primary                        | `bool`                               | Whether the scaffold is the primary scaffold. Defaults to `true`.                       |
+| drawerDragStartBehavior        | `PhlutsDragStartBehavior`              | The drag start behavior for the drawer. Defaults to `DragStartBehavior.start`.          |
+| extendBody                     | `bool`                               | Whether the body should extend into the scaffold's bottom padding. Defaults to `false`. |
+| extendBodyBehindAppBar         | `bool`                               | Whether the body should extend behind the app bar. Defaults to `false`.                 |
+| drawerScrimColor               | `PhlutsColor`                          | The color of the scrim for the drawer.                                                  |
+| drawerEdgeDragWidth            | `double`                             | The width of the edge drag area for the drawer.                                         |
+| drawerEnableOpenDragGesture    | `bool`                               | Whether the drawer can be opened with a drag gesture. Defaults to `true`.               |
+| endDrawerEnableOpenDragGesture | `bool`                               | Whether the end drawer can be opened with a drag gesture. Defaults to `true`.           |
+| restorationId                  | `String`                             | The restoration ID to save and restore the state of the scaffold.                       |
+
+## Example
+
+<Tabs sync={false}>
+  <Tab title="Dart">
+
+```dart
+PhlutsScaffold(
+  appBar: PhlutsAppBar(
+    title: PhlutsText(data: 'App Bar Title'),
+  ),
+  body: PhlutsCenter(
+    child: PhlutsText(data: 'Hello, World!'),
+  ),
+  floatingActionButton: PhlutsFloatingActionButton(
+    child: PhlutsIcon(icon: 'add'),
+    onPressed: {'type': 'function', 'name': 'onFabPressed'},
+  ),
+  backgroundColor: PhlutsColors.white,
+  drawer: PhlutsDrawer(
+    child: PhlutsColumn(
+      children: [
+        PhlutsText(data: 'Drawer Item 1'),
+        PhlutsText(data: 'Drawer Item 2'),
+      ],
+    ),
+  ),
+)
+```
+
+  </Tab>
+  <Tab title="JSON">
+
+```json
+{
+  "type": "scaffold",
+  "appBar": {
+    "type": "appBar",
+    "title": {
+      "type": "text",
+      "data": "App Bar Title"
+    }
+  },
+  "body": {
+    "type": "center",
+    "child": {
+      "type": "text",
+      "data": "Hello, World!"
+    }
+  },
+  "floatingActionButton": {
+    "type": "floatingActionButton",
+    "child": {
+      "type": "icon",
+      "icon": "add"
+    },
+    "onPressed": {
+      "type": "function",
+      "name": "onFabPressed"
+    }
+  },
+  "backgroundColor": "#FFFFFF",
+  "drawer": {
+    "type": "drawer",
+    "child": {
+      "type": "column",
+      "children": [
+        {
+          "type": "text",
+          "data": "Drawer Item 1"
+        },
+        {
+          "type": "text",
+          "data": "Drawer Item 2"
+        }
+      ]
+    }
+  }
+}
+```
+
+  </Tab>
+  <Tab title="Preview">
+    <Frame>
+      <iframe
+        id="phluts"
+        src={scaffoldPreviewSrc}
+        title="Phluts Playground"
+        className="w-full rounded-xl border-0"
+        style={{ height: "640px" }}
+        loading="lazy"
+        onLoad={(event) => {
+          const iframe = event.currentTarget;
+          const targetOrigin = PLAYGROUND_BASE_URL;
+          const message = {
+            type: "phluts-preview-json",
+            payload: scaffoldPreviewJson
+          };
+
+          let attempts = 0;
+          const maxAttempts = 12;
+          const interval = setInterval(() => {
+            iframe.contentWindow?.postMessage(message, targetOrigin);
+            attempts += 1;
+
+            if (attempts >= maxAttempts) {
+              clearInterval(interval);
+            }
+          }, 250);
+        }}
+      />
+    </Frame>
+  </Tab>
+</Tabs>

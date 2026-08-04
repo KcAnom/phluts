@@ -1,0 +1,345 @@
+---
+title: "GestureDetector"
+description: "Documentation for GestureDetector"
+---
+
+import { PLAYGROUND_BASE_URL } from "/snippets/playground_base.mdx";
+
+export const gestureDetectorPreviewJson = {
+  "type": "gestureDetector",
+  "child": {
+    "type": "container",
+    "color": "#2196F3",
+    "width": 200,
+    "height": 200,
+    "alignment": "center",
+    "child": {
+      "type": "text",
+      "data": "Tap me!",
+      "style": {
+        "color": "#FFFFFF",
+        "fontSize": 20
+      }
+    }
+  },
+  "onTap": {
+    "actionType": "showSnackBar",
+    "content": {
+      "type": "text",
+      "data": "This is a Snackbar"
+    }
+  }
+};
+export const gestureDetectorPreviewSrc = `${PLAYGROUND_BASE_URL}/embed`;
+
+The `GestureDetector` widget in Phluts allows you to detect various gestures and user interactions within your application. It wraps Flutter's native GestureDetector widget, providing a JSON-based interface to handle touch events, taps, drags, and more.
+
+## Usage
+
+To use a GestureDetector in your Phluts, specify the widget type as "gestureDetector" and provide a child widget along with any gesture callbacks you want to handle.
+
+<Tabs sync={false}>
+  <Tab title="Dart">
+
+```dart
+PhlutsGestureDetector(
+  child: PhlutsContainer(
+    color: PhlutsColors.blue,
+    width: 200,
+    height: 200,
+    alignment: PhlutsAlignment.center,
+    child: PhlutsText(
+      data: 'Tap me!',
+      style: PhlutsTextStyle(color: PhlutsColors.white, fontSize: 20),
+    ),
+  ),
+  onTap: PhlutsSnackBarAction(
+    content: PhlutsText(data: 'This is a Snackbar'),
+  ),
+)
+```
+
+  </Tab>
+  <Tab title="JSON">
+
+```json
+{
+  "type": "gestureDetector",
+  "child": {
+    "type": "container",
+    "color": "#2196F3",
+    "width": 200,
+    "height": 200,
+    "alignment": "center",
+    "child": {
+      "type": "text",
+      "data": "Tap me!",
+      "style": {
+        "color": "#FFFFFF",
+        "fontSize": 20
+      }
+    }
+  },
+  "onTap": {
+    "actionType": "showSnackBar",
+    "content": {
+      "type": "text",
+      "data": "This is a Snackbar"
+    }
+  }
+}
+```
+
+  </Tab>
+  <Tab title="Preview">
+    <Frame>
+      <iframe
+        id="phluts"
+        src={gestureDetectorPreviewSrc}
+        title="Phluts Playground"
+        className="w-full rounded-xl border-0"
+        style={{ height: "640px" }}
+        loading="lazy"
+        onLoad={(event) => {
+          const iframe = event.currentTarget;
+          const targetOrigin = PLAYGROUND_BASE_URL;
+          const message = {
+            type: "phluts-preview-json",
+            payload: gestureDetectorPreviewJson
+          };
+
+          let attempts = 0;
+          const maxAttempts = 12;
+          const interval = setInterval(() => {
+            iframe.contentWindow?.postMessage(message, targetOrigin);
+            attempts += 1;
+
+            if (attempts >= maxAttempts) {
+              clearInterval(interval);
+            }
+          }, 250);
+        }}
+      />
+    </Frame>
+  </Tab>
+</Tabs>
+## Properties
+
+### Child Widget
+
+| Property | Type | Description |
+|----------|------|-------------|
+| `child` | `PhlutsWidget` | The widget that will respond to gestures |
+
+### Tap Gestures
+
+| Property | Type | Description |
+|----------|------|-------------|
+| `onTapDown` | `PhlutsAction` | Called when a pointer contacts the screen |
+| `onTapUp` | `PhlutsAction` | Called when a pointer stops contacting the screen |
+| `onTap` | `PhlutsAction` | Called when a tap occurs |
+| `onTapCancel` | `PhlutsAction` | Called when the tap is canceled |
+| `onDoubleTapDown` | `PhlutsAction` | Called when a pointer contacts the screen in a potential double tap |
+| `onDoubleTap` | `PhlutsAction` | Called when a double tap occurs |
+| `onDoubleTapCancel` | `PhlutsAction` | Called when the double tap is canceled |
+
+### Secondary and Tertiary Tap Gestures
+
+| Property | Type | Description |
+|----------|------|-------------|
+| `onSecondaryTap` | `PhlutsAction` | Called when a secondary tap occurs (e.g., right-click) |
+| `onSecondaryTapDown` | `PhlutsAction` | Called when a secondary pointer contacts the screen |
+| `onSecondaryTapUp` | `PhlutsAction` | Called when a secondary pointer stops contacting the screen |
+| `onSecondaryTapCancel` | `PhlutsAction` | Called when the secondary tap is canceled |
+| `onTertiaryTapDown` | `PhlutsAction` | Called when a tertiary pointer contacts the screen |
+| `onTertiaryTapUp` | `PhlutsAction` | Called when a tertiary pointer stops contacting the screen |
+| `onTertiaryTapCancel` | `PhlutsAction` | Called when the tertiary tap is canceled |
+
+### Long Press Gestures
+
+| Property | Type | Description |
+|----------|------|-------------|
+| `onLongPressDown` | `PhlutsAction` | Called when a pointer contacts the screen in a potential long press |
+| `onLongPressCancel` | `PhlutsAction` | Called when the long press is canceled |
+| `onLongPress` | `PhlutsAction` | Called when a long press occurs |
+| `onLongPressStart` | `PhlutsAction` | Called when a long press starts |
+| `onLongPressMoveUpdate` | `PhlutsAction` | Called when a long press move update occurs |
+| `onLongPressUp` | `PhlutsAction` | Called when a long press up occurs |
+| `onLongPressEnd` | `PhlutsAction` | Called when a long press ends |
+
+### Secondary and Tertiary Long Press Gestures
+
+| Property | Type | Description |
+|----------|------|-------------|
+| `onSecondaryLongPressDown` | `PhlutsAction` | Called when a secondary pointer contacts the screen in a potential long press |
+| `onSecondaryLongPressCancel` | `PhlutsAction` | Called when the secondary long press is canceled |
+| `onSecondaryLongPress` | `PhlutsAction` | Called when a secondary long press occurs |
+| `onSecondaryLongPressStart` | `PhlutsAction` | Called when a secondary long press starts |
+| `onSecondaryLongPressMoveUpdate` | `PhlutsAction` | Called when a secondary long press move update occurs |
+| `onSecondaryLongPressUp` | `PhlutsAction` | Called when a secondary long press up occurs |
+| `onSecondaryLongPressEnd` | `PhlutsAction` | Called when a secondary long press ends |
+| `onTertiaryLongPressDown` | `PhlutsAction` | Called when a tertiary pointer contacts the screen in a potential long press |
+| `onTertiaryLongPressCancel` | `PhlutsAction` | Called when the tertiary long press is canceled |
+| `onTertiaryLongPress` | `PhlutsAction` | Called when a tertiary long press occurs |
+| `onTertiaryLongPressStart` | `PhlutsAction` | Called when a tertiary long press starts |
+| `onTertiaryLongPressMoveUpdate` | `PhlutsAction` | Called when a tertiary long press move update occurs |
+| `onTertiaryLongPressUp` | `PhlutsAction` | Called when a tertiary long press up occurs |
+| `onTertiaryLongPressEnd` | `PhlutsAction` | Called when a tertiary long press ends |
+
+### Drag Gestures
+
+| Property | Type | Description |
+|----------|------|-------------|
+| `onVerticalDragDown` | `PhlutsAction` | Called when a pointer contacts the screen and might begin a vertical drag |
+| `onVerticalDragStart` | `PhlutsAction` | Called when a pointer starts a vertical drag |
+| `onVerticalDragUpdate` | `PhlutsAction` | Called when a pointer updates a vertical drag |
+| `onVerticalDragEnd` | `PhlutsAction` | Called when a pointer ends a vertical drag |
+| `onVerticalDragCancel` | `PhlutsAction` | Called when the vertical drag is canceled |
+| `onHorizontalDragDown` | `PhlutsAction` | Called when a pointer contacts the screen and might begin a horizontal drag |
+| `onHorizontalDragStart` | `PhlutsAction` | Called when a pointer starts a horizontal drag |
+| `onHorizontalDragUpdate` | `PhlutsAction` | Called when a pointer updates a horizontal drag |
+| `onHorizontalDragEnd` | `PhlutsAction` | Called when a pointer ends a horizontal drag |
+| `onHorizontalDragCancel` | `PhlutsAction` | Called when the horizontal drag is canceled |
+
+### Force Press Gestures
+
+| Property | Type | Description |
+|----------|------|-------------|
+| `onForcePressStart` | `PhlutsAction` | Called when a force press starts |
+| `onForcePressPeak` | `PhlutsAction` | Called when a force press reaches its peak force |
+| `onForcePressUpdate` | `PhlutsAction` | Called when a force press updates |
+| `onForcePressEnd` | `PhlutsAction` | Called when a force press ends |
+
+### Other Properties
+
+| Property | Type | Default | Description |
+|----------|------|---------|-------------|
+| `excludeFromSemantics` | `bool` | `false` | Whether to exclude the gestures from the semantics tree |
+| `dragStartBehavior` | `PhlutsDragStartBehavior` | `start` | Determines when a drag formally starts |
+
+## Examples
+
+### Simple Tap Example
+
+<CodeGroup>
+```dart Dart
+PhlutsGestureDetector(
+  onTap: PhlutsNavigateAction(routeName: '/details'),
+  child: PhlutsContainer(
+    padding: PhlutsEdgeInsets.all(16),
+    color: PhlutsColors.grey,
+    child: PhlutsText(data: 'Navigate to Details'),
+  ),
+)
+```
+
+```json JSON
+{
+  "type": "gestureDetector",
+  "onTap": {
+    "actionType": "navigate",
+    "routeName": "/details"
+  },
+  "child": {
+    "type": "container",
+    "padding": 16,
+    "color": "#E0E0E0",
+    "child": {
+      "type": "text",
+      "data": "Navigate to Details"
+    }
+  }
+}
+```
+</CodeGroup>
+
+### Drag Example
+
+<CodeGroup>
+```dart Dart
+PhlutsGestureDetector(
+  onHorizontalDragEnd: {'actionType': 'handleSwipe'},
+  child: PhlutsContainer(
+    width: 200,
+    height: 200,
+    color: PhlutsColors.grey,
+    alignment: PhlutsAlignment.center,
+    child: PhlutsText(data: 'Swipe horizontally'),
+  ),
+)
+```
+
+```json JSON
+{
+  "type": "gestureDetector",
+  "onHorizontalDragEnd": {
+    "actionType": "handleSwipe"
+  },
+  "child": {
+    "type": "container",
+    "width": 200,
+    "height": 200,
+    "color": "#F5F5F5",
+    "alignment": "center",
+    "child": {
+      "type": "text",
+      "data": "Swipe horizontally"
+    }
+  }
+}
+```
+</CodeGroup>
+
+### Long Press Example
+
+<CodeGroup>
+```dart Dart
+PhlutsGestureDetector(
+  onLongPress: PhlutsDialogAction(
+    title: 'Long Press Detected',
+    content: PhlutsText(data: 'You performed a long press on the widget.'),
+  ),
+  child: PhlutsContainer(
+    padding: PhlutsEdgeInsets.all(16),
+    decoration: PhlutsBoxDecoration(color: PhlutsColors.green, borderRadius: PhlutsBorderRadius.all(8)),
+    child: PhlutsText(
+      data: 'Long press me',
+      style: PhlutsTextStyle(color: PhlutsColors.white),
+    ),
+  ),
+)
+```
+
+```json JSON
+{
+  "type": "gestureDetector",
+  "onLongPress": {
+    "actionType": "showDialog",
+    "title": "Long Press Detected",
+    "content": "You performed a long press on the widget."
+  },
+  "child": {
+    "type": "container",
+    "padding": 16,
+    "decoration": {
+      "color": "#4CAF50",
+      "borderRadius": 8
+    },
+    "child": {
+      "type": "text",
+      "data": "Long press me",
+      "style": {
+        "color": "#FFFFFF"
+      }
+    }
+  }
+}
+```
+</CodeGroup>
+
+## Action Handling
+
+Each gesture callback in Phluts GestureDetector accepts an action object that defines what should happen when the gesture is detected. This can be a navigation action, showing a dialog, executing a custom function, or any other action supported by your Phluts application.
+
+For more information on actions, see the [Actions documentation](/actions/navigate).
+

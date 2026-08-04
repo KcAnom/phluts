@@ -1,0 +1,173 @@
+---
+title: "RefreshIndicator"
+description: "Documentation for RefreshIndicator"
+---
+
+import { PLAYGROUND_BASE_URL } from "/snippets/playground_base.mdx";
+
+export const refreshIndicatorPreviewJson = {
+  "type": "refreshIndicator",
+  "onRefresh": {
+    "actionType": "networkRequest",
+    "url": "https://raw.githubusercontent.com/PhlutsDev/phluts/main/phluts_playground/assets/json/list_view_example.json",
+    "method": "get",
+    "contentType": "application/json"
+  },
+  "child": {
+    "type": "listView",
+    "children": [
+      {
+        "type": "listTile",
+        "title": {
+          "type": "text",
+          "data": "Pull down to refresh"
+        }
+      },
+      {
+        "type": "listTile",
+        "title": {
+          "type": "text",
+          "data": "Item 1"
+        }
+      },
+      {
+        "type": "listTile",
+        "title": {
+          "type": "text",
+          "data": "Item 2"
+        }
+      },
+      {
+        "type": "listTile",
+        "title": {
+          "type": "text",
+          "data": "Item 3"
+        }
+      }
+    ]
+  }
+};
+export const refreshIndicatorPreviewSrc = `${PLAYGROUND_BASE_URL}/embed`;
+
+The Phluts RefreshIndicator allows you to build a Flutter RefreshIndicator widget using JSON.
+To know more about the RefreshIndicator widget in Flutter, refer to the [official documentation](https://api.flutter.dev/flutter/material/RefreshIndicator-class.html).
+
+## Properties
+
+| Property        | Type                              | Description                                                                                                                              |
+|-----------------|-----------------------------------|------------------------------------------------------------------------------------------------------------------------------------------|
+| child           | `PhlutsWidget`                      | The widget below this widget in the tree.                                                                                                |
+| displacement    | `double`                          | The distance from the child's top or bottom edge to where the refresh indicator starts. Defaults to `40`.                                |
+| edgeOffset      | `double`                          | The offset where the indicator starts. Defaults to `0`.                                                                                  |
+| onRefresh       | `PhlutsAction`                      | The callback that is called when the user has dragged the refresh indicator far enough to demonstrate that they want the app to refresh. |
+| color           | `PhlutsColor`                       | The color of the refresh indicator.                                                                                                      |
+| backgroundColor | `PhlutsColor`                       | The background color of the refresh indicator.                                                                                           |
+| semanticsLabel  | `String`                          | The semantic label for the refresh indicator.                                                                                            |
+| semanticsValue  | `String`                          | The semantic value for the refresh indicator.                                                                                            |
+| strokeWidth     | `double`                          | The width of the refresh indicator's stroke. Defaults to `RefreshProgressIndicator.defaultStrokeWidth`.                                  |
+| triggerMode     | `PhlutsRefreshIndicatorTriggerMode` | The mode that controls when the refresh indicator will be triggered. Defaults to `RefreshIndicatorTriggerMode.onEdge`.                   |
+
+## Example
+
+<Tabs sync={false}>
+  <Tab title="Dart">
+
+```dart
+PhlutsRefreshIndicator(
+  onRefresh: PhlutsNetworkRequest(
+    url: 'https://raw.githubusercontent.com/PhlutsDev/phluts/main/phluts_playground/assets/json/list_view_example.json',
+    method: Method.get,
+    contentType: 'application/json',
+  ),
+  child: PhlutsListView(
+    children: [
+      PhlutsListTile(title: PhlutsText(data: 'Pull down to refresh')),
+      PhlutsListTile(title: PhlutsText(data: 'Item 1')),
+      PhlutsListTile(title: PhlutsText(data: 'Item 2')),
+      PhlutsListTile(title: PhlutsText(data: 'Item 3')),
+    ],
+  ),
+)
+```
+
+  </Tab>
+  <Tab title="JSON">
+
+```json
+{
+  "type": "refreshIndicator",
+  "onRefresh": {
+    "actionType": "networkRequest",
+    "url": "https://raw.githubusercontent.com/PhlutsDev/phluts/main/phluts_playground/assets/json/list_view_example.json",
+    "method": "get",
+    "contentType": "application/json"
+  },
+  "child": {
+    "type": "listView",
+    "children": [
+      {
+        "type": "listTile",
+        "title": {
+          "type": "text",
+          "data": "Pull down to refresh"
+        }
+      },
+      {
+        "type": "listTile",
+        "title": {
+          "type": "text",
+          "data": "Item 1"
+        }
+      },
+      {
+        "type": "listTile",
+        "title": {
+          "type": "text",
+          "data": "Item 2"
+        }
+      },
+      {
+        "type": "listTile",
+        "title": {
+          "type": "text",
+          "data": "Item 3"
+        }
+      }
+    ]
+  }
+}
+```
+
+  </Tab>
+  <Tab title="Preview">
+    <Frame>
+      <iframe
+        id="phluts"
+        src={refreshIndicatorPreviewSrc}
+        title="Phluts Playground"
+        className="w-full rounded-xl border-0"
+        style={{ height: "640px" }}
+        loading="lazy"
+        onLoad={(event) => {
+          const iframe = event.currentTarget;
+          const targetOrigin = PLAYGROUND_BASE_URL;
+          const message = {
+            type: "phluts-preview-json",
+            payload: refreshIndicatorPreviewJson
+          };
+
+          let attempts = 0;
+          const maxAttempts = 12;
+          const interval = setInterval(() => {
+            iframe.contentWindow?.postMessage(message, targetOrigin);
+            attempts += 1;
+
+            if (attempts >= maxAttempts) {
+              clearInterval(interval);
+            }
+          }, 250);
+        }}
+      />
+    </Frame>
+  </Tab>
+</Tabs>

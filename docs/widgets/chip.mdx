@@ -1,0 +1,252 @@
+---
+title: "Chip"
+description: "Documentation for Chip"
+---
+
+import { PLAYGROUND_BASE_URL } from "/snippets/playground_base.mdx";
+
+export const chipPreviewJson = {
+  "type": "chip",
+  "avatar": {
+    "type": "circleAvatar",
+    "backgroundColor": "#FF0000",
+    "child": {
+      "type": "text",
+      "data": "A"
+    }
+  },
+  "label": {
+    "type": "text",
+    "data": "Chip Label"
+  },
+  "labelStyle": {
+    "color": "#000000",
+    "fontSize": 14
+  },
+  "labelPadding": {
+    "left": 8,
+    "top": 4,
+    "right": 8,
+    "bottom": 4
+  },
+  "deleteIcon": {
+    "type": "icon",
+    "icon": "delete"
+  },
+  "deleteIconColor": "#FF0000",
+  "deleteButtonTooltipMessage": "Delete",
+  "side": {
+    "color": "#000000",
+    "width": 1
+  },
+  "shape": {
+    "type": "roundedRectangle",
+    "borderRadius": 8
+  },
+  "clipBehavior": "antiAlias",
+  "autofocus": false,
+  "color": "#FFFFFF",
+  "backgroundColor": "#EEEEEE",
+  "padding": {
+    "left": 8,
+    "top": 4,
+    "right": 8,
+    "bottom": 4
+  },
+  "visualDensity": {
+    "horizontal": 0,
+    "vertical": 0
+  },
+  "materialTapTargetSize": "padded",
+  "elevation": 2,
+  "shadowColor": "#000000",
+  "surfaceTintColor": "#FFFFFF",
+  "iconTheme": {
+    "color": "#000000",
+    "size": 24
+  },
+  "avatarBoxConstraints": {
+    "minWidth": 24,
+    "minHeight": 24
+  },
+  "deleteIconBoxConstraints": {
+    "minWidth": 24,
+    "minHeight": 24
+  }
+};
+export const chipPreviewSrc = `${PLAYGROUND_BASE_URL}/embed`;
+
+The Phluts Chip allows you to build a Flutter Chip widget using JSON.
+To know more about the Chip widget in Flutter, refer to the [official documentation](https://api.flutter.dev/flutter/material/Chip-class.html).
+
+## Properties
+
+| Property                   | Type                           | Description                                                                                    |
+|----------------------------|--------------------------------|------------------------------------------------------------------------------------------------|
+| avatar                     | `PhlutsWidget`                   | The widget to display prior to the chip's label.                                               |
+| label                      | `PhlutsWidget`                   | The primary content of the chip.                                                               |
+| labelStyle                 | `PhlutsTextStyle`                | The style to use for the label.                                                                |
+| labelPadding               | `PhlutsEdgeInsets`               | The padding around the label.                                                                  |
+| deleteIcon                 | `PhlutsWidget`                   | The widget to display as the chip's delete icon.                                               |
+| onDeleted                  | `PhlutsAction`                   | The callback that is called when the delete icon is tapped.                                    |
+| deleteIconColor            | `PhlutsColor`                    | The color of the delete icon.                                                                  |
+| deleteButtonTooltipMessage | `String`                       | The message to display in the tooltip for the delete icon.                                     |
+| side                       | `PhlutsBorderSide`               | The border to display around the chip.                                                         |
+| shape                      | `PhlutsRoundedRectangleBorder`   | The shape of the chip's border.                                                                |
+| clipBehavior               | `PhlutsClip`                     | The clip behavior of the chip. Defaults to `Clip.none`.                                        |
+| autofocus                  | `bool`                         | Whether this chip should focus itself if nothing else is already focused. Defaults to `false`. |
+| color                      | `PhlutsColor`                    | The color of the chip.                                                                         |
+| backgroundColor            | `PhlutsColor`                    | The background color of the chip.                                                              |
+| padding                    | `PhlutsEdgeInsets`               | The padding around the chip.                                                                   |
+| visualDensity              | `PhlutsVisualDensity`            | The visual density of the chip.                                                                |
+| materialTapTargetSize      | `PhlutsMaterialTapTargetSize`    | Configures the minimum size of the tap target.                                                 |
+| elevation                  | `double`                       | The elevation of the chip.                                                                     |
+| shadowColor                | `PhlutsColor`                    | The color of the chip's shadow.                                                                |
+| surfaceTintColor           | `PhlutsColor`                    | The color of the chip's surface tint.                                                          |
+| iconTheme                  | `PhlutsIconThemeData`            | The theme for icons in the chip.                                                               |
+| avatarBoxConstraints       | `PhlutsBoxConstraints`           | The constraints for the avatar.                                                                |
+| deleteIconBoxConstraints   | `PhlutsBoxConstraints`           | The constraints for the delete icon.                                                           |
+
+## Example
+
+<Tabs sync={false}>
+  <Tab title="Dart">
+
+```dart
+PhlutsChip(
+  avatar: PhlutsCircleAvatar(
+    backgroundColor: PhlutsColors.red,
+    child: PhlutsText(data: 'A'),
+  ),
+  label: PhlutsText(data: 'Chip Label'),
+  labelStyle: PhlutsTextStyle(color: PhlutsColors.black, fontSize: 14),
+  labelPadding: PhlutsEdgeInsets(left: 8, top: 4, right: 8, bottom: 4),
+  deleteIcon: PhlutsIcon(icon: 'delete'),
+  deleteIconColor: PhlutsColors.red,
+  deleteButtonTooltipMessage: 'Delete',
+  side: PhlutsBorderSide(color: PhlutsColors.black, width: 1.0),
+  shape: PhlutsRoundedRectangleBorder(borderRadius: 8.0),
+  clipBehavior: PhlutsClip.antiAlias,
+  autofocus: false,
+  color: PhlutsColors.white,
+  backgroundColor: '#EEEEEE',
+  padding: PhlutsEdgeInsets(left: 8, top: 4, right: 8, bottom: 4),
+  visualDensity: PhlutsVisualDensity(horizontal: 0.0, vertical: 0.0),
+  materialTapTargetSize: PhlutsMaterialTapTargetSize.padded,
+  elevation: 2.0,
+  shadowColor: PhlutsColors.black,
+  surfaceTintColor: PhlutsColors.white,
+  iconTheme: PhlutsIconThemeData(color: PhlutsColors.black, size: 24.0),
+  avatarBoxConstraints: PhlutsBoxConstraints(minWidth: 24.0, minHeight: 24.0),
+  deleteIconBoxConstraints: PhlutsBoxConstraints(minWidth: 24.0, minHeight: 24.0),
+)
+```
+
+  </Tab>
+  <Tab title="JSON">
+
+```json
+{
+  "type": "chip",
+  "avatar": {
+    "type": "circleAvatar",
+    "backgroundColor": "#FF0000",
+    "child": {
+      "type": "text",
+      "data": "A"
+    }
+  },
+  "label": {
+    "type": "text",
+    "data": "Chip Label"
+  },
+  "labelStyle": {
+    "color": "#000000",
+    "fontSize": 14
+  },
+  "labelPadding": {
+    "left": 8,
+    "top": 4,
+    "right": 8,
+    "bottom": 4
+  },
+  "deleteIcon": {
+    "type": "icon",
+    "icon": "delete"
+  },
+  "deleteIconColor": "#FF0000",
+  "deleteButtonTooltipMessage": "Delete",
+  "side": {
+    "color": "#000000",
+    "width": 1
+  },
+  "shape": {
+    "type": "roundedRectangle",
+    "borderRadius": 8
+  },
+  "clipBehavior": "antiAlias",
+  "autofocus": false,
+  "color": "#FFFFFF",
+  "backgroundColor": "#EEEEEE",
+  "padding": {
+    "left": 8,
+    "top": 4,
+    "right": 8,
+    "bottom": 4
+  },
+  "visualDensity": {
+    "horizontal": 0,
+    "vertical": 0
+  },
+  "materialTapTargetSize": "padded",
+  "elevation": 2,
+  "shadowColor": "#000000",
+  "surfaceTintColor": "#FFFFFF",
+  "iconTheme": {
+    "color": "#000000",
+    "size": 24
+  },
+  "avatarBoxConstraints": {
+    "minWidth": 24,
+    "minHeight": 24
+  },
+  "deleteIconBoxConstraints": {
+    "minWidth": 24,
+    "minHeight": 24
+  }
+}
+```
+
+  </Tab>
+  <Tab title="Preview">
+    <Frame>
+      <iframe
+        id="phluts"
+        src={chipPreviewSrc}
+        title="Phluts Playground"
+        className="w-full rounded-xl border-0"
+        style={{ height: "640px" }}
+        loading="lazy"
+        onLoad={(event) => {
+          const iframe = event.currentTarget;
+          const targetOrigin = PLAYGROUND_BASE_URL;
+          const message = {
+            type: "phluts-preview-json",
+            payload: chipPreviewJson
+          };
+
+          let attempts = 0;
+          const maxAttempts = 12;
+          const interval = setInterval(() => {
+            iframe.contentWindow?.postMessage(message, targetOrigin);
+            attempts += 1;
+
+            if (attempts >= maxAttempts) {
+              clearInterval(interval);
+            }
+          }, 250);
+        }}
+      />
+    </Frame>
+  </Tab>
+</Tabs>

@@ -1,0 +1,99 @@
+---
+title: "SafeArea"
+description: "Documentation for SafeArea"
+---
+
+import { PLAYGROUND_BASE_URL } from "/snippets/playground_base.mdx";
+
+export const safeAreaPreviewJson = {
+  "type": "safeArea",
+  "child": {
+    "type": "text",
+    "data": "Hello, World!",
+    "style": {
+      "color": "#FFFFFF",
+      "fontSize": 24
+    }
+  }
+};
+export const safeAreaPreviewSrc = `${PLAYGROUND_BASE_URL}/embed`;
+
+Phluts `SafeArea` allows you to build the Flutter SafeArea widget using JSON. 
+To know more about the SafeArea widget in Flutter, refer to the [official documentation](https://api.flutter.dev/flutter/widgets/SafeArea-class.html).
+
+## Properties
+
+| Property                  | Type                   | Description                                                                                                                                           |
+|---------------------------|------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------|
+| child                     | `PhlutsWidget`           | The child widget of the SafeArea.                                                                                                                     |
+| left                      | `bool`                 | Whether to avoid system intrusions on the left.                                                                                                       |
+| top                       | `bool`                 | Whether to avoid system intrusions at the top of the screen, typically the system status bar.                                                         |
+| right                     | `bool`                 | Whether to avoid system intrusions on the right.                                                                                                      |
+| bottom                    | `bool`                 | Whether to avoid system intrusions on the bottom side of the screen.                                                                                  |
+| minimum                   | `PhlutsEdgeInsets`       | This minimum padding to apply.                                                                                                                        |
+| maintainBottomViewPadding | `bool`                 | Specifies whether the SafeArea should maintain the bottom MediaQueryData.viewPadding instead of the bottom MediaQueryData.padding, defaults to false. |
+
+## Example
+
+<Tabs sync={false}>
+  <Tab title="Dart">
+
+```dart
+PhlutsSafeArea(
+  child: PhlutsText(
+    data: 'Hello, World!',
+    style: PhlutsTextStyle(color: PhlutsColors.white, fontSize: 24.0),
+  ),
+)
+```
+
+  </Tab>
+  <Tab title="JSON">
+
+```json
+{
+  "type": "safeArea",
+  "child": {
+    "type": "text",
+    "data": "Hello, World!",
+    "style": {
+      "color": "#FFFFFF",
+      "fontSize": 24
+    }
+  }
+}
+```
+
+  </Tab>
+  <Tab title="Preview">
+    <Frame>
+      <iframe
+        id="phluts"
+        src={safeAreaPreviewSrc}
+        title="Phluts Playground"
+        className="w-full rounded-xl border-0"
+        style={{ height: "640px" }}
+        loading="lazy"
+        onLoad={(event) => {
+          const iframe = event.currentTarget;
+          const targetOrigin = PLAYGROUND_BASE_URL;
+          const message = {
+            type: "phluts-preview-json",
+            payload: safeAreaPreviewJson
+          };
+
+          let attempts = 0;
+          const maxAttempts = 12;
+          const interval = setInterval(() => {
+            iframe.contentWindow?.postMessage(message, targetOrigin);
+            attempts += 1;
+
+            if (attempts >= maxAttempts) {
+              clearInterval(interval);
+            }
+          }, 250);
+        }}
+      />
+    </Frame>
+  </Tab>
+</Tabs>

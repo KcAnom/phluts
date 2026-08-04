@@ -1,0 +1,103 @@
+---
+title: "CircleAvatar"
+description: "Documentation for CircleAvatar"
+---
+
+import { PLAYGROUND_BASE_URL } from "/snippets/playground_base.mdx";
+
+export const circleAvatarPreviewJson = {
+  "type": "circleAvatar",
+  "backgroundColor": "#FF0000",
+  "foregroundColor": "#FFFFFF",
+  "backgroundImage": "https://raw.githubusercontent.com/PhlutsDev/phluts/refs/heads/dev/assets/companies/bettrdo.jpg",
+  "radius": 50,
+  "child": {
+    "type": "text",
+    "data": "A"
+  }
+};
+export const circleAvatarPreviewSrc = `${PLAYGROUND_BASE_URL}/embed`;
+
+The Phluts CircleAvatar allows you to build a Flutter circle avatar widget using JSON.
+To know more about the circle avatar widget in Flutter, refer to the [official documentation](https://api.flutter.dev/flutter/material/CircleAvatar-class.html).
+
+## Properties
+
+| Property                | Type                    | Description                                                                 |
+|-------------------------|-------------------------|-----------------------------------------------------------------------------|
+| child                   | `PhlutsWidget`            | The widget to display inside the circle avatar.                             |
+| backgroundColor         | `PhlutsColor`             | The background color of the circle avatar.                                  |
+| backgroundImage         | `String`                | The background image of the circle avatar.                                  |
+| foregroundImage         | `String`                | The foreground image of the circle avatar.                                  |
+| onBackgroundImageError  | `PhlutsAction`            | The error widget to display if the background image fails to load.          |
+| onForegroundImageError  | `PhlutsAction`            | The error widget to display if the foreground image fails to load.          |
+| foregroundColor         | `PhlutsColor`             | The color of the circle avatar's foreground elements.                       |
+| radius                  | `double`                | The radius of the circle avatar.                                            |
+| minRadius               | `double`                | The minimum radius of the circle avatar.                                    |
+| maxRadius               | `double`                | The maximum radius of the circle avatar.                                    |
+
+## Example
+
+<Tabs sync={false}>
+  <Tab title="Dart">
+
+```dart
+PhlutsCircleAvatar(
+  backgroundColor: PhlutsColors.red,
+  foregroundColor: PhlutsColors.white,
+  backgroundImage: 'https://raw.githubusercontent.com/PhlutsDev/phluts/refs/heads/dev/assets/companies/bettrdo.jpg',
+  radius: 50,
+  child: PhlutsText(data: 'A'),
+)
+```
+
+  </Tab>
+  <Tab title="JSON">
+
+```json
+{
+  "type": "circleAvatar",
+  "backgroundColor": "#FF0000",
+  "foregroundColor": "#FFFFFF",
+  "backgroundImage": "https://raw.githubusercontent.com/PhlutsDev/phluts/refs/heads/dev/assets/companies/bettrdo.jpg",
+  "radius": 50,
+  "child": {
+    "type": "text",
+    "data": "A"
+  }
+}
+```
+
+  </Tab>
+  <Tab title="Preview">
+    <Frame>
+      <iframe
+        id="phluts"
+        src={circleAvatarPreviewSrc}
+        title="Phluts Playground"
+        className="w-full rounded-xl border-0"
+        style={{ height: "640px" }}
+        loading="lazy"
+        onLoad={(event) => {
+          const iframe = event.currentTarget;
+          const targetOrigin = PLAYGROUND_BASE_URL;
+          const message = {
+            type: "phluts-preview-json",
+            payload: circleAvatarPreviewJson
+          };
+
+          let attempts = 0;
+          const maxAttempts = 12;
+          const interval = setInterval(() => {
+            iframe.contentWindow?.postMessage(message, targetOrigin);
+            attempts += 1;
+
+            if (attempts >= maxAttempts) {
+              clearInterval(interval);
+            }
+          }, 250);
+        }}
+      />
+    </Frame>
+  </Tab>
+</Tabs>

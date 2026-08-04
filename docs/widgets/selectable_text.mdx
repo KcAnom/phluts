@@ -1,0 +1,114 @@
+---
+title: "SelectableText"
+description: "Documentation for SelectableText"
+---
+
+import { PLAYGROUND_BASE_URL } from "/snippets/playground_base.mdx";
+
+export const selectableTextPreviewJson = {
+  "type": "selectableText",
+  "data": "This is a selectable text",
+  "style": {
+    "fontSize": 18,
+    "fontWeight": "w600"
+  },
+  "showCursor": true,
+  "cursorColor": "#FF0000"
+};
+export const selectableTextPreviewSrc = `${PLAYGROUND_BASE_URL}/embed`;
+
+Phluts SelectableText allows you to build the Flutter SelectableText widget using JSON.
+To know more about the SelectableText widget in Flutter, refer to the [official documentation](https://api.flutter.dev/flutter/material/SelectableText-class.html).
+
+## Properties
+
+| Property                   | Type                 | Description                                       |
+|----------------------------|----------------------|---------------------------------------------------|
+| data                       | `String`             | The text to display.                              |
+| children                   | `List<PhlutsTextSpan>` | The list of text spans to display.                |
+| style                      | `PhlutsTextStyle?`     | The style to apply to the text.                   |
+| textAlign                  | `TextAlign?`         | The alignment of the text.                        |
+| textDirection              | `TextDirection?`     | The direction of the text.                        |
+| textScaleFactor            | `double?`            | **Deprecated.** Use `textScaler` instead.         |
+| textScaler                 | `double?`            | The font scaling strategy to use.                 |
+| showCursor                 | `bool?`              | Whether to show the cursor.                       |
+| autofocus                  | `bool?`              | Whether to autofocus the widget.                  |
+| minLines                   | `int?`               | The minimum number of lines to display.           |
+| maxLines                   | `int?`               | The maximum number of lines to display.           |
+| cursorWidth                | `double?`            | The width of the cursor.                          |
+| cursorHeight               | `double?`            | The height of the cursor.                         |
+| cursorRadius               | `double?`            | The radius of the cursor.                         |
+| cursorColor                | `String?`            | The color of the cursor.                          |
+| enableInteractiveSelection | `bool?`              | Whether to enable interactive selection.          |
+| onTap                      | `PhlutsAction?`        | The action to perform when the text is tapped.    |
+| semanticsLabel             | `String?`            | The semantics label for the text.                 |
+| textWidthBasis             | `TextWidthBasis?`    | The width basis for the text.                     |
+| selectionColor             | `String?`            | The color of the text selection.                  |
+
+> [!NOTE] 
+> `textScaleFactor` is deprecated. Use `textScaler` instead.
+> Example migration: `textScaler: 1.5` corresponds to `TextScaler.linear(1.5)`.
+
+## Example
+
+<Tabs sync={false}>
+  <Tab title="Dart">
+
+```dart
+PhlutsSelectableText(
+  data: 'This is a selectable text',
+  style: PhlutsTextStyle(fontSize: 18, fontWeight: PhlutsFontWeight.w600),
+  showCursor: true,
+  cursorColor: PhlutsColors.red,
+)
+```
+
+  </Tab>
+  <Tab title="JSON">
+
+```json
+{
+  "type": "selectableText",
+  "data": "This is a selectable text",
+  "style": {
+    "fontSize": 18,
+    "fontWeight": "w600"
+  },
+  "showCursor": true,
+  "cursorColor": "#FF0000"
+}
+```
+
+  </Tab>
+  <Tab title="Preview">
+    <Frame>
+      <iframe
+        id="phluts"
+        src={selectableTextPreviewSrc}
+        title="Phluts Playground"
+        className="w-full rounded-xl border-0"
+        style={{ height: "640px" }}
+        loading="lazy"
+        onLoad={(event) => {
+          const iframe = event.currentTarget;
+          const targetOrigin = PLAYGROUND_BASE_URL;
+          const message = {
+            type: "phluts-preview-json",
+            payload: selectableTextPreviewJson
+          };
+
+          let attempts = 0;
+          const maxAttempts = 12;
+          const interval = setInterval(() => {
+            iframe.contentWindow?.postMessage(message, targetOrigin);
+            attempts += 1;
+
+            if (attempts >= maxAttempts) {
+              clearInterval(interval);
+            }
+          }, 250);
+        }}
+      />
+    </Frame>
+  </Tab>
+</Tabs>

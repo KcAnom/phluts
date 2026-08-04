@@ -1,0 +1,221 @@
+---
+title: "Border"
+description: "Documentation for Border"
+---
+
+# Border
+
+PhlutsBorder allows you to define the Flutter Border class using JSON with support for both uniform borders (all sides) and individual border sides.
+To know more about the Border class in Flutter, refer to the [official documentation](https://api.flutter.dev/flutter/painting/Border-class.html).
+
+## Features
+
+- **Uniform Border**: Apply the same border to all sides (backward compatible)
+- **Individual Border Sides**: Specify different borders for top, right, bottom, and left sides
+- **Automatic Detection**: The system automatically detects whether to use uniform or individual borders
+
+## Properties
+
+### Uniform Border (All Sides)
+
+| Property    | Type           | Description                                                                                      |
+| ----------- | -------------- | ------------------------------------------------------------------------------------------------ |
+| color       | `String?`      | Defines color of the border for all sides.                                                       |
+| width       | `PhlutsDouble?`  | Defines thickness of the border for all sides (logical px).                                      |
+| borderStyle | `BorderStyle?` | Defines the style of the border for all sides. Can be `solid` or `none`. Defaults to `solid`.    |
+| strokeAlign | `PhlutsDouble?`  | Defines the relative position of the stroke on values range from -1.0 (inside) to 1.0 (outside). |
+
+### Individual Border Sides
+
+| Property | Type              | Description                             |
+| -------- | ----------------- | --------------------------------------- |
+| top      | `PhlutsBorderSide?` | Defines the border for the top side.    |
+| right    | `PhlutsBorderSide?` | Defines the border for the right side.  |
+| bottom   | `PhlutsBorderSide?` | Defines the border for the bottom side. |
+| left     | `PhlutsBorderSide?` | Defines the border for the left side.   |
+
+:::note
+
+When any individual border side is specified (`top`, `right`, `bottom`, or `left`), the system will use individual border mode and ignore the uniform border properties (`color`, `width`, `borderStyle`, `strokeAlign`).
+
+:::
+
+## Examples
+
+### Uniform Border (All Sides)
+
+<CodeGroup>
+```dart Dart
+PhlutsBorder(
+  color: PhlutsColors.red,
+  width: 2.0,
+  borderStyle: PhlutsBorderStyle.solid,
+  strokeAlign: 0.0,
+)
+```
+
+```json JSON
+{
+  "border": {
+    "color": "#FF0000",
+    "width": 2.0,
+    "borderStyle": "solid",
+    "strokeAlign": 0.0
+  }
+}
+```
+</CodeGroup>
+
+### Individual Border Sides
+
+<CodeGroup>
+```dart Dart
+PhlutsBorder(
+  top: PhlutsBorderSide(color: PhlutsColors.red, width: 2.0, style: PhlutsBorderStyle.solid, strokeAlign: 0.0),
+  right: PhlutsBorderSide(color: PhlutsColors.green, width: 1.0, style: PhlutsBorderStyle.solid),
+  bottom: PhlutsBorderSide(color: PhlutsColors.blue, width: 3.0, style: PhlutsBorderStyle.solid),
+  left: PhlutsBorderSide(color: PhlutsColors.yellow, width: 1.5, style: PhlutsBorderStyle.solid),
+)
+```
+
+```json JSON
+{
+  "border": {
+    "top": {
+      "color": "#FF0000",
+      "width": 2.0,
+      "borderStyle": "solid",
+      "strokeAlign": 0.0
+    },
+    "right": {
+      "color": "#00FF00",
+      "width": 1.0,
+      "borderStyle": "solid"
+    },
+    "bottom": {
+      "color": "#0000FF",
+      "width": 3.0,
+      "borderStyle": "solid"
+    },
+    "left": {
+      "color": "#FFFF00",
+      "width": 1.5,
+      "borderStyle": "solid"
+    }
+  }
+}
+```
+</CodeGroup>
+
+### Partial Border Sides
+
+You can specify only some sides, and the others will default to `BorderSide.none`:
+
+<CodeGroup>
+```dart Dart
+PhlutsBorder(
+  top: PhlutsBorderSide(color: PhlutsColors.red, width: 2.0, style: PhlutsBorderStyle.solid),
+  bottom: PhlutsBorderSide(color: PhlutsColors.blue, width: 2.0, style: PhlutsBorderStyle.solid),
+)
+```
+
+```json JSON
+{
+  "border": {
+    "top": {
+      "color": "#FF0000",
+      "width": 2.0,
+      "borderStyle": "solid"
+    },
+    "bottom": {
+      "color": "#0000FF",
+      "width": 2.0,
+      "borderStyle": "solid"
+    }
+  }
+}
+```
+</CodeGroup>
+
+### Complete Container Example
+
+<CodeGroup>
+```dart Dart
+PhlutsContainer(
+  width: 200,
+  height: 100,
+  decoration: PhlutsBoxDecoration(
+    color: PhlutsColors.grey,
+    border: PhlutsBorder(
+      top: PhlutsBorderSide(color: PhlutsColors.red, width: 3.0, style: PhlutsBorderStyle.solid),
+      right: PhlutsBorderSide(color: PhlutsColors.green, width: 2.0, style: PhlutsBorderStyle.solid),
+      bottom: PhlutsBorderSide(color: PhlutsColors.blue, width: 3.0, style: PhlutsBorderStyle.solid),
+      left: PhlutsBorderSide(color: PhlutsColors.yellow, width: 2.0, style: PhlutsBorderStyle.solid),
+    ),
+    borderRadius: PhlutsBorderRadius(topLeft: 8.0, topRight: 8.0, bottomLeft: 8.0, bottomRight: 8.0),
+  ),
+  child: PhlutsCenter(
+    child: PhlutsText(
+      data: 'Custom Borders',
+      style: PhlutsTextStyle(fontSize: 16, fontWeight: PhlutsFontWeight.bold),
+    ),
+  ),
+)
+```
+
+```json JSON
+{
+  "type": "container",
+  "width": 200,
+  "height": 100,
+  "decoration": {
+    "color": "#F0F0F0",
+    "border": {
+      "top": {
+        "color": "#FF0000",
+        "width": 3.0,
+        "borderStyle": "solid"
+      },
+      "right": {
+        "color": "#00FF00",
+        "width": 2.0,
+        "borderStyle": "solid"
+      },
+      "bottom": {
+        "color": "#0000FF",
+        "width": 3.0,
+        "borderStyle": "solid"
+      },
+      "left": {
+        "color": "#FFFF00",
+        "width": 2.0,
+        "borderStyle": "solid"
+      }
+    },
+    "borderRadius": {
+      "topLeft": 8.0,
+      "topRight": 8.0,
+      "bottomLeft": 8.0,
+      "bottomRight": 8.0
+    }
+  },
+  "child": {
+    "type": "center",
+    "child": {
+      "type": "text",
+      "data": "Custom Borders",
+      "style": {
+        "fontSize": 16,
+        "fontWeight": "bold"
+      }
+    }
+  }
+}
+```
+</CodeGroup>
+
+## See Also
+
+- [Border Side](./border_side.md) - Learn about PhlutsBorderSide properties
+- [Border Radius](./border_radius.md) - Learn about border radius configuration
+

@@ -1,0 +1,173 @@
+---
+title: "Conditional"
+description: "Documentation for Conditional"
+---
+
+import { PLAYGROUND_BASE_URL } from "/snippets/playground_base.mdx";
+
+export const conditionalPreviewJson = {
+  "type": "conditional",
+  "condition": "user.isLoggedIn == true",
+  "ifTrue": {
+    "type": "text",
+    "data": "Welcome back!"
+  },
+  "ifFalse": {
+    "type": "text",
+    "data": "Please sign in"
+  }
+};
+export const conditionalPreviewSrc = `${PLAYGROUND_BASE_URL}/embed`;
+
+The Phluts Conditional allows you to conditionally render widgets based on a boolean expression. It evaluates the condition at runtime and renders either the `ifTrue` or `ifFalse` widget.
+
+## Properties
+
+| Property  | Type                   | Description                                                                 |
+|-----------|------------------------|-----------------------------------------------------------------------------|
+| condition | `String`               | **Required.** The boolean expression to evaluate at runtime.                |
+| ifTrue    | `PhlutsWidget`           | **Required.** The widget to render when condition evaluates to true.        |
+| ifFalse   | `PhlutsWidget`           | The widget to render when condition evaluates to false. Renders empty if null. |
+
+## Example
+
+<Tabs sync={false}>
+  <Tab title="Dart">
+
+```dart
+PhlutsConditional(
+  condition: 'user.isLoggedIn == true',
+  ifTrue: PhlutsText(data: 'Welcome back!'),
+  ifFalse: PhlutsText(data: 'Please sign in'),
+)
+```
+
+  </Tab>
+  <Tab title="JSON">
+
+```json
+{
+  "type": "conditional",
+  "condition": "user.isLoggedIn == true",
+  "ifTrue": {
+    "type": "text",
+    "data": "Welcome back!"
+  },
+  "ifFalse": {
+    "type": "text",
+    "data": "Please sign in"
+  }
+}
+```
+
+  </Tab>
+  <Tab title="Preview">
+    <Frame>
+      <iframe
+        id="phluts"
+        src={conditionalPreviewSrc}
+        title="Phluts Playground"
+        className="w-full rounded-xl border-0"
+        style={{ height: "640px" }}
+        loading="lazy"
+        onLoad={(event) => {
+          const iframe = event.currentTarget;
+          const targetOrigin = PLAYGROUND_BASE_URL;
+          const message = {
+            type: "phluts-preview-json",
+            payload: conditionalPreviewJson
+          };
+
+          let attempts = 0;
+          const maxAttempts = 12;
+          const interval = setInterval(() => {
+            iframe.contentWindow?.postMessage(message, targetOrigin);
+            attempts += 1;
+
+            if (attempts >= maxAttempts) {
+              clearInterval(interval);
+            }
+          }, 250);
+        }}
+      />
+    </Frame>
+  </Tab>
+</Tabs>
+## Conditional with Complex Widgets
+
+<CodeGroup>
+```dart Dart
+PhlutsConditional(
+  condition: 'items.length > 0',
+  ifTrue: PhlutsListView(
+    children: [
+      PhlutsText(data: 'Your items:'),
+      // ... list items
+    ],
+  ),
+  ifFalse: PhlutsCenter(
+    child: PhlutsColumn(
+      mainAxisAlignment: PhlutsMainAxisAlignment.center,
+      children: [
+        PhlutsIcon(icon: 'empty_box', size: 64.0),
+        PhlutsSizedBox(height: 16.0),
+        PhlutsText(data: 'No items found'),
+        PhlutsSizedBox(height: 8.0),
+        PhlutsElevatedButton(
+          child: PhlutsText(data: 'Add Item'),
+          onPressed: PhlutsNavigateAction(routeName: '/add-item'),
+        ),
+      ],
+    ),
+  ),
+)
+```
+
+```json JSON
+{
+  "type": "conditional",
+  "condition": "items.length > 0",
+  "ifTrue": {
+    "type": "listView",
+    "children": [
+      { "type": "text", "data": "Your items:" }
+    ]
+  },
+  "ifFalse": {
+    "type": "center",
+    "child": {
+      "type": "column",
+      "mainAxisAlignment": "center",
+      "children": [
+        { "type": "icon", "icon": "empty_box", "size": 64.0 },
+        { "type": "sizedBox", "height": 16.0 },
+        { "type": "text", "data": "No items found" },
+        { "type": "sizedBox", "height": 8.0 },
+        {
+          "type": "elevatedButton",
+          "child": { "type": "text", "data": "Add Item" },
+          "onPressed": {
+            "actionType": "navigate",
+            "routeName": "/add-item"
+          }
+        }
+      ]
+    }
+  }
+}
+```
+</CodeGroup>
+
+## Condition Expression Syntax
+
+The `condition` property accepts expressions that are evaluated against the current state. Common patterns include:
+
+- **Equality**: `user.role == 'admin'`
+- **Boolean check**: `user.isVerified == true`
+- **Comparison**: `cart.total > 100`
+- **Length check**: `items.length > 0`
+- **Null check**: `user.name != null`
+
+<Note>
+The condition is evaluated at runtime by Phluts's expression resolver against the current application state.
+</Note>

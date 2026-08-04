@@ -1,0 +1,103 @@
+---
+title: "Padding"
+description: "Documentation for Padding"
+---
+
+import { PLAYGROUND_BASE_URL } from "/snippets/playground_base.mdx";
+
+export const paddingPreviewJson = {
+  "type": "padding",
+  "padding": {
+    "left": 0,
+    "right": 0
+  },
+  "child": {
+    "type": "container",
+    "color": "#672BFF",
+    "clipBehavior": "hardEdge",
+    "height": 75,
+    "width": 700
+  }
+};
+export const paddingPreviewSrc = `${PLAYGROUND_BASE_URL}/embed`;
+
+The Phluts Padding allows you to build a Flutter Padding widget using JSON. 
+To know more about the padding widget in Flutter, refer to the [official documentation](https://api.flutter.dev/flutter/widgets/Padding-class.html).
+
+## Properties
+
+| Property | Type                  | Description                                                                                                                                                                                                             |
+|----------|-----------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| padding  | `PhlutsEdgeInsets`      | The amount of space by which to inset the child. Examples: `"padding": 12` for uniform padding, `"padding": {"left": 0, "right": 0}` for specific sides, or `{"padding": [8, 12, 8, 12]}` for left, top, right, bottom. |
+| child    | `PhlutsWidget`          | The widget below this widget in the tree.                                                                                                                                                                               |
+
+## Example
+
+<Tabs sync={false}>
+  <Tab title="Dart">
+
+```dart
+PhlutsPadding(
+  padding: PhlutsEdgeInsets(left: 0, right: 0),
+  child: PhlutsContainer(
+    color: '#672BFF',
+    clipBehavior: PhlutsClip.hardEdge,
+    height: 75,
+    width: 700,
+  ),
+)
+```
+
+  </Tab>
+  <Tab title="JSON">
+
+```json
+{
+  "type": "padding",
+  "padding": {
+    "left": 0,
+    "right": 0
+  },
+  "child": {
+    "type": "container",
+    "color": "#672BFF",
+    "clipBehavior": "hardEdge",
+    "height": 75,
+    "width": 700
+  }
+}
+```
+
+  </Tab>
+  <Tab title="Preview">
+    <Frame>
+      <iframe
+        id="phluts"
+        src={paddingPreviewSrc}
+        title="Phluts Playground"
+        className="w-full rounded-xl border-0"
+        style={{ height: "640px" }}
+        loading="lazy"
+        onLoad={(event) => {
+          const iframe = event.currentTarget;
+          const targetOrigin = PLAYGROUND_BASE_URL;
+          const message = {
+            type: "phluts-preview-json",
+            payload: paddingPreviewJson
+          };
+
+          let attempts = 0;
+          const maxAttempts = 12;
+          const interval = setInterval(() => {
+            iframe.contentWindow?.postMessage(message, targetOrigin);
+            attempts += 1;
+
+            if (attempts >= maxAttempts) {
+              clearInterval(interval);
+            }
+          }, 250);
+        }}
+      />
+    </Frame>
+  </Tab>
+</Tabs>

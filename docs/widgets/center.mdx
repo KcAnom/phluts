@@ -1,0 +1,84 @@
+---
+title: "Center"
+description: "Documentation for Center"
+---
+
+import { PLAYGROUND_BASE_URL } from "/snippets/playground_base.mdx";
+
+export const centerPreviewJson = {
+  "type": "center",
+  "child": {
+    "type": "text",
+    "data": "Hello, World!"
+  }
+};
+export const centerPreviewSrc = `${PLAYGROUND_BASE_URL}/embed`;
+
+The Phluts Center allows you to build a Flutter center widget using JSON.
+To know more about the center widget in Flutter, refer to the [official documentation](https://api.flutter.dev/flutter/widgets/Center-class.html).
+
+## Properties
+
+| Property     | Type                    | Description                                         |
+|--------------|-------------------------|-----------------------------------------------------|
+| widthFactor  | `double`                | The factor by which to multiply the child's width.  |
+| heightFactor | `double`                | The factor by which to multiply the child's height. |
+| child        | `PhlutsWidget`            | The widget to display inside the center.            |
+
+## Example
+
+<Tabs sync={false}>
+  <Tab title="Dart">
+
+```dart
+PhlutsCenter(
+  child: PhlutsText(data: 'Hello, World!'),
+)
+```
+
+  </Tab>
+  <Tab title="JSON">
+
+```json
+{
+  "type": "center",
+  "child": {
+    "type": "text",
+    "data": "Hello, World!"
+  }
+}
+```
+
+  </Tab>
+  <Tab title="Preview">
+    <Frame>
+      <iframe
+        id="phluts"
+        src={centerPreviewSrc}
+        title="Phluts Playground"
+        className="w-full rounded-xl border-0"
+        style={{ height: "640px" }}
+        loading="lazy"
+        onLoad={(event) => {
+          const iframe = event.currentTarget;
+          const targetOrigin = PLAYGROUND_BASE_URL;
+          const message = {
+            type: "phluts-preview-json",
+            payload: centerPreviewJson
+          };
+
+          let attempts = 0;
+          const maxAttempts = 12;
+          const interval = setInterval(() => {
+            iframe.contentWindow?.postMessage(message, targetOrigin);
+            attempts += 1;
+
+            if (attempts >= maxAttempts) {
+              clearInterval(interval);
+            }
+          }, 250);
+        }}
+      />
+    </Frame>
+  </Tab>
+</Tabs>

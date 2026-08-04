@@ -1,0 +1,306 @@
+---
+title: "Phluts DSL"
+description: "Learn how to write Server-Driven UI using Phluts's Dart DSL and convert it to JSON for deployment"
+---
+
+# What is Phluts DSL?
+
+**Phluts DSL (Domain-Specific Language)** is a Dart-based language that allows you to write Server-Driven UI using familiar Flutter-like syntax. Instead of writing JSON directly, you write your UI in Dart using `PhlutsWidget` classes, and Phluts automatically converts it to JSON for deployment.
+
+## Why We Built It?
+
+Writing complex UIs in raw JSON can be:
+- **Error-prone**: Missing commas, brackets, and typos are common
+- **Hard to maintain**: No IDE support, autocomplete, or type checking
+- **Difficult to debug**: No compile-time errors or helpful error messages
+- **Lacks reusability**: Hard to create reusable components and helpers
+
+Phluts DSL solves these problems by:
+- **Type safety**: Full Dart type checking and IDE support
+- **Better DX**: Autocomplete, syntax highlighting, and refactoring
+- **Reusability**: Create helper functions and reusable components
+- **Maintainability**: Easier to read, write, and modify complex UIs
+- **Compile-time validation**: Catch errors before deployment
+
+## How to Use Phluts DSL?
+
+Phluts DSL follows Flutter-like definitions and class names with `Phluts` prefixed. For example, `Scaffold` becomes `PhlutsScaffold`, `Column` becomes `PhlutsColumn`, and `Text` becomes `PhlutsText`.
+
+Screens are defined in the `phluts/screens/` folder (or directly in `phluts/`). Each screen is a Dart function annotated with `@PhlutsScreen`. Note that the Dart function should return a `PhlutsWidget`.
+
+Themes are defined in the `phluts/theme/` folder using the `@PhlutsThemeRef` annotation. The function should return a `PhlutsTheme`.
+
+### Folder Structure
+
+A typical Phluts project with DSL follows this structure:
+
+```
+flutter_project/
+├── lib/
+│   ├── default_phluts_options.dart
+│   └── main.dart
+├── phluts/
+│   ├── screens/              # Screen definitions
+│   │   ├── home_screen.dart
+│   │   └── detail_screen.dart
+│   └── theme/                # Theme definitions
+│       └── app_theme.dart
+└── pubspec.yaml
+```
+
+### Writing Screens
+
+Screens are defined in the `phluts/screens/` folder (or directly in `phluts/`). Each screen is a Dart function annotated with `@PhlutsScreen`:
+
+```dart
+import 'package:phluts/phluts_core.dart';
+
+@PhlutsScreen(screenName: 'home_screen')
+PhlutsWidget homeScreen() {
+  return PhlutsScaffold(
+    appBar: PhlutsAppBar(
+      title: PhlutsText(data: 'Home'),
+    ),
+    body: PhlutsColumn(
+      children: [
+        PhlutsText(data: 'Welcome to Phluts!'),
+        PhlutsElevatedButton(
+          child: PhlutsText(data: 'Go to Details'),
+          onPressed: PhlutsNavigateAction(routeName: 'detail_screen'),
+        ),
+      ],
+    ),
+  );
+}
+```
+
+### Writing Themes
+
+Themes are defined in the `phluts/theme/` folder using the `@PhlutsThemeRef` annotation:
+
+```dart
+import 'package:phluts/phluts_core.dart';
+
+@PhlutsThemeRef(name: "app_theme")
+PhlutsTheme get appTheme => PhlutsTheme(
+  brightness: PhlutsBrightness.light,
+  colorScheme: PhlutsColorScheme(
+    brightness: PhlutsBrightness.light,
+    primary: '#15803d',
+    onPrimary: '#FFFFFF',
+    surface: '#FFFFFF',
+    onSurface: '#000000',
+  ),
+  textTheme: PhlutsTextTheme(
+    headlineLarge: PhlutsCustomTextStyle(
+      fontSize: 32,
+      fontWeight: PhlutsFontWeight.w700,
+    ),
+    bodyMedium: PhlutsCustomTextStyle(
+      fontSize: 16,
+      fontWeight: PhlutsFontWeight.w400,
+    ),
+  ),
+);
+```
+
+### Annotations
+
+#### `@PhlutsScreen`
+
+Marks a function as a Phluts screen definition. The function must return a `PhlutsWidget`.
+
+**Properties:**
+- `screenName` (required): The unique identifier for this screen, used in navigation and deployment
+
+**Example:**
+```dart
+@PhlutsScreen(screenName: 'product_detail')
+PhlutsWidget productDetailScreen() {
+  return PhlutsScaffold(/* ... */);
+}
+```
+
+#### `@PhlutsThemeRef`
+
+Marks a getter as a Phluts theme definition. The getter must return a `PhlutsTheme`.
+
+**Properties:**
+- `name` (required): The unique identifier for this theme
+
+**Example:**
+```dart
+@PhlutsThemeRef(name: "dark_theme")
+PhlutsTheme get darkTheme => PhlutsTheme(/* ... */);
+```
+
+## Build & Deploy
+
+### Building (Dart → JSON)
+
+The `phluts build` command converts your Dart DSL code to JSON:
+
+```bash
+# Build all screens and themes
+phluts build
+
+# Build with verbose output
+phluts build --verbose
+```
+
+**What it does:**
+1. Scans the `phluts/` folder for `@PhlutsScreen` and `@PhlutsThemeRef` annotations
+2. Executes each annotated function/getter to get the `PhlutsWidget` or `PhlutsTheme`
+3. Converts the result to JSON using `.toJson()`
+4. Saves JSON files to the `build/` folder
+
+**Output structure:**
+```
+build/
+├── screens/
+│   ├── home_screen.json
+│   └── detail_screen.json
+└── themes/
+    └── app_theme.json
+```
+
+### Deploying to Phluts Cloud
+
+The `phluts deploy` command builds your DSL and uploads it to Phluts Cloud:
+
+```bash
+# Build and deploy
+phluts deploy
+
+# Deploy without rebuilding
+phluts deploy --skip-build
+
+# Deploy with verbose output
+phluts deploy --verbose
+```
+
+**What it does:**
+1. Runs `phluts build` (unless `--skip-build` is used)
+2. Uploads all JSON files from `build/` to Phluts Cloud
+3. Makes screens available via `Phluts(routeName: 'screen_name')` in your app
+
+## Example: Complete Screen
+
+Here's a complete example showing a screen with navigation, network requests, and theming:
+
+```dart
+import 'package:phluts/phluts_core.dart';
+
+@PhlutsScreen(screenName: 'movie_detail')
+PhlutsWidget movieDetailScreen() {
+  return PhlutsScaffold(
+    extendBodyBehindAppBar: true,
+    appBar: PhlutsAppBar(
+      backgroundColor: 'transparent',
+      leading: PhlutsIconButton(
+        icon: PhlutsIcon(icon: 'chevron_left', color: 'onSurface'),
+        onPressed: PhlutsNavigateAction(navigationStyle: NavigationStyle.pop),
+      ),
+    ),
+    body: PhlutsDynamicView(
+      request: PhlutsNetworkRequest(
+        url: 'https://api.example.com/movies/{{movie_id}}',
+        method: Method.get,
+      ),
+      template: PhlutsSingleChildScrollView(
+        child: PhlutsColumn(
+          children: [
+            PhlutsImage(
+              src: '{{poster_path}}',
+              width: double.maxFinite,
+              height: 480,
+              fit: PhlutsBoxFit.cover,
+            ),
+            PhlutsPadding(
+              padding: PhlutsEdgeInsets.all(16),
+              child: PhlutsColumn(
+                crossAxisAlignment: PhlutsCrossAxisAlignment.start,
+                children: [
+                  PhlutsText(
+                    data: '{{title}}',
+                    style: PhlutsThemeData.textTheme.headlineMedium,
+                  ),
+                  PhlutsSizedBox(height: 8),
+                  PhlutsText(
+                    data: '{{overview}}',
+                    style: PhlutsThemeData.textTheme.bodyMedium,
+                  ),
+                  PhlutsSizedBox(height: 24),
+                  PhlutsFilledButton(
+                    child: PhlutsText(data: 'Watch Trailer'),
+                    onPressed: PhlutsNavigateAction(routeName: 'trailer_screen'),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    ),
+  );
+}
+```
+
+## Reference: DSL Files and Output
+
+### Input: Dart DSL (`phluts/home_screen.dart`)
+
+```dart
+@PhlutsScreen(screenName: 'home_screen')
+PhlutsWidget homeScreen() {
+  return PhlutsScaffold(
+    appBar: PhlutsAppBar(
+      title: PhlutsText(data: 'Home'),
+    ),
+    body: PhlutsColumn(
+      children: [
+        PhlutsText(data: 'Hello, Phluts!'),
+      ],
+    ),
+  );
+}
+```
+
+### Output: JSON (`build/screens/home_screen.json`)
+
+```json
+{
+  "type": "scaffold",
+  "appBar": {
+    "type": "appBar",
+    "title": {
+      "type": "text",
+      "data": "Home"
+    }
+  },
+  "body": {
+    "type": "column",
+    "children": [
+      {
+        "type": "text",
+        "data": "Hello, Phluts!"
+      }
+    ]
+  }
+}
+```
+
+### Usage in App
+
+Once deployed, use the screen in your Flutter app:
+
+```dart
+Phluts(routeName: 'home_screen')
+```
+
+## Next Steps
+
+- Learn about [available widgets](/widgets/align) you can use in DSL
+- Explore [actions](/actions/navigate) for handling user interactions
+- Check out the [movie app example](https://github.com/PhlutsDev/phluts/tree/dev/examples/movie_app) for a complete DSL project
+- Read about [theming](/concepts/theming) for customizing your app's appearance

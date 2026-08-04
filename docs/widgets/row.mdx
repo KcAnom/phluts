@@ -1,0 +1,137 @@
+---
+title: "Row"
+description: "Documentation for Row"
+---
+
+import { PLAYGROUND_BASE_URL } from "/snippets/playground_base.mdx";
+
+export const rowPreviewJson = {
+  "type": "row",
+  "mainAxisAlignment": "center",
+  "crossAxisAlignment": "center",
+  "spacing": 12,
+  "children": [
+    {
+      "type": "image",
+      "src": "https://images.pexels.com/photos/2718416/pexels-photo-2718416.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      "width": 100
+    },
+    {
+      "type": "image",
+      "src": "https://images.pexels.com/photos/121629/pexels-photo-121629.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      "width": 100
+    },
+    {
+      "type": "image",
+      "src": "https://images.pexels.com/photos/1414642/pexels-photo-1414642.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      "width": 100
+    }
+  ]
+};
+export const rowPreviewSrc = `${PLAYGROUND_BASE_URL}/embed`;
+
+The Phluts Row allows you to build a Flutter Row widget using JSON.
+To know more about the row widget in Flutter, refer to the [official documentation](https://api.flutter.dev/flutter/widgets/Row-class.html).
+
+## Properties
+
+| Property           | Type                       | Description                                                                                                           |
+|--------------------|----------------------------|-----------------------------------------------------------------------------------------------------------------------|
+| mainAxisAlignment  | `PhlutsMainAxisAlignment`    | How the children should be placed along the main axis.                                                                |
+| crossAxisAlignment | `PhlutsCrossAxisAlignment`   | How the children should be placed along the cross axis.                                                               |
+| mainAxisSize       | `PhlutsMainAxisSize`         | How much space should be occupied in the main axis.                                                                   |
+| textDirection      | `PhlutsTextDirection`        | Determines the order to lay children out horizontally and how to interpret start and end in the horizontal direction. |
+| verticalDirection  | `PhlutsVerticalDirection`    | The order to lay children out vertically.                                                                             |
+| textBaseline       | `PhlutsTextBaseline`         | The baseline to use when aligning text.                                                                               |
+| spacing            | `double`                   | How much space to place between children in the main axis.                                                            |
+| children           | `List<PhlutsWidget>`         | The widgets below this widget in the tree.                                                                            |
+
+## Example
+
+<Tabs sync={false}>
+  <Tab title="Dart">
+
+```dart
+PhlutsRow(
+  mainAxisAlignment: PhlutsMainAxisAlignment.center,
+  crossAxisAlignment: PhlutsCrossAxisAlignment.center,
+  spacing: 12,
+  children: [
+    PhlutsImage(
+      src: 'https://images.pexels.com/photos/2718416/pexels-photo-2718416.jpeg',
+      width: 100,
+    ),
+    PhlutsImage(
+      src: 'https://images.pexels.com/photos/121629/pexels-photo-121629.jpeg',
+      width: 100,
+    ),
+    PhlutsImage(
+      src: 'https://images.pexels.com/photos/1414642/pexels-photo-1414642.jpeg',
+      width: 100,
+    ),
+  ],
+)
+```
+
+  </Tab>
+  <Tab title="JSON">
+
+```json
+{
+  "type": "row",
+  "mainAxisAlignment": "center",
+  "crossAxisAlignment": "center",
+  "spacing": 12,
+  "children": [
+    {
+      "type": "image",
+      "src": "https://images.pexels.com/photos/2718416/pexels-photo-2718416.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      "width": 100
+    },
+    {
+      "type": "image",
+      "src": "https://images.pexels.com/photos/121629/pexels-photo-121629.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      "width": 100
+    },
+    {
+      "type": "image",
+      "src": "https://images.pexels.com/photos/1414642/pexels-photo-1414642.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      "width": 100
+    }
+  ]
+}
+```
+
+  </Tab>
+  <Tab title="Preview">
+    <Frame>
+      <iframe
+        id="phluts"
+        src={rowPreviewSrc}
+        title="Phluts Playground"
+        className="w-full rounded-xl border-0"
+        style={{ height: "640px" }}
+        loading="lazy"
+        onLoad={(event) => {
+          const iframe = event.currentTarget;
+          const targetOrigin = PLAYGROUND_BASE_URL;
+          const message = {
+            type: "phluts-preview-json",
+            payload: rowPreviewJson
+          };
+
+          let attempts = 0;
+          const maxAttempts = 12;
+          const interval = setInterval(() => {
+            iframe.contentWindow?.postMessage(message, targetOrigin);
+            attempts += 1;
+
+            if (attempts >= maxAttempts) {
+              clearInterval(interval);
+            }
+          }, 250);
+        }}
+      />
+    </Frame>
+  </Tab>
+</Tabs>

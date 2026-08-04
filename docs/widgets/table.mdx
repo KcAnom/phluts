@@ -1,0 +1,384 @@
+---
+title: "Table"
+description: "Documentation for Table"
+---
+
+import { PLAYGROUND_BASE_URL } from "/snippets/playground_base.mdx";
+
+export const tablePreviewJson = {
+  "type": "table",
+  "columnWidths": {
+    "1": {
+      "type": "fixedColumnWidth",
+      "value": 200
+    }
+  },
+  "defaultColumnWidth": {
+    "type": "flexColumnWidth",
+    "value": 1
+  },
+  "textDirection": "ltr",
+  "defaultVerticalAlignment": "bottom",
+  "border": {
+    "color": "#428AF5",
+    "width": 1,
+    "style": "solid",
+    "borderRadius": {
+      "topLeft": 16,
+      "topRight": 16,
+      "bottomLeft": 16,
+      "bottomRight": 16
+    }
+  },
+  "children": [
+    {
+      "type": "tableRow",
+      "children": [
+        {
+          "type": "tableCell",
+          "child": {
+            "type": "container",
+            "color": "#40000000",
+            "height": 50,
+            "child": {
+              "type": "center",
+              "child": {
+                "type": "text",
+                "data": "Header 1"
+              }
+            }
+          }
+        },
+        {
+          "type": "tableCell",
+          "child": {
+            "type": "container",
+            "color": "#40000000",
+            "height": 50,
+            "child": {
+              "type": "center",
+              "child": {
+                "type": "text",
+                "data": "Header 2"
+              }
+            }
+          }
+        },
+        {
+          "type": "tableCell",
+          "child": {
+            "type": "container",
+            "color": "#40000000",
+            "height": 50,
+            "child": {
+              "type": "center",
+              "child": {
+                "type": "text",
+                "data": "Header 3"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "tableRow",
+      "children": [
+        {
+          "type": "tableCell",
+          "child": {
+            "type": "sizedBox",
+            "height": 50,
+            "child": {
+              "type": "center",
+              "child": {
+                "type": "text",
+                "data": "Row 1, Cell 1"
+              }
+            }
+          }
+        },
+        {
+          "type": "tableCell",
+          "child": {
+            "type": "sizedBox",
+            "height": 50,
+            "child": {
+              "type": "center",
+              "child": {
+                "type": "text",
+                "data": "Row 1, Cell 2"
+              }
+            }
+          }
+        },
+        {
+          "type": "tableCell",
+          "child": {
+            "type": "sizedBox",
+            "height": 50,
+            "child": {
+              "type": "center",
+              "child": {
+                "type": "text",
+                "data": "Row 1, Cell 3"
+              }
+            }
+          }
+        }
+      ]
+    }
+  ]
+};
+export const tablePreviewSrc = `${PLAYGROUND_BASE_URL}/embed`;
+
+PhlutsTable allows you to build the Flutter Table widget using JSON.
+To know more about the Table widget in Flutter, refer to the [official documentation](https://api.flutter.dev/flutter/widgets/Table-class.html).
+
+## Properties
+
+| Property                 | Type                               | Description                                                                                                                                                                                                     |
+|--------------------------|------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| columnWidths             | `Map<int, PhlutsTableColumnWidth>`   | Determines the column width on a column by column basis, if a particular column entry has null width `defaultColumnWidth` is used. See [`PhlutsTableColumnWidth`](./../styles_and_attributes/table_column_width) |
+| defaultColumnWidth       | `PhlutsTableColumnWidth`             | Determines the  default column width. Defaults to `flexColumnWidth`. See [`PhlutsTableColumnWidth`](./../styles_and_attributes/table_column_width)                                                               |
+| textDirection            | `PhlutsTextDirection`                | Determines the direction in which the columns are ordered. Can be `rtl` or `ltr`. Defaults to `rtl`.                                                                                                            |
+| border                   | `PhlutsTableBorder`                  | Defines the border style for `PhlutsTable`. See [`PhlutsTableBorder`](./../styles_and_attributes/table_border).                                                                                                   |
+| defaultVerticalAlignment | `PhlutsTableCellVerticalAlignment`   | Defines the verticalAlignment for the cells that don't specify a verticalAlignment. Can be `top`, `middle`, `bottom`, `baseline`, `fill` & `intrinsicHeight` Defaults to `top`.                                 |
+| textBaseLine             | `PhlutsTextBaseline`                 | Defines the text baseline to use when verticalAlignment is `baseline`. Can be `alphabetic` or `ideographic`. There is no default value.                                                                         |
+| children                 | `List<PhlutsTableRow>`               | Rows that will be populated in the table. See [`PhlutsTableRow`](./table_row).                                                                                                                                   |
+
+## Example
+
+<Tabs sync={false}>
+  <Tab title="Dart">
+
+```dart
+PhlutsTable(
+  columnWidths: {
+    1: PhlutsFixedColumnWidth(value: 200),
+  },
+  defaultColumnWidth: PhlutsFlexColumnWidth(value: 1),
+  textDirection: PhlutsTextDirection.ltr,
+  defaultVerticalAlignment: PhlutsTableCellVerticalAlignment.bottom,
+  border: PhlutsTableBorder(
+    color: '#428AF5',
+    width: 1.0,
+    style: PhlutsBorderStyle.solid,
+    borderRadius: PhlutsBorderRadius.all(16.0),
+  ),
+  children: [
+    PhlutsTableRow(
+      children: [
+        PhlutsTableCell(
+          child: PhlutsContainer(
+            color: '#40000000',
+            height: 50.0,
+            child: PhlutsCenter(child: PhlutsText(data: 'Header 1')),
+          ),
+        ),
+        PhlutsTableCell(
+          child: PhlutsContainer(
+            color: '#40000000',
+            height: 50.0,
+            child: PhlutsCenter(child: PhlutsText(data: 'Header 2')),
+          ),
+        ),
+        PhlutsTableCell(
+          child: PhlutsContainer(
+            color: '#40000000',
+            height: 50.0,
+            child: PhlutsCenter(child: PhlutsText(data: 'Header 3')),
+          ),
+        ),
+      ],
+    ),
+    PhlutsTableRow(
+      children: [
+        PhlutsTableCell(
+          child: PhlutsSizedBox(
+            height: 50.0,
+            child: PhlutsCenter(child: PhlutsText(data: 'Row 1, Cell 1')),
+          ),
+        ),
+        PhlutsTableCell(
+          child: PhlutsSizedBox(
+            height: 50.0,
+            child: PhlutsCenter(child: PhlutsText(data: 'Row 1, Cell 2')),
+          ),
+        ),
+        PhlutsTableCell(
+          child: PhlutsSizedBox(
+            height: 50.0,
+            child: PhlutsCenter(child: PhlutsText(data: 'Row 1, Cell 3')),
+          ),
+        ),
+      ],
+    ),
+  ],
+)
+```
+
+  </Tab>
+  <Tab title="JSON">
+
+```json
+{
+  "type": "table",
+  "columnWidths": {
+    "1": {
+      "type": "fixedColumnWidth",
+      "value": 200
+    }
+  },
+  "defaultColumnWidth": {
+    "type": "flexColumnWidth",
+    "value": 1
+  },
+  "textDirection": "ltr",
+  "defaultVerticalAlignment": "bottom",
+  "border": {
+    "color": "#428AF5",
+    "width": 1,
+    "style": "solid",
+    "borderRadius": {
+      "topLeft": 16,
+      "topRight": 16,
+      "bottomLeft": 16,
+      "bottomRight": 16
+    }
+  },
+  "children": [
+    {
+      "type": "tableRow",
+      "children": [
+        {
+          "type": "tableCell",
+          "child": {
+            "type": "container",
+            "color": "#40000000",
+            "height": 50,
+            "child": {
+              "type": "center",
+              "child": {
+                "type": "text",
+                "data": "Header 1"
+              }
+            }
+          }
+        },
+        {
+          "type": "tableCell",
+          "child": {
+            "type": "container",
+            "color": "#40000000",
+            "height": 50,
+            "child": {
+              "type": "center",
+              "child": {
+                "type": "text",
+                "data": "Header 2"
+              }
+            }
+          }
+        },
+        {
+          "type": "tableCell",
+          "child": {
+            "type": "container",
+            "color": "#40000000",
+            "height": 50,
+            "child": {
+              "type": "center",
+              "child": {
+                "type": "text",
+                "data": "Header 3"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "tableRow",
+      "children": [
+        {
+          "type": "tableCell",
+          "child": {
+            "type": "sizedBox",
+            "height": 50,
+            "child": {
+              "type": "center",
+              "child": {
+                "type": "text",
+                "data": "Row 1, Cell 1"
+              }
+            }
+          }
+        },
+        {
+          "type": "tableCell",
+          "child": {
+            "type": "sizedBox",
+            "height": 50,
+            "child": {
+              "type": "center",
+              "child": {
+                "type": "text",
+                "data": "Row 1, Cell 2"
+              }
+            }
+          }
+        },
+        {
+          "type": "tableCell",
+          "child": {
+            "type": "sizedBox",
+            "height": 50,
+            "child": {
+              "type": "center",
+              "child": {
+                "type": "text",
+                "data": "Row 1, Cell 3"
+              }
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
+```
+
+  </Tab>
+  <Tab title="Preview">
+    <Frame>
+      <iframe
+        id="phluts"
+        src={tablePreviewSrc}
+        title="Phluts Playground"
+        className="w-full rounded-xl border-0"
+        style={{ height: "640px" }}
+        loading="lazy"
+        onLoad={(event) => {
+          const iframe = event.currentTarget;
+          const targetOrigin = PLAYGROUND_BASE_URL;
+          const message = {
+            type: "phluts-preview-json",
+            payload: tablePreviewJson
+          };
+
+          let attempts = 0;
+          const maxAttempts = 12;
+          const interval = setInterval(() => {
+            iframe.contentWindow?.postMessage(message, targetOrigin);
+            attempts += 1;
+
+            if (attempts >= maxAttempts) {
+              clearInterval(interval);
+            }
+          }, 250);
+        }}
+      />
+    </Frame>
+  </Tab>
+</Tabs>

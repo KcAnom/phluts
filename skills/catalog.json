@@ -1,0 +1,26 @@
+[
+  {
+    "name": "phluts-quickstart",
+    "description": "Initialize and validate a Phluts-enabled Flutter project and run first deploy.",
+    "path": "skills/phluts-quickstart",
+    "default_prompt": "Use $phluts-quickstart to initialize my Flutter app with Phluts and deploy a first screen."
+  },
+  {
+    "name": "phluts-screen-builder",
+    "description": "Build and scaffold Phluts DSL screens and themes from product requirements.",
+    "path": "skills/phluts-screen-builder",
+    "default_prompt": "Use $phluts-screen-builder to turn product requirements into Phluts DSL screens and themes."
+  },
+  {
+    "name": "phluts-custom-extensions",
+    "description": "Scaffold custom Phluts widget/action models and parser integrations.",
+    "path": "skills/phluts-custom-extensions",
+    "default_prompt": "Use $phluts-custom-extensions to scaffold a custom widget or action parser for my Phluts app."
+  },
+  {
+    "name": "phluts-troubleshooter",
+    "description": "Diagnose Phluts build, deploy, rendering, caching, and navigation issues.",
+    "path": "skills/phluts-troubleshooter",
+    "default_prompt": "Use $phluts-troubleshooter to diagnose why my Phluts screen is not building, deploying, or rendering."
+  }
+]

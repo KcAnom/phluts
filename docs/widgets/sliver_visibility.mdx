@@ -1,0 +1,144 @@
+---
+title: "SliverVisibility"
+description: "Documentation for SliverVisibility"
+---
+
+import { PLAYGROUND_BASE_URL } from "/snippets/playground_base.mdx";
+
+export const sliverVisibilityPreviewJson = {
+  "type": "scaffold",
+  "body": {
+    "type": "customScrollView",
+    "slivers": [
+      {
+        "type": "sliverVisibility",
+        "visible": false,
+        "sliver": {
+          "type": "sliverToBoxAdapter",
+          "child": {
+            "type": "container",
+            "height": 180,
+            "color": "warning",
+            "child": {
+              "type": "center",
+              "child": {
+                "type": "text",
+                "data": "This sliver is hidden"
+              }
+            }
+          }
+        }
+      }
+    ]
+  }
+};
+export const sliverVisibilityPreviewSrc = `${PLAYGROUND_BASE_URL}/embed`;
+
+The Phluts SliverVisibility allows you to conditionally show or hide a sliver
+inside a `CustomScrollView`.
+
+When the sliver is not visible, it can either be completely removed from the
+scroll layout or replaced with another sliver, depending on the configuration.
+
+To know more about the SliverVisibility widget in Flutter, refer to
+the [official documentation](https://api.flutter.dev/flutter/widgets/SliverVisibility-class.html).
+
+## Properties
+
+| Property                 | Type                    | Description                                                                 |
+|--------------------------|-------------------------|-----------------------------------------------------------------------------|
+| sliver                   | `Map<String, dynamic>`  | The sliver widget whose visibility is controlled.                          |
+| replacementSliver        | `Map<String, dynamic>?` | The sliver to display when `visible` is `false`. Defaults to an empty sliver. |
+| visible                  | `bool`                  | Whether the sliver is visible. Defaults to `true`.                          |
+| maintainState            | `bool`                  | Whether to maintain the state of the sliver when hidden.                   |
+| maintainAnimation        | `bool`                  | Whether to maintain animations when the sliver is hidden.                  |
+| maintainSize             | `bool`                  | Whether to maintain layout space when the sliver is hidden.                |
+| maintainSemantics        | `bool`                  | Whether to maintain semantics when the sliver is hidden.                   |
+| maintainInteractivity    | `bool`                  | Whether to maintain interactivity when the sliver is hidden.               |
+
+## Example
+
+<Tabs sync={false}>
+  <Tab title="Dart">
+
+```dart
+PhlutsSliverVisibility(
+  visible: false,
+  sliver: PhlutsSliverToBoxAdapter(
+    child: PhlutsContainer(
+      height: 180,
+      color: 'warning',
+      child: PhlutsCenter(
+        child: PhlutsText(data: 'This sliver is hidden'),
+      ),
+    ),
+  ),
+)
+```
+
+  </Tab>
+  <Tab title="JSON">
+
+```json
+{
+  "type": "scaffold",
+  "body": {
+    "type": "customScrollView",
+    "slivers": [
+      {
+        "type": "sliverVisibility",
+        "visible": false,
+        "sliver": {
+          "type": "sliverToBoxAdapter",
+          "child": {
+            "type": "container",
+            "height": 180,
+            "color": "warning",
+            "child": {
+              "type": "center",
+              "child": {
+                "type": "text",
+                "data": "This sliver is hidden"
+              }
+            }
+          }
+        }
+      }
+    ]
+  }
+}
+```
+
+  </Tab>
+  <Tab title="Preview">
+    <Frame>
+      <iframe
+        id="phluts"
+        src={sliverVisibilityPreviewSrc}
+        title="Phluts Playground"
+        className="w-full rounded-xl border-0"
+        style={{ height: "640px" }}
+        loading="lazy"
+        onLoad={(event) => {
+          const iframe = event.currentTarget;
+          const targetOrigin = PLAYGROUND_BASE_URL;
+          const message = {
+            type: "phluts-preview-json",
+            payload: sliverVisibilityPreviewJson
+          };
+
+          let attempts = 0;
+          const maxAttempts = 12;
+          const interval = setInterval(() => {
+            iframe.contentWindow?.postMessage(message, targetOrigin);
+            attempts += 1;
+
+            if (attempts >= maxAttempts) {
+              clearInterval(interval);
+            }
+          }, 250);
+        }}
+      />
+    </Frame>
+  </Tab>
+</Tabs>

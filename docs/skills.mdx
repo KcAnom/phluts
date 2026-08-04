@@ -1,0 +1,103 @@
+---
+title: "Phluts Agent Skills"
+description: "AI-powered skills that help you build, troubleshoot, and extend Phluts applications"
+---
+
+Think of Phluts Skills as expert assistants that know Phluts inside and out. They help you set up projects, build screens, create custom widgets, and fix issues—all while following best practices.
+
+## Installation
+
+Install all Phluts skills natively with the Phluts CLI:
+
+```bash
+phluts skills add
+```
+
+Alternatively, you can install them using `npx`:
+
+```bash
+npx skills add https://github.com/PhlutsDev/phluts
+```
+
+That's it. Your AI assistant now has access to all Phluts skills.
+
+## What are Skills?
+
+Skills are AI helpers that understand how Phluts works. They can:
+- Walk you through setup step-by-step
+- Generate code that follows Phluts patterns
+- Debug issues and suggest fixes
+- Scaffold custom widgets and actions
+
+Each skill combines workflows, reference guides, and scripts to give you exactly what you need.
+
+## Available Skills
+
+### phluts-quickstart
+
+Get your Phluts project up and running. Perfect for first-time setup or when you need to verify everything's configured correctly.
+
+**Use when**: Setting up Phluts CLI, running your first `phluts init/build/deploy`, or troubleshooting setup issues.
+
+**What it does**: Checks your environment, validates project structure, and guides you through the initial setup.
+
+**Try it**: `Use $phluts-quickstart to initialize my Flutter app with Phluts and deploy a first screen.`
+
+---
+
+### phluts-screen-builder
+
+Turn product requirements into Phluts DSL screens. Converts "I need a login screen" into actual, working Phluts code.
+
+**Use when**: Creating new screens, refactoring existing ones, or converting designs to Phluts DSL.
+
+**What it does**: Maps UI requirements to widgets/actions, applies style patterns, and generates valid Phluts DSL.
+
+**Try it**: `Use $phluts-screen-builder to turn product requirements into Phluts DSL screens and themes.`
+
+**Includes**: Widget selection guides, action recipes, style patterns, and navigation best practices.
+
+---
+
+### phluts-custom-extensions
+
+Build custom widgets and actions that work seamlessly with Phluts. Handles all the boilerplate so you can focus on your logic.
+
+**Use when**: Creating custom `PhlutsParser` or `PhlutsActionParser` implementations, or adding app-specific widgets/actions.
+
+**What it does**: Scaffolds model and parser files, ensures proper registration, and validates everything works.
+
+**Try it**: `Use $phluts-custom-extensions to scaffold a custom widget or action parser for my Phluts app.`
+
+**Includes**: Checklists for widgets and actions, parser registration guide, and converter patterns.
+
+---
+
+### phluts-troubleshooter
+
+When things break, this skill figures out why and tells you exactly how to fix it.
+
+**Use when**: Builds fail, screens don't render, cache issues, or migration problems.
+
+**What it does**: Runs diagnostics, categorizes issues, and provides exact fix commands with verification steps.
+
+**Try it**: `Use $phluts-troubleshooter to diagnose why my Phluts screen is not building, deploying, or rendering.`
+
+**Includes**: Error playbooks, cache debugging, navigation troubleshooting, migration guide, and common gotchas.
+
+## How to Use Skills
+
+Just mention what you're trying to do. Your AI assistant will automatically use the right skill. For example:
+
+- "Set up Phluts in my project" → uses `phluts-quickstart`
+- "Create a login screen" → uses `phluts-screen-builder`
+- "My build is failing" → uses `phluts-troubleshooter`
+
+You can also reference skills directly: `Use $phluts-screen-builder to...`
+
+## What's Next?
+
+- Browse the `skills/` directory to see what's available
+- Check out reference guides for specific patterns
+- Use skills when starting new features or projects
+- Create your own skills for team-specific workflows

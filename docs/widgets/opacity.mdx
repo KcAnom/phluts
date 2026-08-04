@@ -1,0 +1,130 @@
+---
+title: "Opacity"
+description: "Documentation for Opacity"
+---
+
+import { PLAYGROUND_BASE_URL } from "/snippets/playground_base.mdx";
+
+export const opacityPreviewJson = {
+  "type": "scaffold",
+  "appBar": {
+    "type": "appBar",
+    "title": {
+      "type": "text",
+      "data": "Opacity"
+    }
+  },
+  "body": {
+    "type": "center",
+    "child": {
+      "type": "opacity",
+      "opacity": 0.5,
+      "child": {
+        "type": "text",
+        "data": "Opacity Widget",
+        "style": {
+          "fontSize": 23,
+          "fontWeight": "w600"
+        }
+      }
+    }
+  }
+};
+export const opacityPreviewSrc = `${PLAYGROUND_BASE_URL}/embed`;
+
+The Phluts Opacity allows you to build a Flutter Opacity widget using JSON.
+To know more about the Slider widget in Flutter, refer to the [official documentation](https://api.flutter.dev/flutter/widgets/Opacity-class.html).
+
+## Properties
+
+| Property | Type                   | Description                                                                                                                                                          |
+|----------|------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| opacity  | `double`               | The opacity value between 0.0 and 1.0 which controls the visibility of the child, with 0.0 being fully transparent (invisible) and 1.0 being fully opaque (visible). |
+| child    | `PhlutsWidget`           | The child widget of the opacity.                                                                                                                                     |
+
+## Example
+
+<Tabs sync={false}>
+  <Tab title="Dart">
+
+```dart
+PhlutsScaffold(
+  appBar: PhlutsAppBar(
+    title: PhlutsText(data: 'Opacity'),
+  ),
+  body: PhlutsCenter(
+    child: PhlutsOpacity(
+      opacity: 0.5,
+      child: PhlutsText(
+        data: 'Opacity Widget',
+        style: PhlutsTextStyle(fontSize: 23, fontWeight: PhlutsFontWeight.w600),
+      ),
+    ),
+  ),
+)
+```
+
+  </Tab>
+  <Tab title="JSON">
+
+```json
+{
+  "type": "scaffold",
+  "appBar": {
+    "type": "appBar",
+    "title": {
+      "type": "text",
+      "data": "Opacity"
+    }
+  },
+  "body": {
+    "type": "center",
+    "child": {
+      "type": "opacity",
+      "opacity": 0.5,
+      "child": {
+        "type": "text",
+        "data": "Opacity Widget",
+        "style": {
+          "fontSize": 23,
+          "fontWeight": "w600"
+        }
+      }
+    }
+  }
+}
+```
+
+  </Tab>
+  <Tab title="Preview">
+    <Frame>
+      <iframe
+        id="phluts"
+        src={opacityPreviewSrc}
+        title="Phluts Playground"
+        className="w-full rounded-xl border-0"
+        style={{ height: "640px" }}
+        loading="lazy"
+        onLoad={(event) => {
+          const iframe = event.currentTarget;
+          const targetOrigin = PLAYGROUND_BASE_URL;
+          const message = {
+            type: "phluts-preview-json",
+            payload: opacityPreviewJson
+          };
+
+          let attempts = 0;
+          const maxAttempts = 12;
+          const interval = setInterval(() => {
+            iframe.contentWindow?.postMessage(message, targetOrigin);
+            attempts += 1;
+
+            if (attempts >= maxAttempts) {
+              clearInterval(interval);
+            }
+          }, 250);
+        }}
+      />
+    </Frame>
+  </Tab>
+</Tabs>

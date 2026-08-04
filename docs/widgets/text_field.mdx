@@ -1,0 +1,131 @@
+---
+title: "TextField"
+description: "Documentation for TextField"
+---
+
+import { PLAYGROUND_BASE_URL } from "/snippets/playground_base.mdx";
+
+export const textFieldPreviewJson = {
+  "type": "textField",
+  "initialValue": "Enter text here",
+  "decoration": {
+    "hintText": "Enter your name"
+  },
+  "style": {
+    "color": "#000000",
+    "fontSize": 16
+  },
+  "textAlign": "center",
+  "obscureText": false,
+  "maxLength": 50
+};
+export const textFieldPreviewSrc = `${PLAYGROUND_BASE_URL}/embed`;
+
+The Phluts TextField allows you to build a Flutter text field widget using JSON. To know more about the text field widget in Flutter, refer to the [official documentation](https://api.flutter.dev/flutter/material/TextField-class.html).
+
+## Properties
+
+| Property           | Type                        | Description                                                                    |
+|--------------------|-----------------------------|--------------------------------------------------------------------------------|
+| decoration         | `PhlutsInputDecoration`       | The decoration to show around the text field.                                  |
+| initialValue       | `String`                    | The initial value to be set in the text field.                                 |
+| keyboardType       | `PhlutsTextInputType`         | The type of keyboard to use for editing the text.                              |
+| textInputAction    | `PhlutsTextInputAction`       | The action button to use for the keyboard.                                     |
+| textCapitalization | `PhlutsTextCapitalization`    | How the text should be capitalized.                                            |
+| style              | `PhlutsTextStyle`             | The style to use for the text being edited.                                    |
+| textAlign          | `PhlutsTextAlign`             | How the text should be aligned horizontally.                                   |
+| textAlignVertical  | `PhlutsTextAlignVertical`     | How the text should be aligned vertically.                                     |
+| textDirection      | `PhlutsTextDirection`         | The direction in which the text flows.                                         |
+| readOnly           | `bool`                      | Whether the text field is read-only.                                           |
+| showCursor         | `bool`                      | Whether to show the cursor.                                                    |
+| expands            | `bool`                      | Whether the text field should expand to fill its parent.                       |
+| autofocus          | `bool`                      | Whether the text field should focus itself if nothing else is already focused. |
+| obscuringCharacter | `String`                    | The character to use when obscuring text.                                      |
+| maxLines           | `int`                       | The maximum number of lines for the text to span.                              |
+| minLines           | `int`                       | The minimum number of lines for the text to span.                              |
+| maxLength          | `int`                       | The maximum number of characters to allow in the text field.                   |
+| obscureText        | `bool`                      | Whether to hide the text being edited.                                         |
+| enableSuggestions  | `bool`                      | Whether to show input suggestions as the user types.                           |
+| enabled            | `bool`                      | Whether the text field is enabled.                                             |
+| cursorWidth        | `double`                    | The width of the cursor.                                                       |
+| cursorHeight       | `double`                    | The height of the cursor.                                                      |
+| cursorColor        | `PhlutsColor`                 | The color of the cursor.                                                       |
+| hintText           | `String`                    | The hint text to display when the text field is empty.                         |
+
+## PhlutsInputDecoration
+
+`decoration` supports Flutter input decoration fields such as `labelText`, `hintText`, prefix/suffix content, borders, fill colors, and `floatingLabelBehavior`.
+
+| Property              | Type     | Description                                                        |
+|-----------------------|----------|--------------------------------------------------------------------|
+| floatingLabelBehavior | `String` | Controls when the label floats. Supported values: `auto`, `always`, `never`. |
+
+## Example
+
+<Tabs sync={false}>
+  <Tab title="Dart">
+
+```dart
+PhlutsTextField(
+  initialValue: 'Enter text here',
+  decoration: PhlutsInputDecoration(hintText: 'Enter your name'),
+  style: PhlutsTextStyle(color: PhlutsColors.black, fontSize: 16.0),
+  textAlign: PhlutsTextAlign.center,
+  obscureText: false,
+  maxLength: 50,
+)
+```
+
+  </Tab>
+  <Tab title="JSON">
+
+```json
+{
+  "type": "textField",
+  "initialValue": "Enter text here",
+  "decoration": {
+    "hintText": "Enter your name"
+  },
+  "style": {
+    "color": "#000000",
+    "fontSize": 16
+  },
+  "textAlign": "center",
+  "obscureText": false,
+  "maxLength": 50
+}
+```
+
+  </Tab>
+  <Tab title="Preview">
+    <Frame>
+      <iframe
+        id="phluts"
+        src={textFieldPreviewSrc}
+        title="Phluts Playground"
+        className="w-full rounded-xl border-0"
+        style={{ height: "640px" }}
+        loading="lazy"
+        onLoad={(event) => {
+          const iframe = event.currentTarget;
+          const targetOrigin = PLAYGROUND_BASE_URL;
+          const message = {
+            type: "phluts-preview-json",
+            payload: textFieldPreviewJson
+          };
+
+          let attempts = 0;
+          const maxAttempts = 12;
+          const interval = setInterval(() => {
+            iframe.contentWindow?.postMessage(message, targetOrigin);
+            attempts += 1;
+
+            if (attempts >= maxAttempts) {
+              clearInterval(interval);
+            }
+          }, 250);
+        }}
+      />
+    </Frame>
+  </Tab>
+</Tabs>

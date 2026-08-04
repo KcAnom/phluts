@@ -1,0 +1,245 @@
+---
+title: "TabBar"
+description: "Documentation for TabBar"
+---
+
+import { PLAYGROUND_BASE_URL } from "/snippets/playground_base.mdx";
+
+export const tabBarPreviewJson = {
+  "type": "defaultTabController",
+  "length": 3,
+  "child": {
+    "type": "scaffold",
+    "appBar": {
+      "type": "appBar",
+      "title": {
+        "type": "text",
+        "data": "Tabbar"
+      },
+      "bottom": {
+        "type": "tabBar",
+        "tabs": [
+          {
+            "type": "tab",
+            "text": "Red"
+          },
+          {
+            "type": "tab",
+            "text": "Red"
+          },
+          {
+            "type": "tab",
+            "text": "Red"
+          }
+        ]
+      }
+    },
+    "body": {
+      "type": "tabBarView",
+      "children": [
+        {
+          "type": "container",
+          "color": "#D9D9D9"
+        },
+        {
+          "type": "container",
+          "color": "#FC3F1B"
+        },
+        {
+          "type": "container",
+          "color": "#D9D9D9"
+        }
+      ]
+    }
+  }
+};
+export const tabBarPreviewSrc = `${PLAYGROUND_BASE_URL}/embed`;
+
+The Phluts TabBar allows you to build a Flutter TabBar widget using JSON.
+To know more about the TabBar widget in Flutter, refer to the [official documentation](https://api.flutter.dev/flutter/material/TabBar-class.html).
+
+## Properties
+
+| Property                             | Type                          | Description                                                                 |
+|--------------------------------------|-------------------------------|-----------------------------------------------------------------------------|
+| tabs                                 | `List<PhlutsWidget>`            | The tabs to display in the tab bar.                                         |
+| initialIndex                         | `int`                         | The initial index of the selected tab. Defaults to `0`.                     |
+| isScrollable                         | `bool`                        | Whether the tab bar is scrollable. Defaults to `false`.                     |
+| padding                              | `PhlutsEdgeInsets`              | The padding for the tab bar.                                                |
+| indicatorColor                       | `PhlutsColor`                   | The color of the tab indicator.                                             |
+| automaticIndicatorColorAdjustment    | `bool`                        | Whether to automatically adjust the indicator color. Defaults to `true`.    |
+| indicatorWeight                      | `double`                      | The thickness of the tab indicator. Defaults to `2.0`.                      |
+| indicatorPadding                     | `PhlutsEdgeInsets`              | The padding for the tab indicator.                                          |
+| indicator                            | `PhlutsBoxDecoration`           | The decoration for the tab indicator.                                       |
+| indicatorSize                        | `PhlutsTabBarIndicatorSize`     | The size of the tab indicator.                                              |
+| labelColor                           | `PhlutsColor`                   | The color of the selected tab label.                                        |
+| labelStyle                           | `PhlutsTextStyle`               | The text style of the selected tab label.                                   |
+| labelPadding                         | `PhlutsEdgeInsets`              | The padding for the selected tab label.                                     |
+| unselectedLabelColor                 | `PhlutsColor`                   | The color of the unselected tab labels.                                     |
+| unselectedLabelStyle                 | `PhlutsTextStyle`               | The text style of the unselected tab labels.                                |
+| dragStartBehavior                    | `PhlutsDragStartBehavior`       | The drag start behavior. Defaults to `DragStartBehavior.start`.             |
+| enableFeedback                       | `bool`                        | Whether to enable feedback for taps.                                        |
+| physics                              | `PhlutsScrollPhysics`           | The scroll physics for the tab bar.                                         |
+| tabAlignment                         | `PhlutsTabAlignment`            | The alignment of the tabs.                                                  |
+
+## DefaultTabController
+
+The Phluts DefaultTabController allows you to build a Flutter DefaultTabController widget using JSON.
+To know more about the DefaultTabController widget in Flutter, refer to the [official documentation](https://api.flutter.dev/flutter/material/DefaultTabController-class.html).
+
+## Properties
+
+| Property     | Type                   | Description                                             |
+|--------------|------------------------|---------------------------------------------------------|
+| length       | `int`                  | The number of tabs.                                     |
+| initialIndex | `int`                  | The initial index of the selected tab. Defaults to `0`. |
+| child        | `PhlutsWidget`           | The widget below this widget in the tree.               |
+
+## Tab
+
+The Phluts Tab allows you to build a Flutter Tab widget using JSON.
+To know more about the Tab widget in Flutter, refer to the [official documentation](https://api.flutter.dev/flutter/material/Tab-class.html).
+
+## Properties
+
+| Property    | Type                    | Description                                      |
+|-------------|-------------------------|--------------------------------------------------|
+| text        | `String`                | The text to display in the tab.                  |
+| icon        | `PhlutsWidget`            | The icon to display in the tab.                  |
+| iconMargin  | `PhlutsEdgeInsets`        | The margin around the icon.                      |
+| height      | `double`                | The height of the tab.                           |
+| child       | `PhlutsWidget`            | The widget below this widget in the tree.        |
+
+## TabBarView
+
+The Phluts TabBarView allows you to build a Flutter TabBarView widget using JSON.
+To know more about the TabBarView widget in Flutter, refer to the [official documentation](https://api.flutter.dev/flutter/material/TabBarView-class.html).
+
+## Properties
+
+| Property          | Type                         | Description                                                                   |
+|-------------------|------------------------------|-------------------------------------------------------------------------------|
+| children          | `List<PhlutsWidget>`           | The widgets to display in each tab.                                           |
+| initialIndex      | `int`                        | The initial index of the selected tab. Defaults to `0`.                       |
+| dragStartBehavior | `PhlutsDragStartBehavior`      | The drag start behavior. Defaults to `DragStartBehavior.start`.               |
+| physics           | `PhlutsScrollPhysics`          | The scroll physics for the tab bar view.                                      |
+| viewportFraction  | `double`                     | The fraction of the viewport that each page should occupy. Defaults to `1.0`. |
+| clipBehavior      | `PhlutsClip`                   | The clip behavior. Defaults to `Clip.hardEdge`.                               |
+
+## Example
+
+<Tabs sync={false}>
+  <Tab title="Dart">
+
+```dart
+PhlutsDefaultTabController(
+  length: 3,
+  child: PhlutsScaffold(
+    appBar: PhlutsAppBar(
+      title: PhlutsText(data: 'Tabbar'),
+      bottom: PhlutsTabBar(
+        tabs: [
+          PhlutsTab(text: 'Red'),
+          PhlutsTab(text: 'Red'),
+          PhlutsTab(text: 'Red'),
+        ],
+      ),
+    ),
+    body: PhlutsTabBarView(
+      children: [
+        PhlutsContainer(color: PhlutsColors.grey),
+        PhlutsContainer(color: PhlutsColors.orange),
+        PhlutsContainer(color: PhlutsColors.grey),
+      ],
+    ),
+  ),
+)
+```
+
+  </Tab>
+  <Tab title="JSON">
+
+```json
+{
+  "type": "defaultTabController",
+  "length": 3,
+  "child": {
+    "type": "scaffold",
+    "appBar": {
+      "type": "appBar",
+      "title": {
+        "type": "text",
+        "data": "Tabbar"
+      },
+      "bottom": {
+        "type": "tabBar",
+        "tabs": [
+          {
+            "type": "tab",
+            "text": "Red"
+          },
+          {
+            "type": "tab",
+            "text": "Red"
+          },
+          {
+            "type": "tab",
+            "text": "Red"
+          }
+        ]
+      }
+    },
+    "body": {
+      "type": "tabBarView",
+      "children": [
+        {
+          "type": "container",
+          "color": "#D9D9D9"
+        },
+        {
+          "type": "container",
+          "color": "#FC3F1B"
+        },
+        {
+          "type": "container",
+          "color": "#D9D9D9"
+        }
+      ]
+    }
+  }
+}
+```
+
+  </Tab>
+  <Tab title="Preview">
+    <Frame>
+      <iframe
+        id="phluts"
+        src={tabBarPreviewSrc}
+        title="Phluts Playground"
+        className="w-full rounded-xl border-0"
+        style={{ height: "640px" }}
+        loading="lazy"
+        onLoad={(event) => {
+          const iframe = event.currentTarget;
+          const targetOrigin = PLAYGROUND_BASE_URL;
+          const message = {
+            type: "phluts-preview-json",
+            payload: tabBarPreviewJson
+          };
+
+          let attempts = 0;
+          const maxAttempts = 12;
+          const interval = setInterval(() => {
+            iframe.contentWindow?.postMessage(message, targetOrigin);
+            attempts += 1;
+
+            if (attempts >= maxAttempts) {
+              clearInterval(interval);
+            }
+          }, 250);
+        }}
+      />
+    </Frame>
+  </Tab>
+</Tabs>

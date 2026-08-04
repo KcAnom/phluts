@@ -1,0 +1,291 @@
+---
+title: "SliverGrid"
+description: "Documentation for SliverGrid"
+---
+
+import { PLAYGROUND_BASE_URL } from "/snippets/playground_base.mdx";
+
+export const sliverGridPreviewJson = {
+  "type": "customScrollView",
+  "slivers": [
+    {
+      "type": "sliverGrid",
+      "crossAxisCount": 2,
+      "mainAxisSpacing": 16,
+      "crossAxisSpacing": 16,
+      "childAspectRatio": 1,
+      "children": [
+        {
+          "type": "container",
+          "color": "#4CAF50",
+          "child": {
+            "type": "center",
+            "child": {
+              "type": "text",
+              "data": "Grid Item 1",
+              "style": {
+                "color": "#FFFFFF",
+                "fontWeight": "bold"
+              }
+            }
+          }
+        },
+        {
+          "type": "container",
+          "color": "#4CAF50",
+          "child": {
+            "type": "center",
+            "child": {
+              "type": "text",
+              "data": "Grid Item 2",
+              "style": {
+                "color": "#FFFFFF",
+                "fontWeight": "bold"
+              }
+            }
+          }
+        },
+        {
+          "type": "container",
+          "color": "#4CAF50",
+          "child": {
+            "type": "center",
+            "child": {
+              "type": "text",
+              "data": "Grid Item 3",
+              "style": {
+                "color": "#FFFFFF",
+                "fontWeight": "bold"
+              }
+            }
+          }
+        },
+        {
+          "type": "container",
+          "color": "#4CAF50",
+          "child": {
+            "type": "center",
+            "child": {
+              "type": "text",
+              "data": "Grid Item 4",
+              "style": {
+                "color": "#FFFFFF",
+                "fontWeight": "bold"
+              }
+            }
+          }
+        }
+      ]
+    }
+  ]
+};
+export const sliverGridPreviewSrc = `${PLAYGROUND_BASE_URL}/embed`;
+
+The Phluts **SliverGrid** allows you to build a Flutter `SliverGrid` widget using JSON.
+It displays its children in a two-dimensional scrollable grid within a sliver
+context.
+
+To learn more about Flutter’s `SliverGrid`, refer to the
+[official documentation](https://api.flutter.dev/flutter/widgets/SliverGrid-class.html).
+
+## Properties
+
+| Property               | Type                          | Description                                                                 |
+|------------------------|-------------------------------|-----------------------------------------------------------------------------|
+| crossAxisCount         | `int?`                        | Number of children in the cross axis (e.g. number of columns).              |
+| mainAxisSpacing        | `double?`                     | Space between children in the main axis. Defaults to `0.0`.                 |
+| crossAxisSpacing       | `double?`                     | Space between children in the cross axis. Defaults to `0.0`.                |
+| childAspectRatio       | `double?`                     | Ratio of the cross-axis to the main-axis extent of each child. Defaults to `1.0`. |
+| mainAxisExtent         | `double?`                     | Fixed extent of each child in the main axis.                                |
+| addAutomaticKeepAlives | `bool?`                       | Whether to add automatic keep-alives for children. Defaults to `true`.      |
+| addRepaintBoundaries   | `bool?`                       | Whether to wrap children in repaint boundaries. Defaults to `true`.         |
+| addSemanticIndexes     | `bool?`                       | Whether to add semantic indexes for children. Defaults to `true`.           |
+| children               | `List<Map<String, dynamic>>?` | The list of widgets rendered as grid items.                                 |
+
+> ⚠️ **Note**
+>
+> `sliverGrid` must be placed **inside the `slivers` property of a `customScrollView`**.
+> Each child of a `sliverGrid` must be a **box widget** (for example `container`,
+> `card`, `column`, etc.), not another sliver.
+
+## Example
+
+<Tabs sync={false}>
+  <Tab title="Dart">
+
+```dart
+const PhlutsCustomScrollView(
+  slivers: [
+    PhlutsSliverGrid(
+      crossAxisCount: 2,
+      mainAxisSpacing: 16,
+      crossAxisSpacing: 16,
+      childAspectRatio: 1,
+      children: [
+        PhlutsContainer(
+          color: PhlutsColor('#4CAF50'),
+          child: PhlutsCenter(
+            child: PhlutsText(
+              data: 'Grid Item 1',
+              style: PhlutsTextStyle(
+                color: PhlutsColor('#FFFFFF'),
+                fontWeight: PhlutsFontWeight.bold,
+              ),
+            ),
+          ),
+        ),
+        PhlutsContainer(
+          color: PhlutsColor('#4CAF50'),
+          child: PhlutsCenter(
+            child: PhlutsText(
+              data: 'Grid Item 2',
+              style: PhlutsTextStyle(
+                color: PhlutsColor('#FFFFFF'),
+                fontWeight: PhlutsFontWeight.bold,
+              ),
+            ),
+          ),
+        ),
+        PhlutsContainer(
+          color: PhlutsColor('#4CAF50'),
+          child: PhlutsCenter(
+            child: PhlutsText(
+              data: 'Grid Item 3',
+              style: PhlutsTextStyle(
+                color: PhlutsColor('#FFFFFF'),
+                fontWeight: PhlutsFontWeight.bold,
+              ),
+            ),
+          ),
+        ),
+        PhlutsContainer(
+          color: PhlutsColor('#4CAF50'),
+          child: PhlutsCenter(
+            child: PhlutsText(
+              data: 'Grid Item 4',
+              style: PhlutsTextStyle(
+                color: PhlutsColor('#FFFFFF'),
+                fontWeight: PhlutsFontWeight.bold,
+              ),
+            ),
+          ),
+        ),
+      ],
+    ),
+  ],
+)
+```
+
+  </Tab>
+  <Tab title="JSON">
+
+```json
+{
+  "type": "customScrollView",
+  "slivers": [
+    {
+      "type": "sliverGrid",
+      "crossAxisCount": 2,
+      "mainAxisSpacing": 16,
+      "crossAxisSpacing": 16,
+      "childAspectRatio": 1,
+      "children": [
+        {
+          "type": "container",
+          "color": "#4CAF50",
+          "child": {
+            "type": "center",
+            "child": {
+              "type": "text",
+              "data": "Grid Item 1",
+              "style": {
+                "color": "#FFFFFF",
+                "fontWeight": "bold"
+              }
+            }
+          }
+        },
+        {
+          "type": "container",
+          "color": "#4CAF50",
+          "child": {
+            "type": "center",
+            "child": {
+              "type": "text",
+              "data": "Grid Item 2",
+              "style": {
+                "color": "#FFFFFF",
+                "fontWeight": "bold"
+              }
+            }
+          }
+        },
+        {
+          "type": "container",
+          "color": "#4CAF50",
+          "child": {
+            "type": "center",
+            "child": {
+              "type": "text",
+              "data": "Grid Item 3",
+              "style": {
+                "color": "#FFFFFF",
+                "fontWeight": "bold"
+              }
+            }
+          }
+        },
+        {
+          "type": "container",
+          "color": "#4CAF50",
+          "child": {
+            "type": "center",
+            "child": {
+              "type": "text",
+              "data": "Grid Item 4",
+              "style": {
+                "color": "#FFFFFF",
+                "fontWeight": "bold"
+              }
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
+```
+
+  </Tab>
+  <Tab title="Preview">
+    <Frame>
+      <iframe
+        id="phluts"
+        src={sliverGridPreviewSrc}
+        title="Phluts Playground"
+        className="w-full rounded-xl border-0"
+        style={{ height: "640px" }}
+        loading="lazy"
+        onLoad={(event) => {
+          const iframe = event.currentTarget;
+          const targetOrigin = PLAYGROUND_BASE_URL;
+          const message = {
+            type: "phluts-preview-json",
+            payload: sliverGridPreviewJson
+          };
+
+          let attempts = 0;
+          const maxAttempts = 12;
+          const interval = setInterval(() => {
+            iframe.contentWindow?.postMessage(message, targetOrigin);
+            attempts += 1;
+
+            if (attempts >= maxAttempts) {
+              clearInterval(interval);
+            }
+          }, 250);
+        }}
+      />
+    </Frame>
+  </Tab>
+</Tabs>

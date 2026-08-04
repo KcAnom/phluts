@@ -1,0 +1,48 @@
+---
+title: "Form Validate Action"
+description: "Documentation for Form Validate Action"
+---
+
+The `PhlutsFormValidateAction` class is used to validate a form in Phluts applications.
+
+## Properties
+
+| Property    | Type           | Description                                                                 |
+|-------------|----------------|-----------------------------------------------------------------------------|
+| isValid     | `PhlutsAction`   | The action to perform if the form is valid.                                 |
+| isNotValid  | `PhlutsAction`   | The action to perform if the form is not valid.                             |
+
+## Example
+
+<CodeGroup>
+```dart Dart
+PhlutsFormValidateAction(
+  isValid: PhlutsDialogAction(
+    widget: PhlutsText(data: 'Form is valid!'),
+  ),
+  isNotValid: PhlutsDialogAction(
+    widget: PhlutsText(data: 'Form is not valid!'),
+  ),
+)
+```
+
+```json JSON
+{
+  "actionType": "validateForm",
+  "isValid": {
+    "actionType": "showDialog",
+    "widget": {
+      "type": "text",
+      "data": "Form is valid!"
+    }
+  },
+  "isNotValid": {
+    "actionType": "showDialog",
+    "widget": {
+      "type": "text",
+      "data": "Form is not valid!"
+    }
+  }
+}
+```
+</CodeGroup>

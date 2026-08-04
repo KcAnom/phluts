@@ -1,0 +1,95 @@
+---
+title: "Icon"
+description: "Documentation for Icon"
+---
+
+import { PLAYGROUND_BASE_URL } from "/snippets/playground_base.mdx";
+
+export const iconPreviewJson = {
+  "type": "icon",
+  "icon": "home",
+  "size": 24,
+  "color": "#000000",
+  "semanticLabel": "Home Icon",
+  "textDirection": "ltr"
+};
+export const iconPreviewSrc = `${PLAYGROUND_BASE_URL}/embed`;
+
+The Phluts Icon allows you to build a Flutter icon widget using JSON.
+To know more about the icon widget in Flutter, refer to the [official documentation](https://api.flutter.dev/flutter/widgets/Icon-class.html).
+
+## Properties
+
+| Property      | Type                  | Description                                                         |
+|---------------|-----------------------|---------------------------------------------------------------------|
+| icon          | `String`              | The name of the icon to display.                                    |
+| iconType      | `PhlutsIconType`        | The type of the icon (material, cupertino). Defaults to `material`. |
+| size          | `double`              | The size of the icon.                                               |
+| color         | `PhlutsColor`           | The color of the icon.                                              |
+| semanticLabel | `String`              | The semantic label for the icon.                                    |
+| textDirection | `PhlutsTextDirection`   | The text direction for the icon.                                    |
+
+> Note: To check the available icons, refer to  [Icon utils](https://github.com/PhlutsDev/phluts/blob/dev/packages/phluts/lib/src/utils/icon_utils.dart).
+
+## Example
+
+<Tabs sync={false}>
+  <Tab title="Dart">
+
+```dart
+PhlutsIcon(
+  icon: 'home',
+  size: 24.0,
+  color: PhlutsColors.black,
+  semanticLabel: 'Home Icon',
+  textDirection: PhlutsTextDirection.ltr,
+)
+```
+
+  </Tab>
+  <Tab title="JSON">
+
+```json
+{
+  "type": "icon",
+  "icon": "home",
+  "size": 24,
+  "color": "#000000",
+  "semanticLabel": "Home Icon",
+  "textDirection": "ltr"
+}
+```
+
+  </Tab>
+  <Tab title="Preview">
+    <Frame>
+      <iframe
+        id="phluts"
+        src={iconPreviewSrc}
+        title="Phluts Playground"
+        className="w-full rounded-xl border-0"
+        style={{ height: "640px" }}
+        loading="lazy"
+        onLoad={(event) => {
+          const iframe = event.currentTarget;
+          const targetOrigin = PLAYGROUND_BASE_URL;
+          const message = {
+            type: "phluts-preview-json",
+            payload: iconPreviewJson
+          };
+
+          let attempts = 0;
+          const maxAttempts = 12;
+          const interval = setInterval(() => {
+            iframe.contentWindow?.postMessage(message, targetOrigin);
+            attempts += 1;
+
+            if (attempts >= maxAttempts) {
+              clearInterval(interval);
+            }
+          }, 250);
+        }}
+      />
+    </Frame>
+  </Tab>
+</Tabs>

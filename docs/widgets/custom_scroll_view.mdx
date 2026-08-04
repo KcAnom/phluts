@@ -1,0 +1,131 @@
+---
+title: "CustomScrollView"
+description: "Documentation for CustomScrollView"
+---
+
+import { PLAYGROUND_BASE_URL } from "/snippets/playground_base.mdx";
+
+export const customScrollViewPreviewJson = {
+  "type": "customScrollView",
+  "slivers": [
+    {
+      "type": "sliverAppBar",
+      "title": {
+        "type": "text",
+        "data": "SliverAppBar"
+      },
+      "leading": {
+        "type": "iconButton",
+        "icon": {
+          "type": "icon",
+          "iconType": "material",
+          "icon": "menu"
+        },
+        "onPressed": {}
+      },
+      "backgroundColor": "primary"
+    }
+  ]
+};
+export const customScrollViewPreviewSrc = `${PLAYGROUND_BASE_URL}/embed`;
+
+The Phluts CustomScrollView allows you to build a Flutter CustomScrollView widget using JSON.
+To know more about the CustomScrollView widget in Flutter, refer to
+the [official documentation](https://api.flutter.dev/flutter/widgets/CustomScrollView-class.html).
+
+## Properties
+
+| Property                | Type                                    | Description                                                                                                         |
+|-------------------------|-----------------------------------------|---------------------------------------------------------------------------------------------------------------------|
+| slivers                 | `List<PhlutsWidget>`                      | The slivers to place inside the viewport.                                                                           |
+| scrollDirection         | `PhlutsAxis`                              | The axis along which the scroll view scrolls. Defaults to `Axis.vertical`.                                          |
+| reverse                 | `bool`                                  | Whether the scroll view scrolls in the reverse direction. Defaults to `false`.                                      |
+| padding                 | `PhlutsEdgeInsets`                        | The amount of space by which to inset the child.                                                                    |
+| primary                 | `bool`                                  | Whether this is the primary scroll view associated with the parent.                                                 |
+| physics                 | `PhlutsScrollPhysics`                     | How the scroll view should respond to user input.                                                                   |
+| dragStartBehavior       | `PhlutsDragStartBehavior`                 | Determines the way that drag start behavior is handled. Defaults to `DragStartBehavior.start`.                      |
+| clipBehavior            | `PhlutsClip`                              | The content will be clipped (or not) according to this option. Defaults to `Clip.hardEdge`.                         |
+| restorationId           | `String`                                | The restoration ID to save and restore the state of the scroll view.                                                |
+| keyboardDismissBehavior | `PhlutsScrollViewKeyboardDismissBehavior` | Configures how the scroll view should dismiss the keyboard. Defaults to `ScrollViewKeyboardDismissBehavior.manual`. |
+
+## Example
+
+<Tabs sync={false}>
+  <Tab title="Dart">
+
+```dart
+PhlutsCustomScrollView(
+  slivers: [
+    PhlutsSliverAppBar(
+      title: PhlutsText(data: 'SliverAppBar'),
+      leading: PhlutsIconButton(
+        icon: PhlutsIcon(iconType: 'material', icon: 'menu'),
+        onPressed: {},
+      ),
+      backgroundColor: 'primary',
+    ),
+  ],
+)
+```
+
+  </Tab>
+  <Tab title="JSON">
+
+```json
+{
+  "type": "customScrollView",
+  "slivers": [
+    {
+      "type": "sliverAppBar",
+      "title": {
+        "type": "text",
+        "data": "SliverAppBar"
+      },
+      "leading": {
+        "type": "iconButton",
+        "icon": {
+          "type": "icon",
+          "iconType": "material",
+          "icon": "menu"
+        },
+        "onPressed": {}
+      },
+      "backgroundColor": "primary"
+    }
+  ]
+}
+```
+
+  </Tab>
+  <Tab title="Preview">
+    <Frame>
+      <iframe
+        id="phluts"
+        src={customScrollViewPreviewSrc}
+        title="Phluts Playground"
+        className="w-full rounded-xl border-0"
+        style={{ height: "640px" }}
+        loading="lazy"
+        onLoad={(event) => {
+          const iframe = event.currentTarget;
+          const targetOrigin = PLAYGROUND_BASE_URL;
+          const message = {
+            type: "phluts-preview-json",
+            payload: customScrollViewPreviewJson
+          };
+
+          let attempts = 0;
+          const maxAttempts = 12;
+          const interval = setInterval(() => {
+            iframe.contentWindow?.postMessage(message, targetOrigin);
+            attempts += 1;
+
+            if (attempts >= maxAttempts) {
+              clearInterval(interval);
+            }
+          }, 250);
+        }}
+      />
+    </Frame>
+  </Tab>
+</Tabs>

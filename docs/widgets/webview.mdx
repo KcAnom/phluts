@@ -1,0 +1,110 @@
+---
+title: "WebView"
+description: "Documentation for WebView"
+---
+
+import { PLAYGROUND_BASE_URL } from "/snippets/playground_base.mdx";
+
+export const webviewPreviewJson = {
+  "type": "webView",
+  "url": "https://github.com/PhlutsDev/phluts"
+};
+export const webviewPreviewSrc = `${PLAYGROUND_BASE_URL}/embed`;
+
+The Phluts WebView allows you to display WebView widget using JSON in your app. It is based on the [webview_flutter](https://pub.dev/packages/webview_flutter) plugin.
+
+## Usage
+
+1. Add `phluts_webview` as a dependency in your pubspec.yaml file.
+
+Install the plugin by running the following command from the project root:
+
+```bash
+flutter pub add phluts_webview
+```
+
+or add it manually in your `pubspec.yaml` file:
+
+```yaml
+  dependencies:
+    phluts_webview:
+```
+
+2. Add `PhlutsWebViewParser` in Phluts initialize.
+
+```dart
+void main() async {
+  await Phluts.initialize(
+    parsers: const [
+      PhlutsWebViewParser(),
+    ],
+  );
+
+  runApp(const MyApp());
+}
+```
+## Properties
+
+| Property          | Type             | Description                                                                             |
+|-------------------|------------------|-----------------------------------------------------------------------------------------|
+| `url`             | `String`         | The URL to load in the `WebView`.                                                       |
+| `javaScriptMode`  | `JavaScriptMode` | Sets whether JavaScript execution is enabled. Default is `JavaScriptMode.unrestricted`. |
+| `backgroundColor` | `String`         | Background color of the `WebView`. Default is `#FFFFFF`.                                |
+| `userAgent`       | `String?`        | The user agent for the `WebView`.                                                       |
+| `enableZoom`      | `bool`           | Sets whether zoom is enabled for the `WebView`. Default is `false`.                     |
+| `layoutDirection` | `TextDirection`  | The layout direction for the `WebView`. Default is `TextDirection.ltr`.                 |
+
+## Example
+
+<Tabs sync={false}>
+  <Tab title="Dart">
+
+```dart
+PhlutsWebView(
+  url: 'https://github.com/PhlutsDev/phluts',
+)
+```
+
+  </Tab>
+  <Tab title="JSON">
+
+```json
+{
+  "type": "webView",
+  "url": "https://github.com/PhlutsDev/phluts"
+}
+```
+
+  </Tab>
+  <Tab title="Preview">
+    <Frame>
+      <iframe
+        id="phluts"
+        src={webviewPreviewSrc}
+        title="Phluts Playground"
+        className="w-full rounded-xl border-0"
+        style={{ height: "640px" }}
+        loading="lazy"
+        onLoad={(event) => {
+          const iframe = event.currentTarget;
+          const targetOrigin = PLAYGROUND_BASE_URL;
+          const message = {
+            type: "phluts-preview-json",
+            payload: webviewPreviewJson
+          };
+
+          let attempts = 0;
+          const maxAttempts = 12;
+          const interval = setInterval(() => {
+            iframe.contentWindow?.postMessage(message, targetOrigin);
+            attempts += 1;
+
+            if (attempts >= maxAttempts) {
+              clearInterval(interval);
+            }
+          }, 250);
+        }}
+      />
+    </Frame>
+  </Tab>
+</Tabs>

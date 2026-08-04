@@ -1,0 +1,210 @@
+{
+  "name": "phluts-vscode",
+  "displayName": "Phluts",
+  "description": "Build Server-Driven UI with Phluts — live preview, wrap quick-fixes, and snippets for Flutter.",
+  "version": "0.3.0",
+  "publisher": "PhlutsDev",
+  "license": "MIT",
+  "icon": "media/icon.png",
+  "homepage": "https://phluts.dev",
+  "bugs": {
+    "url": "https://github.com/PhlutsDev/phluts/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/PhlutsDev/phluts.git",
+    "directory": "tools/phluts-vscode"
+  },
+  "galleryBanner": {
+    "color": "#0B0B0D",
+    "theme": "dark"
+  },
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "categories": [
+    "Programming Languages",
+    "Snippets",
+    "Other"
+  ],
+  "keywords": [
+    "phluts",
+    "flutter",
+    "dart",
+    "server-driven-ui",
+    "preview"
+  ],
+  "activationEvents": [
+    "onLanguage:dart"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "phluts-vscode.wrapWithPhlutsContainer",
+        "title": "Wrap with PhlutsContainer"
+      },
+      {
+        "command": "phluts-vscode.wrapWithPhlutsPadding",
+        "title": "Wrap with PhlutsPadding"
+      },
+      {
+        "command": "phluts-vscode.wrapWithPhlutsCenter",
+        "title": "Wrap with PhlutsCenter"
+      },
+      {
+        "command": "phluts-vscode.wrapWithPhlutsAlign",
+        "title": "Wrap with PhlutsAlign"
+      },
+      {
+        "command": "phluts-vscode.wrapWithPhlutsSizedBox",
+        "title": "Wrap with PhlutsSizedBox"
+      },
+      {
+        "command": "phluts-vscode.wrapWithPhlutsExpanded",
+        "title": "Wrap with PhlutsExpanded"
+      },
+      {
+        "command": "phluts-vscode.wrapWithPhlutsWidget",
+        "title": "Wrap with Phluts widget"
+      },
+      {
+        "command": "phluts-vscode.regenerateCatalog",
+        "title": "Phluts: Regenerate Catalog"
+      },
+      {
+        "command": "phluts-vscode.preview.open",
+        "title": "Phluts: Open Preview",
+        "icon": {
+          "light": "media/preview-icon-light.svg",
+          "dark": "media/preview-icon.svg"
+        }
+      },
+      {
+        "command": "phluts-vscode.preview.stop",
+        "title": "Phluts: Stop Preview"
+      },
+      {
+        "command": "phluts-vscode.preview.selectScreen",
+        "title": "Phluts: Select Preview Screen"
+      }
+    ],
+    "configuration": {
+      "title": "Phluts VS Code",
+      "properties": {
+        "phlutsVscode.enableWrapQuickFix": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable Cmd+. Phluts wrap quick fixes when cursor is on a Phluts widget expression."
+        },
+        "phlutsVscode.wrapPresets": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "PhlutsContainer",
+              "PhlutsPadding",
+              "PhlutsCenter",
+              "PhlutsAlign",
+              "PhlutsSizedBox",
+              "PhlutsExpanded"
+            ]
+          },
+          "default": [
+            "PhlutsContainer",
+            "PhlutsPadding",
+            "PhlutsCenter",
+            "PhlutsAlign",
+            "PhlutsSizedBox",
+            "PhlutsExpanded"
+          ],
+          "description": "Preset wrappers to display in quick-fix menu."
+        },
+        "phlutsVscode.enableSnippets": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable `phluts screen` and `phluts theme` snippets in Phluts DSL contexts."
+        },
+        "phlutsVscode.preview.enable": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable the Phluts right-side preview panel commands."
+        },
+        "phlutsVscode.preview.autoRefreshOnSave": {
+          "type": "boolean",
+          "default": true,
+          "description": "Automatically refresh Phluts preview on Dart file save when preview is open."
+        },
+        "phlutsVscode.preview.jsonStrategy": {
+          "type": "string",
+          "enum": [
+            "runnerThenBuild",
+            "runnerOnly",
+            "buildOnly"
+          ],
+          "default": "runnerThenBuild",
+          "description": "JSON generation strategy for preview: use direct runner first with build fallback, runner only, or build only."
+        },
+        "phlutsVscode.preview.buildCommand": {
+          "type": "string",
+          "default": "phluts build --project \"${projectFolder}\"",
+          "description": "Build command used for preview fallback mode. Supports ${projectFolder} and ${workspaceFolder} tokens."
+        },
+        "phlutsVscode.preview.outputDirCandidates": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "default": [
+            "phluts/.build",
+            "build/screens",
+            "build"
+          ],
+          "description": "Candidate output directories searched for <screenName>.json after fallback build."
+        },
+        "phlutsVscode.preview.hostPort": {
+          "type": "number",
+          "default": 47841,
+          "description": "Port used by the local Flutter preview host."
+        },
+        "phlutsVscode.preview.startupTimeoutMs": {
+          "type": "number",
+          "default": 120000,
+          "description": "Timeout in milliseconds for starting the preview host."
+        }
+      }
+    },
+    "menus": {
+      "editor/title": [
+        {
+          "command": "phluts-vscode.preview.open",
+          "when": "resourceLangId == dart && config.phlutsVscode.preview.enable",
+          "group": "navigation@1"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "generate:catalog": "node ./scripts/generate-catalog.mjs",
+    "compile": "npm run generate:catalog && tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@types/js-yaml": "^4.0.9",
+    "@types/mocha": "^10.0.10",
+    "@types/node": "22.x",
+    "@types/vscode": "^1.80.0",
+    "@vscode/test-cli": "^0.0.12",
+    "@vscode/test-electron": "^2.5.2",
+    "eslint": "^9.39.2",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.54.0"
+  },
+  "dependencies": {
+    "js-yaml": "^4.1.1"
+  }
+}

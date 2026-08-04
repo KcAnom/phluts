@@ -1,0 +1,293 @@
+---
+title: "Building Custom Widgets"
+description: "Learn how to create custom PhlutsWidget classes that extend Phluts functionality and integrate seamlessly with the Phluts ecosystem"
+---
+
+While Phluts provides 70+ built-in widgets, you may need to create custom widgets for your specific use cases. This guide walks you through creating custom PhlutsWidget classes that work seamlessly with Phluts's JSON serialization and parser system.
+
+## What is a Custom PhlutsWidget?
+
+A custom PhlutsWidget is a Dart class that:
+- Extends the `PhlutsWidget` base class
+- Can be serialized to and deserialized from JSON
+- Works with Phluts's parser system to render Flutter widgets
+- Can be used in your `/phluts` folder and deployed to Phluts Cloud
+
+Custom widgets enable you to:
+- Wrap third-party Flutter packages
+- Create reusable UI components specific to your app
+- Extend Phluts's functionality beyond built-in widgets
+- Build domain-specific widgets for your business logic
+
+## Prerequisites
+
+Before creating a custom widget, ensure you have:
+
+1. **Dependencies**: `phluts` and `json_annotation` packages
+2. **Code Generation**: `build_runner` for generating JSON serialization code
+3. **Parser**: A corresponding parser to render your widget.
+
+## Step-by-Step Guide
+
+### Step 1: Define Your Widget Class
+
+Create a new file (e.g., `lib/widgets/phluts_custom_badge.dart`) and define your widget class:
+
+```dart
+import 'package:json_annotation/json_annotation.dart';
+import 'package:phluts/phluts_core.dart';
+
+part 'phluts_custom_badge.g.dart';
+
+@JsonSerializable()
+class PhlutsCustomBadge extends PhlutsWidget {
+  const PhlutsCustomBadge({
+    required this.text,
+    this.color,
+    this.size,
+    this.child,
+  });
+
+  final String text;
+  final PhlutsColor? color;
+  final double? size;
+  final PhlutsWidget? child;
+
+  @override
+  String get type => 'customBadge';
+
+  factory PhlutsCustomBadge.fromJson(Map<String, dynamic> json) =>
+      _$PhlutsCustomBadgeFromJson(json);
+
+  @override
+  Map<String, dynamic> toJson() => _$PhlutsCustomBadgeToJson(this);
+}
+```
+
+### Step 2: Required Components
+
+Every custom PhlutsWidget must include:
+
+#### 1. **Part File Declaration**
+
+```dart
+part 'phluts_custom_badge.g.dart';
+```
+
+This enables code generation for JSON serialization.
+
+#### 2. **JsonSerializable Annotation**
+
+```dart
+@JsonSerializable()
+```
+
+For nested widgets, use `explicitToJson: true`:
+
+```dart
+@JsonSerializable(explicitToJson: true)
+```
+
+#### 3. **Type Getter**
+
+```dart
+@override
+String get type => 'customBadge';
+```
+
+This unique identifier is used in JSON: `{"type": "customBadge"}`.
+
+#### 4. **fromJson Factory Constructor**
+
+```dart
+factory PhlutsCustomBadge.fromJson(Map<String, dynamic> json) =>
+    _$PhlutsCustomBadgeFromJson(json);
+```
+
+#### 5. **toJson Method**
+
+```dart
+@override
+Map<String, dynamic> toJson() => _$PhlutsCustomBadgeToJson(this);
+```
+
+### Step 3: Generate Code
+
+Run code generation to create the `*.g.dart` file:
+
+```bash
+flutter pub run build_runner build --delete-conflicting-outputs
+```
+
+This generates `phluts_custom_badge.g.dart` with the serialization logic.
+
+### Step 4: Create a Parser
+
+To render your widget, create a parser:
+
+```dart
+import 'package:flutter/material.dart';
+import 'package:phluts_framework/phluts_framework.dart';
+import 'package:your_app/widgets/phluts_custom_badge.dart';
+
+class PhlutsCustomBadgeParser extends PhlutsParser<PhlutsCustomBadge> {
+  const PhlutsCustomBadgeParser();
+
+  @override
+  String get type => 'customBadge';
+
+  @override
+  PhlutsCustomBadge getModel(Map<String, dynamic> json) =>
+      PhlutsCustomBadge.fromJson(json);
+
+  @override
+  Widget parse(BuildContext context, PhlutsCustomBadge model) {
+    return Container(
+      padding: EdgeInsets.all(model.size ?? 8),
+      decoration: BoxDecoration(
+        color: model.color?.toColor() ?? Colors.blue,
+        borderRadius: BorderRadius.circular(4),
+      ),
+      child: Text(model.text),
+    );
+  }
+}
+```
+
+### Step 5: Register the Parser
+
+Register your parser during Phluts initialization:
+
+```dart
+void main() async {
+  await Phluts.initialize(
+    options: defaultPhlutsOptions,
+    parsers: const [
+      PhlutsCustomBadgeParser(),
+    ],
+  );
+  runApp(const MyApp());
+}
+```
+
+## Advanced Patterns
+
+### Using Converters
+
+Phluts provides converters for special types. Use them when needed:
+
+#### DoubleConverter
+
+For `double` fields that may come as integers in JSON:
+
+```dart
+import 'package:phluts/phluts_core.dart';
+
+@JsonSerializable()
+class PhlutsCustomWidget extends PhlutsWidget {
+  const PhlutsCustomWidget({
+    this.elevation,
+  });
+
+  @DoubleConverter()
+  final double? elevation;
+
+  @override
+  String get type => 'customWidget';
+
+  // ... fromJson and toJson
+}
+```
+
+#### PhlutsWidgetConverter
+
+For child widgets in your custom widget:
+
+```dart
+import 'package:phluts/phluts_core.dart';
+
+@JsonSerializable(explicitToJson: true)
+class PhlutsCustomContainer extends PhlutsWidget {
+  const PhlutsCustomContainer({
+    this.child,
+  });
+
+  @PhlutsWidgetConverter()
+  final PhlutsWidget? child;
+
+  @override
+  String get type => 'customContainer';
+
+  // ... fromJson and toJson
+}
+```
+
+### Using Phluts Types
+
+Prefer Phluts types over primitive Dart types for consistency:
+
+```dart
+@JsonSerializable()
+class PhlutsCustomWidget extends PhlutsWidget {
+  const PhlutsCustomWidget({
+    this.color,           // PhlutsColor, not Color
+    this.padding,         // PhlutsEdgeInsets, not EdgeInsets
+    this.alignment,       // PhlutsAlignment, not Alignment
+  });
+
+  final PhlutsColor? color;
+  final PhlutsEdgeInsets? padding;
+  final PhlutsAlignment? alignment;
+
+  // ...
+}
+```
+
+## Using Custom Widgets
+
+**In Dart (phluts/ folder)**
+
+```dart
+import 'package:phluts/phluts_core.dart';
+import 'package:your_app/widgets/phluts_custom_badge.dart';
+
+@PhlutsScreen(screenName: 'profile')
+PhlutsWidget profileScreen() {
+  return PhlutsScaffold(
+    body: PhlutsColumn(
+      children: [
+        PhlutsCustomBadge(
+          text: 'New',
+          color: PhlutsColors.red,
+          size: 12.0,
+        ),
+        PhlutsText(data: 'User Profile'),
+      ],
+    ),
+  );
+}
+```
+
+After `phluts build` or `phluts deploy`, your generated json looks like this:
+
+```json
+{
+  "type": "scaffold",
+  "body": {
+    "type": "column",
+    "children": [
+      {
+        "type": "customBadge",
+        "text": "New",
+        "color": "#FFFF0000",
+        "size": 12.0
+      },
+      {
+        "type": "text",
+        "data": "User Profile"
+      }
+    ]
+  }
+}
+```
+

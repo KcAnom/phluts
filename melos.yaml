@@ -1,0 +1,26 @@
+name: phluts
+
+packages:
+  - packages/*
+  - examples/*
+  - phluts_playground
+
+scripts:
+  analyze:
+    exec: dart analyze .
+  format:
+    exec: dart format .
+  get:
+    exec: flutter pub get
+  # Run build_runner in dependency order so generated .g.dart files exist
+  # before packages that depend on them try to read them.
+  build:
+    steps:
+      - melos exec --scope="phluts_core" -- "dart run build_runner build --delete-conflicting-outputs"
+      - melos exec --scope="phluts" -- "dart run build_runner build --delete-conflicting-outputs"
+      - melos exec --scope="phluts_cli" -- "dart run build_runner build --delete-conflicting-outputs"
+      - melos exec --scope="counter_example" --scope="phluts_webview" -- "dart run build_runner build --delete-conflicting-outputs"
+  watch:
+    exec: dart run build_runner watch --delete-conflicting-outputs
+    packageFilters:
+      ignore: [phluts_framework, movie_app, phluts_logger]

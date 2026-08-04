@@ -1,0 +1,307 @@
+---
+title: "Migration Guide: JSON to Dart"
+description: "Step-by-step guide to migrate from JSON to Phluts Dart "
+---
+
+This guide helps you migrate existing Phluts JSON configurations to the new Dart  format. The Dart  provides type safety, IDE autocompletion, and a more natural development experience.
+
+## Why Migrate to Dart?
+
+| Feature | JSON | Dart |
+|---------|------|----------|
+| Type Safety | No | Yes |
+| IDE Autocompletion | Limited | Full |
+| Compile-time Checks | No | Yes |
+| Refactoring Support | Manual | Automatic |
+| Code Organization | Files | Functions & Classes |
+
+## Basic Conversion Rules
+
+### Widget Types
+
+JSON `type` fields map to `Phluts` + PascalCase class names:
+
+| JSON Type | Dart  Class |
+|-----------|----------------|
+| `text` | `PhlutsText` |
+| `container` | `PhlutsContainer` |
+| `column` | `PhlutsColumn` |
+| `row` | `PhlutsRow` |
+| `elevatedButton` | `PhlutsElevatedButton` |
+| `scaffold` | `PhlutsScaffold` |
+
+### Action Types
+
+JSON `actionType` fields map to `Phluts` + PascalCase + `Action`:
+
+| JSON actionType | Dart Class |
+|-----------------|----------------|
+| `navigate` | `PhlutsNavigateAction` |
+| `showDialog` | `PhlutsDialogAction` |
+| `showSnackBar` | `PhlutsSnackBarAction` |
+| `networkRequest` | `PhlutsNetworkRequest` |
+| `setValue` | `PhlutsSetValueAction` |
+
+## Step-by-Step Migration
+
+### Step 1: Simple Widget
+
+**Before (JSON):**
+```json
+{
+  "type": "text",
+  "data": "Hello, World!"
+}
+```
+
+**After (Dart):**
+```dart
+PhlutsText(data: 'Hello, World!')
+```
+
+### Step 2: Widget with Properties
+
+**Before (JSON):**
+```json
+{
+  "type": "container",
+  "width": 200.0,
+  "height": 100.0,
+  "color": "#2196F3",
+  "child": {
+    "type": "text",
+    "data": "Content"
+  }
+}
+```
+
+**After (Dart):**
+```dart
+PhlutsContainer(
+  width: 200.0,
+  height: 100.0,
+  color: PhlutsColors.blue,
+  child: PhlutsText(data: 'Content'),
+)
+```
+
+### Step 3: Nested Widgets
+
+**Before (JSON):**
+```json
+{
+  "type": "column",
+  "mainAxisAlignment": "center",
+  "children": [
+    { "type": "text", "data": "Title" },
+    { "type": "sizedBox", "height": 16.0 },
+    { "type": "text", "data": "Subtitle" }
+  ]
+}
+```
+
+**After (Dart):**
+```dart
+PhlutsColumn(
+  mainAxisAlignment: PhlutsMainAxisAlignment.center,
+  children: [
+    PhlutsText(data: 'Title'),
+    PhlutsSizedBox(height: 16.0),
+    PhlutsText(data: 'Subtitle'),
+  ],
+)
+```
+
+### Step 4: Actions
+
+**Before (JSON):**
+```json
+{
+  "type": "elevatedButton",
+  "child": { "type": "text", "data": "Click Me" },
+  "onPressed": {
+    "actionType": "navigate",
+    "routeName": "/details"
+  }
+}
+```
+
+**After (Dart):**
+```dart
+PhlutsElevatedButton(
+  child: PhlutsText(data: 'Click Me'),
+  onPressed: PhlutsNavigateAction(routeName: '/details'),
+)
+```
+
+### Step 5: Complex Styles
+
+**Before (JSON):**
+```json
+{
+  "type": "container",
+  "decoration": {
+    "color": "#FFFFFF",
+    "borderRadius": 16.0,
+    "boxShadow": [
+      {
+        "color": "#000000",
+        "blurRadius": 10.0,
+        "offset": { "x": 0.0, "y": 4.0 }
+      }
+    ]
+  }
+}
+```
+
+**After (Dart):**
+```dart
+PhlutsContainer(
+  decoration: PhlutsBoxDecoration(
+    color: PhlutsColors.white,
+    borderRadius: PhlutsBorderRadius.all(16.0),
+    boxShadow: [
+      PhlutsBoxShadow(
+        color: PhlutsColors.black,
+        blurRadius: 10.0,
+        offset: PhlutsOffset(dx: 0.0, dy: 4.0),
+      ),
+    ],
+  ),
+)
+```
+
+## Common Patterns
+
+### Padding/Margin
+
+**JSON:**
+```json
+{
+  "padding": { "horizontal": 16.0, "vertical": 8.0 }
+}
+```
+
+**Dart:**
+```dart
+padding: PhlutsEdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0)
+```
+
+### Colors
+
+| JSON | Dart |
+|------|----------|
+| `"#FFFFFF"` | `PhlutsColors.white` |
+| `"#000000"` | `PhlutsColors.black` |
+| `"#2196F3"` | `PhlutsColors.blue` |
+| `"#4CAF50"` | `PhlutsColors.green` |
+| `"#F44336"` | `PhlutsColors.red` |
+| `"primary"` | `'primary'` (theme color) |
+
+### Enums
+
+**JSON string values become Dart enums:**
+
+| JSON | Dart |
+|------|----------|
+| `"center"` | `PhlutsMainAxisAlignment.center` |
+| `"spaceBetween"` | `PhlutsMainAxisAlignment.spaceBetween` |
+| `"contain"` | `PhlutsBoxFit.contain` |
+| `"cover"` | `PhlutsBoxFit.cover` |
+
+## Full Screen Migration Example
+
+**Before (JSON file: `home_screen.json`):**
+```json
+{
+  "type": "scaffold",
+  "appBar": {
+    "type": "appBar",
+    "title": { "type": "text", "data": "Home" }
+  },
+  "body": {
+    "type": "center",
+    "child": {
+      "type": "column",
+      "mainAxisAlignment": "center",
+      "children": [
+        {
+          "type": "text",
+          "data": "Welcome!",
+          "style": { "fontSize": 24.0, "fontWeight": "bold" }
+        },
+        { "type": "sizedBox", "height": 16.0 },
+        {
+          "type": "elevatedButton",
+          "child": { "type": "text", "data": "Get Started" },
+          "onPressed": {
+            "actionType": "navigate",
+            "routeName": "/onboarding"
+          }
+        }
+      ]
+    }
+  }
+}
+```
+
+**After (Dart file: `phluts/home_screen.dart`):**
+```dart
+import 'package:phluts/phluts_core.dart';
+
+@PhlutsScreen(screenName: 'home_screen')
+PhlutsWidget homeScreen() {
+  return PhlutsScaffold(
+    appBar: PhlutsAppBar(
+      title: PhlutsText(data: 'Home'),
+    ),
+    body: PhlutsCenter(
+      child: PhlutsColumn(
+        mainAxisAlignment: PhlutsMainAxisAlignment.center,
+        children: [
+          PhlutsText(
+            data: 'Welcome!',
+            style: PhlutsTextStyle(
+              fontSize: 24.0,
+              fontWeight: PhlutsFontWeight.bold,
+            ),
+          ),
+          PhlutsSizedBox(height: 16.0),
+          PhlutsElevatedButton(
+            child: PhlutsText(data: 'Get Started'),
+            onPressed: PhlutsNavigateAction(routeName: '/onboarding'),
+          ),
+        ],
+      ),
+    ),
+  );
+}
+```
+
+## Build and Deploy
+
+After migrating, build your Dart to JSON:
+
+```bash
+# Build all screens
+phluts build
+
+# Deploy to Phluts Cloud
+phluts deploy
+```
+
+The generated JSON will be placed in `phluts/.build/`.
+
+## Tips
+
+1. **Start small**: Migrate one screen at a time
+2. **Use IDE features**: Leverage autocompletion and error checking
+3. **Run `phluts build` often**: Catch errors early
+4. **Compare output**: Verify generated JSON matches your expectations
+5. **Keep JSON backups**: Until you're confident in your migration
+
+## Related
+
+- [DSL Overview](/dsl)
+- [CLI Commands](/cli)
+- [Project Structure](/project_structure)

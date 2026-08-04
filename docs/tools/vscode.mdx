@@ -1,0 +1,121 @@
+---
+title: "Use Phluts in VS Code"
+description: "Install and configure the Phluts extension for VS Code. Get live preview, wrap quick-fixes, and snippets for Server-Driven UI — right inside your editor."
+---
+
+## Prerequisites
+
+- **Flutter SDK** with Dart `3.9.2+`
+- A Flutter project using the [Phluts](https://phluts.dev) framework
+
+## Install the extension
+
+Click the link for your IDE to install directly:
+
+- [Install for VS Code](vscode:extension/PhlutsDev.phluts-vscode)
+- [Install for Cursor](cursor:extension/PhlutsDev.phluts-vscode)
+- [Install for Antigravity](antigravity:extension/PhlutsDev.phluts-vscode)
+
+Or in VS Code, press `Cmd+Shift+X` (Mac) or `Ctrl+Shift+X` (Windows/Linux) to open the Extensions view, search for "Phluts", and click **Install**.
+
+## Get started
+
+1. **Open a Phluts project** — open any Flutter project that uses the Phluts framework.
+2. **Open the Command Palette** — press `⌘⇧P` (Mac) or `Ctrl+Shift+P` (Windows / Linux) and type **"Phluts"**.
+3. **Launch a live preview** — run **`Phluts: Open Preview`** to open a side-by-side preview of the active `@PhlutsScreen`.
+
+<Frame>
+  <img src="https://raw.githubusercontent.com/PhlutsDev/phluts/dev/tools/phluts-vscode/media/phluts_preview.png" alt="Phluts Live Preview" />
+</Frame>
+
+## Use live preview
+
+The preview panel renders your `@PhlutsScreen` in real time and updates automatically on save.
+
+- **Device toggles** — switch between Android, iOS, and Web viewports.
+- **Theme picker** — preview with any `@PhlutsThemeRef` theme defined in your project.
+- **Auto-refresh** — every time you save, the preview re-renders. Disable this with the `phlutsVscode.preview.autoRefreshOnSave` setting.
+
+### Preview commands
+
+| Command | Description |
+| --- | --- |
+| `Phluts: Open Preview` | Open the live preview panel for the active screen |
+| `Phluts: Select Preview Screen` | Switch to a different screen in the current file |
+| `Phluts: Stop Preview` | Stop the preview host process |
+
+## Use wrap quick-fixes
+
+Place your cursor on any Phluts widget expression and press `⌘.` (Mac) or `Ctrl+.` (Windows / Linux) to wrap it with a preset widget:
+
+`PhlutsContainer` · `PhlutsPadding` · `PhlutsCenter` · `PhlutsAlign` · `PhlutsSizedBox` · `PhlutsExpanded`
+
+Select **Wrap with Phluts widget…** to wrap with any custom Phluts widget class in your project.
+
+<Tip>
+  You can customise which preset wrappers appear in the quick-fix menu with the `phlutsVscode.wrapPresets` setting, or disable wrap actions entirely with `phlutsVscode.enableWrapQuickFix`.
+</Tip>
+
+## Use snippets
+
+In files containing `@PhlutsScreen`, `@PhlutsThemeRef`, or `package:phluts_core`, the following snippets are available:
+
+| Prefix | What it creates |
+| --- | --- |
+| `phluts screen` | A new screen template |
+| `phluts theme` | A new theme template |
+
+Snippets can be toggled with the `phlutsVscode.enableSnippets` setting.
+
+## Commands and shortcuts
+
+Open the Command Palette (`⌘⇧P` / `Ctrl+Shift+P`) and type **"Phluts"** to see all available commands:
+
+| Command | Description |
+| --- | --- |
+| `Phluts: Open Preview` | Open the live preview panel |
+| `Phluts: Select Preview Screen` | Switch screen in the current file |
+| `Phluts: Stop Preview` | Stop the preview host |
+| `Phluts: Regenerate Catalog` | Rebuild the widget catalog from `phluts_core` |
+
+## Configure settings
+
+Open VS Code settings (`⌘,` / `Ctrl+,`) and search **"Phluts"** to customise the extension.
+
+### Extension settings
+
+| Setting | Default | Description |
+| --- | --- | --- |
+| `phlutsVscode.enableWrapQuickFix` | `true` | Enable wrap quick-fix actions |
+| `phlutsVscode.wrapPresets` | All presets | Preset wrappers shown in the quick-fix menu |
+| `phlutsVscode.enableSnippets` | `true` | Enable `phluts screen` / `phluts theme` snippets |
+| `phlutsVscode.preview.enable` | `true` | Enable preview commands |
+| `phlutsVscode.preview.autoRefreshOnSave` | `true` | Refresh the preview on save |
+| `phlutsVscode.preview.jsonStrategy` | `runnerThenBuild` | JSON generation strategy |
+| `phlutsVscode.preview.hostPort` | `47841` | Local preview host port |
+| `phlutsVscode.preview.startupTimeoutMs` | `120000` | Host startup timeout (ms) |
+
+## Troubleshooting
+
+### Preview won't start
+
+1. Open **Output → Phluts Preview** for detailed logs.
+2. Ensure your project builds successfully with `flutter run`.
+3. Confirm the active file contains a `@PhlutsScreen` annotation.
+4. Try restarting the preview host by running **`Phluts: Stop Preview`**, then **`Phluts: Open Preview`**.
+
+### Extension won't install
+
+- Ensure you have a compatible version of VS Code (1.80.0 or later).
+- Check that VS Code has permission to install extensions.
+- Try installing directly from the [VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=PhlutsDev.phluts-vscode).
+
+## Uninstall the extension
+
+1. Open the Extensions view (`⇧⌘X` / `Ctrl+Shift+X`).
+2. Search for **"Phluts"**.
+3. Click **Uninstall**.
+
+<Card title="Report an Issue" icon="github" href="https://github.com/PhlutsDev/phluts/issues">
+  Found a bug or have a feature request? Open an issue on GitHub.
+</Card>

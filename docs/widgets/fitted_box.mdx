@@ -1,0 +1,109 @@
+---
+title: "FittedBox"
+description: "Documentation for FittedBox"
+---
+
+import { PLAYGROUND_BASE_URL } from "/snippets/playground_base.mdx";
+
+export const fittedBoxPreviewJson = {
+  "type": "fittedBox",
+  "fit": "contain",
+  "alignment": "center",
+  "child": {
+    "type": "text",
+    "data": "Hello, World!",
+    "style": {
+      "fontSize": 20,
+      "color": "#000000"
+    }
+  }
+};
+export const fittedBoxPreviewSrc = `${PLAYGROUND_BASE_URL}/embed`;
+
+Phluts FittedBox allows you to build the Flutter FittedBox widget using JSON.
+To know more about the FittedBox widget in Flutter, refer to the [official documentation](https://api.flutter.dev/flutter/widgets/FittedBox-class.html).
+
+---
+
+## Properties
+
+| Property       | Type                        | Description                                                                          |
+|----------------|-----------------------------|--------------------------------------------------------------------------------------|
+| `fit`          | `PhlutsBoxFit`                | Defines how the child should be fitted within the box. Defaults to `BoxFit.contain`. |
+| `alignment`    | `PhlutsAlignmentDirectional`  | Aligns the child within the box. Defaults to `PhlutsAlignmentDirectional.center`.     |
+| `clipBehavior` | `PhlutsClip`                  | Specifies whether and how the content should be clipped. Defaults to `Clip.none`.    |
+| `child`        | `PhlutsWidget`                | The child widget, represented as a JSON object, to be positioned and scaled.         |
+
+---
+
+## Example
+
+<Tabs sync={false}>
+  <Tab title="Dart">
+
+```dart
+PhlutsFittedBox(
+  fit: PhlutsBoxFit.contain,
+  alignment: PhlutsAlignment.center,
+  child: PhlutsText(
+    data: 'Hello, World!',
+    style: PhlutsTextStyle(
+      fontSize: 20,
+      color: PhlutsColors.black,
+    ),
+  ),
+)
+```
+
+  </Tab>
+  <Tab title="JSON">
+
+```json
+{
+  "type": "fittedBox",
+  "fit": "contain",
+  "alignment": "center",
+  "child": {
+    "type": "text",
+    "data": "Hello, World!",
+    "style": {
+      "fontSize": 20,
+      "color": "#000000"
+    }
+  }
+}
+```
+
+  </Tab>
+  <Tab title="Preview">
+    <Frame>
+      <iframe
+        id="phluts"
+        src={fittedBoxPreviewSrc}
+        title="Phluts Playground"
+        className="w-full rounded-xl border-0"
+        style={{ height: "640px" }}
+        loading="lazy"
+        onLoad={(event) => {
+          const iframe = event.currentTarget;
+          const targetOrigin = PLAYGROUND_BASE_URL;
+          const message = {
+            type: "phluts-preview-json",
+            payload: fittedBoxPreviewJson
+          };
+
+          let attempts = 0;
+          const maxAttempts = 12;
+          const interval = setInterval(() => {
+            iframe.contentWindow?.postMessage(message, targetOrigin);
+            attempts += 1;
+
+            if (attempts >= maxAttempts) {
+              clearInterval(interval);
+            }
+          }, 250);
+        }}
+      />
+    </Frame>
+  </Tab>
+</Tabs>

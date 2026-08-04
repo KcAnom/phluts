@@ -1,0 +1,27 @@
+---
+title: "Get Form Value Action"
+description: "Documentation for Get Form Value Action"
+---
+
+The `PhlutsGetFormValueAction` class is used to retrieve a form value in Phluts applications.
+
+## Properties
+
+| Property  | Type     | Description                        |
+|-----------|----------|------------------------------------|
+| id        | `String` | The ID of the form field to get.   |
+
+## Example
+
+<CodeGroup>
+```dart Dart
+PhlutsGetFormValueAction(id: 'username')
+```
+
+```json JSON
+{
+  "actionType": "getFormValue",
+  "id": "username"
+}
+```
+</CodeGroup>

@@ -1,0 +1,146 @@
+---
+title: "AppBar"
+description: "Documentation for AppBar"
+---
+
+import { PLAYGROUND_BASE_URL } from "/snippets/playground_base.mdx";
+
+export const appBarPreviewJson = {
+  "type": "appBar",
+  "title": {
+    "type": "text",
+    "data": "App Bar Title"
+  },
+  "backgroundColor": "#FFFFFF",
+  "foregroundColor": "#000000",
+  "actions": [
+    {
+      "type": "iconButton",
+      "icon": {
+        "type": "icon",
+        "icon": "search"
+      }
+    },
+    {
+      "type": "iconButton",
+      "icon": {
+        "type": "icon",
+        "icon": "settings"
+      }
+    }
+  ]
+};
+export const appBarPreviewSrc = `${PLAYGROUND_BASE_URL}/embed`;
+
+The Phluts AppBar allows you to build a Flutter app bar widget using JSON.
+To know more about the app bar widget in Flutter, refer to the [official documentation](https://api.flutter.dev/flutter/material/AppBar-class.html).
+
+## Properties
+
+| Property               | Type                         | Description                                                                         |
+|------------------------|------------------------------|-------------------------------------------------------------------------------------| 
+| leading                | `PhlutsWidget`                 | The leading widget before the title.                                                |
+| title                  | `PhlutsWidget`                 | The title widget.                                                                   |
+| titleTextStyle         | `PhlutsTextStyle`              | The text style for the title.                                                       |
+| toolbarTextStyle       | `PhlutsTextStyle`              | The text style for the toolbar.                                                     |
+| shadowColor            | `PhlutsColor`                  | The color of the shadow below the app bar.                                          |
+| backgroundColor        | `PhlutsColor`                  | The background color of the app bar.                                                |
+| foregroundColor        | `PhlutsColor`                  | The color of the app bar's foreground elements.                                     |
+| surfaceTintColor       | `PhlutsColor`                  | The surface tint color of the app bar.                                              |
+| actions                | `List<PhlutsWidget>`           | The list of widgets to display in a row after the title. Defaults to an empty list. |
+| bottom                 | `PhlutsWidget`                 | The bottom widget of the app bar.                                                   |
+| titleSpacing           | `double`                     | The spacing around the title.                                                       |
+| toolbarOpacity         | `double`                     | The opacity of the toolbar. Defaults to `1.0`.                                      |
+| bottomOpacity          | `double`                     | The opacity of the bottom widget. Defaults to `1.0`.                                |
+| toolbarHeight          | `double`                     | The height of the toolbar.                                                          |
+| leadingWidth           | `double`                     | The width of the leading widget.                                                    |
+| primary                | `bool`                       | Whether this app bar is the primary app bar for the scaffold. Defaults to `true`.   |
+| centerTitle            | `bool`                       | Whether the title should be centered.                                               |
+| elevation              | `double`                     | The elevation of the app bar.                                                       |
+| scrolledUnderElevation | `double`                     | The elevation of the app bar when it is scrolled under.                             |
+
+## Example
+
+<Tabs sync={false}>
+  <Tab title="Dart">
+
+```dart
+PhlutsAppBar(
+  title: PhlutsText(data: 'App Bar Title'),
+  backgroundColor: PhlutsColors.white,
+  foregroundColor: PhlutsColors.black,
+  actions: [
+    PhlutsIconButton(
+      icon: PhlutsIcon(icon: 'search'),
+    ),
+    PhlutsIconButton(
+      icon: PhlutsIcon(icon: 'settings'),
+    ),
+  ],
+)
+```
+
+  </Tab>
+  <Tab title="JSON">
+
+```json
+{
+  "type": "appBar",
+  "title": {
+    "type": "text",
+    "data": "App Bar Title"
+  },
+  "backgroundColor": "#FFFFFF",
+  "foregroundColor": "#000000",
+  "actions": [
+    {
+      "type": "iconButton",
+      "icon": {
+        "type": "icon",
+        "icon": "search"
+      }
+    },
+    {
+      "type": "iconButton",
+      "icon": {
+        "type": "icon",
+        "icon": "settings"
+      }
+    }
+  ]
+}
+```
+
+  </Tab>
+  <Tab title="Preview">
+    <Frame>
+      <iframe
+        id="phluts"
+        src={appBarPreviewSrc}
+        title="Phluts Playground"
+        className="w-full rounded-xl border-0"
+        style={{ height: "640px" }}
+        loading="lazy"
+        onLoad={(event) => {
+          const iframe = event.currentTarget;
+          const targetOrigin = PLAYGROUND_BASE_URL;
+          const message = {
+            type: "phluts-preview-json",
+            payload: appBarPreviewJson
+          };
+
+          let attempts = 0;
+          const maxAttempts = 12;
+          const interval = setInterval(() => {
+            iframe.contentWindow?.postMessage(message, targetOrigin);
+            attempts += 1;
+
+            if (attempts >= maxAttempts) {
+              clearInterval(interval);
+            }
+          }, 250);
+        }}
+      />
+    </Frame>
+  </Tab>
+</Tabs>

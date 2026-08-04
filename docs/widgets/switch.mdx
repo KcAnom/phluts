@@ -1,0 +1,142 @@
+---
+title: "Switch"
+description: "Documentation for Switch"
+---
+
+import { PLAYGROUND_BASE_URL } from "/snippets/playground_base.mdx";
+
+export const switchPreviewJson = {
+  "type": "switch",
+  "switchType": "cupertino",
+  "value": true
+};
+export const switchPreviewSrc = `${PLAYGROUND_BASE_URL}/embed`;
+
+The Phluts `Switch` widget allows you to build the Flutter Switch widget using JSON.
+To know more about the Switch widget in Flutter, refer to the [official documentation](https://api.flutter.dev/flutter/material/Switch-class.html).
+
+## Properties
+
+| Property              | Type                        | Description                                                                                                     |
+|-----------------------|-----------------------------|-----------------------------------------------------------------------------------------------------------------|
+| switchType            | `PhlutsSwitchType`            | The type of the Switch.                                                                                         |
+| value                 | `bool`                      | Whether this switch is on or off.                                                                               |
+| onChanged             | `PhlutsAction`                | Called when the user toggles the switch on or off.                                                              |
+| autofocus             | `bool`                      | True if this widget will be selected as the initial focus when no other node in its scope is currently focused. |
+| activeThumbColor      | `PhlutsColor`                 | The color to use when this switch is on.                                                                        |
+| activeTrackColor      | `PhlutsColor`                 | The color to use on the track when this switch is on.                                                           |
+| focusColor            | `PhlutsColor`                 | The color for the button's when it has the input focus.                                                         |
+| hoverColor            | `PhlutsColor`                 | The color for the button's when a pointer is hovering over it.                                                  |
+| inactiveThumbColor    | `PhlutsColor`                 | The color to use on the thumb when this switch is off.                                                          |
+| inactiveTrackColor    | `PhlutsColor`                 | The color to use on the track when this switch is off.                                                          |
+| onLabelColor          | `PhlutsColor`                 | The color to use for the accessibility label when the switch is on.                                             |
+| offLabelColor         | `PhlutsColor`                 | The color to use for the accessibility label when the switch is off.                                            |
+| splashRadius          | `double`                    | The splash radius of the circular ink response.                                                                 |
+| dragStartBehavior     | `PhlutsDragStartBehavior`     | Determines the way that drag start behavior is handled.                                                         |
+| overlayColor          | `PhlutsMaterialColor`         | The color for the switch.                                                                                       |
+| thumbColor            | `PhlutsMaterialColor`         | The color of this Switch's thumb.                                                                               |
+| trackColor            | `PhlutsMaterialColor`         | TThe color of this Switch's track.                                                                              |
+| materialTapTargetSize | `PhlutsMaterialTapTargetSize` | Configures the minimum size of the tap target.                                                                  |
+| trackOutlineColor     | `PhlutsMaterialColor`         | The outline color of this Switch's track.                                                                       |
+| thumbIcon             | `PhlutsWidget`                | The icon to use on the thumb of this switch.                                                                    |
+| inactiveThumbImage    | `String`                    | An image to use on the thumb of this switch when the switch is off.                                             |
+| activeThumbImage      | `String`                    | An image to use on the thumb of this switch when the switch is on.                                              |
+| applyTheme            | `bool`                      | Whether to apply the ambient theme data.                                                                        |
+| applyCupertinoTheme   | `bool`                      | Whether to apply the ambient theme data.                                                                        |
+
+## Example
+
+### Example 1: Cupertino Switch
+
+<Tabs sync={false}>
+  <Tab title="Dart">
+
+```dart
+PhlutsSwitch(
+  switchType: PhlutsSwitchType.cupertino,
+  value: true,
+)
+```
+
+  </Tab>
+  <Tab title="JSON">
+
+```json
+{
+  "type": "switch",
+  "switchType": "cupertino",
+  "value": true
+}
+```
+
+  </Tab>
+  <Tab title="Preview">
+    <Frame>
+      <iframe
+        id="phluts"
+        src={switchPreviewSrc}
+        title="Phluts Playground"
+        className="w-full rounded-xl border-0"
+        style={{ height: "640px" }}
+        loading="lazy"
+        onLoad={(event) => {
+          const iframe = event.currentTarget;
+          const targetOrigin = PLAYGROUND_BASE_URL;
+          const message = {
+            type: "phluts-preview-json",
+            payload: switchPreviewJson
+          };
+
+          let attempts = 0;
+          const maxAttempts = 12;
+          const interval = setInterval(() => {
+            iframe.contentWindow?.postMessage(message, targetOrigin);
+            attempts += 1;
+
+            if (attempts >= maxAttempts) {
+              clearInterval(interval);
+            }
+          }, 250);
+        }}
+      />
+    </Frame>
+  </Tab>
+</Tabs>
+### Example 2: Adaptive Switch
+
+<CodeGroup>
+```dart Dart
+PhlutsSwitch(
+  switchType: PhlutsSwitchType.adaptive,
+  value: true,
+)
+```
+
+```json JSON
+{
+  "type": "switch",
+  "switchType": "adaptive",
+  "value": true
+}
+```
+</CodeGroup>
+
+### Example 3: Material Switch
+
+<CodeGroup>
+```dart Dart
+PhlutsSwitch(
+  switchType: PhlutsSwitchType.material,
+  value: false,
+)
+```
+
+```json JSON
+{
+  "type": "switch",
+  "switchType": "material",
+  "value": false
+}
+```
+</CodeGroup>
+

@@ -1,0 +1,183 @@
+import 'package:phluts_core/phluts_core.dart';
+
+@PhlutsScreen(screenName: 'text_field')
+PhlutsWidget textFieldExample() {
+  return PhlutsScaffold(
+    appBar: PhlutsAppBar(title: PhlutsText(data: 'Text Field')),
+    body: PhlutsSingleChildScrollView(
+      child: PhlutsContainer(
+        padding: PhlutsEdgeInsets.all(12),
+        child: PhlutsColumn(
+          mainAxisAlignment: PhlutsMainAxisAlignment.center,
+          crossAxisAlignment: PhlutsCrossAxisAlignment.center,
+          children: [
+            PhlutsSizedBox(height: 24),
+            PhlutsTextField(
+              maxLines: 1,
+              keyboardType: PhlutsTextInputType.text,
+              textInputAction: PhlutsTextInputAction.done,
+              textAlign: PhlutsTextAlign.start,
+              textCapitalization: PhlutsTextCapitalization.none,
+              textDirection: PhlutsTextDirection.ltr,
+              obscureText: false,
+              decoration: PhlutsInputDecoration(
+                hintText: 'What do people call you?',
+                filled: true,
+                icon: PhlutsIcon(
+                  iconType: PhlutsIconType.cupertino,
+                  icon: 'person_solid',
+                  size: 24,
+                ),
+                labelText: 'Name*',
+              ),
+              readOnly: false,
+              enabled: true,
+            ),
+            PhlutsSizedBox(height: 24),
+            PhlutsTextField(
+              maxLines: 1,
+              keyboardType: PhlutsTextInputType.text,
+              textInputAction: PhlutsTextInputAction.done,
+              textAlign: PhlutsTextAlign.start,
+              textCapitalization: PhlutsTextCapitalization.none,
+              textDirection: PhlutsTextDirection.ltr,
+              obscureText: false,
+              decoration: PhlutsInputDecoration(
+                hintText: 'Where can we reach you?',
+                filled: true,
+                icon: PhlutsIcon(
+                  iconType: PhlutsIconType.cupertino,
+                  icon: 'phone_solid',
+                  size: 24,
+                ),
+                labelText: 'Phone number*',
+              ),
+              readOnly: false,
+              enabled: true,
+            ),
+            PhlutsSizedBox(height: 24),
+            PhlutsTextField(
+              maxLines: 1,
+              keyboardType: PhlutsTextInputType.text,
+              textInputAction: PhlutsTextInputAction.done,
+              textAlign: PhlutsTextAlign.start,
+              textCapitalization: PhlutsTextCapitalization.none,
+              textDirection: PhlutsTextDirection.ltr,
+              obscureText: false,
+              decoration: PhlutsInputDecoration(
+                hintText: 'Your email address',
+                filled: true,
+                icon: PhlutsIcon(
+                  iconType: PhlutsIconType.material,
+                  icon: 'email',
+                  size: 24,
+                ),
+                labelText: 'Email',
+              ),
+              readOnly: false,
+              enabled: true,
+            ),
+            PhlutsSizedBox(height: 24),
+            PhlutsTextField(
+              maxLines: 1,
+              keyboardType: PhlutsTextInputType.text,
+              textInputAction: PhlutsTextInputAction.done,
+              textAlign: PhlutsTextAlign.start,
+              textCapitalization: PhlutsTextCapitalization.none,
+              textDirection: PhlutsTextDirection.ltr,
+              obscureText: false,
+              decoration: PhlutsInputDecoration(
+                filled: true,
+                icon: PhlutsIcon(
+                  iconType: PhlutsIconType.material,
+                  icon: 'credit_card',
+                  size: 24,
+                ),
+                hintText: 'XXXX XXXX XXXX XXXX',
+                labelText: 'Credit Card',
+              ),
+              readOnly: false,
+              enabled: true,
+            ),
+            PhlutsSizedBox(height: 24),
+            PhlutsSizedBox(
+              height: 100,
+              child: PhlutsTextField(
+                expands: true,
+                decoration: PhlutsInputDecoration(
+                  filled: true,
+                  labelText: 'Life story',
+                ),
+                readOnly: false,
+                enabled: true,
+              ),
+            ),
+            PhlutsSizedBox(height: 24),
+            PhlutsTextField(
+              maxLines: 1,
+              keyboardType: PhlutsTextInputType.text,
+              textInputAction: PhlutsTextInputAction.done,
+              textAlign: PhlutsTextAlign.start,
+              textCapitalization: PhlutsTextCapitalization.none,
+              textDirection: PhlutsTextDirection.ltr,
+              obscureText: true,
+              decoration: PhlutsInputDecoration(
+                filled: true,
+                suffixIcon: PhlutsIcon(
+                  iconType: PhlutsIconType.cupertino,
+                  icon: 'eye',
+                  size: 24,
+                ),
+                labelText: 'Password*',
+              ),
+              readOnly: false,
+              enabled: true,
+            ),
+            PhlutsSizedBox(height: 24),
+            PhlutsTextField(
+              maxLines: 1,
+              keyboardType: PhlutsTextInputType.text,
+              textInputAction: PhlutsTextInputAction.done,
+              textAlign: PhlutsTextAlign.start,
+              textCapitalization: PhlutsTextCapitalization.none,
+              textDirection: PhlutsTextDirection.ltr,
+              obscureText: true,
+              decoration: PhlutsInputDecoration(
+                filled: true,
+                suffixIcon: PhlutsIcon(
+                  iconType: PhlutsIconType.cupertino,
+                  icon: 'eye',
+                  size: 24,
+                ),
+                labelText: 'Re-type password*',
+              ),
+              readOnly: false,
+              enabled: true,
+            ),
+            PhlutsSizedBox(height: 24),
+            PhlutsTextField(
+              maxLines: 1,
+              keyboardType: PhlutsTextInputType.text,
+              textInputAction: PhlutsTextInputAction.done,
+              textAlign: PhlutsTextAlign.start,
+              textCapitalization: PhlutsTextCapitalization.none,
+              textDirection: PhlutsTextDirection.ltr,
+              obscureText: true,
+              decoration: PhlutsInputDecoration(
+                filled: true,
+                labelText: 'Gradient TextField',
+                border: PhlutsInputBorder(
+                  type: PhlutsInputBorderType.outlineInputBorder,
+                  borderRadius: PhlutsBorderRadius.all(80),
+                  gradient: PhlutsGradient(colors: ['#FF0000', '#0000FF']),
+                ),
+              ),
+              readOnly: false,
+              enabled: true,
+            ),
+          ],
+        ),
+      ),
+    ),
+  );
+}

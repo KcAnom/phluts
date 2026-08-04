@@ -1,0 +1,271 @@
+---
+title: "Tooltip"
+description: "Documentation for Tooltip"
+---
+
+import { PLAYGROUND_BASE_URL } from "/snippets/playground_base.mdx";
+
+export const toolTipPreviewJson = {
+  "type": "tooltip",
+  "message": "This is a basic tooltip",
+  "child": {
+    "type": "icon",
+    "icon": "info",
+    "size": 32
+  }
+};
+export const toolTipPreviewSrc = `${PLAYGROUND_BASE_URL}/embed`;
+
+The **Phluts Tooltip** allows you to build a Flutter `Tooltip` widget using JSON. 
+To learn more about Flutter’s Tooltip widget, refer to the [official Flutter documentation](https://api.flutter.dev/flutter/material/Tooltip-class.html).
+
+---
+
+## Properties
+
+| Property               | Type                      | Description                                                                            |
+|------------------------|---------------------------|----------------------------------------------------------------------------------------|
+| `message`              | `String?`                 | The plain text message displayed in the tooltip. Ignored if `richMessage` is provided. |
+| `richMessage`          | `PhlutsTextSpan?`           | Rich text content for the tooltip. Overrides `message` when provided.                  |
+| `constraints`          | `PhlutsBoxConstraints?`     | Additional layout constraints applied to the tooltip content.                          |
+| `padding`              | `PhlutsEdgeInsets?`         | Padding inside the tooltip. Defaults to Flutter’s tooltip theme padding.               |
+| `margin`               | `PhlutsEdgeInsets?`         | Outer margin around the tooltip, useful near screen edges.                             |
+| `verticalOffset`       | `double?`                 | Vertical distance between the tooltip and its child.                                   |
+| `preferBelow`          | `bool?`                   | Whether the tooltip prefers to appear below its child. Defaults to `true`.             |
+| `excludeFromSemantics` | `bool?`                   | Whether the tooltip message is excluded from the semantics tree.                       |
+| `decoration`           | `PhlutsBoxDecoration?`      | Background decoration for the tooltip (color, border radius, etc.).                    |
+| `textStyle`            | `PhlutsTextStyle?`          | Text style for the tooltip message.                                                    |
+| `textAlign`            | `PhlutsTextAlign?`          | Horizontal alignment of the tooltip text.                                              |
+| `waitDuration`         | `PhlutsDuration?`           | Delay before showing the tooltip.                                                      |
+| `showDuration`         | `PhlutsDuration?`           | Duration the tooltip remains visible after activation.                                 |
+| `exitDuration`         | `PhlutsDuration?`           | Duration of the fade-out animation.                                                    |
+| `enableTapToDismiss`   | `bool`                    | Whether tapping the screen dismisses the tooltip. Defaults to `true`.                  |
+| `triggerMode`          | `PhlutsTooltipTriggerMode?` | Determines how the tooltip is triggered (`longPress` or `tap`).                        |
+| `enableFeedback`       | `bool?`                   | Enables acoustic or haptic feedback when the tooltip is shown.                         |
+| `child`                | `PhlutsWidget?`             | The widget the tooltip is attached to (Icon, IconButton, etc.).                        |
+
+---
+
+## Examples
+
+#### Basic Tooltip
+
+<Tabs sync={false}>
+  <Tab title="Dart">
+
+```dart
+PhlutsTooltip(
+  message: 'This is a basic tooltip',
+  child: PhlutsIcon(icon: 'info', size: 32),
+)
+```
+
+  </Tab>
+  <Tab title="JSON">
+
+```json
+{
+  "type": "tooltip",
+  "message": "This is a basic tooltip",
+  "child": {
+    "type": "icon",
+    "icon": "info",
+    "size": 32
+  }
+}
+```
+
+  </Tab>
+  <Tab title="Preview">
+    <Frame>
+      <iframe
+        id="phluts"
+        src={toolTipPreviewSrc}
+        title="Phluts Playground"
+        className="w-full rounded-xl border-0"
+        style={{ height: "640px" }}
+        loading="lazy"
+        onLoad={(event) => {
+          const iframe = event.currentTarget;
+          const targetOrigin = PLAYGROUND_BASE_URL;
+          const message = {
+            type: "phluts-preview-json",
+            payload: toolTipPreviewJson
+          };
+
+          let attempts = 0;
+          const maxAttempts = 12;
+          const interval = setInterval(() => {
+            iframe.contentWindow?.postMessage(message, targetOrigin);
+            attempts += 1;
+
+            if (attempts >= maxAttempts) {
+              clearInterval(interval);
+            }
+          }, 250);
+        }}
+      />
+    </Frame>
+  </Tab>
+</Tabs>
+#### Styled Tooltip
+
+<CodeGroup>
+```dart Dart
+PhlutsTooltip(
+  message: 'Custom styled tooltip',
+  preferBelow: false,
+  verticalOffset: 12,
+  decoration: PhlutsBoxDecoration(
+    color: PhlutsColors.green,
+    borderRadius: PhlutsBorderRadius.all(6),
+  ),
+  textStyle: PhlutsTextStyle(color: PhlutsColors.white, fontSize: 14, fontWeight: PhlutsFontWeight.bold),
+  child: PhlutsIcon(icon: 'palette', size: 32),
+)
+```
+
+```json JSON
+{
+  "type": "tooltip",
+  "message": "Custom styled tooltip",
+  "preferBelow": false,
+  "verticalOffset": 12,
+  "decoration": {
+    "color": "#4CAF50",
+    "borderRadius": {
+      "topLeft": 6,
+      "topRight": 6,
+      "bottomLeft": 6,
+      "bottomRight": 6
+    }
+  },
+  "textStyle": {
+    "color": "#FFFFFF",
+    "fontSize": 14,
+    "fontWeight": "bold"
+  },
+  "child": {
+    "type": "icon",
+    "icon": "palette",
+    "size": 32
+  }
+}
+```
+</CodeGroup>
+
+#### Tooltip with Delay & Duration
+
+<CodeGroup>
+```dart Dart
+PhlutsTooltip(
+  message: 'Appears after 1s, stays 3s',
+  waitDuration: PhlutsDuration(milliseconds: 1000),
+  showDuration: PhlutsDuration(milliseconds: 3000),
+  exitDuration: PhlutsDuration(milliseconds: 300),
+  child: PhlutsIcon(icon: 'timer', size: 32),
+)
+```
+
+```json JSON
+{
+  "type": "tooltip",
+  "message": "Appears after 1s, stays 3s",
+  "waitDuration": {
+    "milliseconds": 1000
+  },
+  "showDuration": {
+    "milliseconds": 3000
+  },
+  "exitDuration": {
+    "milliseconds": 300
+  },
+  "child": {
+    "type": "icon",
+    "icon": "timer",
+    "size": 32
+  }
+}
+```
+</CodeGroup>
+
+#### Tooltip on IconButton
+
+<CodeGroup>
+```dart Dart
+PhlutsTooltip(
+  message: 'Notifications',
+  child: PhlutsIconButton(
+    icon: PhlutsIcon(icon: 'notifications', size: 24),
+    padding: PhlutsEdgeInsets.all(0),
+    onPressed: PhlutsNoneAction(),
+  ),
+)
+```
+
+```json JSON
+{
+  "type": "tooltip",
+  "message": "Notifications",
+  "child": {
+    "type": "iconButton",
+    "icon": {
+      "type": "icon",
+      "icon": "notifications",
+      "size": 24
+    },
+    "padding": {
+      "left": 0,
+      "top": 0,
+      "right": 0,
+      "bottom": 0
+    },
+    "onPressed": {
+      "actionType": "none"
+    }
+  }
+}
+```
+</CodeGroup>
+
+#### Tooltip with Rich Text Message
+
+<CodeGroup>
+```dart Dart
+PhlutsTooltip(
+  richMessage: PhlutsTextSpan(
+    children: [
+      PhlutsTextSpan(text: 'Bold ', style: PhlutsTextStyle(fontWeight: PhlutsFontWeight.bold)),
+      PhlutsTextSpan(text: 'and normal text'),
+    ],
+  ),
+  child: PhlutsIcon(icon: 'text_fields', size: 32),
+)
+```
+
+```json JSON
+{
+  "type": "tooltip",
+  "richMessage": {
+    "type": "textSpan",
+    "children": [
+      {
+        "type": "textSpan",
+        "text": "Bold ",
+        "style": { "fontWeight": "bold" }
+      },
+      {
+        "type": "textSpan",
+        "text": "and normal text"
+      }
+    ]
+  },
+  "child": {
+    "type": "icon",
+    "icon": "text_fields",
+    "size": 32
+  }
+}
+```
+</CodeGroup>
+

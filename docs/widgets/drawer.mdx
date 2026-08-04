@@ -1,0 +1,152 @@
+---
+title: "Drawer"
+description: "Documentation for Drawer"
+---
+
+import { PLAYGROUND_BASE_URL } from "/snippets/playground_base.mdx";
+
+export const drawerPreviewJson = {
+  "type": "drawer",
+  "backgroundColor": "#FFFFFF",
+  "elevation": 16,
+  "shadowColor": "#000000",
+  "surfaceTintColor": "#F2F2F2",
+  "shape": {
+    "type": "roundedRectangleBorder",
+    "borderRadius": 16
+  },
+  "width": 304,
+  "semanticLabel": "Navigation Drawer",
+  "clipBehavior": "antiAlias",
+  "child": {
+    "type": "column",
+    "children": [
+      {
+        "type": "text",
+        "data": "Drawer Header"
+      },
+      {
+        "type": "text",
+        "data": "Item 1"
+      },
+      {
+        "type": "text",
+        "data": "Item 2"
+      }
+    ]
+  }
+};
+export const drawerPreviewSrc = `${PLAYGROUND_BASE_URL}/embed`;
+
+The Phluts Drawer allows you to build a Flutter Drawer widget using JSON.
+To know more about the Drawer widget in Flutter, refer to the [official documentation](https://api.flutter.dev/flutter/material/Drawer-class.html).
+
+## Properties
+
+| Property         | Type                | Description                                                        |
+|------------------|---------------------|--------------------------------------------------------------------|
+| backgroundColor  | `PhlutsColor`         | The background color of the drawer.                                |
+| elevation        | `double`            | The z-coordinate at which to place this drawer.                    |
+| shadowColor      | `PhlutsColor`         | The color of the drawer's shadow.                                  |
+| surfaceTintColor | `PhlutsColor`         | The surface tint color of the drawer.                              |
+| shape            | `PhlutsShapeBorder`   | The shape of the drawer.                                           |
+| width            | `double`            | The width of the drawer.                                           |
+| child            | `PhlutsWidget`        | The widget below this widget in the tree.                          |
+| semanticLabel    | `String`            | The semantic label for the drawer.                                 |
+| clipBehavior     | `PhlutsClip`          | The clip behavior of the drawer.                                   |
+
+## Example
+
+<Tabs sync={false}>
+  <Tab title="Dart">
+
+```dart
+PhlutsDrawer(
+  backgroundColor: PhlutsColors.white,
+  elevation: 16.0,
+  shadowColor: PhlutsColors.black,
+  surfaceTintColor: '#F2F2F2',
+  shape: PhlutsRoundedRectangleBorder(borderRadius: 16),
+  width: 304.0,
+  semanticLabel: 'Navigation Drawer',
+  clipBehavior: PhlutsClip.antiAlias,
+  child: PhlutsColumn(
+    children: [
+      PhlutsText(data: 'Drawer Header'),
+      PhlutsText(data: 'Item 1'),
+      PhlutsText(data: 'Item 2'),
+    ],
+  ),
+)
+```
+
+  </Tab>
+  <Tab title="JSON">
+
+```json
+{
+  "type": "drawer",
+  "backgroundColor": "#FFFFFF",
+  "elevation": 16,
+  "shadowColor": "#000000",
+  "surfaceTintColor": "#F2F2F2",
+  "shape": {
+    "type": "roundedRectangleBorder",
+    "borderRadius": 16
+  },
+  "width": 304,
+  "semanticLabel": "Navigation Drawer",
+  "clipBehavior": "antiAlias",
+  "child": {
+    "type": "column",
+    "children": [
+      {
+        "type": "text",
+        "data": "Drawer Header"
+      },
+      {
+        "type": "text",
+        "data": "Item 1"
+      },
+      {
+        "type": "text",
+        "data": "Item 2"
+      }
+    ]
+  }
+}
+```
+
+  </Tab>
+  <Tab title="Preview">
+    <Frame>
+      <iframe
+        id="phluts"
+        src={drawerPreviewSrc}
+        title="Phluts Playground"
+        className="w-full rounded-xl border-0"
+        style={{ height: "640px" }}
+        loading="lazy"
+        onLoad={(event) => {
+          const iframe = event.currentTarget;
+          const targetOrigin = PLAYGROUND_BASE_URL;
+          const message = {
+            type: "phluts-preview-json",
+            payload: drawerPreviewJson
+          };
+
+          let attempts = 0;
+          const maxAttempts = 12;
+          const interval = setInterval(() => {
+            iframe.contentWindow?.postMessage(message, targetOrigin);
+            attempts += 1;
+
+            if (attempts >= maxAttempts) {
+              clearInterval(interval);
+            }
+          }, 250);
+        }}
+      />
+    </Frame>
+  </Tab>
+</Tabs>

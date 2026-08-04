@@ -1,0 +1,183 @@
+---
+title: "Image"
+description: "Documentation for Image"
+---
+
+import { PLAYGROUND_BASE_URL } from "/snippets/playground_base.mdx";
+
+export const imagePreviewJson = {
+  "type": "image",
+  "src": "assets/logo.png",
+  "imageType": "asset",
+  "width": 200,
+  "height": 100,
+  "fit": "cover"
+};
+export const imagePreviewSrc = `${PLAYGROUND_BASE_URL}/embed`;
+
+The `Image` widget allows you to display an image in your Flutter app using JSON. It supports images from multiple sources, including assets, files, and network URLs, and provides customization options such as alignment, color, width, height, and fit.
+
+To learn more about the equivalent Flutter widgets and their properties, refer to the [official Flutter documentation for Image](https://api.flutter.dev/flutter/widgets/Image-class.html).
+
+## Properties
+
+| Property              | Type                  | Description                                                                 |
+|-----------------------|-----------------------|-----------------------------------------------------------------------------|
+| `src`                 | `String`              | The source path or URL of the image to display.                             |
+| `alignment`           | `PhlutsAlignment`       | How to align the image within its bounds.                                   |
+| `imageType`           | `PhlutsImageType`       | The type of image source: `asset`, `network`, or `file`.                    |
+| `color`               | `PhlutsColor`           | A color filter to apply to the image.                                       |
+| `width`               | `double`              | The width of the image in logical pixels.                                   |
+| `height`              | `double`              | The height of the image in logical pixels.                                  |
+| `fit`                 | `PhlutsBoxFit`          | How the image should be inscribed into the space allocated during layout.   |
+| `repeat`              | `PhlutsImageRepeat`     | How the image should be repeated if it doesn't fill its layout bounds.      |
+| `filterQuality`       | `PhlutsFilterQuality`   | The quality level for image filtering operations.                           |
+| `semanticLabel`       | `String`              | A semantic description of the image for accessibility.                      |
+| `excludeFromSemantics`| `bool`                | Whether to exclude this image from semantics.                               |
+
+## Constructors
+
+### PhlutsImage.asset
+
+Creates an image widget that loads from Flutter's asset bundle.
+
+<Tabs sync={false}>
+  <Tab title="Dart">
+
+```dart
+const PhlutsImage.asset(
+  'assets/logo.png',
+  width: 200,
+  height: 100,
+  fit: PhlutsBoxFit.cover,
+)
+```
+
+  </Tab>
+  <Tab title="JSON">
+
+```json
+{
+  "type": "image",
+  "src": "assets/logo.png",
+  "imageType": "asset",
+  "width": 200,
+  "height": 100,
+  "fit": "cover"
+}
+```
+
+  </Tab>
+  <Tab title="Preview">
+    <Frame>
+      <iframe
+        id="phluts"
+        src={imagePreviewSrc}
+        title="Phluts Playground"
+        className="w-full rounded-xl border-0"
+        style={{ height: "640px" }}
+        loading="lazy"
+        onLoad={(event) => {
+          const iframe = event.currentTarget;
+          const targetOrigin = PLAYGROUND_BASE_URL;
+          const message = {
+            type: "phluts-preview-json",
+            payload: imagePreviewJson
+          };
+
+          let attempts = 0;
+          const maxAttempts = 12;
+          const interval = setInterval(() => {
+            iframe.contentWindow?.postMessage(message, targetOrigin);
+            attempts += 1;
+
+            if (attempts >= maxAttempts) {
+              clearInterval(interval);
+            }
+          }, 250);
+        }}
+      />
+    </Frame>
+  </Tab>
+</Tabs>
+---
+
+### PhlutsImage.network
+
+Creates an image widget that loads from a network URL.
+
+<CodeGroup>
+```dart Dart
+const PhlutsImage.network(
+  'https://example.com/image.png',
+  width: 200,
+  height: 100,
+  fit: PhlutsBoxFit.contain,
+)
+```
+
+```json JSON
+{
+  "type": "image",
+  "src": "https://example.com/image.png",
+  "imageType": "network",
+  "width": 200,
+  "height": 100,
+  "fit": "contain"
+}
+```
+</CodeGroup>
+
+---
+
+### PhlutsImage.file
+
+Creates an image widget that loads from a local file path.
+
+<CodeGroup>
+```dart Dart
+const PhlutsImage.file(
+  '/path/to/image.png',
+  width: 200,
+  height: 100,
+)
+```
+
+```json JSON
+{
+  "type": "image",
+  "src": "/path/to/image.png",
+  "imageType": "file",
+  "width": 200,
+  "height": 100
+}
+```
+</CodeGroup>
+
+---
+
+### PhlutsImage (Default)
+
+The default constructor allows you to specify any image source with the `imageType` property.
+
+<CodeGroup>
+```dart Dart
+const PhlutsImage(
+  src: 'assets/logo.png',
+  width: 200,
+  height: 100,
+  fit: PhlutsBoxFit.cover,
+)
+```
+
+```json JSON
+{
+  "type": "image",
+  "src": "assets/logo.png",
+  "width": 200,
+  "height": 100,
+  "fit": "cover"
+}
+```
+</CodeGroup>
+

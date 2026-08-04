@@ -1,0 +1,134 @@
+---
+title: "Card"
+description: "Documentation for Card"
+---
+
+import { PLAYGROUND_BASE_URL } from "/snippets/playground_base.mdx";
+
+export const cardPreviewJson = {
+  "type": "card",
+  "color": "#FFFFFF",
+  "shadowColor": "#000000",
+  "surfaceTintColor": "#FF0000",
+  "elevation": 5,
+  "shape": {
+    "type": "roundedRectangle",
+    "borderRadius": 10
+  },
+  "borderOnForeground": true,
+  "margin": {
+    "left": 10,
+    "top": 20,
+    "right": 10,
+    "bottom": 20
+  },
+  "clipBehavior": "antiAlias",
+  "child": {
+    "type": "text",
+    "data": "This is a card."
+  },
+  "semanticContainer": true
+};
+export const cardPreviewSrc = `${PLAYGROUND_BASE_URL}/embed`;
+
+The Phluts Card allows you to build a Flutter Card widget using JSON.
+To know more about the Card widget in Flutter, refer to the [official documentation](https://api.flutter.dev/flutter/material/Card-class.html).
+
+## Properties
+
+| Property           | Type                    | Description                                                                 |
+|--------------------|-------------------------|-----------------------------------------------------------------------------|
+| color              | `PhlutsColor`             | The background color of the card.                                           |
+| shadowColor        | `PhlutsColor`             | The color of the card's shadow.                                             |
+| surfaceTintColor   | `PhlutsColor`             | The color of the card's surface tint.                                       |
+| elevation          | `double`                | The z-coordinate at which to place this card.                               |
+| shape              | `PhlutsShapeBorder`       | The shape of the card's border.                                             |
+| borderOnForeground | `bool`                  | Whether to paint the border in front of the child. Defaults to `true`.      |
+| margin             | `PhlutsEdgeInsets`        | The empty space that surrounds the card.                                    |
+| clipBehavior       | `PhlutsClip`              | The content will be clipped (or not) according to this option.              |
+| child              | `PhlutsWidget`            | The widget below this widget in the tree.                                   |
+| semanticContainer  | `bool`                  | Whether this card is a semantic container. Defaults to `true`.              |
+
+## Example
+
+<Tabs sync={false}>
+  <Tab title="Dart">
+
+```dart
+PhlutsCard(
+  color: PhlutsColors.white,
+  shadowColor: PhlutsColors.black,
+  surfaceTintColor: PhlutsColors.red,
+  elevation: 5.0,
+  shape: PhlutsRoundedRectangleBorder(borderRadius: 10.0),
+  borderOnForeground: true,
+  margin: PhlutsEdgeInsets(left: 10, top: 20, right: 10, bottom: 20),
+  clipBehavior: PhlutsClip.antiAlias,
+  child: PhlutsText(data: 'This is a card.'),
+  semanticContainer: true,
+)
+```
+
+  </Tab>
+  <Tab title="JSON">
+
+```json
+{
+  "type": "card",
+  "color": "#FFFFFF",
+  "shadowColor": "#000000",
+  "surfaceTintColor": "#FF0000",
+  "elevation": 5,
+  "shape": {
+    "type": "roundedRectangle",
+    "borderRadius": 10
+  },
+  "borderOnForeground": true,
+  "margin": {
+    "left": 10,
+    "top": 20,
+    "right": 10,
+    "bottom": 20
+  },
+  "clipBehavior": "antiAlias",
+  "child": {
+    "type": "text",
+    "data": "This is a card."
+  },
+  "semanticContainer": true
+}
+```
+
+  </Tab>
+  <Tab title="Preview">
+    <Frame>
+      <iframe
+        id="phluts"
+        src={cardPreviewSrc}
+        title="Phluts Playground"
+        className="w-full rounded-xl border-0"
+        style={{ height: "640px" }}
+        loading="lazy"
+        onLoad={(event) => {
+          const iframe = event.currentTarget;
+          const targetOrigin = PLAYGROUND_BASE_URL;
+          const message = {
+            type: "phluts-preview-json",
+            payload: cardPreviewJson
+          };
+
+          let attempts = 0;
+          const maxAttempts = 12;
+          const interval = setInterval(() => {
+            iframe.contentWindow?.postMessage(message, targetOrigin);
+            attempts += 1;
+
+            if (attempts >= maxAttempts) {
+              clearInterval(interval);
+            }
+          }, 250);
+        }}
+      />
+    </Frame>
+  </Tab>
+</Tabs>

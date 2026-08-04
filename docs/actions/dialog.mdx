@@ -1,0 +1,81 @@
+---
+title: "Dialog Action"
+description: "Documentation for Dialog Action"
+---
+
+The `PhlutsDialogAction` class is used to display a dialog in Phluts applications.
+
+## Properties
+
+| Property               | Type                           | Description                                                                 |
+|------------------------|--------------------------------|-----------------------------------------------------------------------------|
+| widget                 | `Map<String, dynamic>`         | The widget to display inside the dialog.                                    |
+| request                | `PhlutsNetworkRequest`           | The network request to perform before displaying the dialog.                |
+| assetPath              | `String`                       | The asset path of the widget to display inside the dialog.                  |
+| barrierDismissible     | `bool`                         | Whether the dialog is dismissible by tapping outside. Defaults to `true`.   |
+| barrierColor           | `PhlutsColor`                    | The color of the modal barrier.                                             |
+| barrierLabel           | `String`                       | The semantic label for the modal barrier.                                   |
+| useSafeArea            | `bool`                         | Whether to use the safe area. Defaults to `true`.                           |
+| traversalEdgeBehavior  | `PhlutsTraversalEdgeBehavior`    | The traversal edge behavior of the dialog.                                  |
+
+## Examples
+
+### Dialog with a Widget
+
+<CodeGroup>
+```dart Dart
+PhlutsDialogAction(
+  widget: PhlutsText(data: 'Hello, World!'),
+)
+```
+
+```json JSON
+{
+  "actionType": "showDialog",
+  "widget": {
+    "type": "text",
+    "data": "Hello, World!"
+  }
+}
+```
+</CodeGroup>
+
+### Dialog with a Request
+
+<CodeGroup>
+```dart Dart
+PhlutsDialogAction(
+  request: PhlutsNetworkRequest(
+    url: 'https://example.com/api',
+    method: Method.get,
+  ),
+)
+```
+
+```json JSON
+{
+  "actionType": "showDialog",
+  "request": {
+    "url": "https://example.com/api",
+    "method": "get"
+  }
+}
+```
+</CodeGroup>
+
+### Dialog with an Asset
+
+<CodeGroup>
+```dart Dart
+PhlutsDialogAction(
+  assetPath: 'assets/dialog.json',
+)
+```
+
+```json JSON
+{
+  "actionType": "showDialog",
+  "assetPath": "assets/dialog.json"
+}
+```
+</CodeGroup>

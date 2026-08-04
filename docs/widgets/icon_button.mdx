@@ -1,0 +1,194 @@
+---
+title: "IconButton"
+description: "Documentation for IconButton"
+---
+
+import { PLAYGROUND_BASE_URL } from "/snippets/playground_base.mdx";
+
+export const iconButtonPreviewJson = {
+  "type": "iconButton",
+  "iconSize": 24,
+  "padding": {
+    "left": 8,
+    "top": 8,
+    "right": 8,
+    "bottom": 8
+  },
+  "alignment": "center",
+  "splashRadius": 20,
+  "color": "#000000",
+  "focusColor": "#FFC107",
+  "hoverColor": "#FF9800",
+  "highlightColor": "#FF5722",
+  "splashColor": "#FFEB3B",
+  "disabledColor": "#BDBDBD",
+  "onPressed": {},
+  "autofocus": false,
+  "tooltip": "Add Item",
+  "enableFeedback": true,
+  "constraints": {
+    "minWidth": 48,
+    "minHeight": 48
+  },
+  "style": {
+    "backgroundColor": "#FFC107",
+    "foregroundColor": "#000000",
+    "shape": {
+      "type": "roundedRectangleBorder",
+      "borderRadius": 8
+    }
+  },
+  "isSelected": false,
+  "selectedIcon": {
+    "type": "icon",
+    "icon": "check"
+  },
+  "icon": {
+    "type": "icon",
+    "icon": "add"
+  }
+};
+export const iconButtonPreviewSrc = `${PLAYGROUND_BASE_URL}/embed`;
+
+The Phluts Icon Button allows you to build a Flutter icon button widget using JSON.
+To know more about the icon button widget in Flutter, refer to the [official documentation](https://api.flutter.dev/flutter/material/IconButton-class.html).
+
+## Properties
+
+| Property       | Type                    | Description                                                                        |
+|----------------|-------------------------|------------------------------------------------------------------------------------|
+| iconSize       | `double`                | The size of the icon inside the button.                                            |
+| padding        | `PhlutsEdgeInsets`        | The padding inside the button.                                                     |
+| alignment      | `PhlutsAlignment`         | How the icon should be aligned within the button.                                  |
+| splashRadius   | `double`                | The radius of the splash effect.                                                   |
+| color          | `PhlutsColor`             | The color to paint the icon.                                                       |
+| focusColor     | `PhlutsColor`             | The color to paint the button when it has the input focus.                         |
+| hoverColor     | `PhlutsColor`             | The color to paint the button when a pointer is hovering over it.                  |
+| highlightColor | `PhlutsColor`             | The color to paint the button when it is pressed.                                  |
+| splashColor    | `PhlutsColor`             | The color to paint the splash effect when the button is pressed.                   |
+| disabledColor  | `PhlutsColor`             | The color to paint the icon when the button is disabled.                           |
+| onPressed      | `PhlutsAction`            | The callback that is called when the button is tapped.                             |
+| autofocus      | `bool`                  | Whether the button should be focused when the page is loaded. Defaults to `false`. |
+| tooltip        | `String`                | The text to display when the user long-presses the button.                         |
+| enableFeedback | `bool`                  | Whether to provide acoustic and/or haptic feedback.                                |
+| constraints    | `PhlutsBoxConstraints`    | The constraints for the button.                                                    |
+| style          | `PhlutsButtonStyle`       | The style to apply to the button.                                                  |
+| isSelected     | `bool`                  | Whether the button is selected.                                                    |
+| selectedIcon   | `PhlutsWidget`            | The icon to display when the button is selected.                                   |
+| icon           | `PhlutsWidget`            | The icon to display inside the button.                                             |
+
+## Example
+
+<Tabs sync={false}>
+  <Tab title="Dart">
+
+```dart
+PhlutsIconButton(
+  iconSize: 24.0,
+  padding: PhlutsEdgeInsets(left: 8.0, top: 8.0, right: 8.0, bottom: 8.0),
+  alignment: PhlutsAlignment.center,
+  splashRadius: 20.0,
+  color: PhlutsColors.black,
+  focusColor: PhlutsColors.amber,
+  hoverColor: '#FF9800',
+  highlightColor: '#FF5722',
+  splashColor: '#FFEB3B',
+  disabledColor: '#BDBDBD',
+  onPressed: PhlutsNoneAction(),
+  autofocus: false,
+  tooltip: 'Add Item',
+  enableFeedback: true,
+  constraints: PhlutsBoxConstraints(minWidth: 48.0, minHeight: 48.0),
+  style: PhlutsButtonStyle(
+    backgroundColor: PhlutsColors.amber,
+    foregroundColor: PhlutsColors.black,
+    shape: PhlutsRoundedRectangleBorder(borderRadius: 8),
+  ),
+  isSelected: false,
+  selectedIcon: PhlutsIcon(icon: 'check'),
+  icon: PhlutsIcon(icon: 'add'),
+)
+```
+
+  </Tab>
+  <Tab title="JSON">
+
+```json
+{
+  "type": "iconButton",
+  "iconSize": 24,
+  "padding": {
+    "left": 8,
+    "top": 8,
+    "right": 8,
+    "bottom": 8
+  },
+  "alignment": "center",
+  "splashRadius": 20,
+  "color": "#000000",
+  "focusColor": "#FFC107",
+  "hoverColor": "#FF9800",
+  "highlightColor": "#FF5722",
+  "splashColor": "#FFEB3B",
+  "disabledColor": "#BDBDBD",
+  "onPressed": {},
+  "autofocus": false,
+  "tooltip": "Add Item",
+  "enableFeedback": true,
+  "constraints": {
+    "minWidth": 48,
+    "minHeight": 48
+  },
+  "style": {
+    "backgroundColor": "#FFC107",
+    "foregroundColor": "#000000",
+    "shape": {
+      "type": "roundedRectangleBorder",
+      "borderRadius": 8
+    }
+  },
+  "isSelected": false,
+  "selectedIcon": {
+    "type": "icon",
+    "icon": "check"
+  },
+  "icon": {
+    "type": "icon",
+    "icon": "add"
+  }
+}
+```
+
+  </Tab>
+  <Tab title="Preview">
+    <Frame>
+      <iframe
+        id="phluts"
+        src={iconButtonPreviewSrc}
+        title="Phluts Playground"
+        className="w-full rounded-xl border-0"
+        style={{ height: "640px" }}
+        loading="lazy"
+        onLoad={(event) => {
+          const iframe = event.currentTarget;
+          const targetOrigin = PLAYGROUND_BASE_URL;
+          const message = {
+            type: "phluts-preview-json",
+            payload: iconButtonPreviewJson
+          };
+
+          let attempts = 0;
+          const maxAttempts = 12;
+          const interval = setInterval(() => {
+            iframe.contentWindow?.postMessage(message, targetOrigin);
+            attempts += 1;
+
+            if (attempts >= maxAttempts) {
+              clearInterval(interval);
+            }
+          }, 250);
+        }}
+      />
+    </Frame>
+  </Tab>
+</Tabs>

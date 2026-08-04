@@ -1,0 +1,127 @@
+---
+title: "SliverToBoxAdapter"
+description: "A sliver that contains a single box widget."
+---
+
+import { PLAYGROUND_BASE_URL } from "/snippets/playground_base.mdx";
+
+export const sliverToBoxAdapterPreviewJson = {
+  "type": "sliverPadding",
+  "padding": 16,
+  "sliver": {
+    "type": "sliverToBoxAdapter",
+    "child": {
+      "type": "container",
+      "height": 150,
+      "color": "#4CAF50",
+      "child": {
+        "type": "center",
+        "child": {
+          "type": "text",
+          "data": "I am a Box inside a SliverToBoxAdapter!",
+          "style": {
+            "color": "#FFFFFF",
+            "fontWeight": "bold"
+          }
+        }
+      }
+    }
+  }
+};
+export const sliverToBoxAdapterPreviewSrc = `${PLAYGROUND_BASE_URL}/embed`;
+
+The Phluts SliverToBoxAdapter allows you to build a Flutter sliver-to-box-adapter widget using JSON. It creates a sliver that contains a single box widget.
+To know more about the sliver-to-box-adapter widget in Flutter, refer to
+the [official documentation](https://api.flutter.dev/flutter/widgets/SliverToBoxAdapter-class.html).
+
+## Properties
+
+| Property | Type                    | Description                          |
+|----------|-------------------------|--------------------------------------|
+| child    | `Map<String, dynamic>?` | The widget contained by this sliver. |
+
+## Example
+
+<Tabs sync={false}>
+  <Tab title="Dart">
+
+```dart
+PhlutsSliverPadding(
+  padding: PhlutsEdgeInsets.all(16),
+  sliver: PhlutsSliverToBoxAdapter(
+    child: PhlutsContainer(
+      height: 150,
+      color: PhlutsColors.green,
+      child: PhlutsCenter(
+        child: PhlutsText(
+          data: 'I am a Box inside a SliverToBoxAdapter!',
+          style: PhlutsTextStyle(color: PhlutsColors.white, fontWeight: PhlutsFontWeight.bold),
+        ),
+      ),
+    ),
+  ),
+)
+```
+
+  </Tab>
+  <Tab title="JSON">
+
+```json
+{
+  "type": "sliverPadding",
+  "padding": 16,
+  "sliver": {
+    "type": "sliverToBoxAdapter",
+    "child": {
+      "type": "container",
+      "height": 150,
+      "color": "#4CAF50",
+      "child": {
+        "type": "center",
+        "child": {
+          "type": "text",
+          "data": "I am a Box inside a SliverToBoxAdapter!",
+          "style": {
+            "color": "#FFFFFF",
+            "fontWeight": "bold"
+          }
+        }
+      }
+    }
+  }
+}
+```
+
+  </Tab>
+  <Tab title="Preview">
+    <Frame>
+      <iframe
+        id="phluts"
+        src={sliverToBoxAdapterPreviewSrc}
+        title="Phluts Playground"
+        className="w-full rounded-xl border-0"
+        style={{ height: "640px" }}
+        loading="lazy"
+        onLoad={(event) => {
+          const iframe = event.currentTarget;
+          const targetOrigin = PLAYGROUND_BASE_URL;
+          const message = {
+            type: "phluts-preview-json",
+            payload: sliverToBoxAdapterPreviewJson
+          };
+
+          let attempts = 0;
+          const maxAttempts = 12;
+          const interval = setInterval(() => {
+            iframe.contentWindow?.postMessage(message, targetOrigin);
+            attempts += 1;
+
+            if (attempts >= maxAttempts) {
+              clearInterval(interval);
+            }
+          }, 250);
+        }}
+      />
+    </Frame>
+  </Tab>
+</Tabs>

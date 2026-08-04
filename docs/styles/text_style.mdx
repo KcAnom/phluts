@@ -1,0 +1,310 @@
+---
+title: "Text Style"
+description: "Documentation for Text Style"
+---
+
+The Phluts TextStyle classes allow you to style text with fonts, colors, sizes, and decorations. There are two variants: custom text styles and theme-based text styles.
+
+## Custom Text Style Properties
+
+| Property              | Type      | Description                                              |
+|-----------------------|-----------|----------------------------------------------------------|
+| inherit               | `bool?`   | Whether to inherit from ambient DefaultTextStyle.        |
+| color                 | `String?` | Text color.                                              |
+| backgroundColor       | `String?` | Background color behind text.                            |
+| fontSize              | `double?` | Font size in logical pixels.                             |
+| fontWeight            | `String?` | Font weight (normal, bold, w100-w900).                   |
+| fontStyle             | `String?` | Font style: `normal` or `italic`.                        |
+| letterSpacing         | `double?` | Spacing between letters.                                 |
+| wordSpacing           | `double?` | Spacing between words.                                   |
+| textBaseline          | `String?` | Baseline alignment.                                      |
+| height                | `double?` | Line height as multiple of font size.                    |
+| decoration            | `String?` | Decoration line: `none`, `underline`, `overline`, `lineThrough`. |
+| decorationColor       | `String?` | Color for text decorations.                              |
+| decorationStyle       | `String?` | Decoration style: `solid`, `double`, `dotted`, `dashed`, `wavy`. |
+| decorationThickness   | `double?` | Thickness of decorations.                                |
+| fontFamily            | `String?` | Font family name.                                        |
+| fontFamilyFallback    | `List?`   | Fallback font families.                                  |
+| overflow              | `String?` | Text overflow: clip, fade, ellipsis, visible.            |
+
+## Basic Example
+
+<CodeGroup>
+```dart Dart
+PhlutsText(
+  data: 'Hello, World!',
+  style: PhlutsTextStyle(
+    fontSize: 24.0,
+    fontWeight: PhlutsFontWeight.bold,
+    color: PhlutsColors.blue,
+  ),
+)
+```
+
+```json JSON
+{
+  "type": "text",
+  "data": "Hello, World!",
+  "style": {
+    "fontSize": 24.0,
+    "fontWeight": "bold",
+    "color": "#2196F3"
+  }
+}
+```
+</CodeGroup>
+
+## Font Weights
+
+Available font weights:
+
+| Value   | Description           |
+|---------|-----------------------|
+| `w100`  | Thin                  |
+| `w200`  | Extra Light           |
+| `w300`  | Light                 |
+| `w400`  | Normal (default)      |
+| `w500`  | Medium                |
+| `w600`  | Semi Bold             |
+| `w700`  | Bold                  |
+| `w800`  | Extra Bold            |
+| `w900`  | Black                 |
+| `normal`| Same as w400          |
+| `bold`  | Same as w700          |
+
+<CodeGroup>
+```dart Dart
+PhlutsColumn(
+  children: [
+    PhlutsText(
+      data: 'Light Text',
+      style: PhlutsTextStyle(fontWeight: PhlutsFontWeight.w300),
+    ),
+    PhlutsText(
+      data: 'Normal Text',
+      style: PhlutsTextStyle(fontWeight: PhlutsFontWeight.normal),
+    ),
+    PhlutsText(
+      data: 'Bold Text',
+      style: PhlutsTextStyle(fontWeight: PhlutsFontWeight.bold),
+    ),
+  ],
+)
+```
+
+```json JSON
+{
+  "type": "column",
+  "children": [
+    {
+      "type": "text",
+      "data": "Light Text",
+      "style": { "fontWeight": "w300" }
+    },
+    {
+      "type": "text",
+      "data": "Normal Text",
+      "style": { "fontWeight": "normal" }
+    },
+    {
+      "type": "text",
+      "data": "Bold Text",
+      "style": { "fontWeight": "bold" }
+    }
+  ]
+}
+```
+</CodeGroup>
+
+## Text Decorations
+
+<CodeGroup>
+```dart Dart
+PhlutsColumn(
+  children: [
+    PhlutsText(
+      data: 'Underlined Text',
+      style: PhlutsTextStyle(
+        decoration: PhlutsTextDecorationLine.underline,
+        decorationColor: PhlutsColors.red,
+        decorationStyle: PhlutsTextDecorationStyle.solid,
+      ),
+    ),
+    PhlutsText(
+      data: 'Strikethrough Text',
+      style: PhlutsTextStyle(
+        decoration: PhlutsTextDecorationLine.lineThrough,
+      ),
+    ),
+    PhlutsText(
+      data: 'Wavy Underline',
+      style: PhlutsTextStyle(
+        decoration: PhlutsTextDecorationLine.underline,
+        decorationStyle: PhlutsTextDecorationStyle.wavy,
+        decorationColor: PhlutsColors.blue,
+      ),
+    ),
+  ],
+)
+```
+
+```json JSON
+{
+  "type": "column",
+  "children": [
+    {
+      "type": "text",
+      "data": "Underlined Text",
+      "style": {
+        "decoration": "underline",
+        "decorationColor": "#F44336",
+        "decorationStyle": "solid"
+      }
+    },
+    {
+      "type": "text",
+      "data": "Strikethrough Text",
+      "style": { "decoration": "lineThrough" }
+    },
+    {
+      "type": "text",
+      "data": "Wavy Underline",
+      "style": {
+        "decoration": "underline",
+        "decorationStyle": "wavy",
+        "decorationColor": "#2196F3"
+      }
+    }
+  ]
+}
+```
+</CodeGroup>
+
+## Theme-Based Text Style
+
+Use theme text styles to follow Material Design typography:
+
+| Theme Style      | Description                    |
+|------------------|--------------------------------|
+| `displayLarge`   | Largest display text           |
+| `displayMedium`  | Medium display text            |
+| `displaySmall`   | Small display text             |
+| `headlineLarge`  | Largest headline               |
+| `headlineMedium` | Medium headline                |
+| `headlineSmall`  | Small headline                 |
+| `titleLarge`     | Largest title                  |
+| `titleMedium`    | Medium title                   |
+| `titleSmall`     | Small title                    |
+| `bodyLarge`      | Large body text                |
+| `bodyMedium`     | Medium body text (default)     |
+| `bodySmall`      | Small body text                |
+| `labelLarge`     | Large label (buttons)          |
+| `labelMedium`    | Medium label                   |
+| `labelSmall`     | Small label                    |
+
+<CodeGroup>
+```dart Dart
+PhlutsColumn(
+  children: [
+    PhlutsText(
+      data: 'Headline',
+      style: PhlutsThemeTextStyle(textTheme: PhlutsMaterialTextStyle.headlineLarge),
+    ),
+    PhlutsText(
+      data: 'Body text goes here',
+      style: PhlutsThemeTextStyle(textTheme: PhlutsMaterialTextStyle.bodyMedium),
+    ),
+    PhlutsText(
+      data: 'Caption',
+      style: PhlutsThemeTextStyle(textTheme: PhlutsMaterialTextStyle.labelSmall),
+    ),
+  ],
+)
+```
+
+```json JSON
+{
+  "type": "column",
+  "children": [
+    {
+      "type": "text",
+      "data": "Headline",
+      "style": { "textTheme": "headlineLarge" }
+    },
+    {
+      "type": "text",
+      "data": "Body text goes here",
+      "style": { "textTheme": "bodyMedium" }
+    },
+    {
+      "type": "text",
+      "data": "Caption",
+      "style": { "textTheme": "labelSmall" }
+    }
+  ]
+}
+```
+</CodeGroup>
+
+## Overriding Theme Text Styles
+
+You can override specific properties of a theme-based text style using the `copyWith` method (in Dart) or by adding properties alongside `textTheme` (in JSON).
+
+<CodeGroup>
+```dart Dart
+PhlutsText(
+  data: 'Overridden Body Text',
+  style: PhlutsThemeData.textTheme.bodyMedium.copyWith(
+    color: PhlutsColors.red,
+    fontSize: 20,
+    fontWeight: PhlutsFontWeight.bold,
+  ),
+)
+```
+
+```json JSON
+{
+  "type": "text",
+  "data": "Overridden Body Text",
+  "style": {
+    "textTheme": "bodyMedium",
+    "color": "#F44336",
+    "fontSize": 20,
+    "fontWeight": "bold"
+  }
+}
+```
+</CodeGroup>
+
+## Complete Example
+
+<CodeGroup>
+```dart Dart
+PhlutsText(
+  data: 'Styled Text Example',
+  style: PhlutsTextStyle(
+    fontSize: 18.0,
+    fontWeight: PhlutsFontWeight.w600,
+    color: PhlutsColors.blue,
+    letterSpacing: 1.2,
+    height: 1.5,
+    fontStyle: PhlutsFontStyle.italic,
+  ),
+)
+```
+
+```json JSON
+{
+  "type": "text",
+  "data": "Styled Text Example",
+  "style": {
+    "fontSize": 18.0,
+    "fontWeight": "w600",
+    "color": "#2196F3",
+    "letterSpacing": 1.2,
+    "height": 1.5,
+    "fontStyle": "italic"
+  }
+}
+```
+</CodeGroup>

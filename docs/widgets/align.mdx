@@ -1,0 +1,140 @@
+---
+title: "Align"
+description: "Documentation for Align"
+---
+
+import { PLAYGROUND_BASE_URL } from "/snippets/playground_base.mdx";
+
+export const alignPreviewJson = {
+  "type": "scaffold",
+  "body": {
+    "type": "align",
+    "child": {
+      "type": "container",
+      "color": "#FC5632",
+      "height": 250,
+      "width": 200,
+      "child": {
+        "type": "align",
+        "alignment": "bottomCenter",
+        "child": {
+          "type": "text",
+          "data": "Flutter",
+          "style": {
+            "fontSize": 23,
+            "fontWeight": "w600"
+          }
+        }
+      }
+    }
+  }
+};
+export const alignPreviewSrc = `${PLAYGROUND_BASE_URL}/embed`;
+
+The Phluts Align allows you to build a Flutter Align widget using JSON.
+To know more about the align widget in Flutter, refer to the [official documentation](https://api.flutter.dev/flutter/widgets/Align-class.html).
+
+The playground centers the root widget; this example wraps `Align` in a `Scaffold` body so it gets full-screen constraints.
+
+## Properties
+
+| Property     | Type                       | Description                                                                   |
+|--------------|----------------------------|-------------------------------------------------------------------------------|
+| alignment    | `PhlutsAlignmentDirectional` | How to align the child.                                                       |
+| widthFactor  | `double`              | If non-null, sets its width to the child's width multiplied by this factor.   |
+| heightFactor | `double`              | If non-null, sets its height to the child's height multiplied by this factor. |
+| child        | `PhlutsWidget`          | The widget below this widget in the tree.                                     |
+
+## Example
+
+<Tabs sync={false}>
+  <Tab title="Dart">
+
+```dart
+PhlutsScaffold(
+  body: PhlutsAlign(
+    child: PhlutsContainer(
+      color: '#FC5632',
+      height: 250,
+      width: 200,
+      child: PhlutsAlign(
+        alignment: PhlutsAlignmentDirectional.bottomCenter,
+        child: PhlutsText(
+          data: 'Flutter',
+          style: PhlutsTextStyle(
+            fontSize: 23,
+            fontWeight: PhlutsFontWeight.w600,
+          ),
+        ),
+      ),
+    ),
+  ),
+)
+```
+
+  </Tab>
+
+  <Tab title="JSON">
+
+
+```json
+{
+  "type": "scaffold",
+  "body": {
+    "type": "align",
+    "child": {
+      "type": "container",
+      "color": "#FC5632",
+      "height": 250,
+      "width": 200,
+      "child": {
+        "type": "align",
+        "alignment": "bottomCenter",
+        "child": {
+          "type": "text",
+          "data": "Flutter",
+          "style": {
+            "fontSize": 23,
+            "fontWeight": "w600"
+          }
+        }
+      }
+    }
+  }
+}
+```
+
+  </Tab>
+
+  <Tab title="Preview">
+    <Frame>
+      <iframe
+        id="phluts"
+        src={alignPreviewSrc}
+        title="Phluts Playground"
+        className="w-full rounded-xl border-0"
+        style={{ height: "640px" }}
+        loading="lazy"
+        onLoad={(event) => {
+          const iframe = event.currentTarget;
+          const targetOrigin = PLAYGROUND_BASE_URL;
+          const message = {
+            type: "phluts-preview-json",
+            payload: alignPreviewJson
+          };
+
+          let attempts = 0;
+          const maxAttempts = 12;
+          const interval = setInterval(() => {
+            iframe.contentWindow?.postMessage(message, targetOrigin);
+            attempts += 1;
+
+            if (attempts >= maxAttempts) {
+              clearInterval(interval);
+            }
+          }, 250);
+        }}
+      />
+    </Frame>
+  </Tab>
+</Tabs>

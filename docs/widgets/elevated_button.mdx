@@ -1,0 +1,117 @@
+---
+title: "ElevatedButton"
+description: "Documentation for ElevatedButton"
+---
+
+import { PLAYGROUND_BASE_URL } from "/snippets/playground_base.mdx";
+
+export const elevatedButtonPreviewJson = {
+  "type": "elevatedButton",
+  "onPressed": {},
+  "onLongPress": {},
+  "onHover": {},
+  "onFocusChange": {},
+  "style": {
+    "backgroundColor": "primary",
+    "foregroundColor": "#FFFFFF"
+  },
+  "autofocus": false,
+  "clipBehavior": "none",
+  "child": {
+    "type": "text",
+    "data": "Click Me!"
+  }
+};
+export const elevatedButtonPreviewSrc = `${PLAYGROUND_BASE_URL}/embed`;
+
+The Phluts Elevated Button allows you to build a Flutter elevated button widget using JSON.
+To know more about the elevated button widget in Flutter, refer to the [official documentation](https://api.flutter.dev/flutter/material/ElevatedButton-class.html).
+
+## Properties
+
+| Property      | Type                    | Description                                                                        |
+|---------------|-------------------------|------------------------------------------------------------------------------------|
+| onPressed     | `PhlutsAction`            | The callback that is called when the button is tapped.                             |
+| onLongPress   | `PhlutsAction`            | The callback that is called when the button is long-pressed.                       |
+| onHover       | `PhlutsAction`            | The callback that is called when the button is hovered over.                       |
+| onFocusChange | `PhlutsAction`            | The callback that is called when the button's focus changes.                       |
+| style         | `PhlutsButtonStyle`       | The style to apply to the button.                                                  |
+| autofocus     | `bool`                  | Whether the button should be focused when the page is loaded. Defaults to `false`. |
+| clipBehavior  | `PhlutsClip`              | Determines how the content should be clipped. Defaults to `Clip.none`.             |
+| child         | `PhlutsWidget`            | The widget to display inside the button.                                           |
+
+## Example
+
+<Tabs sync={false}>
+  <Tab title="Dart">
+
+```dart
+PhlutsElevatedButton(
+  onPressed: PhlutsNoneAction(),
+  onLongPress: PhlutsNoneAction(),
+  style: PhlutsButtonStyle(
+    backgroundColor: 'primary',
+    foregroundColor: PhlutsColors.white,
+  ),
+  autofocus: false,
+  clipBehavior: PhlutsClip.none,
+  child: PhlutsText(data: 'Click Me!'),
+)
+```
+
+  </Tab>
+  <Tab title="JSON">
+
+```json
+{
+  "type": "elevatedButton",
+  "onPressed": {},
+  "onLongPress": {},
+  "onHover": {},
+  "onFocusChange": {},
+  "style": {
+    "backgroundColor": "primary",
+    "foregroundColor": "#FFFFFF"
+  },
+  "autofocus": false,
+  "clipBehavior": "none",
+  "child": {
+    "type": "text",
+    "data": "Click Me!"
+  }
+}
+```
+
+  </Tab>
+  <Tab title="Preview">
+    <Frame>
+      <iframe
+        id="phluts"
+        src={elevatedButtonPreviewSrc}
+        title="Phluts Playground"
+        className="w-full rounded-xl border-0"
+        style={{ height: "640px" }}
+        loading="lazy"
+        onLoad={(event) => {
+          const iframe = event.currentTarget;
+          const targetOrigin = PLAYGROUND_BASE_URL;
+          const message = {
+            type: "phluts-preview-json",
+            payload: elevatedButtonPreviewJson
+          };
+
+          let attempts = 0;
+          const maxAttempts = 12;
+          const interval = setInterval(() => {
+            iframe.contentWindow?.postMessage(message, targetOrigin);
+            attempts += 1;
+
+            if (attempts >= maxAttempts) {
+              clearInterval(interval);
+            }
+          }, 250);
+        }}
+      />
+    </Frame>
+  </Tab>
+</Tabs>

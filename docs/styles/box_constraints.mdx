@@ -1,0 +1,227 @@
+---
+title: "Box Constraints"
+description: "Documentation for Box Constraints"
+---
+
+The Phluts BoxConstraints class specifies minimum and maximum dimensions for a widget. It's commonly used with `ConstrainedBox` or as part of button styles.
+
+## Properties
+
+| Property  | Type      | Description                                    |
+|-----------|-----------|------------------------------------------------|
+| minWidth  | `double?` | Minimum width constraint in logical pixels.    |
+| maxWidth  | `double?` | Maximum width constraint in logical pixels.    |
+| minHeight | `double?` | Minimum height constraint in logical pixels.   |
+| maxHeight | `double?` | Maximum height constraint in logical pixels.   |
+
+## Example
+
+<CodeGroup>
+```dart Dart
+PhlutsConstrainedBox(
+  constraints: PhlutsBoxConstraints(
+    minWidth: 100.0,
+    maxWidth: 300.0,
+    minHeight: 50.0,
+    maxHeight: 200.0,
+  ),
+  child: PhlutsContainer(
+    color: PhlutsColors.blue,
+    child: PhlutsText(data: 'Constrained'),
+  ),
+)
+```
+
+```json JSON
+{
+  "type": "constrainedBox",
+  "constraints": {
+    "minWidth": 100.0,
+    "maxWidth": 300.0,
+    "minHeight": 50.0,
+    "maxHeight": 200.0
+  },
+  "child": {
+    "type": "container",
+    "color": "#2196F3",
+    "child": {
+      "type": "text",
+      "data": "Constrained"
+    }
+  }
+}
+```
+</CodeGroup>
+
+## Common Constraint Patterns
+
+### Fixed Width
+
+<CodeGroup>
+```dart Dart
+PhlutsConstrainedBox(
+  constraints: PhlutsBoxConstraints(
+    minWidth: 200.0,
+    maxWidth: 200.0,
+  ),
+  child: PhlutsElevatedButton(
+    child: PhlutsText(data: 'Fixed Width Button'),
+  ),
+)
+```
+
+```json JSON
+{
+  "type": "constrainedBox",
+  "constraints": {
+    "minWidth": 200.0,
+    "maxWidth": 200.0
+  },
+  "child": {
+    "type": "elevatedButton",
+    "child": { "type": "text", "data": "Fixed Width Button" }
+  }
+}
+```
+</CodeGroup>
+
+### Minimum Size
+
+<CodeGroup>
+```dart Dart
+PhlutsConstrainedBox(
+  constraints: PhlutsBoxConstraints(
+    minWidth: 150.0,
+    minHeight: 100.0,
+  ),
+  child: PhlutsCard(
+    child: PhlutsCenter(
+      child: PhlutsText(data: 'At least 150x100'),
+    ),
+  ),
+)
+```
+
+```json JSON
+{
+  "type": "constrainedBox",
+  "constraints": {
+    "minWidth": 150.0,
+    "minHeight": 100.0
+  },
+  "child": {
+    "type": "card",
+    "child": {
+      "type": "center",
+      "child": { "type": "text", "data": "At least 150x100" }
+    }
+  }
+}
+```
+</CodeGroup>
+
+### Maximum Size
+
+<CodeGroup>
+```dart Dart
+PhlutsConstrainedBox(
+  constraints: PhlutsBoxConstraints(
+    maxWidth: 400.0,
+    maxHeight: 300.0,
+  ),
+  child: PhlutsImage(
+    network: 'https://example.com/large-image.jpg',
+    fit: PhlutsBoxFit.contain,
+  ),
+)
+```
+
+```json JSON
+{
+  "type": "constrainedBox",
+  "constraints": {
+    "maxWidth": 400.0,
+    "maxHeight": 300.0
+  },
+  "child": {
+    "type": "image",
+    "network": "https://example.com/large-image.jpg",
+    "fit": "contain"
+  }
+}
+```
+</CodeGroup>
+
+## With Button Style
+
+<CodeGroup>
+```dart Dart
+PhlutsElevatedButton(
+  style: PhlutsButtonStyle(
+    minimumSize: PhlutsSize(width: 200.0, height: 48.0),
+    maximumSize: PhlutsSize(width: 300.0, height: 56.0),
+  ),
+  child: PhlutsText(data: 'Styled Button'),
+)
+```
+
+```json JSON
+{
+  "type": "elevatedButton",
+  "style": {
+    "minimumSize": { "width": 200.0, "height": 48.0 },
+    "maximumSize": { "width": 300.0, "height": 56.0 }
+  },
+  "child": {
+    "type": "text",
+    "data": "Styled Button"
+  }
+}
+```
+</CodeGroup>
+
+## Infinite Constraints
+
+Use `double.infinity` for unbounded constraints:
+
+<CodeGroup>
+```dart Dart
+PhlutsConstrainedBox(
+  constraints: PhlutsBoxConstraints(
+    minWidth: double.infinity, // Full width
+    minHeight: 100.0,
+  ),
+  child: PhlutsContainer(
+    color: PhlutsColors.blue,
+    child: PhlutsCenter(
+      child: PhlutsText(
+        data: 'Full Width',
+        style: PhlutsTextStyle(color: PhlutsColors.white),
+      ),
+    ),
+  ),
+)
+```
+
+```json JSON
+{
+  "type": "constrainedBox",
+  "constraints": {
+    "minWidth": "infinity",
+    "minHeight": 100.0
+  },
+  "child": {
+    "type": "container",
+    "color": "#2196F3",
+    "child": {
+      "type": "center",
+      "child": {
+        "type": "text",
+        "data": "Full Width",
+        "style": { "color": "#FFFFFF" }
+      }
+    }
+  }
+}
+```
+</CodeGroup>

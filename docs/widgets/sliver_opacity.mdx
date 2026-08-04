@@ -1,0 +1,137 @@
+---
+title: "SliverOpacity"
+description: "Documentation for SliverOpacity"
+---
+
+import { PLAYGROUND_BASE_URL } from "/snippets/playground_base.mdx";
+
+export const sliverOpacityPreviewJson = {
+  "type": "scaffold",
+  "body": {
+    "type": "customScrollView",
+    "slivers": [
+      {
+        "type": "sliverOpacity",
+        "opacity": 0.5,
+        "sliver": {
+          "type": "sliverToBoxAdapter",
+          "child": {
+            "type": "container",
+            "height": 200,
+            "color": "red",
+            "child": {
+              "type": "center",
+              "child": {
+                "type": "text",
+                "data": "I am a faded sliver"
+              }
+            }
+          }
+        }
+      }
+    ]
+  }
+};
+export const sliverOpacityPreviewSrc = `${PLAYGROUND_BASE_URL}/embed`;
+
+The Phluts SliverOpacity allows you to apply opacity to an entire sliver inside a `CustomScrollView`.
+
+It is useful for creating fade effects on scrollable content.
+
+To know more about the SliverOpacity widget in Flutter, refer to the
+[official documentation](https://api.flutter.dev/flutter/widgets/SliverOpacity-class.html).
+
+## Properties
+
+| Property                  | Type                    | Description                                                                 |
+|---------------------------|-------------------------|-----------------------------------------------------------------------------|
+| opacity                   | `double`                | The opacity to apply to the sliver. Must be between `0.0` and `1.0`.        |
+| alwaysIncludeSemantics    | `bool?`                 | Whether the sliver is always included in the semantics tree. Defaults to `false`. |
+| sliver                    | `Map<String, dynamic>?` | The sliver widget to which the opacity is applied.                          |
+
+## Example
+
+<Tabs sync={false}>
+  <Tab title="Dart">
+
+```dart
+PhlutsSliverOpacity(
+  opacity: 0.5,
+  sliver: PhlutsSliverToBoxAdapter(
+    child: PhlutsContainer(
+      height: 200,
+      color: 'red',
+      child: PhlutsCenter(
+        child: PhlutsText(data: 'I am a faded sliver'),
+      ),
+    ),
+  ),
+)
+```
+
+  </Tab>
+  <Tab title="JSON">
+
+```json
+{
+  "type": "scaffold",
+  "body": {
+    "type": "customScrollView",
+    "slivers": [
+      {
+        "type": "sliverOpacity",
+        "opacity": 0.5,
+        "sliver": {
+          "type": "sliverToBoxAdapter",
+          "child": {
+            "type": "container",
+            "height": 200,
+            "color": "red",
+            "child": {
+              "type": "center",
+              "child": {
+                "type": "text",
+                "data": "I am a faded sliver"
+              }
+            }
+          }
+        }
+      }
+    ]
+  }
+}
+```
+
+  </Tab>
+  <Tab title="Preview">
+    <Frame>
+      <iframe
+        id="phluts"
+        src={sliverOpacityPreviewSrc}
+        title="Phluts Playground"
+        className="w-full rounded-xl border-0"
+        style={{ height: "640px" }}
+        loading="lazy"
+        onLoad={(event) => {
+          const iframe = event.currentTarget;
+          const targetOrigin = PLAYGROUND_BASE_URL;
+          const message = {
+            type: "phluts-preview-json",
+            payload: sliverOpacityPreviewJson
+          };
+
+          let attempts = 0;
+          const maxAttempts = 12;
+          const interval = setInterval(() => {
+            iframe.contentWindow?.postMessage(message, targetOrigin);
+            attempts += 1;
+
+            if (attempts >= maxAttempts) {
+              clearInterval(interval);
+            }
+          }, 250);
+        }}
+      />
+    </Frame>
+  </Tab>
+</Tabs>

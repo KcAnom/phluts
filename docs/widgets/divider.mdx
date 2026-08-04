@@ -1,0 +1,150 @@
+---
+title: "Divider"
+description: "Documentation for Divider"
+---
+
+import { PLAYGROUND_BASE_URL } from "/snippets/playground_base.mdx";
+
+export const dividerPreviewJson = {
+  "type": "divider",
+  "thickness": 2,
+  "color": "#FF0000",
+  "indent": 16,
+  "endIndent": 16
+};
+export const dividerPreviewSrc = `${PLAYGROUND_BASE_URL}/embed`;
+
+The Phluts Divider allows you to build a Flutter Divider widget using JSON. It creates a thin horizontal line with padding on either side.
+To know more about the Divider widget in Flutter, refer to the [official documentation](https://api.flutter.dev/flutter/material/Divider-class.html).
+
+## Properties
+
+| Property   | Type        | Description                                              |
+|------------|-------------|----------------------------------------------------------|
+| height     | `double`    | The divider's height extent (total space occupied).      |
+| thickness  | `double`    | The thickness of the line drawn within the divider.      |
+| indent     | `double`    | The amount of empty space to the leading edge.           |
+| endIndent  | `double`    | The amount of empty space to the trailing edge.          |
+| color      | `PhlutsColor` | The color to use when painting the line.                 |
+
+## Example
+
+<Tabs sync={false}>
+  <Tab title="Dart">
+
+```dart
+PhlutsDivider(
+  thickness: 2.0,
+  color: PhlutsColors.red,
+  indent: 16.0,
+  endIndent: 16.0,
+)
+```
+
+  </Tab>
+  <Tab title="JSON">
+
+```json
+{
+  "type": "divider",
+  "thickness": 2,
+  "color": "#FF0000",
+  "indent": 16,
+  "endIndent": 16
+}
+```
+
+  </Tab>
+  <Tab title="Preview">
+    <Frame>
+      <iframe
+        id="phluts"
+        src={dividerPreviewSrc}
+        title="Phluts Playground"
+        className="w-full rounded-xl border-0"
+        style={{ height: "640px" }}
+        loading="lazy"
+        onLoad={(event) => {
+          const iframe = event.currentTarget;
+          const targetOrigin = PLAYGROUND_BASE_URL;
+          const message = {
+            type: "phluts-preview-json",
+            payload: dividerPreviewJson
+          };
+
+          let attempts = 0;
+          const maxAttempts = 12;
+          const interval = setInterval(() => {
+            iframe.contentWindow?.postMessage(message, targetOrigin);
+            attempts += 1;
+
+            if (attempts >= maxAttempts) {
+              clearInterval(interval);
+            }
+          }, 250);
+        }}
+      />
+    </Frame>
+  </Tab>
+</Tabs>
+## Divider in a List
+
+<CodeGroup>
+```dart Dart
+PhlutsColumn(
+  children: [
+    PhlutsListTile(
+      title: PhlutsText(data: 'Item 1'),
+    ),
+    PhlutsDivider(
+      height: 1.0,
+      thickness: 1.0,
+      color: PhlutsColors.grey,
+    ),
+    PhlutsListTile(
+      title: PhlutsText(data: 'Item 2'),
+    ),
+    PhlutsDivider(
+      height: 1.0,
+      thickness: 1.0,
+      color: PhlutsColors.grey,
+    ),
+    PhlutsListTile(
+      title: PhlutsText(data: 'Item 3'),
+    ),
+  ],
+)
+```
+
+```json JSON
+{
+  "type": "column",
+  "children": [
+    {
+      "type": "listTile",
+      "title": { "type": "text", "data": "Item 1" }
+    },
+    {
+      "type": "divider",
+      "height": 1.0,
+      "thickness": 1.0,
+      "color": "#E0E0E0"
+    },
+    {
+      "type": "listTile",
+      "title": { "type": "text", "data": "Item 2" }
+    },
+    {
+      "type": "divider",
+      "height": 1.0,
+      "thickness": 1.0,
+      "color": "#E0E0E0"
+    },
+    {
+      "type": "listTile",
+      "title": { "type": "text", "data": "Item 3" }
+    }
+  ]
+}
+```
+</CodeGroup>

@@ -1,0 +1,221 @@
+---
+title: "AlertDialog"
+description: "Documentation for AlertDialog"
+---
+
+import { PLAYGROUND_BASE_URL } from "/snippets/playground_base.mdx";
+
+export const alertDialogPreviewJson = {
+  "type": "alertDialog",
+  "content": {
+    "type": "padding",
+    "padding": {
+      "top": 0,
+      "left": 12,
+      "right": 12,
+      "bottom": 8
+    },
+    "child": {
+      "type": "text",
+      "data": "Discard draft?",
+      "align": "center",
+      "style": {
+        "fontSize": 14
+      }
+    }
+  },
+  "actions": [
+    {
+      "type": "textButton",
+      "child": {
+        "type": "text",
+        "data": "CANCEL"
+      },
+      "onPressed": {
+        "actionType": "navigate",
+        "navigationStyle": "pop"
+      }
+    },
+    {
+      "type": "sizedBox",
+      "width": 8
+    },
+    {
+      "type": "textButton",
+      "child": {
+        "type": "text",
+        "data": "DISCARD"
+      },
+      "onPressed": {
+        "actionType": "navigate",
+        "navigationStyle": "pop"
+      }
+    },
+    {
+      "type": "sizedBox",
+      "width": 12
+    }
+  ]
+};
+export const alertDialogPreviewSrc = `${PLAYGROUND_BASE_URL}/embed`;
+
+The Phluts AlertDialog allows you to build a Flutter alert dialog widget using JSON.
+To know more about the alert dialog widget in Flutter, refer to the [official documentation](https://api.flutter.dev/flutter/material/AlertDialog-class.html).
+
+## Properties
+
+| Property                     | Type                          | Description                                                                                  |
+|------------------------------|-------------------------------|----------------------------------------------------------------------------------------------|
+| icon                         | `PhlutsWidget`                  | The icon to display in the alert dialog.                                                     |
+| iconPadding                  | `PhlutsEdgeInsets`              | The padding around the icon.                                                                 |
+| iconColor                    | `PhlutsColor`                   | The color of the icon.                                                                       |
+| title                        | `PhlutsWidget`                  | The title widget of the alert dialog.                                                        |
+| titlePadding                 | `PhlutsEdgeInsets`              | The padding around the title.                                                                |
+| titleTextStyle               | `PhlutsTextStyle`               | The text style of the title.                                                                 |
+| content                      | `PhlutsWidget`                  | The content widget of the alert dialog.                                                      |
+| contentPadding               | `PhlutsEdgeInsets`              | The padding around the content.                                                              |
+| contentTextStyle             | `PhlutsTextStyle`               | The text style of the content.                                                               |
+| actions                      | `List<PhlutsWidget>`            | The actions to display in the alert dialog.                                                  |
+| actionsPadding               | `PhlutsEdgeInsets`              | The padding around the actions.                                                              |
+| actionsAlignment             | `PhlutsMainAxisAlignment`       | The alignment of the actions.                                                                |
+| actionsOverflowAlignment     | `PhlutsOverflowBarAlignment`    | The overflow alignment of the actions.                                                       |
+| actionsOverflowDirection     | `PhlutsVerticalDirection`       | The overflow direction of the actions.                                                       |
+| actionsOverflowButtonSpacing | `double`                      | The spacing between overflow buttons.                                                        |
+| buttonPadding                | `PhlutsEdgeInsets`              | The padding around the buttons.                                                              |
+| backgroundColor              | `PhlutsColor`                   | The background color of the alert dialog.                                                    |
+| elevation                    | `double`                      | The elevation of the alert dialog.                                                           |
+| shadowColor                  | `PhlutsColor`                   | The shadow color of the alert dialog.                                                        |
+| surfaceTintColor             | `PhlutsColor`                   | The surface tint color of the alert dialog.                                                  |
+| semanticLabel                | `String`                      | The semantic label for the alert dialog.                                                     |
+| insetPadding                 | `PhlutsEdgeInsets`              | The padding around the alert dialog. Defaults to `left: 40, right: 40, top: 24, bottom: 24`. |
+| clipBehavior                 | `PhlutsClip`                    | The clip behavior of the alert dialog. Defaults to `Clip.none`.                              |
+| shape                        | `PhlutsShapeBorder`             | The shape of the alert dialog.                                                               |
+| alignment                    | `PhlutsAlignmentGeometry`       | The alignment of the alert dialog.                                                           |
+| scrollable                   | `bool`                        | Whether the alert dialog is scrollable. Defaults to `false`.                                 |
+
+## Example
+
+<Tabs sync={false}>
+  <Tab title="Dart">
+
+```dart
+PhlutsAlertDialog(
+  content: PhlutsPadding(
+    padding: PhlutsEdgeInsets(
+      top: 0,
+      left: 12,
+      right: 12,
+      bottom: 8,
+    ),
+    child: PhlutsText(
+      data: 'Discard draft?',
+      textAlign: PhlutsTextAlign.center,
+      style: PhlutsTextStyle(fontSize: 14),
+    ),
+  ),
+  actions: [
+    PhlutsTextButton(
+      child: PhlutsText(data: 'CANCEL'),
+      onPressed: PhlutsNavigateAction(navigationStyle: NavigationStyle.pop),
+    ),
+    PhlutsSizedBox(width: 8),
+    PhlutsTextButton(
+      child: PhlutsText(data: 'DISCARD'),
+      onPressed: PhlutsNavigateAction(navigationStyle: NavigationStyle.pop),
+    ),
+    PhlutsSizedBox(width: 12),
+  ],
+)
+```
+
+  </Tab>
+  <Tab title="JSON">
+
+```json
+{
+  "type": "alertDialog",
+  "content": {
+    "type": "padding",
+    "padding": {
+      "top": 0,
+      "left": 12,
+      "right": 12,
+      "bottom": 8
+    },
+    "child": {
+      "type": "text",
+      "data": "Discard draft?",
+      "align": "center",
+      "style": {
+        "fontSize": 14
+      }
+    }
+  },
+  "actions": [
+    {
+      "type": "textButton",
+      "child": {
+        "type": "text",
+        "data": "CANCEL"
+      },
+      "onPressed": {
+        "actionType": "navigate",
+        "navigationStyle": "pop"
+      }
+    },
+    {
+      "type": "sizedBox",
+      "width": 8
+    },
+    {
+      "type": "textButton",
+      "child": {
+        "type": "text",
+        "data": "DISCARD"
+      },
+      "onPressed": {
+        "actionType": "navigate",
+        "navigationStyle": "pop"
+      }
+    },
+    {
+      "type": "sizedBox",
+      "width": 12
+    }
+  ]
+}
+```
+
+  </Tab>
+  <Tab title="Preview">
+    <Frame>
+      <iframe
+        id="phluts"
+        src={alertDialogPreviewSrc}
+        title="Phluts Playground"
+        className="w-full rounded-xl border-0"
+        style={{ height: "640px" }}
+        loading="lazy"
+        onLoad={(event) => {
+          const iframe = event.currentTarget;
+          const targetOrigin = PLAYGROUND_BASE_URL;
+          const message = {
+            type: "phluts-preview-json",
+            payload: alertDialogPreviewJson
+          };
+
+          let attempts = 0;
+          const maxAttempts = 12;
+          const interval = setInterval(() => {
+            iframe.contentWindow?.postMessage(message, targetOrigin);
+            attempts += 1;
+
+            if (attempts >= maxAttempts) {
+              clearInterval(interval);
+            }
+          }, 250);
+        }}
+      />
+    </Frame>
+  </Tab>
+</Tabs>

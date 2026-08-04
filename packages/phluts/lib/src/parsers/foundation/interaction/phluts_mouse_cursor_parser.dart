@@ -1,0 +1,81 @@
+import 'package:flutter/material.dart';
+import 'package:phluts_core/phluts_core.dart';
+
+extension PhlutsMouseCursorParser on PhlutsMouseCursor {
+  MouseCursor get parse {
+    switch (this) {
+      case PhlutsMouseCursor.none:
+        return SystemMouseCursors.basic;
+      case PhlutsMouseCursor.basic:
+        return SystemMouseCursors.basic;
+      case PhlutsMouseCursor.click:
+        return SystemMouseCursors.click;
+      case PhlutsMouseCursor.forbidden:
+        return SystemMouseCursors.forbidden;
+      case PhlutsMouseCursor.wait:
+        return SystemMouseCursors.wait;
+      case PhlutsMouseCursor.progress:
+        return SystemMouseCursors.progress;
+      case PhlutsMouseCursor.contextMenu:
+        return SystemMouseCursors.contextMenu;
+      case PhlutsMouseCursor.help:
+        return SystemMouseCursors.help;
+      case PhlutsMouseCursor.text:
+        return SystemMouseCursors.text;
+      case PhlutsMouseCursor.verticalText:
+        return SystemMouseCursors.verticalText;
+      case PhlutsMouseCursor.cell:
+        return SystemMouseCursors.cell;
+      case PhlutsMouseCursor.precise:
+        return SystemMouseCursors.precise;
+      case PhlutsMouseCursor.move:
+        return SystemMouseCursors.move;
+      case PhlutsMouseCursor.grab:
+        return SystemMouseCursors.grab;
+      case PhlutsMouseCursor.grabbing:
+        return SystemMouseCursors.grabbing;
+      case PhlutsMouseCursor.noDrop:
+        return SystemMouseCursors.noDrop;
+      case PhlutsMouseCursor.alias:
+        return SystemMouseCursors.alias;
+      case PhlutsMouseCursor.copy:
+        return SystemMouseCursors.copy;
+      case PhlutsMouseCursor.disappearing:
+        return SystemMouseCursors.disappearing;
+      case PhlutsMouseCursor.allScroll:
+        return SystemMouseCursors.allScroll;
+      case PhlutsMouseCursor.resizeLeftRight:
+        return SystemMouseCursors.resizeLeftRight;
+      case PhlutsMouseCursor.resizeUpDown:
+        return SystemMouseCursors.resizeUpDown;
+      case PhlutsMouseCursor.resizeUpLeftDownRight:
+        return SystemMouseCursors.resizeUpLeftDownRight;
+      case PhlutsMouseCursor.resizeUpRightDownLeft:
+        return SystemMouseCursors.resizeUpRightDownLeft;
+      case PhlutsMouseCursor.resizeUp:
+        return SystemMouseCursors.resizeUp;
+      case PhlutsMouseCursor.resizeDown:
+        return SystemMouseCursors.resizeDown;
+      case PhlutsMouseCursor.resizeLeft:
+        return SystemMouseCursors.resizeLeft;
+      case PhlutsMouseCursor.resizeRight:
+        return SystemMouseCursors.resizeRight;
+      case PhlutsMouseCursor.resizeUpLeft:
+        return SystemMouseCursors.resizeUpLeft;
+      case PhlutsMouseCursor.resizeUpRight:
+        return SystemMouseCursors.resizeUpRight;
+      case PhlutsMouseCursor.resizeDownLeft:
+        return SystemMouseCursors.resizeDownLeft;
+      case PhlutsMouseCursor.resizeDownRight:
+        return SystemMouseCursors.resizeDownRight;
+      case PhlutsMouseCursor.resizeColumn:
+        return SystemMouseCursors.resizeColumn;
+      case PhlutsMouseCursor.resizeRow:
+        return SystemMouseCursors.resizeRow;
+      case PhlutsMouseCursor.zoomIn:
+        return SystemMouseCursors.zoomIn;
+      case PhlutsMouseCursor.zoomOut:
+        return SystemMouseCursors.zoomOut;
+    }
+  }
+}

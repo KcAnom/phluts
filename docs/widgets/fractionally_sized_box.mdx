@@ -1,0 +1,105 @@
+---
+title: "FractionallySizedBox"
+description: "Documentation for FractionallySizedBox"
+---
+
+import { PLAYGROUND_BASE_URL } from "/snippets/playground_base.mdx";
+
+export const fractionallySizedBoxPreviewJson = {
+  "type": "fractionallySizedBox",
+  "alignment": "center",
+  "widthFactor": 0.5,
+  "heightFactor": 0.5,
+  "child": {
+    "type": "container",
+    "color": "#FF5733",
+    "child": {
+      "type": "text",
+      "data": "Hello, World!"
+    }
+  }
+};
+export const fractionallySizedBoxPreviewSrc = `${PLAYGROUND_BASE_URL}/embed`;
+
+The Phluts FractionallySizedBox allows you to build a Flutter fractionally sized box widget using JSON.
+To know more about the fractionally sized box widget in Flutter, refer to the [official documentation](https://api.flutter.dev/flutter/widgets/FractionallySizedBox-class.html).
+
+## Properties
+
+| Property     | Type                    | Description                                                                 |
+|--------------|-------------------------|-----------------------------------------------------------------------------|
+| alignment    | `PhlutsAlignment`         | The alignment of the child within the fractionally sized box.               |
+| widthFactor  | `double`                | The fraction of the available width to use.                                 |
+| heightFactor | `double`                | The fraction of the available height to use.                                |
+| child        | `PhlutsWidget`            | The widget to display inside the fractionally sized box.                    |
+
+## Example
+
+<Tabs sync={false}>
+  <Tab title="Dart">
+
+```dart
+PhlutsFractionallySizedBox(
+  alignment: PhlutsAlignment.center,
+  widthFactor: 0.5,
+  heightFactor: 0.5,
+  child: PhlutsContainer(
+    color: '#FF5733',
+    child: PhlutsText(data: 'Hello, World!'),
+  ),
+)
+```
+
+  </Tab>
+  <Tab title="JSON">
+
+```json
+{
+  "type": "fractionallySizedBox",
+  "alignment": "center",
+  "widthFactor": 0.5,
+  "heightFactor": 0.5,
+  "child": {
+    "type": "container",
+    "color": "#FF5733",
+    "child": {
+      "type": "text",
+      "data": "Hello, World!"
+    }
+  }
+}
+```
+
+  </Tab>
+  <Tab title="Preview">
+    <Frame>
+      <iframe
+        id="phluts"
+        src={fractionallySizedBoxPreviewSrc}
+        title="Phluts Playground"
+        className="w-full rounded-xl border-0"
+        style={{ height: "640px" }}
+        loading="lazy"
+        onLoad={(event) => {
+          const iframe = event.currentTarget;
+          const targetOrigin = PLAYGROUND_BASE_URL;
+          const message = {
+            type: "phluts-preview-json",
+            payload: fractionallySizedBoxPreviewJson
+          };
+
+          let attempts = 0;
+          const maxAttempts = 12;
+          const interval = setInterval(() => {
+            iframe.contentWindow?.postMessage(message, targetOrigin);
+            attempts += 1;
+
+            if (attempts >= maxAttempts) {
+              clearInterval(interval);
+            }
+          }, 250);
+        }}
+      />
+    </Frame>
+  </Tab>
+</Tabs>

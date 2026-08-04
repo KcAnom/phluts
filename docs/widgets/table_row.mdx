@@ -1,0 +1,191 @@
+---
+title: "TableRow"
+description: "Documentation for TableRow"
+---
+
+import { PLAYGROUND_BASE_URL } from "/snippets/playground_base.mdx";
+
+export const tableRowPreviewJson = {
+  "type": "tableRow",
+  "children": [
+    {
+      "type": "tableCell",
+      "child": {
+        "type": "container",
+        "color": "#40000000",
+        "height": 50,
+        "child": {
+          "type": "center",
+          "child": {
+            "type": "text",
+            "data": "Header 1"
+          }
+        }
+      }
+    },
+    {
+      "type": "tableCell",
+      "child": {
+        "type": "container",
+        "color": "#40000000",
+        "height": 50,
+        "child": {
+          "type": "center",
+          "child": {
+            "type": "text",
+            "data": "Header 2"
+          }
+        }
+      }
+    },
+    {
+      "type": "tableCell",
+      "child": {
+        "type": "container",
+        "color": "#40000000",
+        "height": 50,
+        "child": {
+          "type": "center",
+          "child": {
+            "type": "text",
+            "data": "Header 3"
+          }
+        }
+      }
+    }
+  ]
+};
+export const tableRowPreviewSrc = `${PLAYGROUND_BASE_URL}/embed`;
+
+PhlutsTableRow allows you to define the Flutter TableRow widget using JSON.
+To know more about the TableRow widget in Flutter, refer to the [official documentation](https://api.flutter.dev/flutter/widgets/TableRow-class.html).
+
+## Properties
+
+| Property   | Type                         | Description                                                                                                                                             |
+|------------|------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------|
+| decoration | `PhlutsDecoration?`           | Defines the decoration to be painted behind this row. See `PhlutsDecoration`.                                                                            |
+| children   | `List<Map<String, dynamic>>` | Defines the widgets the comprise the cells in this row. Use [`PhlutsTableCell`](./table_cell) to control the individual alignment of each cell in a row. |
+
+## Example
+
+<Tabs sync={false}>
+  <Tab title="Dart">
+
+```dart
+PhlutsTableRow(
+  children: [
+    PhlutsTableCell(
+      child: PhlutsContainer(
+        color: '#40000000',
+        height: 50.0,
+        child: PhlutsCenter(child: PhlutsText(data: 'Header 1')),
+      ),
+    ),
+    PhlutsTableCell(
+      child: PhlutsContainer(
+        color: '#40000000',
+        height: 50.0,
+        child: PhlutsCenter(child: PhlutsText(data: 'Header 2')),
+      ),
+    ),
+    PhlutsTableCell(
+      child: PhlutsContainer(
+        color: '#40000000',
+        height: 50.0,
+        child: PhlutsCenter(child: PhlutsText(data: 'Header 3')),
+      ),
+    ),
+  ],
+)
+```
+
+  </Tab>
+  <Tab title="JSON">
+
+```json
+{
+  "type": "tableRow",
+  "children": [
+    {
+      "type": "tableCell",
+      "child": {
+        "type": "container",
+        "color": "#40000000",
+        "height": 50,
+        "child": {
+          "type": "center",
+          "child": {
+            "type": "text",
+            "data": "Header 1"
+          }
+        }
+      }
+    },
+    {
+      "type": "tableCell",
+      "child": {
+        "type": "container",
+        "color": "#40000000",
+        "height": 50,
+        "child": {
+          "type": "center",
+          "child": {
+            "type": "text",
+            "data": "Header 2"
+          }
+        }
+      }
+    },
+    {
+      "type": "tableCell",
+      "child": {
+        "type": "container",
+        "color": "#40000000",
+        "height": 50,
+        "child": {
+          "type": "center",
+          "child": {
+            "type": "text",
+            "data": "Header 3"
+          }
+        }
+      }
+    }
+  ]
+}
+```
+
+  </Tab>
+  <Tab title="Preview">
+    <Frame>
+      <iframe
+        id="phluts"
+        src={tableRowPreviewSrc}
+        title="Phluts Playground"
+        className="w-full rounded-xl border-0"
+        style={{ height: "640px" }}
+        loading="lazy"
+        onLoad={(event) => {
+          const iframe = event.currentTarget;
+          const targetOrigin = PLAYGROUND_BASE_URL;
+          const message = {
+            type: "phluts-preview-json",
+            payload: tableRowPreviewJson
+          };
+
+          let attempts = 0;
+          const maxAttempts = 12;
+          const interval = setInterval(() => {
+            iframe.contentWindow?.postMessage(message, targetOrigin);
+            attempts += 1;
+
+            if (attempts >= maxAttempts) {
+              clearInterval(interval);
+            }
+          }, 250);
+        }}
+      />
+    </Frame>
+  </Tab>
+</Tabs>

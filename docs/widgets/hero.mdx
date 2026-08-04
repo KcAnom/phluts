@@ -1,0 +1,155 @@
+---
+title: "Hero"
+description: "Documentation for Hero"
+---
+
+import { PLAYGROUND_BASE_URL } from "/snippets/playground_base.mdx";
+
+export const heroPreviewJson = {
+  "type": "hero",
+  "tag": "userAvatar",
+  "child": {
+    "type": "image",
+    "network": "https://example.com/avatar.png"
+  }
+};
+export const heroPreviewSrc = `${PLAYGROUND_BASE_URL}/embed`;
+
+The Phluts Hero allows you to build a Flutter Hero widget using JSON. It enables hero animations between routes by tagging widgets with the same tag.
+To know more about the Hero widget in Flutter, refer to the [official documentation](https://api.flutter.dev/flutter/widgets/Hero-class.html).
+
+## Properties
+
+| Property                   | Type                    | Description                                                                 |
+|----------------------------|-------------------------|-----------------------------------------------------------------------------|
+| tag                        | `String`                | **Required.** The hero tag used to match heroes across routes.              |
+| child                      | `PhlutsWidget`            | **Required.** The widget subtree for this hero.                             |
+| createRectTween            | `PhlutsWidget`            | Optional rectangle tween configuration for the hero animation.              |
+| flightShuttleBuilder       | `PhlutsWidget`            | Optional widget used as the in-flight shuttle during the hero animation.    |
+| placeholderBuilder         | `PhlutsWidget`            | Optional placeholder widget displayed while the destination hero builds.    |
+| transitionOnUserGestures   | `bool`                  | Whether the hero should participate in a user gesture driven transition.    |
+
+## Example
+
+<Tabs sync={false}>
+  <Tab title="Dart">
+
+```dart
+PhlutsHero(
+  tag: 'userAvatar',
+  child: PhlutsImage(network: 'https://example.com/avatar.png'),
+)
+```
+
+  </Tab>
+  <Tab title="JSON">
+
+```json
+{
+  "type": "hero",
+  "tag": "userAvatar",
+  "child": {
+    "type": "image",
+    "network": "https://example.com/avatar.png"
+  }
+}
+```
+
+  </Tab>
+  <Tab title="Preview">
+    <Frame>
+      <iframe
+        id="phluts"
+        src={heroPreviewSrc}
+        title="Phluts Playground"
+        className="w-full rounded-xl border-0"
+        style={{ height: "640px" }}
+        loading="lazy"
+        onLoad={(event) => {
+          const iframe = event.currentTarget;
+          const targetOrigin = PLAYGROUND_BASE_URL;
+          const message = {
+            type: "phluts-preview-json",
+            payload: heroPreviewJson
+          };
+
+          let attempts = 0;
+          const maxAttempts = 12;
+          const interval = setInterval(() => {
+            iframe.contentWindow?.postMessage(message, targetOrigin);
+            attempts += 1;
+
+            if (attempts >= maxAttempts) {
+              clearInterval(interval);
+            }
+          }, 250);
+        }}
+      />
+    </Frame>
+  </Tab>
+</Tabs>
+## Hero Animation Example
+
+Here's an example showing a hero animation from a list to a detail page:
+
+<CodeGroup>
+```dart Dart
+// List Item
+PhlutsGestureDetector(
+  onTap: PhlutsNavigateAction(
+    routeName: '/detail',
+  ),
+  child: PhlutsHero(
+    tag: 'product-1',
+    child: PhlutsImage(
+      network: 'https://example.com/product.png',
+      width: 100.0,
+      height: 100.0,
+    ),
+  ),
+)
+
+// Detail Page
+PhlutsHero(
+  tag: 'product-1',
+  child: PhlutsImage(
+    network: 'https://example.com/product.png',
+    width: 300.0,
+    height: 300.0,
+  ),
+)
+```
+
+```json JSON
+// List Item
+{
+  "type": "gestureDetector",
+  "onTap": {
+    "actionType": "navigate",
+    "routeName": "/detail"
+  },
+  "child": {
+    "type": "hero",
+    "tag": "product-1",
+    "child": {
+      "type": "image",
+      "network": "https://example.com/product.png",
+      "width": 100.0,
+      "height": 100.0
+    }
+  }
+}
+
+// Detail Page
+{
+  "type": "hero",
+  "tag": "product-1",
+  "child": {
+    "type": "image",
+    "network": "https://example.com/product.png",
+    "width": 300.0,
+    "height": 300.0
+  }
+}
+```
+</CodeGroup>

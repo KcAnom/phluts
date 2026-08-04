@@ -1,0 +1,377 @@
+---
+title: "Rendering Phluts Widgets"
+description: "Learn different ways to render Phluts widgets: from Phluts Cloud, local JSON, assets, and network requests"
+---
+
+Phluts provides multiple ways to render widgets from JSON, each suitable for different scenarios. This guide covers all available rendering methods and when to use them.
+
+## Prerequisites
+
+Before rendering any Phluts widgets, you must initialize Phluts in your application:
+
+```dart
+import 'package:phluts/phluts.dart';
+import 'package:your_app/default_phluts_options.dart';
+
+void main() async {
+  await Phluts.initialize(options: defaultPhlutsOptions);
+  runApp(const MyApp());
+}
+```
+
+## Rendering Methods
+
+### 1. From Phluts Cloud (`Phluts` Widget)
+
+The most common approach for server-driven UI is fetching screens from Phluts Cloud using the `Phluts` widget.
+
+#### Usage
+
+```dart
+Phluts(routeName: 'home_screen')
+```
+
+This widget automatically fetches the screen JSON from Phluts Cloud based on the `routeName` and renders it.
+
+#### Dart Source Code
+
+The `home_screen` is defined in your `/phluts` folder as a Dart file. Here's an example:
+
+**`phluts/home_screen.dart`:**
+
+```dart
+import 'package:phluts/phluts_core.dart';
+
+@PhlutsScreen(screenName: 'home_screen')
+PhlutsWidget homeScreen() {
+  return PhlutsScaffold(
+    appBar: PhlutsAppBar(title: PhlutsText(data: 'Home')),
+    body: PhlutsColumn(
+      children: [
+        PhlutsText(data: 'Welcome to Phluts!'),
+        PhlutsElevatedButton(
+          onPressed: {
+            'actionType': 'navigate',
+            'routeName': 'details'
+          },
+          child: PhlutsText(data: 'Go to Details'),
+        ),
+      ],
+    ),
+  );
+}
+```
+
+After running `phluts deploy`, this Dart code is converted to JSON and uploaded to Phluts Cloud, making it available via `Phluts(routeName: 'home_screen')`.
+
+#### Properties
+
+| Property       | Type     | Description                                    |
+|----------------|----------|------------------------------------------------|
+| `routeName`    | `String` | The screen name registered in Phluts Cloud      |
+| `loadingWidget`| `Widget?`| Custom widget shown while fetching (optional)  |
+| `errorWidget`  | `Widget?`| Custom widget shown on error (optional)        |
+
+#### Example
+
+```dart
+import 'package:flutter/material.dart';
+import 'package:phluts/phluts.dart';
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Phluts Demo',
+      home: Phluts(
+        routeName: 'hello_world',
+        loadingWidget: const Center(child: CircularProgressIndicator()),
+        errorWidget: const Center(child: Text('Failed to load screen')),
+      ),
+    );
+  }
+}
+```
+
+#### When to Use
+
+- ✅ Production apps using Phluts Cloud
+- ✅ Dynamic content that changes server-side
+- ✅ A/B testing and experimentation
+- ✅ Apps that need instant updates without app store approval
+
+### 2. From JSON (`Phluts.fromJson`)
+
+Render a widget directly from a JSON map. Useful for testing, prototyping, or when you have JSON in memory.
+
+#### Usage
+
+```dart
+Phluts.fromJson(jsonMap, context)
+```
+
+#### Properties
+
+| Parameter      | Type                     | Description                            |
+|----------------|--------------------------|----------------------------------------|
+| `json`         | `Map<String, dynamic>?`  | The JSON object representing the widget|
+| `context`      | `BuildContext`           | The build context                      |
+
+#### Example
+
+```dart
+import 'package:flutter/material.dart';
+import 'package:phluts/phluts.dart';
+
+class HomeScreen extends StatelessWidget {
+  const HomeScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final json = {
+      'type': 'scaffold',
+      'body': {
+        'type': 'center',
+        'child': {
+          'type': 'text',
+          'data': 'Hello from JSON!'
+        }
+      }
+    };
+
+    return Phluts.fromJson(json, context) ?? const SizedBox();
+  }
+}
+```
+
+#### When to Use
+
+- ✅ Testing and development
+- ✅ Prototyping with hardcoded JSON
+- ✅ Rendering widgets from local variables
+- ✅ Converting existing JSON data to widgets
+
+### 3. From Assets (`Phluts.fromAssets`)
+
+Load and render widgets from JSON files bundled with your app. Perfect for static content or offline-first scenarios.
+
+#### Usage
+
+```dart
+Phluts.fromAssets(
+  'assets/screens/home.json',
+  loadingWidget: (context) => const CircularProgressIndicator(),
+  errorWidget: (context, error) => Text('Error: $error'),
+)
+```
+
+#### Properties
+
+| Parameter       | Type                      | Description                                    |
+|-----------------|---------------------------|------------------------------------------------|
+| `assetPath`     | `String`                  | Path to the JSON file in your assets folder    |
+| `loadingWidget` | `LoadingWidgetBuilder?`   | Widget shown while loading (optional)          |
+| `errorWidget`   | `ErrorWidgetBuilder?`     | Widget shown on error (optional)               |
+
+#### Setup
+
+First, add your JSON file to `pubspec.yaml`:
+
+```yaml
+flutter:
+  assets:
+    - assets/screens/home.json
+```
+
+#### Example
+
+```dart
+import 'package:flutter/material.dart';
+import 'package:phluts/phluts.dart';
+
+class OfflineScreen extends StatelessWidget {
+  const OfflineScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Phluts.fromAssets(
+      'assets/screens/home.json',
+      loadingWidget: (context) => const Scaffold(
+        body: Center(child: CircularProgressIndicator()),
+      ),
+      errorWidget: (context, error) => Scaffold(
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const Icon(Icons.error_outline, size: 48),
+              const SizedBox(height: 16),
+              Text('Failed to load: $error'),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+```
+
+#### When to Use
+
+- ✅ Static content that doesn't change
+- ✅ Offline-first applications
+- ✅ Fallback screens when network fails
+- ✅ Demo apps and prototypes
+
+### 4. From Network (`Phluts.fromNetwork`)
+
+Fetch and render widgets from any HTTP endpoint. Provides more control than Phluts Cloud and works with your own API.
+
+#### Usage
+
+```dart
+Phluts.fromNetwork(
+  context: context,
+  request: PhlutsNetworkRequest(
+    url: 'https://api.example.com/ui/screen',
+    method: Method.get,
+  ),
+  loadingWidget: (context) => const CircularProgressIndicator(),
+  errorWidget: (context, error) => Text('Error: $error'),
+)
+```
+
+#### Properties
+
+| Parameter       | Type                      | Description                                    |
+|-----------------|---------------------------|------------------------------------------------|
+| `context`       | `BuildContext`            | The build context                              |
+| `request`       | `PhlutsNetworkRequest`      | Network request configuration                  |
+| `loadingWidget` | `LoadingWidgetBuilder?`  | Widget shown while loading (optional)          |
+| `errorWidget`   | `ErrorWidgetBuilder?`     | Widget shown on error (optional)               |
+
+#### PhlutsNetworkRequest Properties
+
+| Property         | Type                       | Description                                    |
+|------------------|----------------------------|------------------------------------------------|
+| `url`            | `String`                   | The URL to fetch JSON from                     |
+| `method`         | `Method`                   | HTTP method (get, post, put, delete)          |
+| `headers`        | `Map<String, dynamic>?`    | HTTP headers (e.g., Authorization)            |
+| `queryParameters`| `Map<String, dynamic>?`     | URL query parameters                          |
+| `body`           | `dynamic`                  | Request body for POST/PUT                      |
+| `contentType`    | `String?`                  | Content-Type header (e.g., application/json)   |
+
+#### Example
+
+```dart
+import 'package:flutter/material.dart';
+import 'package:phluts/phluts.dart';
+
+class ApiDrivenScreen extends StatelessWidget {
+  const ApiDrivenScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Phluts.fromNetwork(
+      context: context,
+      request: PhlutsNetworkRequest(
+        url: 'https://api.example.com/ui/home',
+        method: Method.get,
+        headers: {
+          'Authorization': 'Bearer your-token-here',
+          'Accept': 'application/json',
+        },
+      ),
+      loadingWidget: (context) => const Scaffold(
+        body: Center(child: CircularProgressIndicator()),
+      ),
+      errorWidget: (context, error) => Scaffold(
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const Icon(Icons.cloud_off, size: 48),
+              const SizedBox(height: 16),
+              Text('Network error: $error'),
+              const SizedBox(height: 16),
+              ElevatedButton(
+                onPressed: () {
+                  // Retry logic
+                },
+                child: const Text('Retry'),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+```
+
+#### POST Request Example
+
+```dart
+Phluts.fromNetwork(
+  context: context,
+  request: PhlutsNetworkRequest(
+    url: 'https://api.example.com/ui/dynamic',
+    method: Method.post,
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer token',
+    },
+    body: {
+      'userId': '123',
+      'featureFlags': ['new-ui', 'experiments'],
+    },
+  ),
+)
+```
+
+#### When to Use
+
+- ✅ Custom API endpoints
+- ✅ Server-side rendering
+- ✅ Dynamic content based on user data
+- ✅ Multi-tenant applications
+
+## Comparison
+
+| Method              | Source              | Best For                              | Network Required |
+|---------------------|---------------------|---------------------------------------|------------------|
+| `Phluts(routeName:)`  | Phluts Cloud          | Production SDUI apps                  | ✅ Yes           |
+| `Phluts.fromJson()`   | In-memory JSON      | Testing, prototyping                  | ❌ No            |
+| `Phluts.fromAssets()` | Bundled JSON file   | Offline, static content               | ❌ No            |
+| `Phluts.fromNetwork()`| Custom API endpoint | Custom backends, advanced use cases   | ✅ Yes           |
+
+## Best Practices
+
+1. **Always provide loading states**: Users should know content is loading.
+2. **Handle errors gracefully**: Show meaningful error messages and retry options.
+3. **Use appropriate method**: Choose the rendering method that fits your use case.
+4. **Validate JSON**: Ensure your JSON follows Phluts schema before rendering.
+
+### Hybrid Approach
+
+```dart
+class HybridScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    // Try cloud first, fallback to assets
+    return FutureBuilder<bool>(
+      future: checkNetworkConnection(),
+      builder: (context, snapshot) {
+        if (snapshot.data == true) {
+          return Phluts(routeName: 'home_screen');
+        } else {
+          return Phluts.fromAssets('assets/screens/home.json');
+        }
+      },
+    );
+  }
+}
+```
+

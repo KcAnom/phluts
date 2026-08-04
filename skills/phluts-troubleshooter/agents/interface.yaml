@@ -1,0 +1,5 @@
+interface:
+  display_name: "Phluts Troubleshooter"
+  short_description: "Diagnose Phluts build, deploy, and runtime issues"
+  brand_color: "#15803D"
+  default_prompt: "Use $phluts-troubleshooter to diagnose why my Phluts screen is not building, deploying, or rendering."

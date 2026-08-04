@@ -1,0 +1,273 @@
+---
+title: "Shape Borders"
+description: "Documentation for Shape Borders"
+---
+
+Phluts provides various shape border classes to define the shape of widgets like buttons, cards, and containers.
+
+## Available Shape Borders
+
+| Class                         | Description                                      |
+|-------------------------------|--------------------------------------------------|
+| `PhlutsRoundedRectangleBorder`  | Rectangle with rounded corners.                  |
+| `PhlutsCircleBorder`            | Circular shape.                                  |
+| `PhlutsBeveledRectangleBorder`  | Rectangle with beveled (cut) corners.            |
+| `PhlutsContinuousRectangleBorder`| Rectangle with smooth continuous corners.       |
+
+## PhlutsRoundedRectangleBorder
+
+### Properties
+
+| Property     | Type                    | Description                              |
+|--------------|-------------------------|------------------------------------------|
+| borderRadius | `Map<String, dynamic>?` | Border radius for rounded corners.       |
+| side         | `Map<String, dynamic>?` | Border side properties.                  |
+
+### Example
+
+<CodeGroup>
+```dart Dart
+PhlutsElevatedButton(
+  style: PhlutsButtonStyle(
+    shape: PhlutsRoundedRectangleBorder(
+      borderRadius: PhlutsBorderRadius.all(12.0),
+      side: PhlutsBorderSide(
+        color: PhlutsColors.blue,
+        width: 2.0,
+      ),
+    ),
+  ),
+  child: PhlutsText(data: 'Rounded Button'),
+)
+```
+
+```json JSON
+{
+  "type": "elevatedButton",
+  "style": {
+    "shape": {
+      "type": "roundedRectangleBorder",
+      "borderRadius": 12.0,
+      "side": {
+        "color": "#2196F3",
+        "width": 2.0
+      }
+    }
+  },
+  "child": {
+    "type": "text",
+    "data": "Rounded Button"
+  }
+}
+```
+</CodeGroup>
+
+## PhlutsCircleBorder
+
+### Properties
+
+| Property     | Type                    | Description                              |
+|--------------|-------------------------|------------------------------------------|
+| eccentricity | `double?`               | Eccentricity of the circle (0.0 to 1.0). |
+| side         | `Map<String, dynamic>?` | Border side properties.                  |
+
+### Example
+
+<CodeGroup>
+```dart Dart
+PhlutsElevatedButton(
+  style: PhlutsButtonStyle(
+    shape: PhlutsCircleBorder(
+      side: PhlutsBorderSide(
+        color: PhlutsColors.green,
+        width: 2.0,
+      ),
+    ),
+  ),
+  child: PhlutsIcon(icon: 'add'),
+)
+```
+
+```json JSON
+{
+  "type": "elevatedButton",
+  "style": {
+    "shape": {
+      "type": "circleBorder",
+      "side": {
+        "color": "#4CAF50",
+        "width": 2.0
+      }
+    }
+  },
+  "child": {
+    "type": "icon",
+    "icon": "add"
+  }
+}
+```
+</CodeGroup>
+
+## PhlutsBeveledRectangleBorder
+
+### Properties
+
+| Property     | Type                    | Description                              |
+|--------------|-------------------------|------------------------------------------|
+| borderRadius | `Map<String, dynamic>?` | Border radius for beveled corners.       |
+| side         | `Map<String, dynamic>?` | Border side properties.                  |
+
+### Example
+
+<CodeGroup>
+```dart Dart
+PhlutsCard(
+  shape: PhlutsBeveledRectangleBorder(
+    borderRadius: PhlutsBorderRadius.all(16.0),
+  ),
+  child: PhlutsPadding(
+    padding: PhlutsEdgeInsets.all(16.0),
+    child: PhlutsText(data: 'Beveled Card'),
+  ),
+)
+```
+
+```json JSON
+{
+  "type": "card",
+  "shape": {
+    "type": "beveledRectangleBorder",
+    "borderRadius": 16.0
+  },
+  "child": {
+    "type": "padding",
+    "padding": 16.0,
+    "child": {
+      "type": "text",
+      "data": "Beveled Card"
+    }
+  }
+}
+```
+</CodeGroup>
+
+## With Container
+
+<CodeGroup>
+```dart Dart
+PhlutsContainer(
+  decoration: PhlutsBoxDecoration(
+    color: PhlutsColors.blue,
+    borderRadius: PhlutsBorderRadius.only(
+      topLeft: 20.0,
+      topRight: 20.0,
+      bottomLeft: 0.0,
+      bottomRight: 0.0,
+    ),
+  ),
+  padding: PhlutsEdgeInsets.all(16.0),
+  child: PhlutsText(
+    data: 'Top Rounded Container',
+    style: PhlutsTextStyle(color: PhlutsColors.white),
+  ),
+)
+```
+
+```json JSON
+{
+  "type": "container",
+  "decoration": {
+    "color": "#2196F3",
+    "borderRadius": {
+      "topLeft": 20.0,
+      "topRight": 20.0,
+      "bottomLeft": 0.0,
+      "bottomRight": 0.0
+    }
+  },
+  "padding": 16.0,
+  "child": {
+    "type": "text",
+    "data": "Top Rounded Container",
+    "style": { "color": "#FFFFFF" }
+  }
+}
+```
+</CodeGroup>
+
+## Button Shapes Comparison
+
+<CodeGroup>
+```dart Dart
+PhlutsColumn(
+  children: [
+    // Rounded Rectangle
+    PhlutsElevatedButton(
+      style: PhlutsButtonStyle(
+        shape: PhlutsRoundedRectangleBorder(
+          borderRadius: PhlutsBorderRadius.all(8.0),
+        ),
+      ),
+      child: PhlutsText(data: 'Rounded'),
+    ),
+    PhlutsSizedBox(height: 8.0),
+    // Stadium (pill shape)
+    PhlutsElevatedButton(
+      style: PhlutsButtonStyle(
+        shape: PhlutsRoundedRectangleBorder(
+          borderRadius: PhlutsBorderRadius.all(50.0),
+        ),
+      ),
+      child: PhlutsText(data: 'Stadium'),
+    ),
+    PhlutsSizedBox(height: 8.0),
+    // Circle
+    PhlutsElevatedButton(
+      style: PhlutsButtonStyle(
+        shape: PhlutsCircleBorder(),
+        minimumSize: PhlutsSize(width: 56.0, height: 56.0),
+      ),
+      child: PhlutsIcon(icon: 'favorite'),
+    ),
+  ],
+)
+```
+
+```json JSON
+{
+  "type": "column",
+  "children": [
+    {
+      "type": "elevatedButton",
+      "style": {
+        "shape": {
+          "type": "roundedRectangleBorder",
+          "borderRadius": 8.0
+        }
+      },
+      "child": { "type": "text", "data": "Rounded" }
+    },
+    { "type": "sizedBox", "height": 8.0 },
+    {
+      "type": "elevatedButton",
+      "style": {
+        "shape": {
+          "type": "roundedRectangleBorder",
+          "borderRadius": 50.0
+        }
+      },
+      "child": { "type": "text", "data": "Stadium" }
+    },
+    { "type": "sizedBox", "height": 8.0 },
+    {
+      "type": "elevatedButton",
+      "style": {
+        "shape": { "type": "circleBorder" },
+        "minimumSize": { "width": 56.0, "height": 56.0 }
+      },
+      "child": { "type": "icon", "icon": "favorite" }
+    }
+  ]
+}
+```
+</CodeGroup>

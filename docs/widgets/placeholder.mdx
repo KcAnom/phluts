@@ -1,0 +1,95 @@
+---
+title: "Placeholder"
+description: "Documentation for Placeholder"
+---
+
+import { PLAYGROUND_BASE_URL } from "/snippets/playground_base.mdx";
+
+export const placeholderPreviewJson = {
+  "type": "placeholder",
+  "color": "#455A64",
+  "strokeWidth": 2,
+  "fallbackWidth": 400,
+  "fallbackHeight": 400
+};
+export const placeholderPreviewSrc = `${PLAYGROUND_BASE_URL}/embed`;
+
+The Phluts `Placeholder` widget allows you to build the Flutter Placeholder widget using JSON.
+is used to draw a box that serves as a placeholder in your Flutter UI. It is typically used to represent areas where widgets are yet to be added or for debugging layout constraints.
+
+To learn more about the `Placeholder` widget, refer to the [official Flutter documentation](https://api.flutter.dev/flutter/widgets/Placeholder-class.html).
+
+---
+
+## Properties
+
+| Property         | Type                    | Description                                                                                             |
+|------------------|-------------------------|---------------------------------------------------------------------------------------------------------|
+| `color`          | `PhlutsColor`             | The hex color to paint behind the child. Defaults to `#455A64` (Blue Grey 700).                         |
+| `strokeWidth`    | `double`                | The width of the lines used to draw the placeholder box. Defaults to `2.0`.                             |
+| `fallbackWidth`  | `double`                | The width to use when the placeholder is in a situation with an unbounded width. Defaults to `400.0`.   |
+| `fallbackHeight` | `double`                | The height to use when the placeholder is in a situation with an unbounded height. Defaults to `400.0`. |
+| `child`          | `PhlutsWidget`            | The widget to be displayed inside the placeholder box.                                                  |
+
+---
+
+## Example
+
+<Tabs sync={false}>
+  <Tab title="Dart">
+
+```dart
+PhlutsPlaceholder(
+  color: '#455A64',
+  strokeWidth: 2.0,
+  fallbackWidth: 400.0,
+  fallbackHeight: 400.0,
+)
+```
+
+  </Tab>
+  <Tab title="JSON">
+
+```json
+{
+  "type": "placeholder",
+  "color": "#455A64",
+  "strokeWidth": 2,
+  "fallbackWidth": 400,
+  "fallbackHeight": 400
+}
+```
+
+  </Tab>
+  <Tab title="Preview">
+    <Frame>
+      <iframe
+        id="phluts"
+        src={placeholderPreviewSrc}
+        title="Phluts Playground"
+        className="w-full rounded-xl border-0"
+        style={{ height: "640px" }}
+        loading="lazy"
+        onLoad={(event) => {
+          const iframe = event.currentTarget;
+          const targetOrigin = PLAYGROUND_BASE_URL;
+          const message = {
+            type: "phluts-preview-json",
+            payload: placeholderPreviewJson
+          };
+
+          let attempts = 0;
+          const maxAttempts = 12;
+          const interval = setInterval(() => {
+            iframe.contentWindow?.postMessage(message, targetOrigin);
+            attempts += 1;
+
+            if (attempts >= maxAttempts) {
+              clearInterval(interval);
+            }
+          }, 250);
+        }}
+      />
+    </Frame>
+  </Tab>
+</Tabs>

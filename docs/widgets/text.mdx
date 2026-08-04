@@ -1,0 +1,100 @@
+---
+title: "Text"
+description: "Documentation for Text"
+---
+
+import { PLAYGROUND_BASE_URL } from "/snippets/playground_base.mdx";
+
+export const textPreviewJson = {
+  "type": "text",
+  "data": "Hello, World!",
+  "style": {
+    "color": "#FFFFFF",
+    "fontSize": 24
+  }
+};
+export const textPreviewSrc = `${PLAYGROUND_BASE_URL}/embed`;
+
+The Phluts Text allows you to build a Flutter Text widget using JSON.
+To know more about the text widget in Flutter, refer to the [official documentation](https://api.flutter.dev/flutter/widgets/Text-class.html).
+
+## Properties
+
+| Property        | Type                   | Description                                        |
+|-----------------|------------------------|----------------------------------------------------|
+| data            | `String`               | The text to display.                               |
+| children        | `List<PhlutsTextSpan>`   | The list of text spans to display.                 |
+| style           | `PhlutsTextStyle`        | The style to apply to the text.                    |
+| copyWithStyle   | `PhlutsCustomTextStyle`  | Optional style overrides applied on top of style.  |
+| textAlign       | `PhlutsTextAlign`        | The alignment of the text.                         |
+| textDirection   | `PhlutsTextDirection`    | The direction of the text.                         |
+| softWrap        | `bool`                 | Whether the text should break at soft line breaks. |
+| overflow        | `PhlutsTextOverflow`     | How visual overflow should be handled.             |
+| textScaleFactor | `double`               | The number of font pixels for each logical pixel.  |
+| maxLines        | `int`                  | The maximum number of lines to display.            |
+| semanticsLabel  | `String`               | The semantics label for the text.                  |
+| textWidthBasis  | `PhlutsTextWidthBasis`   | The width basis for the text.                      |
+| selectionColor  | `PhlutsColor`            | The color of the text selection.                   |
+
+## Example
+
+<Tabs sync={false}>
+  <Tab title="Dart">
+
+```dart
+PhlutsText(
+  data: 'Hello, World!',
+  style: PhlutsTextStyle(
+    color: PhlutsColors.white,
+    fontSize: 24.0,
+  ),
+)
+```
+
+  </Tab>
+  <Tab title="JSON">
+
+```json
+{
+  "type": "text",
+  "data": "Hello, World!",
+  "style": {
+    "color": "#FFFFFF",
+    "fontSize": 24
+  }
+}
+```
+
+  </Tab>
+  <Tab title="Preview">
+    <Frame>
+      <iframe
+        id="phluts"
+        src={textPreviewSrc}
+        title="Phluts Playground"
+        className="w-full rounded-xl border-0"
+        style={{ height: "640px" }}
+        loading="lazy"
+        onLoad={(event) => {
+          const iframe = event.currentTarget;
+          const targetOrigin = PLAYGROUND_BASE_URL;
+          const message = {
+            type: "phluts-preview-json",
+            payload: textPreviewJson
+          };
+
+          let attempts = 0;
+          const maxAttempts = 12;
+          const interval = setInterval(() => {
+            iframe.contentWindow?.postMessage(message, targetOrigin);
+            attempts += 1;
+
+            if (attempts >= maxAttempts) {
+              clearInterval(interval);
+            }
+          }, 250);
+        }}
+      />
+    </Frame>
+  </Tab>
+</Tabs>

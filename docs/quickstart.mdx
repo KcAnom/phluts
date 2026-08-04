@@ -1,0 +1,242 @@
+---
+title: "Quickstart"
+description: "Get your first Phluts app running in under 5 minutes. This guide covers CLI setup, Phluts Cloud integration, and building your first server-driven UI."
+---
+
+## Prerequisites
+
+- Flutter SDK: `>=3.35.0`
+- Dart SDK: `>=3.0.0 <4.0.0`
+
+## Create a Flutter app (if needed)
+
+If you don't already have a Flutter app, create one and navigate into it:
+
+```bash
+flutter create phluts_demo
+cd phluts_demo
+```
+
+## Sign up
+
+The first thing you'll need to do is sign up for a Phluts account. It's free and only takes a few seconds.
+
+To create an account, head over to our Console and sign in with Google: [console.phluts.dev](https://console.phluts.dev).
+
+## Install Phluts CLI
+
+The Phluts CLI helps you scaffold projects, manage screens, and deploy to Phluts Cloud.
+
+<Tabs>
+<Tab title="macOS / Linux">
+Open your terminal and run:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/PhlutsDev/install/main/install.sh | bash
+```
+
+</Tab>
+<Tab title="Windows">
+Open PowerShell and run:
+```bash
+irm https://raw.githubusercontent.com/PhlutsDev/install/main/install.ps1 | iex
+```
+
+</Tab>
+</Tabs>
+
+Verify installation:
+
+```bash
+phluts --version
+```
+
+## Login to Phluts
+
+Run the login command. This opens your browser to authenticate with Google.
+
+```bash
+phluts login
+```
+
+## Initialize Phluts in your project
+
+From your Flutter app directory, initialize Phluts:
+
+```bash
+phluts init
+```
+You'll be prompted to select an option. You can either choose to use an existing project or create a new one.
+
+```bash
+phluts_demo % phluts init
+
+
+           ######   ########    ####      ######  
+          ##    ##     ##      ##  ##    ##    ## 
+          ##           ##     ##    ##   ##       
+           #####       ##     ########   ##       
+                ##     ##     ##    ##   ##       
+          ##    ##     ##     ##    ##   ##    ## 
+           ######      ##     ##    ##    ######  
+
+
+[INFO] Initializing Phluts project in this directory: 
+ /Users/StudioProjects/phluts_app/phluts_demo
+? Please select an option: ›                                                                                                                                                             
+❯ Use an existing project                                                                                                                                                                
+  Create a new project                                                                                                                                                                   
+  Don't set up a default project  
+```
+
+We'll select "Create a new project". Name it `phluts demo` and press enter.
+
+```bash
+✔ Please select an option: · Create a new project
+✔ Enter project name: · phluts demo
+✔ Enter project description (optional): ·
+[INFO] Initializing project: phluts demo
+```
+
+<Note>If you are not sure about other options, you can always hit enter to choose the default option.</Note>
+
+Phluts will now initialize the project and you'll see a message saying
+
+```bash
+[SUCCESS] ✓ Project initialized successfully!
+[INFO] Next steps:
+[INFO]   1. Add your Phluts widgets definitions to /phluts
+[INFO]   2. Run "phluts build" to convert Dart to JSON
+[INFO]   3. Run "phluts deploy" to deploy to cloud
+```
+
+`phluts init` will add the following to your project:
+- `phluts/hello_world.dart` – A Hello World example widget. All your Phluts widgets live in the `phluts` folder.
+- Adds `phluts` to your `pubspec.yaml`.
+- Creates `default_phluts_options.dart`, which defines your `PhlutsOptions` (e.g., project name and ID).
+
+
+## Build Phluts widgets
+
+Head over to `phluts/hello_world.dart` and build the widget. Use the `@PhlutsScreen` annotation to mark the widget as a screen.
+
+```dart
+import 'package:phluts/phluts_core.dart';
+
+@PhlutsScreen(screenName: 'hello_world')
+PhlutsWidget helloWorld() {
+  return PhlutsScaffold(
+    body: PhlutsCenter(child: PhlutsText(data: 'Hello, world!')),
+  );
+}
+```
+
+Phluts follows Flutter's conventions for building widgets. For example, to use Flutter's `Scaffold`, use the `PhlutsScaffold` widget.
+
+## Deploy Phluts widgets
+
+Now that we have our widget built, we can deploy it to Phluts Cloud.
+
+```bash
+phluts deploy
+```
+
+This finds all widgets in the `phluts` folder, builds them, and deploys them to Phluts Cloud.
+
+```bash
+phluts_demo % phluts deploy
+[INFO] Building project before deployment...
+[INFO] Building Phluts project...
+[INFO] Source directory: phluts
+[INFO] Output directory: phluts/.build
+[INFO] Found 1 .dart file(s) to process
+[INFO] Found 1 @PhlutsScreen annotated function(s) in phluts/hello_world.dart
+[INFO] ✓ Generated: hello_world.json
+[SUCCESS] ✓ Build completed successfully!
+[INFO] Processed 1 function(s) and generated JSON files
+[INFO] Build completed. Starting deployment...
+[INFO] Deploying screens to cloud...
+[INFO] Uploading: hello_world.json
+[SUCCESS] ✓ Uploaded: hello_world.json
+[SUCCESS] ✓ Deployment completed successfully!
+[INFO] Deployed 1 file(s)
+```
+
+## Initialize Phluts
+
+Now that your project is set up, open `main.dart` and initialize Phluts.
+
+```dart
+import 'package:phluts_demo/default_phluts_options.dart';
+import 'package:flutter/material.dart';
+import 'package:phluts/phluts.dart';
+
+void main() async {
+  await Phluts.initialize(options: defaultPhlutsOptions);
+  runApp(const MyApp());
+}
+```
+
+Now that Phluts is initialized, our app is ready to be dynamic and server-driven.
+
+We can now render our `hello_world` screen using the `phluts` widget.
+
+```dart
+Phluts(routeName: 'hello_world'),
+```
+
+Here is the full example:
+
+
+```dart
+import 'package:example_app/default_phluts_options.dart';
+import 'package:flutter/material.dart';
+import 'package:phluts/phluts.dart';
+
+void main() async {
+  await Phluts.initialize(options: defaultPhlutsOptions);
+
+  runApp(const MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Flutter Demo',
+      theme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+      ),
+      home: const Phluts(routeName: 'hello_world'),
+    );
+  }
+}
+```
+
+That's it!! With just a few lines of code, your SDUI app is up and running.
+
+<img src="/assets/hello_world.png" alt="Hello World"  width="360px"/>
+
+When you make changes in `phluts/hello_world.dart`, run `phluts deploy` and your app will update instantly — no App Store or Play Store approvals needed.
+
+## Phluts Cloud
+
+Open the Phluts Cloud dashboard to see your deployed screen: [console.phluts.dev](https://console.phluts.dev).
+
+<img src="/assets/console.png" alt="Phluts Cloud" />
+
+<Note>
+Verification: After deploying, run your app. You should see the `hello_world` screen. In the Console, the screen appears under your project's Screens list.
+</Note>
+
+---
+
+You're all set. Next, explore widgets and actions, or jump into the CLI guide:
+
+- [Widgets](/widgets/align)
+- [Actions](/actions/navigate)
+- [CLI](/cli)
+
+Need help? Join the community on [Discord](https://discord.com/invite/vTGsVRK86V) or open an issue on [GitHub](https://github.com/PhlutsDev/phluts/issues).

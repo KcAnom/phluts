@@ -1,0 +1,5 @@
+interface:
+  display_name: "Phluts Custom Extensions"
+  short_description: "Build custom Phluts widgets/actions with parsers"
+  brand_color: "#15803D"
+  default_prompt: "Use $phluts-custom-extensions to scaffold a custom widget or action parser for my Phluts app."

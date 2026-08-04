@@ -1,0 +1,15 @@
+name: phluts_logger
+description: A lightweight and reusable logging utility for the Phluts framework.
+version: 1.1.0
+homepage: https://github.com/PhlutsDev/phluts
+repository: https://github.com/PhlutsDev/phluts/tree/dev/packages/phluts_logger
+
+environment:
+  sdk: ^3.8.1
+
+dependencies:
+  logger: ^2.5.0
+
+dev_dependencies:
+  test: ^1.24.0
+  lints: ^6.0.0

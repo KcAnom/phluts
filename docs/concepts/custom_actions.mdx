@@ -1,0 +1,266 @@
+---
+title: "Building Custom Actions"
+description: "Learn how to create custom PhlutsAction classes that extend Phluts functionality and enable custom behaviors in your server-driven UI"
+---
+
+While Phluts provides various built-in actions (navigation, dialogs, network requests, etc.), you may need to create custom actions for your specific use cases. This guide walks you through creating custom PhlutsAction classes that work seamlessly with Phluts's JSON serialization and parser system.
+
+## What is a Custom PhlutsAction?
+
+A custom PhlutsAction is a Dart class that:
+- Extends the `PhlutsAction` base class
+- Can be serialized to and deserialized from JSON
+- Works with Phluts's action parser system to execute behaviors
+- Can be triggered from widgets in your JSON definitions
+
+Custom actions enable you to:
+- Integrate third-party services and APIs
+- Implement business-specific logic
+- Extend Phluts's action functionality beyond built-in actions
+- Create reusable behaviors for your application
+
+## Prerequisites
+
+Before creating a custom action, ensure you have:
+
+1. **Dependencies**: `phluts` and `json_annotation` packages
+2. **Code Generation**: `build_runner` for generating JSON serialization code
+3. **Parser**: A corresponding action parser to execute your action.
+
+## Step-by-Step Guide
+
+### Step 1: Define Your Action Class
+
+Create a new file (e.g., `lib/actions/phluts_share_action.dart`) and define your action class:
+
+```dart
+import 'package:json_annotation/json_annotation.dart';
+import 'package:phluts/phluts_core.dart';
+
+part 'phluts_share_action.g.dart';
+
+@JsonSerializable()
+class PhlutsShareAction extends PhlutsAction {
+  const PhlutsShareAction({
+    required this.text,
+    this.subject,
+    this.title,
+  });
+
+  final String text;
+  final String? subject;
+  final String? title;
+
+  @override
+  String get actionType => 'share';
+
+  factory PhlutsShareAction.fromJson(Map<String, dynamic> json) =>
+      _$PhlutsShareActionFromJson(json);
+
+  @override
+  Map<String, dynamic> toJson() => _$PhlutsShareActionToJson(this);
+}
+```
+
+### Step 2: Required Components
+
+Every custom PhlutsAction must include:
+
+#### 1. **Part File Declaration**
+
+```dart
+part 'phluts_share_action.g.dart';
+```
+
+This enables code generation for JSON serialization.
+
+#### 2. **JsonSerializable Annotation**
+
+```dart
+@JsonSerializable()
+```
+
+For nested actions or complex types, use `explicitToJson: true`:
+
+```dart
+@JsonSerializable(explicitToJson: true)
+```
+
+#### 3. **Action Type Getter**
+
+```dart
+@override
+String get actionType => 'share';
+```
+
+This unique identifier is used in JSON: `{"actionType": "share"}`.
+
+#### 4. **Constructor**
+
+```dart
+const PhlutsShareAction({
+  required this.text,
+  this.subject,
+});
+```
+
+The base `PhlutsAction` constructor handles JSON data internally.
+
+#### 5. **fromJson Factory Constructor**
+
+```dart
+factory PhlutsShareAction.fromJson(Map<String, dynamic> json) =>
+    _$PhlutsShareActionFromJson(json);
+```
+
+#### 6. **toJson Method**
+
+```dart
+@override
+Map<String, dynamic> toJson() => _$PhlutsShareActionToJson(this);
+```
+
+### Step 3: Generate Code
+
+Run code generation to create the `*.g.dart` file:
+
+```bash
+flutter pub run build_runner build --delete-conflicting-outputs
+```
+
+This generates `phluts_share_action.g.dart` with the serialization logic.
+
+### Step 4: Create an Action Parser
+
+To execute your action, create an action parser:
+
+```dart
+import 'package:flutter/material.dart';
+import 'package:phluts_framework/phluts_framework.dart';
+import 'package:share_plus/share_plus.dart';
+import 'package:your_app/actions/phluts_share_action.dart';
+
+class PhlutsShareActionParser implements PhlutsActionParser<PhlutsShareAction> {
+  const PhlutsShareActionParser();
+
+  @override
+  String get actionType => 'share';
+
+  @override
+  PhlutsShareAction getModel(Map<String, dynamic> json) =>
+      PhlutsShareAction.fromJson(json);
+
+  @override
+  FutureOr<dynamic> onCall(BuildContext context, PhlutsShareAction model) async {
+    return await Share.share(
+      model.text,
+      subject: model.subject,
+    );
+  }
+}
+```
+
+### Step 5: Register the Action Parser
+
+Register your action parser during Phluts initialization:
+
+```dart
+void main() async {
+  await Phluts.initialize(
+    options: defaultPhlutsOptions,
+    actionParsers: const [
+      PhlutsShareActionParser(),
+    ],
+  );
+  runApp(const MyApp());
+}
+```
+
+## Advanced Patterns
+
+### Using Converters
+
+Similar to widgets, actions can use converters for special types:
+
+#### DoubleConverter
+
+For `double` fields that may come as integers in JSON:
+
+```dart
+import 'package:phluts/phluts_core.dart';
+
+@JsonSerializable()
+class PhlutsCustomAction extends PhlutsAction {
+  const PhlutsCustomAction({
+    this.duration,
+  });
+
+  @DoubleConverter()
+  final double? duration;
+
+  @override
+  String get actionType => 'customAction';
+
+  // ... fromJson and toJson
+}
+```
+
+## Using Custom Actions
+
+**In Dart (phluts/ folder)**
+
+```dart
+import 'package:phluts/phluts_core.dart';
+import 'package:your_app/actions/phluts_share_action.dart';
+
+@PhlutsScreen(screenName: 'article')
+PhlutsWidget articleScreen() {
+  return PhlutsScaffold(
+    body: PhlutsColumn(
+      children: [
+        PhlutsText(data: 'Article Title'),
+        PhlutsElevatedButton(
+          onPressed: PhlutsShareAction(
+            text: 'Check out this article!',
+            subject: 'Article',
+          ).toJson(),
+          child: PhlutsText(data: 'Share'),
+        ),
+      ],
+    ),
+  );
+}
+```
+
+After `phluts build` or `phluts deploy`, your generated json looks like this:
+
+```json
+{
+  "type": "elevatedButton",
+  "onPressed": {
+    "actionType": "share",
+    "text": "Check out this article!",
+    "subject": "Article"
+  },
+  "child": {
+    "type": "text",
+    "data": "Share"
+  }
+}
+```
+
+Actions are commonly used in widget `onPressed`, `onTap`, and other callback properties. For example:
+
+```json
+{
+  "type": "gestureDetector",
+  "onTap": {
+    "actionType": "share",
+    "text": "Shared content"
+  },
+  "child": {
+    "type": "text",
+    "data": "Tap to share"
+  }
+}
+```

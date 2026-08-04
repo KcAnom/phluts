@@ -1,0 +1,168 @@
+---
+title: "InkWell"
+description: "Documentation for InkWell"
+---
+
+import { PLAYGROUND_BASE_URL } from "/snippets/playground_base.mdx";
+
+export const inkWellPreviewJson = {
+  "type": "inkWell",
+  "child": {
+    "type": "padding",
+    "padding": {
+      "top": 20,
+      "bottom": 20,
+      "right": 20,
+      "left": 20
+    },
+    "child": {
+      "type": "text",
+      "data": "Hello, World! from Inkwell",
+      "textAlign": "center"
+    }
+  },
+  "splashColor": "#E1BEE7",
+  "borderRadius": {
+    "topLeft": 20,
+    "topRight": 20,
+    "bottomLeft": 20,
+    "bottomRight": 20
+  },
+  "radius": 20,
+  "hoverDuration": {
+    "seconds": 10
+  },
+  "onTap": {}
+};
+export const inkWellPreviewSrc = `${PLAYGROUND_BASE_URL}/embed`;
+
+**Phluts InkWell** allows you to build the Flutter `InkWell` widget using JSON.  
+To learn more about the `InkWell` widget in Flutter, refer to the [official documentation](https://api.flutter.dev/flutter/material/InkWell-class.html).
+
+## Properties
+| Property                | Type                         | Description                                                                 |
+|-------------------------|------------------------------|-----------------------------------------------------------------------------|
+| `child`                 | `PhlutsWidget`                 | The widget below this InkWell.     |
+| `onTap`                 | `PhlutsAction`                 | Called when the user taps the InkWell.                                     |
+| `onDoubleTap`           | `PhlutsAction`                 | Called when the user double taps the InkWell.                              |
+| `onLongPress`           | `PhlutsAction`                 | Called when the user presses and holds for a long duration.                |
+| `onTapDown`             | `PhlutsAction`                 | Called when a tap gesture starts.                                          |
+| `onTapUp`               | `PhlutsAction`                 | Called when a tap gesture is lifted.                                       |
+| `onTapCancel`           | `PhlutsAction`                 | Called when a tap gesture is aborted.                                      |
+| `onSecondaryTap`        | `PhlutsAction`                 | Called for a secondary tap (e.g., right-click on desktop).                 |
+| `onSecondaryTapUp`      | `PhlutsAction`                 | Called when a secondary tap is lifted.                                     |
+| `onSecondaryTapDown`    | `PhlutsAction`                 | Called when a secondary tap gesture starts.                                |
+| `onSecondaryTapCancel`  | `PhlutsAction`                 | Called when a secondary tap gesture is aborted.                            |
+| `onHighlightChanged`    | `PhlutsAction`                 | Called when the InkWell highlight changes (pressed state).                 |
+| `onHover`               | `PhlutsAction`                 | Called when a pointer enters or exits the widget area.                     |
+| `mouseCursor`           | `PhlutsMouseCursor`            | Defines the mouse cursor when it hovers over the InkWell.                  |
+| `focusColor`            | `PhlutsColor`                  | Color of the focus highlight.                                              |
+| `hoverColor`            | `PhlutsColor`                  | Color when a pointer hovers over the InkWell.                              |
+| `highlightColor`        | `PhlutsColor`                  | Color when the InkWell is pressed.                                         |
+| `overlayColor`          | `PhlutsColor`                  | Ripple effect color over the child.                                        |
+| `splashColor`           | `PhlutsColor`                  | The splash color of the ripple.                                            |
+| `radius`                | `double`                     | Defines the splash radius.                                                 |
+| `borderRadius`          | `PhlutsBorderRadius`           | Sets rounded corners for the ripple effect.                                |
+| `customBorder`          | `PhlutsBorder`                 | Custom border shape for clipping and ripple.                               |
+| `enableFeedback`        | `bool`                       | Whether to play feedback (e.g., sound, vibration) on tap.                  |
+| `excludeFromSemantics`  | `bool`                       | Whether to exclude from accessibility tools like screen readers.           |
+| `canRequestFocus`       | `bool`                       | Whether this widget can request focus.                                     |
+| `onFocusChange`         | `PhlutsAction`                 | Callback for when the focus changes.                                       |
+| `autofocus`             | `bool`                       | Automatically focuses when the widget is built.                            |
+| `hoverDuration`         | `PhlutsDuration`               | Duration for the hover animation effect.                                   |
+
+## Example
+
+<Tabs sync={false}>
+  <Tab title="Dart">
+
+```dart
+PhlutsInkWell(
+  child: PhlutsPadding(
+    padding: PhlutsEdgeInsets(top: 20, bottom: 20, right: 20, left: 20),
+    child: PhlutsText(
+      data: 'Hello, World! from Inkwell',
+      textAlign: PhlutsTextAlign.center,
+    ),
+  ),
+  splashColor: PhlutsColors.purple,
+  borderRadius: PhlutsBorderRadius(
+    topLeft: 20,
+    topRight: 20,
+    bottomLeft: 20,
+    bottomRight: 20,
+  ),
+  radius: 20,
+  hoverDuration: PhlutsDuration(seconds: 10),
+  onTap: PhlutsNoneAction(),
+)
+```
+
+  </Tab>
+  <Tab title="JSON">
+
+```json
+{
+  "type": "inkWell",
+  "child": {
+    "type": "padding",
+    "padding": {
+      "top": 20,
+      "bottom": 20,
+      "right": 20,
+      "left": 20
+    },
+    "child": {
+      "type": "text",
+      "data": "Hello, World! from Inkwell",
+      "textAlign": "center"
+    }
+  },
+  "splashColor": "#E1BEE7",
+  "borderRadius": {
+    "topLeft": 20,
+    "topRight": 20,
+    "bottomLeft": 20,
+    "bottomRight": 20
+  },
+  "radius": 20,
+  "hoverDuration": {
+    "seconds": 10
+  },
+  "onTap": {}
+}
+```
+
+  </Tab>
+  <Tab title="Preview">
+    <Frame>
+      <iframe
+        id="phluts"
+        src={inkWellPreviewSrc}
+        title="Phluts Playground"
+        className="w-full rounded-xl border-0"
+        style={{ height: "640px" }}
+        loading="lazy"
+        onLoad={(event) => {
+          const iframe = event.currentTarget;
+          const targetOrigin = PLAYGROUND_BASE_URL;
+          const message = {
+            type: "phluts-preview-json",
+            payload: inkWellPreviewJson
+          };
+
+          let attempts = 0;
+          const maxAttempts = 12;
+          const interval = setInterval(() => {
+            iframe.contentWindow?.postMessage(message, targetOrigin);
+            attempts += 1;
+
+            if (attempts >= maxAttempts) {
+              clearInterval(interval);
+            }
+          }, 250);
+        }}
+      />
+    </Frame>
+  </Tab>
+</Tabs>
