@@ -59,3 +59,6 @@ tools/phluts-vscode/build/
 .vnodes/
 .gemini/
 .mcp.json
+.cline/
+.clinerules
+.windsurfrules
