@@ -6,52 +6,56 @@ description: "Documentation for TableRow"
 import { PLAYGROUND_BASE_URL } from "/snippets/playground_base.mdx";
 
 export const tableRowPreviewJson = {
-  "type": "tableRow",
+  "type": "table",
   "children": [
     {
-      "type": "tableCell",
-      "child": {
-        "type": "container",
-        "color": "#40000000",
-        "height": 50,
-        "child": {
-          "type": "center",
+      "children": [
+        {
+          "type": "tableCell",
           "child": {
-            "type": "text",
-            "data": "Header 1"
+            "type": "container",
+            "color": "#40000000",
+            "height": 50,
+            "child": {
+              "type": "center",
+              "child": {
+                "type": "text",
+                "data": "Header 1"
+              }
+            }
+          }
+        },
+        {
+          "type": "tableCell",
+          "child": {
+            "type": "container",
+            "color": "#40000000",
+            "height": 50,
+            "child": {
+              "type": "center",
+              "child": {
+                "type": "text",
+                "data": "Header 2"
+              }
+            }
+          }
+        },
+        {
+          "type": "tableCell",
+          "child": {
+            "type": "container",
+            "color": "#40000000",
+            "height": 50,
+            "child": {
+              "type": "center",
+              "child": {
+                "type": "text",
+                "data": "Header 3"
+              }
+            }
           }
         }
-      }
-    },
-    {
-      "type": "tableCell",
-      "child": {
-        "type": "container",
-        "color": "#40000000",
-        "height": 50,
-        "child": {
-          "type": "center",
-          "child": {
-            "type": "text",
-            "data": "Header 2"
-          }
-        }
-      }
-    },
-    {
-      "type": "tableCell",
-      "child": {
-        "type": "container",
-        "color": "#40000000",
-        "height": 50,
-        "child": {
-          "type": "center",
-          "child": {
-            "type": "text",
-            "data": "Header 3"
-          }
-        }
-      }
+      ]
     }
   ]
 };
@@ -105,52 +109,56 @@ PhlutsTableRow(
 
 ```json
 {
-  "type": "tableRow",
+  "type": "table",
   "children": [
     {
-      "type": "tableCell",
-      "child": {
-        "type": "container",
-        "color": "#40000000",
-        "height": 50,
-        "child": {
-          "type": "center",
+      "children": [
+        {
+          "type": "tableCell",
           "child": {
-            "type": "text",
-            "data": "Header 1"
+            "type": "container",
+            "color": "#40000000",
+            "height": 50,
+            "child": {
+              "type": "center",
+              "child": {
+                "type": "text",
+                "data": "Header 1"
+              }
+            }
+          }
+        },
+        {
+          "type": "tableCell",
+          "child": {
+            "type": "container",
+            "color": "#40000000",
+            "height": 50,
+            "child": {
+              "type": "center",
+              "child": {
+                "type": "text",
+                "data": "Header 2"
+              }
+            }
+          }
+        },
+        {
+          "type": "tableCell",
+          "child": {
+            "type": "container",
+            "color": "#40000000",
+            "height": 50,
+            "child": {
+              "type": "center",
+              "child": {
+                "type": "text",
+                "data": "Header 3"
+              }
+            }
           }
         }
-      }
-    },
-    {
-      "type": "tableCell",
-      "child": {
-        "type": "container",
-        "color": "#40000000",
-        "height": 50,
-        "child": {
-          "type": "center",
-          "child": {
-            "type": "text",
-            "data": "Header 2"
-          }
-        }
-      }
-    },
-    {
-      "type": "tableCell",
-      "child": {
-        "type": "container",
-        "color": "#40000000",
-        "height": 50,
-        "child": {
-          "type": "center",
-          "child": {
-            "type": "text",
-            "data": "Header 3"
-          }
-        }
-      }
+      ]
     }
   ]
 }

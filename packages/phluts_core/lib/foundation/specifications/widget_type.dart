@@ -115,9 +115,6 @@ enum WidgetType {
   /// Form widget
   form,
 
-  /// Form field widget
-  formField,
-
   /// Fractionally sized box widget
   fractionallySizedBox,
 
@@ -156,9 +153,6 @@ enum WidgetType {
 
   /// Navigation bar widget (Material 3)
   navigationBar,
-
-  /// Navigation destination widget (Material 3 navigation bar item)
-  navigationDestination,
 
   /// Navigation view widget. Displays one of its children based on the
   /// current index from a `defaultNavigationController`.
