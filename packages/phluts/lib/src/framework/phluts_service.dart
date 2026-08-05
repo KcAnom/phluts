@@ -321,10 +321,15 @@ class PhlutsService {
     return null;
   }
 
-  static FutureOr<dynamic> onCallFromJson(
+  /// Async on purpose: an action parser's `onCall` is itself async, so
+  /// returning its future unawaited let anything it threw land *after* this
+  /// try/catch had already returned — reaching the zone handler as an
+  /// unhandled error, past every bit of framework error handling. Awaiting is
+  /// what puts async action failures inside the catch below.
+  static Future<dynamic> onCallFromJson(
     Map<String, dynamic>? json,
     BuildContext context,
-  ) {
+  ) async {
     try {
       if (json == null) {
         return null;
@@ -360,7 +365,7 @@ class PhlutsService {
       }
 
       final model = phlutsActionParser.getModel(json);
-      return phlutsActionParser.onCall(context, model);
+      return await phlutsActionParser.onCall(context, model);
     } catch (e, stackTrace) {
       _logError(
         category: 'Action Parse Error',

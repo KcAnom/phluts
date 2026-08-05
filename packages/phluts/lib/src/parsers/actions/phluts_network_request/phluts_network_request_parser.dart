@@ -31,13 +31,30 @@ class PhlutsNetworkRequestParser
     }
 
     if (response?.statusCode != null) {
-      final result = model.results.firstWhere(
-        (element) => element.statusCode == response?.statusCode,
-      );
+      // `results` defaults to const [], and a request that declares no
+      // follow-up action for the status it got back is ordinary, not
+      // exceptional — firstWhere without orElse turned that into a StateError
+      // on the happy path.
+      PhlutsNetworkResult? result;
+      for (final element in model.results) {
+        if (element.statusCode == response?.statusCode) {
+          result = element;
+          break;
+        }
+      }
+
+      if (result == null) {
+        Log.w(
+          'No result declared for status ${response?.statusCode} '
+          'on ${model.url}; nothing to do',
+        );
+        return null;
+      }
 
       if (context.mounted) {
         return Phluts.onCallFromJson(result.action, context);
       }
     }
+    return null;
   }
 }
