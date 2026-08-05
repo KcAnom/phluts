@@ -71,6 +71,31 @@ jobs:
         run: flutter test
         working-directory: phluts_playground
 
+  # The extension's 10 test files were wired into no CI job at all, which is
+  # how a preview path that could never resolve its own output shipped with a
+  # green test beside it. Electron needs a display, hence xvfb on Linux.
+  vscode_extension:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    defaults:
+      run:
+        working-directory: tools/phluts-vscode
+    steps:
+      - uses: actions/checkout@c85c95e3d7251135ab7dc9ce3241c5835cc595a9
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+      - name: 'Install'
+        run: npm ci
+      - name: 'Widget catalog is not stale'
+        # `compile` regenerates this, so a stale committed copy is invisible
+        # locally; only `watch` and the committed artifact drift.
+        run: |
+          npm run generate:catalog
+          git diff --exit-code src/generated/widgetCatalog.ts
+      - name: 'Test'
+        run: xvfb-run -a npm test
+
   format:
     runs-on: ubuntu-latest
     timeout-minutes: 20

@@ -153,6 +153,12 @@ export const widgetCatalog: WidgetCatalogEntry[] = [
     "supportsChildren": false
   },
   {
+    "className": "PhlutsDefaultNavigationController",
+    "slug": "default_navigation_controller",
+    "supportsChild": true,
+    "supportsChildren": false
+  },
+  {
     "className": "PhlutsDefaultTabController",
     "slug": "default_tab_controller",
     "supportsChild": true,
@@ -293,6 +299,18 @@ export const widgetCatalog: WidgetCatalogEntry[] = [
   {
     "className": "PhlutsListView",
     "slug": "list_view",
+    "supportsChild": false,
+    "supportsChildren": true
+  },
+  {
+    "className": "PhlutsNavigationBar",
+    "slug": "navigation_bar",
+    "supportsChild": false,
+    "supportsChildren": false
+  },
+  {
+    "className": "PhlutsNavigationView",
+    "slug": "navigation_view",
     "supportsChild": false,
     "supportsChildren": true
   },
