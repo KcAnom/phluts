@@ -156,6 +156,8 @@
             "type": "string"
           },
           "default": [
+            "phluts/.build/screens",
+            "phluts/.build/themes",
             "phluts/.build",
             "build/screens",
             "build"

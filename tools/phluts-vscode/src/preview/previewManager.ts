@@ -2,7 +2,7 @@ import * as vscode from 'vscode';
 import { existsSync, statSync } from 'node:fs';
 import * as path from 'node:path';
 import { spawn } from 'node:child_process';
-import { COMMANDS, SETTINGS } from '../core/constants';
+import { COMMANDS, DEFAULT_OUTPUT_DIR_CANDIDATES, SETTINGS } from '../core/constants';
 import { AssetServer } from './assetServer';
 import { findFontsInPubspec } from './fontDiscovery';
 import { generatePreviewJson } from './jsonGeneration';
@@ -1000,7 +1000,7 @@ export class PreviewManager implements vscode.Disposable {
       ),
       outputDirCandidates: config.get<string[]>(
         SETTINGS.previewOutputDirCandidates,
-        ['phluts/.build', 'build/screens', 'build'],
+        [...DEFAULT_OUTPUT_DIR_CANDIDATES],
       ),
       hostPort: config.get<number>(SETTINGS.previewHostPort, 47841),
       startupTimeoutMs: config.get<number>(SETTINGS.previewStartupTimeoutMs, 120000),

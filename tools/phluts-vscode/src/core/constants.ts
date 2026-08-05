@@ -29,6 +29,26 @@ export const SETTINGS = {
   previewStartupTimeoutMs: 'phlutsVscode.preview.startupTimeoutMs',
 } as const;
 
+/// Directories searched for `<screenName>.json` after a fallback build.
+///
+/// The CLI writes `<outputDir>/screens/<name>.json` and
+/// `<outputDir>/themes/<name>.json` — never `<outputDir>/<name>.json` — so the
+/// nested forms must come first. Without them the build-fallback path could
+/// never find its own output, which is the only path available for screens the
+/// runner does not support and the fallback for every runner failure under the
+/// default strategy.
+///
+/// Must stay in sync with the `phlutsVscode.preview.outputDirCandidates`
+/// default in package.json, which VS Code reads directly and which cannot
+/// reference this constant. `preview.jsonResolver.test.ts` asserts they agree.
+export const DEFAULT_OUTPUT_DIR_CANDIDATES = [
+  'phluts/.build/screens',
+  'phluts/.build/themes',
+  'phluts/.build',
+  'build/screens',
+  'build',
+] as const;
+
 export const WRAP_PRESET_IDS = [
   'PhlutsContainer',
   'PhlutsPadding',

@@ -102,8 +102,12 @@ When you run `phluts build` or `phluts deploy`, the Dart files are converted to 
 ```
 phluts/
 ├── home_screen.dart          # Your Dart source
+├── app_theme.dart            # A @PhlutsThemeRef definition
 └── .build/
-    └── home_screen.json      # Generated JSON output
+    ├── screens/
+    │   └── home_screen.json  # Generated JSON output
+    └── themes/
+        └── app_theme.json
 ```
 
 <Note>
