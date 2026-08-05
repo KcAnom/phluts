@@ -12,6 +12,12 @@ import '../utils/file_utils.dart';
 
 /// Service for building Dart widget definitions to JSON for Phluts SDUI
 class BuildService {
+  /// Sentinels bracketing the wrapper script's payload on stdout. The screen
+  /// code being built shares that stream and may print anything, so the
+  /// payload has to be addressable rather than merely recognisable.
+  static const String _payloadBegin = '__PHLUTS_JSON_BEGIN__';
+  static const String _payloadEnd = '__PHLUTS_JSON_END__';
+
   /// Build the project from Dart to JSON using analyzer + isolate execution
   Future<void> build({String? projectPath}) async {
     // Determine project root (directory containing pubspec.yaml)
@@ -59,6 +65,9 @@ class BuildService {
     int themesFailed = 0;
     final failedFiles = <String>[];
     final generatedResults = <String, Map<String, dynamic>>{};
+    // Output path -> the source file that claimed it. Uniqueness is a
+    // build-wide property, so it cannot be decided one source file at a time.
+    final claimedOutputs = <String, String>{};
 
     for (final filePath in dartFiles) {
       final relativePath = path.relative(filePath, from: projectDir);
@@ -88,6 +97,7 @@ class BuildService {
             artifacts: phlutsScreenArtifacts,
             outputDir: screensOutputDir,
             generatedResults: generatedResults,
+            claimedOutputs: claimedOutputs,
             onSuccess: () => functionsProcessed++,
             onFailure: () {
               functionsFailed++;
@@ -108,6 +118,7 @@ class BuildService {
             artifacts: phlutsThemeArtifacts,
             outputDir: themesOutputDir,
             generatedResults: generatedResults,
+            claimedOutputs: claimedOutputs,
             onSuccess: () => themesProcessed++,
             onFailure: () {
               themesFailed++;
@@ -464,9 +475,13 @@ Future<void> main(List<String> args) async {
   try {
     final result = await Future.sync(() => $invocation);
     final json = (result as dynamic).toJson();
+    print('$_payloadBegin');
     print(jsonEncode(json));
+    print('$_payloadEnd');
   } catch (e, st) {
+    print('$_payloadBegin');
     print(jsonEncode({'error': e.toString(), 'stackTrace': st.toString()}));
+    print('$_payloadEnd');
   }
 }
 ''';
@@ -479,11 +494,31 @@ Future<void> main(List<String> args) async {
     required List<PhlutsDslArtifact> artifacts,
     required String outputDir,
     required Map<String, Map<String, dynamic>> generatedResults,
+    required Map<String, String> claimedOutputs,
     required void Function() onSuccess,
     required void Function() onFailure,
   }) async {
     for (final artifact in artifacts) {
       try {
+        final fileName = artifact.artifactName;
+        final outputFilePath = path.join(outputDir, '$fileName.json');
+
+        // The guard in _extractDslArtifacts only sees one source file at a
+        // time, so two files declaring the same name both reported success
+        // while one silently overwrote the other on disk — and which one
+        // survived depended on Directory.list order, so it was not even
+        // reproducible across machines. The lost screen was still counted as
+        // generated, and the survivor went on to deploy.
+        final priorSource = claimedOutputs[outputFilePath];
+        if (priorSource != null) {
+          throw BuildException(
+            '${artifact.logLabel} "$fileName" is declared in both '
+            '$priorSource and $relativePath. Names must be unique across the '
+            'project, or one silently overwrites the other.',
+          );
+        }
+        claimedOutputs[outputFilePath] = relativePath;
+
         final json = await _convertCallableToJson(
           sourceFile,
           artifact.callableName,
@@ -495,8 +530,6 @@ Future<void> main(List<String> args) async {
         final cleaned = _cleanJson(json);
         if (cleaned == null) continue;
 
-        final fileName = artifact.artifactName;
-        final outputFilePath = path.join(outputDir, '$fileName.json');
         final jsonString = const JsonEncoder.withIndent('  ').convert(cleaned);
         await FileUtils.writeFile(outputFilePath, jsonString);
         generatedResults['${artifact.resultKeyPrefix}/$fileName.json'] =
@@ -537,11 +570,16 @@ Future<void> main(List<String> args) async {
 
       if (stdout.isNotEmpty) {
         try {
-          // Extract JSON from stdout - build hooks may print text before/after the JSON
+          // Sentinel-delimited, so anything the screen code itself printed is
+          // ignored rather than mistaken for the payload.
           final jsonString = _extractJson(stdout);
           if (jsonString == null) {
-            ConsoleLogger.debug('No JSON found in output: $stdout');
-            throw const FormatException('No valid JSON object found in output');
+            ConsoleLogger.debug('No delimited payload in output: $stdout');
+            throw const FormatException(
+              'The build script produced no delimited JSON payload. Its output '
+              'did not contain $_payloadBegin, which means it failed before '
+              'emitting a result.',
+            );
           }
           final decoded = jsonDecode(jsonString);
           if (decoded is Map) {
@@ -694,48 +732,21 @@ Future<void> main(List<String> args) async {
     return firstError.trim();
   }
 
-  /// Extract JSON object from stdout that may contain build hook output or other text.
-  /// Finds the first complete JSON object (matching braces) in the string.
+  /// Extract the wrapper script's JSON payload from stdout.
+  ///
+  /// Addressed by explicit sentinels rather than found by shape: user screen
+  /// code and build hooks print freely to the same stream, and taking the
+  /// first brace-balanced object meant a stray `print` of anything
+  /// JSON-shaped became the deployed screen. Absent sentinels mean the script
+  /// never reached its own output, which is a build failure, not something to
+  /// guess around.
   String? _extractJson(String output) {
-    final startIndex = output.indexOf('{');
-    if (startIndex == -1) return null;
-
-    // Find matching closing brace by counting brace depth
-    int depth = 0;
-    bool inString = false;
-    bool escape = false;
-
-    for (int i = startIndex; i < output.length; i++) {
-      final char = output[i];
-
-      if (escape) {
-        escape = false;
-        continue;
-      }
-
-      if (char == '\\' && inString) {
-        escape = true;
-        continue;
-      }
-
-      if (char == '"') {
-        inString = !inString;
-        continue;
-      }
-
-      if (inString) continue;
-
-      if (char == '{') {
-        depth++;
-      } else if (char == '}') {
-        depth--;
-        if (depth == 0) {
-          return output.substring(startIndex, i + 1);
-        }
-      }
-    }
-
-    return null; // No complete JSON object found
+    final begin = output.indexOf(_payloadBegin);
+    if (begin == -1) return null;
+    final from = begin + _payloadBegin.length;
+    final end = output.indexOf(_payloadEnd, from);
+    if (end == -1) return null;
+    return output.substring(from, end).trim();
   }
 }
 
