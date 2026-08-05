@@ -26,19 +26,20 @@ PhlutsRect _$PhlutsRectFromJson(Map<String, dynamic> json) => PhlutsRect(
       : PhlutsOffset.fromJson(json['b'] as Map<String, dynamic>),
 );
 
-Map<String, dynamic> _$PhlutsRectToJson(PhlutsRect instance) => <String, dynamic>{
-  'rectType': _$PhlutsRectTypeEnumMap[instance.rectType]!,
-  'left': const DoubleConverter().toJson(instance.left),
-  'top': const DoubleConverter().toJson(instance.top),
-  'right': const DoubleConverter().toJson(instance.right),
-  'bottom': const DoubleConverter().toJson(instance.bottom),
-  'width': const DoubleConverter().toJson(instance.width),
-  'height': const DoubleConverter().toJson(instance.height),
-  'center': instance.center?.toJson(),
-  'radius': const DoubleConverter().toJson(instance.radius),
-  'a': instance.a?.toJson(),
-  'b': instance.b?.toJson(),
-};
+Map<String, dynamic> _$PhlutsRectToJson(PhlutsRect instance) =>
+    <String, dynamic>{
+      'rectType': _$PhlutsRectTypeEnumMap[instance.rectType]!,
+      'left': const DoubleConverter().toJson(instance.left),
+      'top': const DoubleConverter().toJson(instance.top),
+      'right': const DoubleConverter().toJson(instance.right),
+      'bottom': const DoubleConverter().toJson(instance.bottom),
+      'width': const DoubleConverter().toJson(instance.width),
+      'height': const DoubleConverter().toJson(instance.height),
+      'center': instance.center?.toJson(),
+      'radius': const DoubleConverter().toJson(instance.radius),
+      'a': instance.a?.toJson(),
+      'b': instance.b?.toJson(),
+    };
 
 const _$PhlutsRectTypeEnumMap = {
   PhlutsRectType.fromCenter: 'fromCenter',

@@ -6,62 +6,63 @@ part of 'phluts_list_tile.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-PhlutsListTile _$PhlutsListTileFromJson(Map<String, dynamic> json) => PhlutsListTile(
-  leading: json['leading'] == null
-      ? null
-      : PhlutsWidget.fromJson(json['leading'] as Map<String, dynamic>),
-  title: json['title'] == null
-      ? null
-      : PhlutsWidget.fromJson(json['title'] as Map<String, dynamic>),
-  subtitle: json['subtitle'] == null
-      ? null
-      : PhlutsWidget.fromJson(json['subtitle'] as Map<String, dynamic>),
-  trailing: json['trailing'] == null
-      ? null
-      : PhlutsWidget.fromJson(json['trailing'] as Map<String, dynamic>),
-  isThreeLine: json['isThreeLine'] as bool?,
-  dense: json['dense'] as bool?,
-  visualDensity: json['visualDensity'] == null
-      ? null
-      : PhlutsVisualDensity.fromJson(
-          json['visualDensity'] as Map<String, dynamic>,
-        ),
-  shape: json['shape'] == null
-      ? null
-      : PhlutsShapeBorder.fromJson(json['shape'] as Map<String, dynamic>),
-  style: $enumDecodeNullable(_$PhlutsListTileStyleEnumMap, json['style']),
-  selectedColor: json['selectedColor'] as String?,
-  iconColor: json['iconColor'] as String?,
-  textColor: json['textColor'] as String?,
-  contentPadding: json['contentPadding'] == null
-      ? null
-      : PhlutsEdgeInsets.fromJson(json['contentPadding']),
-  enabled: json['enabled'] as bool?,
-  onTap: json['onTap'] == null
-      ? null
-      : PhlutsAction.fromJson(json['onTap'] as Map<String, dynamic>),
-  onLongPress: json['onLongPress'] == null
-      ? null
-      : PhlutsAction.fromJson(json['onLongPress'] as Map<String, dynamic>),
-  mouseCursor: $enumDecodeNullable(
-    _$PhlutsMouseCursorEnumMap,
-    json['mouseCursor'],
-  ),
-  selected: json['selected'] as bool?,
-  focusColor: json['focusColor'] as String?,
-  hoverColor: json['hoverColor'] as String?,
-  autofocus: json['autofocus'] as bool?,
-  tileColor: json['tileColor'] as String?,
-  selectedTileColor: json['selectedTileColor'] as String?,
-  enableFeedback: json['enableFeedback'] as bool?,
-  horizontalTitleGap: (json['horizontalTitleGap'] as num?)?.toDouble(),
-  minVerticalPadding: (json['minVerticalPadding'] as num?)?.toDouble(),
-  minLeadingWidth: (json['minLeadingWidth'] as num?)?.toDouble(),
-  titleAlignment: $enumDecodeNullable(
-    _$PhlutsListTileTitleAlignmentEnumMap,
-    json['titleAlignment'],
-  ),
-);
+PhlutsListTile _$PhlutsListTileFromJson(Map<String, dynamic> json) =>
+    PhlutsListTile(
+      leading: json['leading'] == null
+          ? null
+          : PhlutsWidget.fromJson(json['leading'] as Map<String, dynamic>),
+      title: json['title'] == null
+          ? null
+          : PhlutsWidget.fromJson(json['title'] as Map<String, dynamic>),
+      subtitle: json['subtitle'] == null
+          ? null
+          : PhlutsWidget.fromJson(json['subtitle'] as Map<String, dynamic>),
+      trailing: json['trailing'] == null
+          ? null
+          : PhlutsWidget.fromJson(json['trailing'] as Map<String, dynamic>),
+      isThreeLine: json['isThreeLine'] as bool?,
+      dense: json['dense'] as bool?,
+      visualDensity: json['visualDensity'] == null
+          ? null
+          : PhlutsVisualDensity.fromJson(
+              json['visualDensity'] as Map<String, dynamic>,
+            ),
+      shape: json['shape'] == null
+          ? null
+          : PhlutsShapeBorder.fromJson(json['shape'] as Map<String, dynamic>),
+      style: $enumDecodeNullable(_$PhlutsListTileStyleEnumMap, json['style']),
+      selectedColor: json['selectedColor'] as String?,
+      iconColor: json['iconColor'] as String?,
+      textColor: json['textColor'] as String?,
+      contentPadding: json['contentPadding'] == null
+          ? null
+          : PhlutsEdgeInsets.fromJson(json['contentPadding']),
+      enabled: json['enabled'] as bool?,
+      onTap: json['onTap'] == null
+          ? null
+          : PhlutsAction.fromJson(json['onTap'] as Map<String, dynamic>),
+      onLongPress: json['onLongPress'] == null
+          ? null
+          : PhlutsAction.fromJson(json['onLongPress'] as Map<String, dynamic>),
+      mouseCursor: $enumDecodeNullable(
+        _$PhlutsMouseCursorEnumMap,
+        json['mouseCursor'],
+      ),
+      selected: json['selected'] as bool?,
+      focusColor: json['focusColor'] as String?,
+      hoverColor: json['hoverColor'] as String?,
+      autofocus: json['autofocus'] as bool?,
+      tileColor: json['tileColor'] as String?,
+      selectedTileColor: json['selectedTileColor'] as String?,
+      enableFeedback: json['enableFeedback'] as bool?,
+      horizontalTitleGap: (json['horizontalTitleGap'] as num?)?.toDouble(),
+      minVerticalPadding: (json['minVerticalPadding'] as num?)?.toDouble(),
+      minLeadingWidth: (json['minLeadingWidth'] as num?)?.toDouble(),
+      titleAlignment: $enumDecodeNullable(
+        _$PhlutsListTileTitleAlignmentEnumMap,
+        json['titleAlignment'],
+      ),
+    );
 
 Map<String, dynamic> _$PhlutsListTileToJson(PhlutsListTile instance) =>
     <String, dynamic>{

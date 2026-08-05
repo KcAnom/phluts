@@ -11,7 +11,9 @@ PhlutsHero _$PhlutsHeroFromJson(Map<String, dynamic> json) => PhlutsHero(
   child: PhlutsWidget.fromJson(json['child'] as Map<String, dynamic>),
   createRectTween: json['createRectTween'] == null
       ? null
-      : PhlutsRectTween.fromJson(json['createRectTween'] as Map<String, dynamic>),
+      : PhlutsRectTween.fromJson(
+          json['createRectTween'] as Map<String, dynamic>,
+        ),
   flightShuttleBuilder: json['flightShuttleBuilder'] == null
       ? null
       : PhlutsWidget.fromJson(
@@ -19,16 +21,19 @@ PhlutsHero _$PhlutsHeroFromJson(Map<String, dynamic> json) => PhlutsHero(
         ),
   placeholderBuilder: json['placeholderBuilder'] == null
       ? null
-      : PhlutsWidget.fromJson(json['placeholderBuilder'] as Map<String, dynamic>),
+      : PhlutsWidget.fromJson(
+          json['placeholderBuilder'] as Map<String, dynamic>,
+        ),
   transitionOnUserGestures: json['transitionOnUserGestures'] as bool?,
 );
 
-Map<String, dynamic> _$PhlutsHeroToJson(PhlutsHero instance) => <String, dynamic>{
-  'tag': instance.tag,
-  'child': instance.child.toJson(),
-  'createRectTween': instance.createRectTween?.toJson(),
-  'flightShuttleBuilder': instance.flightShuttleBuilder?.toJson(),
-  'placeholderBuilder': instance.placeholderBuilder?.toJson(),
-  'transitionOnUserGestures': instance.transitionOnUserGestures,
-  'type': instance.type,
-};
+Map<String, dynamic> _$PhlutsHeroToJson(PhlutsHero instance) =>
+    <String, dynamic>{
+      'tag': instance.tag,
+      'child': instance.child.toJson(),
+      'createRectTween': instance.createRectTween?.toJson(),
+      'flightShuttleBuilder': instance.flightShuttleBuilder?.toJson(),
+      'placeholderBuilder': instance.placeholderBuilder?.toJson(),
+      'transitionOnUserGestures': instance.transitionOnUserGestures,
+      'type': instance.type,
+    };

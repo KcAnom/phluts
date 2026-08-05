@@ -8,7 +8,8 @@ class PhlutsPaddingParser extends PhlutsParser<PhlutsPadding> {
   const PhlutsPaddingParser();
 
   @override
-  PhlutsPadding getModel(Map<String, dynamic> json) => PhlutsPadding.fromJson(json);
+  PhlutsPadding getModel(Map<String, dynamic> json) =>
+      PhlutsPadding.fromJson(json);
 
   @override
   String get type => WidgetType.padding.name;

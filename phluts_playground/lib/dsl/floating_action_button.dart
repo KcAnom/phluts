@@ -18,14 +18,16 @@ PhlutsWidget floatingActionButtonExample() {
               children: [
                 PhlutsFloatingActionButton(
                   buttonType: PhlutsFloatingActionButtonType.extended,
-                  icon: PhlutsIcon(iconType: PhlutsIconType.material, icon: 'add'),
+                  icon: PhlutsIcon(
+                      iconType: PhlutsIconType.material, icon: 'add'),
                   child: PhlutsText(data: 'Create'),
                   onPressed: PhlutsAction(),
                 ),
                 PhlutsSizedBox(width: 20),
                 PhlutsFloatingActionButton(
                   buttonType: PhlutsFloatingActionButtonType.large,
-                  child: PhlutsIcon(iconType: PhlutsIconType.material, icon: 'add'),
+                  child: PhlutsIcon(
+                      iconType: PhlutsIconType.material, icon: 'add'),
                   onPressed: PhlutsAction(),
                 ),
               ],
@@ -38,14 +40,16 @@ PhlutsWidget floatingActionButtonExample() {
                 PhlutsFloatingActionButton(
                   buttonType: PhlutsFloatingActionButtonType.extended,
                   disabledElevation: 0,
-                  icon: PhlutsIcon(iconType: PhlutsIconType.material, icon: 'add'),
+                  icon: PhlutsIcon(
+                      iconType: PhlutsIconType.material, icon: 'add'),
                   child: PhlutsText(data: 'Create'),
                 ),
                 PhlutsSizedBox(width: 20),
                 PhlutsFloatingActionButton(
                   buttonType: PhlutsFloatingActionButtonType.large,
                   disabledElevation: 0,
-                  child: PhlutsIcon(iconType: PhlutsIconType.material, icon: 'add'),
+                  child: PhlutsIcon(
+                      iconType: PhlutsIconType.material, icon: 'add'),
                 ),
               ],
             ),

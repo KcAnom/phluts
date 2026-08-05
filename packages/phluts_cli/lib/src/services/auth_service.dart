@@ -112,13 +112,17 @@ class AuthService {
       }
 
       // No refresh token available, user needs to login again
-      throw PhlutsException('Authentication required. Please run "phluts login"');
+      throw PhlutsException(
+        'Authentication required. Please run "phluts login"',
+      );
     } catch (e) {
       if (e is PhlutsException) {
         rethrow;
       }
       ConsoleLogger.debug('Authentication check failed: $e');
-      throw PhlutsException('Authentication required. Please run "phluts login"');
+      throw PhlutsException(
+        'Authentication required. Please run "phluts login"',
+      );
     }
   }
 

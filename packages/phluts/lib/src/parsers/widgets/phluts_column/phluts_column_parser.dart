@@ -12,7 +12,8 @@ class PhlutsColumnParser extends PhlutsParser<PhlutsColumn> {
   const PhlutsColumnParser();
 
   @override
-  PhlutsColumn getModel(Map<String, dynamic> json) => PhlutsColumn.fromJson(json);
+  PhlutsColumn getModel(Map<String, dynamic> json) =>
+      PhlutsColumn.fromJson(json);
 
   @override
   String get type => PhlutsColumn().type;

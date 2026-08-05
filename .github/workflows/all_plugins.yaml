@@ -76,8 +76,12 @@ jobs:
     timeout-minutes: 20
     steps:
       - uses: actions/checkout@c85c95e3d7251135ab7dc9ce3241c5835cc595a9
+      # Pinned deliberately: dart_style output shifts between stable releases,
+      # so a floating channel re-reds this job on the next Flutter bump with no
+      # source change. The tree was formatted with Flutter 3.38.7 / Dart 3.10.7.
       - uses: subosito/flutter-action@48cafc24713cca54bbe03cdc3a423187d413aafa
         with:
+          flutter-version: '3.38.7'
           channel: 'stable'
           cache: true
       - uses: bluefireteam/melos-action@dd3c344d731938d2ab2567a261f54a19a68b5f6a

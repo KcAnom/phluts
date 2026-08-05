@@ -13,5 +13,6 @@ PhlutsMovieCarousel _$PhlutsMovieCarouselFromJson(Map<String, dynamic> json) =>
       ),
     );
 
-Map<String, dynamic> _$PhlutsMovieCarouselToJson(PhlutsMovieCarousel instance) =>
-    <String, dynamic>{'request': instance.request, 'type': instance.type};
+Map<String, dynamic> _$PhlutsMovieCarouselToJson(
+  PhlutsMovieCarousel instance,
+) => <String, dynamic>{'request': instance.request, 'type': instance.type};

@@ -14,7 +14,8 @@ PhlutsWidget scaffoldExample() {
                     iconType: PhlutsIconType.cupertino, icon: 'heart_solid'),
                 onPressed: PhlutsAction()),
             PhlutsIconButton(
-                icon: PhlutsIcon(iconType: PhlutsIconType.material, icon: 'search'),
+                icon: PhlutsIcon(
+                    iconType: PhlutsIconType.material, icon: 'search'),
                 onPressed: PhlutsAction()),
             PhlutsIconButton(
                 icon: PhlutsIcon(
@@ -36,7 +37,7 @@ PhlutsWidget scaffoldExample() {
           backgroundColor: '#FC3F1B',
           foregroundColor: '#ffffff',
           buttonType: PhlutsFloatingActionButtonType.medium,
-          child:
-              PhlutsIcon(iconType: PhlutsIconType.material, icon: 'add', size: 32),
+          child: PhlutsIcon(
+              iconType: PhlutsIconType.material, icon: 'add', size: 32),
           onPressed: PhlutsAction()));
 }

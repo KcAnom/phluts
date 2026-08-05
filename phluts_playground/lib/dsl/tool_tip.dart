@@ -10,7 +10,8 @@ PhlutsWidget toolTipExample() {
       children: [
         PhlutsText(
           data: 'Basic Tooltip',
-          style: PhlutsTextStyle(fontSize: 18, fontWeight: PhlutsFontWeight.bold),
+          style:
+              PhlutsTextStyle(fontSize: 18, fontWeight: PhlutsFontWeight.bold),
         ),
         PhlutsSizedBox(height: 16),
         PhlutsRow(
@@ -25,7 +26,8 @@ PhlutsWidget toolTipExample() {
         PhlutsSizedBox(height: 32),
         PhlutsText(
           data: 'Styled Tooltip',
-          style: PhlutsTextStyle(fontSize: 18, fontWeight: PhlutsFontWeight.bold),
+          style:
+              PhlutsTextStyle(fontSize: 18, fontWeight: PhlutsFontWeight.bold),
         ),
         PhlutsSizedBox(height: 16),
         PhlutsRow(
@@ -56,7 +58,8 @@ PhlutsWidget toolTipExample() {
         PhlutsSizedBox(height: 32),
         PhlutsText(
           data: 'Tooltip with Delay & Duration',
-          style: PhlutsTextStyle(fontSize: 18, fontWeight: PhlutsFontWeight.bold),
+          style:
+              PhlutsTextStyle(fontSize: 18, fontWeight: PhlutsFontWeight.bold),
         ),
         PhlutsSizedBox(height: 16),
         PhlutsRow(
@@ -74,7 +77,8 @@ PhlutsWidget toolTipExample() {
         PhlutsSizedBox(height: 32),
         PhlutsText(
           data: 'Tooltip on IconButton',
-          style: PhlutsTextStyle(fontSize: 18, fontWeight: PhlutsFontWeight.bold),
+          style:
+              PhlutsTextStyle(fontSize: 18, fontWeight: PhlutsFontWeight.bold),
         ),
         PhlutsSizedBox(height: 16),
         PhlutsRow(
@@ -93,7 +97,8 @@ PhlutsWidget toolTipExample() {
         ),
         PhlutsText(
           data: 'Tap to see Tooltip',
-          style: PhlutsTextStyle(fontSize: 18, fontWeight: PhlutsFontWeight.bold),
+          style:
+              PhlutsTextStyle(fontSize: 18, fontWeight: PhlutsFontWeight.bold),
         ),
         PhlutsSizedBox(height: 16),
         PhlutsTooltip(

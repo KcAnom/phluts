@@ -35,7 +35,12 @@ class PhlutsError {
   /// The [error] parameter is required and should contain the actual
   /// error or exception that was thrown. All other parameters are optional
   /// but recommended for better error diagnostics.
-  const PhlutsError({this.type, required this.error, this.json, this.stackTrace});
+  const PhlutsError({
+    this.type,
+    required this.error,
+    this.json,
+    this.stackTrace,
+  });
 
   /// The type identifier of the failing Phluts entity.
   ///

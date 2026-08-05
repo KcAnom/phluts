@@ -14,14 +14,16 @@ PhlutsWidget bottomNavBarExample() {
       body: PhlutsBottomNavigationView(
         children: [
           PhlutsCenter(
-            child: PhlutsText(data: 'Home', style: PhlutsTextStyle(fontSize: 24)),
-          ),
-          PhlutsCenter(
-            child: PhlutsText(data: 'Search', style: PhlutsTextStyle(fontSize: 24)),
-          ),
-          PhlutsCenter(
             child:
-                PhlutsText(data: 'Profile', style: PhlutsTextStyle(fontSize: 24)),
+                PhlutsText(data: 'Home', style: PhlutsTextStyle(fontSize: 24)),
+          ),
+          PhlutsCenter(
+            child: PhlutsText(
+                data: 'Search', style: PhlutsTextStyle(fontSize: 24)),
+          ),
+          PhlutsCenter(
+            child: PhlutsText(
+                data: 'Profile', style: PhlutsTextStyle(fontSize: 24)),
           ),
         ],
       ),

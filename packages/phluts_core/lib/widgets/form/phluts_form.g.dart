@@ -16,11 +16,13 @@ PhlutsForm _$PhlutsFormFromJson(Map<String, dynamic> json) => PhlutsForm(
       : PhlutsWidget.fromJson(json['child'] as Map<String, dynamic>),
 );
 
-Map<String, dynamic> _$PhlutsFormToJson(PhlutsForm instance) => <String, dynamic>{
-  'autovalidateMode': _$PhlutsAutovalidateModeEnumMap[instance.autovalidateMode],
-  'child': instance.child?.toJson(),
-  'type': instance.type,
-};
+Map<String, dynamic> _$PhlutsFormToJson(PhlutsForm instance) =>
+    <String, dynamic>{
+      'autovalidateMode':
+          _$PhlutsAutovalidateModeEnumMap[instance.autovalidateMode],
+      'child': instance.child?.toJson(),
+      'type': instance.type,
+    };
 
 const _$PhlutsAutovalidateModeEnumMap = {
   PhlutsAutovalidateMode.disabled: 'disabled',

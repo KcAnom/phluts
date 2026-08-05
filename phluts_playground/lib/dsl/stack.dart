@@ -19,7 +19,8 @@ PhlutsWidget stackExample() {
                     color: '#81C784',
                     child: PhlutsText(
                         data: 'Green',
-                        style: PhlutsTextStyle(fontSize: 20, color: '#FFFFFF')))),
+                        style:
+                            PhlutsTextStyle(fontSize: 20, color: '#FFFFFF')))),
             PhlutsPositioned(
                 top: 70,
                 left: 60,
@@ -31,7 +32,8 @@ PhlutsWidget stackExample() {
                     color: '#EF5350',
                     child: PhlutsText(
                         data: 'Red',
-                        style: PhlutsTextStyle(fontSize: 20, color: '#FFFFFF')))),
+                        style:
+                            PhlutsTextStyle(fontSize: 20, color: '#FFFFFF')))),
             PhlutsPositioned(
                 top: 130,
                 left: 90,
@@ -43,6 +45,7 @@ PhlutsWidget stackExample() {
                     color: '#BA68C8',
                     child: PhlutsText(
                         data: 'Purple',
-                        style: PhlutsTextStyle(fontSize: 20, color: '#FFFFFF'))))
+                        style:
+                            PhlutsTextStyle(fontSize: 20, color: '#FFFFFF'))))
           ]));
 }

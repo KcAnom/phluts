@@ -62,32 +62,33 @@ PhlutsChip _$PhlutsChipFromJson(Map<String, dynamic> json) => PhlutsChip(
         ),
 );
 
-Map<String, dynamic> _$PhlutsChipToJson(PhlutsChip instance) => <String, dynamic>{
-  'avatar': instance.avatar?.toJson(),
-  'label': instance.label.toJson(),
-  'labelStyle': instance.labelStyle?.toJson(),
-  'labelPadding': instance.labelPadding?.toJson(),
-  'deleteIcon': instance.deleteIcon?.toJson(),
-  'onDeleted': instance.onDeleted?.toJson(),
-  'deleteIconColor': instance.deleteIconColor,
-  'deleteButtonTooltipMessage': instance.deleteButtonTooltipMessage,
-  'side': instance.side?.toJson(),
-  'shape': instance.shape?.toJson(),
-  'clipBehavior': _$PhlutsClipEnumMap[instance.clipBehavior],
-  'autofocus': instance.autofocus,
-  'color': instance.color,
-  'backgroundColor': instance.backgroundColor,
-  'padding': instance.padding?.toJson(),
-  'visualDensity': instance.visualDensity?.toJson(),
-  'materialTapTargetSize':
-      _$PhlutsMaterialTapTargetSizeEnumMap[instance.materialTapTargetSize],
-  'elevation': const DoubleConverter().toJson(instance.elevation),
-  'shadowColor': instance.shadowColor,
-  'surfaceTintColor': instance.surfaceTintColor,
-  'avatarBoxConstraints': instance.avatarBoxConstraints?.toJson(),
-  'deleteIconBoxConstraints': instance.deleteIconBoxConstraints?.toJson(),
-  'type': instance.type,
-};
+Map<String, dynamic> _$PhlutsChipToJson(PhlutsChip instance) =>
+    <String, dynamic>{
+      'avatar': instance.avatar?.toJson(),
+      'label': instance.label.toJson(),
+      'labelStyle': instance.labelStyle?.toJson(),
+      'labelPadding': instance.labelPadding?.toJson(),
+      'deleteIcon': instance.deleteIcon?.toJson(),
+      'onDeleted': instance.onDeleted?.toJson(),
+      'deleteIconColor': instance.deleteIconColor,
+      'deleteButtonTooltipMessage': instance.deleteButtonTooltipMessage,
+      'side': instance.side?.toJson(),
+      'shape': instance.shape?.toJson(),
+      'clipBehavior': _$PhlutsClipEnumMap[instance.clipBehavior],
+      'autofocus': instance.autofocus,
+      'color': instance.color,
+      'backgroundColor': instance.backgroundColor,
+      'padding': instance.padding?.toJson(),
+      'visualDensity': instance.visualDensity?.toJson(),
+      'materialTapTargetSize':
+          _$PhlutsMaterialTapTargetSizeEnumMap[instance.materialTapTargetSize],
+      'elevation': const DoubleConverter().toJson(instance.elevation),
+      'shadowColor': instance.shadowColor,
+      'surfaceTintColor': instance.surfaceTintColor,
+      'avatarBoxConstraints': instance.avatarBoxConstraints?.toJson(),
+      'deleteIconBoxConstraints': instance.deleteIconBoxConstraints?.toJson(),
+      'type': instance.type,
+    };
 
 const _$PhlutsClipEnumMap = {
   PhlutsClip.none: 'none',

@@ -6,7 +6,9 @@ part of 'phluts_grid_view.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-PhlutsGridView _$PhlutsGridViewFromJson(Map<String, dynamic> json) => PhlutsGridView(
+PhlutsGridView _$PhlutsGridViewFromJson(
+  Map<String, dynamic> json,
+) => PhlutsGridView(
   scrollDirection: $enumDecodeNullable(
     _$PhlutsAxisEnumMap,
     json['scrollDirection'],

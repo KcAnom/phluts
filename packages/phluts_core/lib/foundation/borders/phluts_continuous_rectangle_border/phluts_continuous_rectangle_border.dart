@@ -37,5 +37,6 @@ class PhlutsContinuousRectangleBorder extends PhlutsShapeBorder {
 
   /// Converts this continuous rectangle border to JSON.
   @override
-  Map<String, dynamic> toJson() => _$PhlutsContinuousRectangleBorderToJson(this);
+  Map<String, dynamic> toJson() =>
+      _$PhlutsContinuousRectangleBorderToJson(this);
 }

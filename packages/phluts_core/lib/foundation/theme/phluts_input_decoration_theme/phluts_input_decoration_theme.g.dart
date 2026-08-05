@@ -54,7 +54,9 @@ PhlutsInputDecorationTheme _$PhlutsInputDecorationThemeFromJson(
         ),
   outlineBorder: json['outlineBorder'] == null
       ? null
-      : PhlutsBorderSide.fromJson(json['outlineBorder'] as Map<String, dynamic>),
+      : PhlutsBorderSide.fromJson(
+          json['outlineBorder'] as Map<String, dynamic>,
+        ),
   focusColor: json['focusColor'] as String?,
   hoverColor: json['hoverColor'] as String?,
   errorBorder: json['errorBorder'] == null
@@ -62,7 +64,9 @@ PhlutsInputDecorationTheme _$PhlutsInputDecorationThemeFromJson(
       : PhlutsInputBorder.fromJson(json['errorBorder'] as Map<String, dynamic>),
   focusedBorder: json['focusedBorder'] == null
       ? null
-      : PhlutsInputBorder.fromJson(json['focusedBorder'] as Map<String, dynamic>),
+      : PhlutsInputBorder.fromJson(
+          json['focusedBorder'] as Map<String, dynamic>,
+        ),
   focusedErrorBorder: json['focusedErrorBorder'] == null
       ? null
       : PhlutsInputBorder.fromJson(
@@ -75,7 +79,9 @@ PhlutsInputDecorationTheme _$PhlutsInputDecorationThemeFromJson(
         ),
   enabledBorder: json['enabledBorder'] == null
       ? null
-      : PhlutsInputBorder.fromJson(json['enabledBorder'] as Map<String, dynamic>),
+      : PhlutsInputBorder.fromJson(
+          json['enabledBorder'] as Map<String, dynamic>,
+        ),
   border: json['border'] == null
       ? null
       : PhlutsInputBorder.fromJson(json['border'] as Map<String, dynamic>),

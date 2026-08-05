@@ -31,7 +31,10 @@ PhlutsBottomNavBarThemeData _$PhlutsBottomNavBarThemeDataFromJson(
       : PhlutsTextStyle.fromJson(json['unselectedLabelStyle']),
   showSelectedLabels: json['showSelectedLabels'] as bool?,
   showUnselectedLabels: json['showUnselectedLabels'] as bool?,
-  type: $enumDecodeNullable(_$PhlutsBottomNavigationBarTypeEnumMap, json['type']),
+  type: $enumDecodeNullable(
+    _$PhlutsBottomNavigationBarTypeEnumMap,
+    json['type'],
+  ),
   enableFeedback: json['enableFeedback'] as bool?,
   landscapeLayout: $enumDecodeNullable(
     _$PhlutsBottomNavigationBarLandscapeLayoutEnumMap,
@@ -55,7 +58,8 @@ Map<String, dynamic> _$PhlutsBottomNavBarThemeDataToJson(
   'type': _$PhlutsBottomNavigationBarTypeEnumMap[instance.type],
   'enableFeedback': instance.enableFeedback,
   'landscapeLayout':
-      _$PhlutsBottomNavigationBarLandscapeLayoutEnumMap[instance.landscapeLayout],
+      _$PhlutsBottomNavigationBarLandscapeLayoutEnumMap[instance
+          .landscapeLayout],
 };
 
 const _$PhlutsBottomNavigationBarTypeEnumMap = {

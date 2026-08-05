@@ -6,7 +6,9 @@ part of 'phluts_list_view.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-PhlutsListView _$PhlutsListViewFromJson(Map<String, dynamic> json) => PhlutsListView(
+PhlutsListView _$PhlutsListViewFromJson(
+  Map<String, dynamic> json,
+) => PhlutsListView(
   scrollDirection: $enumDecodeNullable(
     _$PhlutsAxisEnumMap,
     json['scrollDirection'],

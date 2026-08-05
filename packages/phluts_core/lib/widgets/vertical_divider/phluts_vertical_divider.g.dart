@@ -6,14 +6,15 @@ part of 'phluts_vertical_divider.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-PhlutsVerticalDivider _$PhlutsVerticalDividerFromJson(Map<String, dynamic> json) =>
-    PhlutsVerticalDivider(
-      width: const DoubleConverter().fromJson(json['width']),
-      thickness: const DoubleConverter().fromJson(json['thickness']),
-      indent: const DoubleConverter().fromJson(json['indent']),
-      endIndent: const DoubleConverter().fromJson(json['endIndent']),
-      color: json['color'] as String?,
-    );
+PhlutsVerticalDivider _$PhlutsVerticalDividerFromJson(
+  Map<String, dynamic> json,
+) => PhlutsVerticalDivider(
+  width: const DoubleConverter().fromJson(json['width']),
+  thickness: const DoubleConverter().fromJson(json['thickness']),
+  indent: const DoubleConverter().fromJson(json['indent']),
+  endIndent: const DoubleConverter().fromJson(json['endIndent']),
+  color: json['color'] as String?,
+);
 
 Map<String, dynamic> _$PhlutsVerticalDividerToJson(
   PhlutsVerticalDivider instance,

@@ -23,7 +23,8 @@ PhlutsWidget spacerExample() {
                     size: 24)
               ]),
               PhlutsSpacer(),
-              PhlutsText(data: 'Need help?', style: PhlutsTextStyle(fontSize: 17))
+              PhlutsText(
+                  data: 'Need help?', style: PhlutsTextStyle(fontSize: 17))
             ]),
             PhlutsSpacer(flex: 2),
             PhlutsElevatedButton(

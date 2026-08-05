@@ -19,14 +19,15 @@ PhlutsStack _$PhlutsStackFromJson(Map<String, dynamic> json) => PhlutsStack(
       .toList(),
 );
 
-Map<String, dynamic> _$PhlutsStackToJson(PhlutsStack instance) => <String, dynamic>{
-  'alignment': _$PhlutsAlignmentEnumMap[instance.alignment],
-  'textDirection': _$PhlutsTextDirectionEnumMap[instance.textDirection],
-  'fit': _$PhlutsStackFitEnumMap[instance.fit],
-  'clipBehavior': _$PhlutsClipEnumMap[instance.clipBehavior],
-  'children': instance.children?.map((e) => e.toJson()).toList(),
-  'type': instance.type,
-};
+Map<String, dynamic> _$PhlutsStackToJson(PhlutsStack instance) =>
+    <String, dynamic>{
+      'alignment': _$PhlutsAlignmentEnumMap[instance.alignment],
+      'textDirection': _$PhlutsTextDirectionEnumMap[instance.textDirection],
+      'fit': _$PhlutsStackFitEnumMap[instance.fit],
+      'clipBehavior': _$PhlutsClipEnumMap[instance.clipBehavior],
+      'children': instance.children?.map((e) => e.toJson()).toList(),
+      'type': instance.type,
+    };
 
 const _$PhlutsAlignmentEnumMap = {
   PhlutsAlignment.topLeft: 'topLeft',

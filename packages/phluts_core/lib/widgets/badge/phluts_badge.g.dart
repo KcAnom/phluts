@@ -36,19 +36,20 @@ PhlutsBadge _$PhlutsBadgeFromJson(Map<String, dynamic> json) => PhlutsBadge(
       : PhlutsWidget.fromJson(json['child'] as Map<String, dynamic>),
 );
 
-Map<String, dynamic> _$PhlutsBadgeToJson(PhlutsBadge instance) => <String, dynamic>{
-  'backgroundColor': instance.backgroundColor,
-  'textColor': instance.textColor,
-  'smallSize': instance.smallSize,
-  'largeSize': instance.largeSize,
-  'textStyle': instance.textStyle?.toJson(),
-  'padding': instance.padding?.toJson(),
-  'alignment': instance.alignment?.toJson(),
-  'offset': instance.offset?.toJson(),
-  'label': instance.label?.toJson(),
-  'count': instance.count,
-  'maxCount': instance.maxCount,
-  'isLabelVisible': instance.isLabelVisible,
-  'child': instance.child?.toJson(),
-  'type': instance.type,
-};
+Map<String, dynamic> _$PhlutsBadgeToJson(PhlutsBadge instance) =>
+    <String, dynamic>{
+      'backgroundColor': instance.backgroundColor,
+      'textColor': instance.textColor,
+      'smallSize': instance.smallSize,
+      'largeSize': instance.largeSize,
+      'textStyle': instance.textStyle?.toJson(),
+      'padding': instance.padding?.toJson(),
+      'alignment': instance.alignment?.toJson(),
+      'offset': instance.offset?.toJson(),
+      'label': instance.label?.toJson(),
+      'count': instance.count,
+      'maxCount': instance.maxCount,
+      'isLabelVisible': instance.isLabelVisible,
+      'child': instance.child?.toJson(),
+      'type': instance.type,
+    };

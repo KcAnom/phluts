@@ -78,8 +78,9 @@ class PhlutsDefaultNavigationController extends PhlutsWidget {
   String get type => WidgetType.defaultNavigationController.name;
 
   /// Creates a [PhlutsDefaultNavigationController] from JSON.
-  factory PhlutsDefaultNavigationController.fromJson(Map<String, dynamic> json) =>
-      _$PhlutsDefaultNavigationControllerFromJson(json);
+  factory PhlutsDefaultNavigationController.fromJson(
+    Map<String, dynamic> json,
+  ) => _$PhlutsDefaultNavigationControllerFromJson(json);
 
   /// Converts this widget to JSON.
   @override

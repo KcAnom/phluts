@@ -40,7 +40,8 @@ Map<String, dynamic> _$PhlutsRefreshIndicatorToJson(
   'semanticsLabel': instance.semanticsLabel,
   'semanticsValue': instance.semanticsValue,
   'strokeWidth': const DoubleConverter().toJson(instance.strokeWidth),
-  'triggerMode': _$PhlutsRefreshIndicatorTriggerModeEnumMap[instance.triggerMode],
+  'triggerMode':
+      _$PhlutsRefreshIndicatorTriggerModeEnumMap[instance.triggerMode],
   'type': instance.type,
 };
 

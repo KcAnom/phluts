@@ -7,7 +7,10 @@ part of 'phluts_switch.dart';
 // **************************************************************************
 
 PhlutsSwitch _$PhlutsSwitchFromJson(Map<String, dynamic> json) => PhlutsSwitch(
-  switchType: $enumDecodeNullable(_$PhlutsSwitchTypeEnumMap, json['switchType']),
+  switchType: $enumDecodeNullable(
+    _$PhlutsSwitchTypeEnumMap,
+    json['switchType'],
+  ),
   value: json['value'] as bool?,
   onChanged: json['onChanged'] == null
       ? null

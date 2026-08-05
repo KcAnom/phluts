@@ -6,8 +6,8 @@ PhlutsWidget paddingExample() {
       appBar: PhlutsAppBar(title: PhlutsText(data: 'Padding')),
       body: PhlutsSingleChildScrollView(
           child: PhlutsContainer(
-              padding:
-                  PhlutsEdgeInsets.only(left: 12, right: 12, top: 12, bottom: 12),
+              padding: PhlutsEdgeInsets.only(
+                  left: 12, right: 12, top: 12, bottom: 12),
               child: PhlutsColumn(
                   mainAxisAlignment: PhlutsMainAxisAlignment.center,
                   crossAxisAlignment: PhlutsCrossAxisAlignment.center,

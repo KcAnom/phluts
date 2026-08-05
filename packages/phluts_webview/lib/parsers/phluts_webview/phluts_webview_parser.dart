@@ -15,7 +15,8 @@ class PhlutsWebViewParser extends PhlutsParser<PhlutsWebView> {
   ///
   /// {@macro getModel}
   @override
-  PhlutsWebView getModel(Map<String, dynamic> json) => PhlutsWebView.fromJson(json);
+  PhlutsWebView getModel(Map<String, dynamic> json) =>
+      PhlutsWebView.fromJson(json);
 
   @override
   Widget parse(BuildContext context, PhlutsWebView model) {

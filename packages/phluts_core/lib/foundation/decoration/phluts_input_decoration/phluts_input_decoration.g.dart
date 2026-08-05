@@ -55,7 +55,9 @@ PhlutsInputDecoration _$PhlutsInputDecorationFromJson(
       : PhlutsInputBorder.fromJson(json['errorBorder'] as Map<String, dynamic>),
   focusedBorder: json['focusedBorder'] == null
       ? null
-      : PhlutsInputBorder.fromJson(json['focusedBorder'] as Map<String, dynamic>),
+      : PhlutsInputBorder.fromJson(
+          json['focusedBorder'] as Map<String, dynamic>,
+        ),
   focusedErrorBorder: json['focusedErrorBorder'] == null
       ? null
       : PhlutsInputBorder.fromJson(
@@ -68,7 +70,9 @@ PhlutsInputDecoration _$PhlutsInputDecorationFromJson(
         ),
   enabledBorder: json['enabledBorder'] == null
       ? null
-      : PhlutsInputBorder.fromJson(json['enabledBorder'] as Map<String, dynamic>),
+      : PhlutsInputBorder.fromJson(
+          json['enabledBorder'] as Map<String, dynamic>,
+        ),
   border: json['border'] == null
       ? null
       : PhlutsInputBorder.fromJson(json['border'] as Map<String, dynamic>),

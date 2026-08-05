@@ -13,9 +13,10 @@ PhlutsCache _$PhlutsCacheFromJson(Map<String, dynamic> json) => PhlutsCache(
   cachedAt: DateTime.parse(json['cachedAt'] as String),
 );
 
-Map<String, dynamic> _$PhlutsCacheToJson(PhlutsCache instance) => <String, dynamic>{
-  'name': instance.name,
-  'phlutsJson': instance.phlutsJson,
-  'version': instance.version,
-  'cachedAt': instance.cachedAt.toIso8601String(),
-};
+Map<String, dynamic> _$PhlutsCacheToJson(PhlutsCache instance) =>
+    <String, dynamic>{
+      'name': instance.name,
+      'phlutsJson': instance.phlutsJson,
+      'version': instance.version,
+      'cachedAt': instance.cachedAt.toIso8601String(),
+    };

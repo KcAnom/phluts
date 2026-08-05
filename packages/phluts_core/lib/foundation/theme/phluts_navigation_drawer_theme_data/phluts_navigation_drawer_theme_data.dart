@@ -88,5 +88,6 @@ class PhlutsNavigationDrawerThemeData implements PhlutsElement {
 
   /// Converts this navigation drawer theme to JSON.
   @override
-  Map<String, dynamic> toJson() => _$PhlutsNavigationDrawerThemeDataToJson(this);
+  Map<String, dynamic> toJson() =>
+      _$PhlutsNavigationDrawerThemeDataToJson(this);
 }

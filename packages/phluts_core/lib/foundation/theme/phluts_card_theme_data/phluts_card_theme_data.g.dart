@@ -24,16 +24,17 @@ PhlutsCardThemeData _$PhlutsCardThemeDataFromJson(Map<String, dynamic> json) =>
           : PhlutsBorder.fromJson(json['shape'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$PhlutsCardThemeDataToJson(PhlutsCardThemeData instance) =>
-    <String, dynamic>{
-      'clipBehavior': _$PhlutsClipEnumMap[instance.clipBehavior],
-      'color': instance.color,
-      'shadowColor': instance.shadowColor,
-      'surfaceTintColor': instance.surfaceTintColor,
-      'elevation': instance.elevation,
-      'margin': instance.margin?.toJson(),
-      'shape': instance.shape?.toJson(),
-    };
+Map<String, dynamic> _$PhlutsCardThemeDataToJson(
+  PhlutsCardThemeData instance,
+) => <String, dynamic>{
+  'clipBehavior': _$PhlutsClipEnumMap[instance.clipBehavior],
+  'color': instance.color,
+  'shadowColor': instance.shadowColor,
+  'surfaceTintColor': instance.surfaceTintColor,
+  'elevation': instance.elevation,
+  'margin': instance.margin?.toJson(),
+  'shape': instance.shape?.toJson(),
+};
 
 const _$PhlutsClipEnumMap = {
   PhlutsClip.none: 'none',

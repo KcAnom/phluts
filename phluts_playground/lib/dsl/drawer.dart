@@ -89,7 +89,8 @@ PhlutsWidget drawerExample() {
         children: [
           PhlutsText(
             data: 'Welcome to Drawer Example',
-            style: PhlutsTextStyle(fontSize: 24, fontWeight: PhlutsFontWeight.bold),
+            style: PhlutsTextStyle(
+                fontSize: 24, fontWeight: PhlutsFontWeight.bold),
           ),
           PhlutsSizedBox(height: 16),
           PhlutsText(

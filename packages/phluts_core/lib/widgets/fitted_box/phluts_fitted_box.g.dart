@@ -6,18 +6,16 @@ part of 'phluts_fitted_box.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-PhlutsFittedBox _$PhlutsFittedBoxFromJson(Map<String, dynamic> json) =>
-    PhlutsFittedBox(
-      fit: $enumDecodeNullable(_$PhlutsBoxFitEnumMap, json['fit']),
-      alignment: $enumDecodeNullable(_$PhlutsAlignmentEnumMap, json['alignment']),
-      clipBehavior: $enumDecodeNullable(
-        _$PhlutsClipEnumMap,
-        json['clipBehavior'],
-      ),
-      child: json['child'] == null
-          ? null
-          : PhlutsWidget.fromJson(json['child'] as Map<String, dynamic>),
-    );
+PhlutsFittedBox _$PhlutsFittedBoxFromJson(
+  Map<String, dynamic> json,
+) => PhlutsFittedBox(
+  fit: $enumDecodeNullable(_$PhlutsBoxFitEnumMap, json['fit']),
+  alignment: $enumDecodeNullable(_$PhlutsAlignmentEnumMap, json['alignment']),
+  clipBehavior: $enumDecodeNullable(_$PhlutsClipEnumMap, json['clipBehavior']),
+  child: json['child'] == null
+      ? null
+      : PhlutsWidget.fromJson(json['child'] as Map<String, dynamic>),
+);
 
 Map<String, dynamic> _$PhlutsFittedBoxToJson(PhlutsFittedBox instance) =>
     <String, dynamic>{

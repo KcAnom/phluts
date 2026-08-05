@@ -25,7 +25,9 @@ PhlutsTooltipThemeData _$PhlutsTooltipThemeDataFromJson(
   excludeFromSemantics: json['excludeFromSemantics'] as bool?,
   decoration: json['decoration'] == null
       ? null
-      : PhlutsBoxDecoration.fromJson(json['decoration'] as Map<String, dynamic>),
+      : PhlutsBoxDecoration.fromJson(
+          json['decoration'] as Map<String, dynamic>,
+        ),
   textStyle: json['textStyle'] == null
       ? null
       : PhlutsTextStyle.fromJson(json['textStyle']),

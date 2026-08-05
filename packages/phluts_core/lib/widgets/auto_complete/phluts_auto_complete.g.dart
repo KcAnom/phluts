@@ -28,7 +28,8 @@ Map<String, dynamic> _$PhlutsAutoCompleteToJson(
   'onSelected': instance.onSelected?.toJson(),
   'optionsMaxHeight': const DoubleConverter().toJson(instance.optionsMaxHeight),
   'optionsViewOpenDirection':
-      _$PhlutsOptionsViewOpenDirectionEnumMap[instance.optionsViewOpenDirection],
+      _$PhlutsOptionsViewOpenDirectionEnumMap[instance
+          .optionsViewOpenDirection],
   'initialValue': instance.initialValue,
   'type': instance.type,
 };

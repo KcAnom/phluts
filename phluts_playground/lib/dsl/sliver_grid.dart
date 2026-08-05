@@ -16,28 +16,32 @@ PhlutsWidget sliverGridExample() {
                   child: PhlutsText(
                       data: 'Grid Item 1',
                       style: PhlutsTextStyle(
-                          color: '#FFFFFF', fontWeight: PhlutsFontWeight.bold)))),
+                          color: '#FFFFFF',
+                          fontWeight: PhlutsFontWeight.bold)))),
           PhlutsContainer(
               color: '#4CAF50',
               child: PhlutsCenter(
                   child: PhlutsText(
                       data: 'Grid Item 2',
                       style: PhlutsTextStyle(
-                          color: '#FFFFFF', fontWeight: PhlutsFontWeight.bold)))),
+                          color: '#FFFFFF',
+                          fontWeight: PhlutsFontWeight.bold)))),
           PhlutsContainer(
               color: '#4CAF50',
               child: PhlutsCenter(
                   child: PhlutsText(
                       data: 'Grid Item 3',
                       style: PhlutsTextStyle(
-                          color: '#FFFFFF', fontWeight: PhlutsFontWeight.bold)))),
+                          color: '#FFFFFF',
+                          fontWeight: PhlutsFontWeight.bold)))),
           PhlutsContainer(
               color: '#4CAF50',
               child: PhlutsCenter(
                   child: PhlutsText(
                       data: 'Grid Item 4',
                       style: PhlutsTextStyle(
-                          color: '#FFFFFF', fontWeight: PhlutsFontWeight.bold))))
+                          color: '#FFFFFF',
+                          fontWeight: PhlutsFontWeight.bold))))
         ])
   ]));
 }

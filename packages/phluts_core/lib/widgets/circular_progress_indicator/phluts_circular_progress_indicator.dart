@@ -86,5 +86,6 @@ class PhlutsCircularProgressIndicator extends PhlutsWidget {
 
   /// Converts this [PhlutsCircularProgressIndicator] instance to a JSON map.
   @override
-  Map<String, dynamic> toJson() => _$PhlutsCircularProgressIndicatorToJson(this);
+  Map<String, dynamic> toJson() =>
+      _$PhlutsCircularProgressIndicatorToJson(this);
 }

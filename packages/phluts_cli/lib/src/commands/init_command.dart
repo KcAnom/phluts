@@ -216,7 +216,10 @@ PhlutsWidget helloWorld() {
   }
 
   /// Create phluts config file
-  Future<void> _createPhlutsConfigFile(String targetDir, Project project) async {
+  Future<void> _createPhlutsConfigFile(
+    String targetDir,
+    Project project,
+  ) async {
     final phlutsConfigPath = path.join(
       targetDir,
       'lib/default_phluts_options.dart',

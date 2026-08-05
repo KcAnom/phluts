@@ -6,33 +6,31 @@ part of 'phluts_text_button.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-PhlutsTextButton _$PhlutsTextButtonFromJson(Map<String, dynamic> json) =>
-    PhlutsTextButton(
-      onPressed: json['onPressed'] == null
-          ? null
-          : PhlutsAction.fromJson(json['onPressed'] as Map<String, dynamic>),
-      onLongPress: json['onLongPress'] == null
-          ? null
-          : PhlutsAction.fromJson(json['onLongPress'] as Map<String, dynamic>),
-      onHover: json['onHover'] == null
-          ? null
-          : PhlutsAction.fromJson(json['onHover'] as Map<String, dynamic>),
-      onFocusChange: json['onFocusChange'] == null
-          ? null
-          : PhlutsAction.fromJson(json['onFocusChange'] as Map<String, dynamic>),
-      style: json['style'] == null
-          ? null
-          : PhlutsButtonStyle.fromJson(json['style'] as Map<String, dynamic>),
-      autofocus: json['autofocus'] as bool?,
-      clipBehavior: $enumDecodeNullable(
-        _$PhlutsClipEnumMap,
-        json['clipBehavior'],
-      ),
-      isSemanticButton: json['isSemanticButton'] as bool?,
-      child: json['child'] == null
-          ? null
-          : PhlutsWidget.fromJson(json['child'] as Map<String, dynamic>),
-    );
+PhlutsTextButton _$PhlutsTextButtonFromJson(
+  Map<String, dynamic> json,
+) => PhlutsTextButton(
+  onPressed: json['onPressed'] == null
+      ? null
+      : PhlutsAction.fromJson(json['onPressed'] as Map<String, dynamic>),
+  onLongPress: json['onLongPress'] == null
+      ? null
+      : PhlutsAction.fromJson(json['onLongPress'] as Map<String, dynamic>),
+  onHover: json['onHover'] == null
+      ? null
+      : PhlutsAction.fromJson(json['onHover'] as Map<String, dynamic>),
+  onFocusChange: json['onFocusChange'] == null
+      ? null
+      : PhlutsAction.fromJson(json['onFocusChange'] as Map<String, dynamic>),
+  style: json['style'] == null
+      ? null
+      : PhlutsButtonStyle.fromJson(json['style'] as Map<String, dynamic>),
+  autofocus: json['autofocus'] as bool?,
+  clipBehavior: $enumDecodeNullable(_$PhlutsClipEnumMap, json['clipBehavior']),
+  isSemanticButton: json['isSemanticButton'] as bool?,
+  child: json['child'] == null
+      ? null
+      : PhlutsWidget.fromJson(json['child'] as Map<String, dynamic>),
+);
 
 Map<String, dynamic> _$PhlutsTextButtonToJson(PhlutsTextButton instance) =>
     <String, dynamic>{

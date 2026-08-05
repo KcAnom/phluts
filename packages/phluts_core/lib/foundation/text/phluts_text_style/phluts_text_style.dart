@@ -314,7 +314,9 @@ abstract class PhlutsTextStyle implements PhlutsElement {
   ///
   /// Parameter: [textTheme] (required) – the `TextTheme` style key.
   /// Returns: [PhlutsThemeTextStyle]
-  factory PhlutsTextStyle.fromTheme({required PhlutsMaterialTextStyle textTheme}) {
+  factory PhlutsTextStyle.fromTheme({
+    required PhlutsMaterialTextStyle textTheme,
+  }) {
     return PhlutsThemeTextStyle(textTheme: textTheme);
   }
 

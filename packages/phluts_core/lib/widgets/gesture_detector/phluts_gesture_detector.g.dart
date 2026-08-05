@@ -29,7 +29,9 @@ PhlutsGestureDetector _$PhlutsGestureDetectorFromJson(
       : PhlutsAction.fromJson(json['onSecondaryTap'] as Map<String, dynamic>),
   onSecondaryTapDown: json['onSecondaryTapDown'] == null
       ? null
-      : PhlutsAction.fromJson(json['onSecondaryTapDown'] as Map<String, dynamic>),
+      : PhlutsAction.fromJson(
+          json['onSecondaryTapDown'] as Map<String, dynamic>,
+        ),
   onSecondaryTapUp: json['onSecondaryTapUp'] == null
       ? null
       : PhlutsAction.fromJson(json['onSecondaryTapUp'] as Map<String, dynamic>),
@@ -40,7 +42,9 @@ PhlutsGestureDetector _$PhlutsGestureDetectorFromJson(
         ),
   onTertiaryTapDown: json['onTertiaryTapDown'] == null
       ? null
-      : PhlutsAction.fromJson(json['onTertiaryTapDown'] as Map<String, dynamic>),
+      : PhlutsAction.fromJson(
+          json['onTertiaryTapDown'] as Map<String, dynamic>,
+        ),
   onTertiaryTapUp: json['onTertiaryTapUp'] == null
       ? null
       : PhlutsAction.fromJson(json['onTertiaryTapUp'] as Map<String, dynamic>),
@@ -57,7 +61,9 @@ PhlutsGestureDetector _$PhlutsGestureDetectorFromJson(
       : PhlutsAction.fromJson(json['onDoubleTapDown'] as Map<String, dynamic>),
   onDoubleTapCancel: json['onDoubleTapCancel'] == null
       ? null
-      : PhlutsAction.fromJson(json['onDoubleTapCancel'] as Map<String, dynamic>),
+      : PhlutsAction.fromJson(
+          json['onDoubleTapCancel'] as Map<String, dynamic>,
+        ),
   onLongPress: json['onLongPress'] == null
       ? null
       : PhlutsAction.fromJson(json['onLongPress'] as Map<String, dynamic>),
@@ -80,7 +86,9 @@ PhlutsGestureDetector _$PhlutsGestureDetectorFromJson(
       : PhlutsAction.fromJson(json['onLongPressEnd'] as Map<String, dynamic>),
   onLongPressCancel: json['onLongPressCancel'] == null
       ? null
-      : PhlutsAction.fromJson(json['onLongPressCancel'] as Map<String, dynamic>),
+      : PhlutsAction.fromJson(
+          json['onLongPressCancel'] as Map<String, dynamic>,
+        ),
   onSecondaryLongPress: json['onSecondaryLongPress'] == null
       ? null
       : PhlutsAction.fromJson(
@@ -153,7 +161,9 @@ PhlutsGestureDetector _$PhlutsGestureDetectorFromJson(
         ),
   onVerticalDragDown: json['onVerticalDragDown'] == null
       ? null
-      : PhlutsAction.fromJson(json['onVerticalDragDown'] as Map<String, dynamic>),
+      : PhlutsAction.fromJson(
+          json['onVerticalDragDown'] as Map<String, dynamic>,
+        ),
   onVerticalDragStart: json['onVerticalDragStart'] == null
       ? null
       : PhlutsAction.fromJson(
@@ -166,7 +176,9 @@ PhlutsGestureDetector _$PhlutsGestureDetectorFromJson(
         ),
   onVerticalDragEnd: json['onVerticalDragEnd'] == null
       ? null
-      : PhlutsAction.fromJson(json['onVerticalDragEnd'] as Map<String, dynamic>),
+      : PhlutsAction.fromJson(
+          json['onVerticalDragEnd'] as Map<String, dynamic>,
+        ),
   onVerticalDragCancel: json['onVerticalDragCancel'] == null
       ? null
       : PhlutsAction.fromJson(
@@ -199,13 +211,17 @@ PhlutsGestureDetector _$PhlutsGestureDetectorFromJson(
         ),
   onForcePressStart: json['onForcePressStart'] == null
       ? null
-      : PhlutsAction.fromJson(json['onForcePressStart'] as Map<String, dynamic>),
+      : PhlutsAction.fromJson(
+          json['onForcePressStart'] as Map<String, dynamic>,
+        ),
   onForcePressPeak: json['onForcePressPeak'] == null
       ? null
       : PhlutsAction.fromJson(json['onForcePressPeak'] as Map<String, dynamic>),
   onForcePressUpdate: json['onForcePressUpdate'] == null
       ? null
-      : PhlutsAction.fromJson(json['onForcePressUpdate'] as Map<String, dynamic>),
+      : PhlutsAction.fromJson(
+          json['onForcePressUpdate'] as Map<String, dynamic>,
+        ),
   onForcePressEnd: json['onForcePressEnd'] == null
       ? null
       : PhlutsAction.fromJson(json['onForcePressEnd'] as Map<String, dynamic>),
@@ -233,7 +249,10 @@ PhlutsGestureDetector _$PhlutsGestureDetectorFromJson(
   onScaleEnd: json['onScaleEnd'] == null
       ? null
       : PhlutsAction.fromJson(json['onScaleEnd'] as Map<String, dynamic>),
-  behavior: $enumDecodeNullable(_$PhlutsHitTestBehaviorEnumMap, json['behavior']),
+  behavior: $enumDecodeNullable(
+    _$PhlutsHitTestBehaviorEnumMap,
+    json['behavior'],
+  ),
   excludeFromSemantics: json['excludeFromSemantics'] as bool?,
   dragStartBehavior: $enumDecodeNullable(
     _$PhlutsDragStartBehaviorEnumMap,

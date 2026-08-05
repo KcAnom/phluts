@@ -5,7 +5,8 @@ import 'package:phluts/src/framework/framework.dart';
 import 'package:phluts_core/phluts_core.dart';
 import 'package:phluts_framework/phluts_framework.dart';
 
-class PhlutsNavigateActionParser extends PhlutsActionParser<PhlutsNavigateAction> {
+class PhlutsNavigateActionParser
+    extends PhlutsActionParser<PhlutsNavigateAction> {
   const PhlutsNavigateActionParser();
 
   @override

@@ -43,10 +43,8 @@ class PhlutsCloud {
   }
 
   /// Tracks artifacts currently being fetched in background to prevent duplicates.
-  static final Map<PhlutsArtifactType, Set<String>> _backgroundFetchInProgress = {
-    PhlutsArtifactType.screen: {},
-    PhlutsArtifactType.theme: {},
-  };
+  static final Map<PhlutsArtifactType, Set<String>> _backgroundFetchInProgress =
+      {PhlutsArtifactType.screen: {}, PhlutsArtifactType.theme: {}};
 
   /// Fetches an artifact from Phluts Cloud with intelligent caching.
   ///
@@ -362,7 +360,10 @@ class PhlutsCloud {
 
   /// Clears the cache for a specific screen.
   static Future<bool> clearScreenCache(String routeName) {
-    return PhlutsCacheService.removeArtifact(routeName, PhlutsArtifactType.screen);
+    return PhlutsCacheService.removeArtifact(
+      routeName,
+      PhlutsArtifactType.screen,
+    );
   }
 
   /// Clears all cached screens.
@@ -372,7 +373,10 @@ class PhlutsCloud {
 
   /// Clears the cache for a specific theme.
   static Future<bool> clearThemeCache(String themeName) {
-    return PhlutsCacheService.removeArtifact(themeName, PhlutsArtifactType.theme);
+    return PhlutsCacheService.removeArtifact(
+      themeName,
+      PhlutsArtifactType.theme,
+    );
   }
 
   /// Clears all cached themes.

@@ -8,7 +8,8 @@ class PhlutsToolTipParser extends PhlutsParser<PhlutsTooltip> {
   String get type => WidgetType.tooltip.name;
 
   @override
-  PhlutsTooltip getModel(Map<String, dynamic> json) => PhlutsTooltip.fromJson(json);
+  PhlutsTooltip getModel(Map<String, dynamic> json) =>
+      PhlutsTooltip.fromJson(json);
 
   @override
   Widget parse(BuildContext context, PhlutsTooltip model) {

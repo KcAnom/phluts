@@ -16,7 +16,9 @@ PhlutsContainer _$PhlutsContainerFromJson(
   color: json['color'] as String?,
   decoration: json['decoration'] == null
       ? null
-      : PhlutsBoxDecoration.fromJson(json['decoration'] as Map<String, dynamic>),
+      : PhlutsBoxDecoration.fromJson(
+          json['decoration'] as Map<String, dynamic>,
+        ),
   foregroundDecoration: json['foregroundDecoration'] == null
       ? null
       : PhlutsBoxDecoration.fromJson(
@@ -42,22 +44,23 @@ PhlutsContainer _$PhlutsContainerFromJson(
   clipBehavior: $enumDecodeNullable(_$PhlutsClipEnumMap, json['clipBehavior']),
 );
 
-Map<String, dynamic> _$PhlutsContainerToJson(PhlutsContainer instance) =>
-    <String, dynamic>{
-      'alignment': _$PhlutsAlignmentEnumMap[instance.alignment],
-      'padding': instance.padding?.toJson(),
-      'color': instance.color,
-      'decoration': instance.decoration?.toJson(),
-      'foregroundDecoration': instance.foregroundDecoration?.toJson(),
-      'width': const DoubleConverter().toJson(instance.width),
-      'height': const DoubleConverter().toJson(instance.height),
-      'constraints': instance.constraints?.toJson(),
-      'margin': instance.margin?.toJson(),
-      'transformAlignment': _$PhlutsAlignmentEnumMap[instance.transformAlignment],
-      'child': instance.child?.toJson(),
-      'clipBehavior': _$PhlutsClipEnumMap[instance.clipBehavior],
-      'type': instance.type,
-    };
+Map<String, dynamic> _$PhlutsContainerToJson(
+  PhlutsContainer instance,
+) => <String, dynamic>{
+  'alignment': _$PhlutsAlignmentEnumMap[instance.alignment],
+  'padding': instance.padding?.toJson(),
+  'color': instance.color,
+  'decoration': instance.decoration?.toJson(),
+  'foregroundDecoration': instance.foregroundDecoration?.toJson(),
+  'width': const DoubleConverter().toJson(instance.width),
+  'height': const DoubleConverter().toJson(instance.height),
+  'constraints': instance.constraints?.toJson(),
+  'margin': instance.margin?.toJson(),
+  'transformAlignment': _$PhlutsAlignmentEnumMap[instance.transformAlignment],
+  'child': instance.child?.toJson(),
+  'clipBehavior': _$PhlutsClipEnumMap[instance.clipBehavior],
+  'type': instance.type,
+};
 
 const _$PhlutsAlignmentEnumMap = {
   PhlutsAlignment.topLeft: 'topLeft',

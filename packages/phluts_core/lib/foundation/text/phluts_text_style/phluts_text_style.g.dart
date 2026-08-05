@@ -13,7 +13,10 @@ PhlutsCustomTextStyle _$PhlutsCustomTextStyleFromJson(
   color: json['color'] as String?,
   backgroundColor: json['backgroundColor'] as String?,
   fontSize: (json['fontSize'] as num?)?.toDouble(),
-  fontWeight: $enumDecodeNullable(_$PhlutsFontWeightEnumMap, json['fontWeight']),
+  fontWeight: $enumDecodeNullable(
+    _$PhlutsFontWeightEnumMap,
+    json['fontWeight'],
+  ),
   fontStyle: $enumDecodeNullable(_$PhlutsFontStyleEnumMap, json['fontStyle']),
   letterSpacing: (json['letterSpacing'] as num?)?.toDouble(),
   wordSpacing: (json['wordSpacing'] as num?)?.toDouble(),
@@ -63,7 +66,8 @@ Map<String, dynamic> _$PhlutsCustomTextStyleToJson(
       _$PhlutsTextLeadingDistributionEnumMap[instance.leadingDistribution],
   'decoration': _$PhlutsTextDecorationLineEnumMap[instance.decoration],
   'decorationColor': instance.decorationColor,
-  'decorationStyle': _$PhlutsTextDecorationStyleEnumMap[instance.decorationStyle],
+  'decorationStyle':
+      _$PhlutsTextDecorationStyleEnumMap[instance.decorationStyle],
   'decorationThickness': instance.decorationThickness,
   'debugLabel': instance.debugLabel,
   'fontFamily': instance.fontFamily,
@@ -136,7 +140,10 @@ PhlutsThemeTextStyle _$PhlutsThemeTextStyleFromJson(
   color: json['color'] as String?,
   backgroundColor: json['backgroundColor'] as String?,
   fontSize: (json['fontSize'] as num?)?.toDouble(),
-  fontWeight: $enumDecodeNullable(_$PhlutsFontWeightEnumMap, json['fontWeight']),
+  fontWeight: $enumDecodeNullable(
+    _$PhlutsFontWeightEnumMap,
+    json['fontWeight'],
+  ),
   fontStyle: $enumDecodeNullable(_$PhlutsFontStyleEnumMap, json['fontStyle']),
   letterSpacing: (json['letterSpacing'] as num?)?.toDouble(),
   wordSpacing: (json['wordSpacing'] as num?)?.toDouble(),
@@ -182,7 +189,8 @@ Map<String, dynamic> _$PhlutsThemeTextStyleToJson(
   'leadingDistribution':
       _$PhlutsTextLeadingDistributionEnumMap[instance.leadingDistribution],
   'decorationColor': instance.decorationColor,
-  'decorationStyle': _$PhlutsTextDecorationStyleEnumMap[instance.decorationStyle],
+  'decorationStyle':
+      _$PhlutsTextDecorationStyleEnumMap[instance.decorationStyle],
   'decorationThickness': instance.decorationThickness,
   'debugLabel': instance.debugLabel,
   'fontFamily': instance.fontFamily,

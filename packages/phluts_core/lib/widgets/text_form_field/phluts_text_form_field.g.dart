@@ -118,7 +118,8 @@ Map<String, dynamic> _$PhlutsTextFormFieldToJson(
   'cursorWidth': const DoubleConverter().toJson(instance.cursorWidth),
   'cursorHeight': const DoubleConverter().toJson(instance.cursorHeight),
   'cursorColor': instance.cursorColor,
-  'autovalidateMode': _$PhlutsAutovalidateModeEnumMap[instance.autovalidateMode],
+  'autovalidateMode':
+      _$PhlutsAutovalidateModeEnumMap[instance.autovalidateMode],
   'inputFormatters': instance.inputFormatters?.map((e) => e.toJson()).toList(),
   'validatorRules': instance.validatorRules?.map((e) => e.toJson()).toList(),
   'type': instance.type,

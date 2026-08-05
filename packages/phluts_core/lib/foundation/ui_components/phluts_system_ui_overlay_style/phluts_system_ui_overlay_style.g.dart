@@ -41,7 +41,8 @@ Map<String, dynamic> _$PhlutsSystemUIOverlayStyleToJson(
   'systemNavigationBarContrastEnforced':
       instance.systemNavigationBarContrastEnforced,
   'statusBarColor': instance.statusBarColor,
-  'statusBarBrightness': _$PhlutsBrightnessEnumMap[instance.statusBarBrightness],
+  'statusBarBrightness':
+      _$PhlutsBrightnessEnumMap[instance.statusBarBrightness],
   'statusBarIconBrightness':
       _$PhlutsBrightnessEnumMap[instance.statusBarIconBrightness],
   'systemStatusBarContrastEnforced': instance.systemStatusBarContrastEnforced,

@@ -9,7 +9,8 @@ import 'package:phluts/src/utils/color_utils.dart';
 import 'package:phluts_core/phluts_core.dart';
 import 'package:phluts_framework/phluts_framework.dart';
 
-class PhlutsRefreshIndicatorParser extends PhlutsParser<PhlutsRefreshIndicator> {
+class PhlutsRefreshIndicatorParser
+    extends PhlutsParser<PhlutsRefreshIndicator> {
   const PhlutsRefreshIndicatorParser();
 
   @override

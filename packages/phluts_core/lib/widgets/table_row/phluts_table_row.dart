@@ -11,7 +11,10 @@ part 'phluts_table_row.g.dart';
 @JsonSerializable()
 class PhlutsTableRow extends PhlutsElement {
   /// Creates a [PhlutsTableRow].
-  const PhlutsTableRow({this.decoration, this.children = const <PhlutsWidget>[]});
+  const PhlutsTableRow({
+    this.decoration,
+    this.children = const <PhlutsWidget>[],
+  });
 
   /// Optional background decoration for the row.
   final PhlutsBoxDecoration? decoration;

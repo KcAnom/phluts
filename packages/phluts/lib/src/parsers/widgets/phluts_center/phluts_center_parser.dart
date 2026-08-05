@@ -10,7 +10,8 @@ class PhlutsCenterParser extends PhlutsParser<PhlutsCenter> {
   String get type => WidgetType.center.name;
 
   @override
-  PhlutsCenter getModel(Map<String, dynamic> json) => PhlutsCenter.fromJson(json);
+  PhlutsCenter getModel(Map<String, dynamic> json) =>
+      PhlutsCenter.fromJson(json);
 
   @override
   Widget parse(BuildContext context, PhlutsCenter model) {

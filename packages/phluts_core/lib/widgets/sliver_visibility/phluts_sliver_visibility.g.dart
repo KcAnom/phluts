@@ -12,7 +12,9 @@ PhlutsSliverVisibility _$PhlutsSliverVisibilityFromJson(
   sliver: PhlutsWidget.fromJson(json['sliver'] as Map<String, dynamic>),
   replacementSliver: json['replacementSliver'] == null
       ? null
-      : PhlutsWidget.fromJson(json['replacementSliver'] as Map<String, dynamic>),
+      : PhlutsWidget.fromJson(
+          json['replacementSliver'] as Map<String, dynamic>,
+        ),
   visible: json['visible'] as bool?,
   maintainState: json['maintainState'] as bool?,
   maintainAnimation: json['maintainAnimation'] as bool?,

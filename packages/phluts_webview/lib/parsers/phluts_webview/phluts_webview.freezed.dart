@@ -46,7 +46,8 @@ mixin _$PhlutsWebView {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
   $PhlutsWebViewCopyWith<PhlutsWebView> get copyWith =>
-      _$PhlutsWebViewCopyWithImpl<PhlutsWebView>(this as PhlutsWebView, _$identity);
+      _$PhlutsWebViewCopyWithImpl<PhlutsWebView>(
+          this as PhlutsWebView, _$identity);
 
   /// Serializes this PhlutsWebView to a JSON map.
   Map<String, dynamic> toJson();
@@ -96,7 +97,8 @@ abstract mixin class $PhlutsWebViewCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$PhlutsWebViewCopyWithImpl<$Res> implements $PhlutsWebViewCopyWith<$Res> {
+class _$PhlutsWebViewCopyWithImpl<$Res>
+    implements $PhlutsWebViewCopyWith<$Res> {
   _$PhlutsWebViewCopyWithImpl(this._self, this._then);
 
   final PhlutsWebView _self;
@@ -254,7 +256,8 @@ abstract mixin class _$PhlutsWebViewCopyWith<$Res>
 }
 
 /// @nodoc
-class __$PhlutsWebViewCopyWithImpl<$Res> implements _$PhlutsWebViewCopyWith<$Res> {
+class __$PhlutsWebViewCopyWithImpl<$Res>
+    implements _$PhlutsWebViewCopyWith<$Res> {
   __$PhlutsWebViewCopyWithImpl(this._self, this._then);
 
   final _PhlutsWebView _self;

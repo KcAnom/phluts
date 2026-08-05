@@ -8,7 +8,8 @@ import 'package:phluts_core/phluts_core.dart';
 import 'package:phluts_framework/phluts_framework.dart';
 import 'package:phluts_logger/phluts_logger.dart';
 
-class PhlutsNetworkRequestParser extends PhlutsActionParser<PhlutsNetworkRequest> {
+class PhlutsNetworkRequestParser
+    extends PhlutsActionParser<PhlutsNetworkRequest> {
   const PhlutsNetworkRequestParser();
 
   @override

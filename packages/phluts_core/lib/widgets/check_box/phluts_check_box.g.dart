@@ -6,31 +6,32 @@ part of 'phluts_check_box.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-PhlutsCheckBox _$PhlutsCheckBoxFromJson(Map<String, dynamic> json) => PhlutsCheckBox(
-  id: json['id'] as String?,
-  value: json['value'] as bool?,
-  tristate: json['tristate'] as bool?,
-  onChanged: json['onChanged'] == null
-      ? null
-      : PhlutsAction.fromJson(json['onChanged'] as Map<String, dynamic>),
-  mouseCursor: $enumDecodeNullable(
-    _$PhlutsMouseCursorEnumMap,
-    json['mouseCursor'],
-  ),
-  activeColor: json['activeColor'] as String?,
-  fillColor: json['fillColor'] as String?,
-  checkColor: json['checkColor'] as String?,
-  focusColor: json['focusColor'] as String?,
-  hoverColor: json['hoverColor'] as String?,
-  overlayColor: json['overlayColor'] as String?,
-  splashRadius: const DoubleConverter().fromJson(json['splashRadius']),
-  materialTapTargetSize: $enumDecodeNullable(
-    _$PhlutsMaterialTapTargetSizeEnumMap,
-    json['materialTapTargetSize'],
-  ),
-  autofocus: json['autofocus'] as bool?,
-  isError: json['isError'] as bool?,
-);
+PhlutsCheckBox _$PhlutsCheckBoxFromJson(Map<String, dynamic> json) =>
+    PhlutsCheckBox(
+      id: json['id'] as String?,
+      value: json['value'] as bool?,
+      tristate: json['tristate'] as bool?,
+      onChanged: json['onChanged'] == null
+          ? null
+          : PhlutsAction.fromJson(json['onChanged'] as Map<String, dynamic>),
+      mouseCursor: $enumDecodeNullable(
+        _$PhlutsMouseCursorEnumMap,
+        json['mouseCursor'],
+      ),
+      activeColor: json['activeColor'] as String?,
+      fillColor: json['fillColor'] as String?,
+      checkColor: json['checkColor'] as String?,
+      focusColor: json['focusColor'] as String?,
+      hoverColor: json['hoverColor'] as String?,
+      overlayColor: json['overlayColor'] as String?,
+      splashRadius: const DoubleConverter().fromJson(json['splashRadius']),
+      materialTapTargetSize: $enumDecodeNullable(
+        _$PhlutsMaterialTapTargetSizeEnumMap,
+        json['materialTapTargetSize'],
+      ),
+      autofocus: json['autofocus'] as bool?,
+      isError: json['isError'] as bool?,
+    );
 
 Map<String, dynamic> _$PhlutsCheckBoxToJson(PhlutsCheckBox instance) =>
     <String, dynamic>{

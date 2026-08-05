@@ -9,7 +9,8 @@ import 'package:phluts_core/phluts_core.dart';
 /// Parser extension for [PhlutsFloatingActionButtonThemeData].
 ///
 /// Converts [PhlutsFloatingActionButtonThemeData] to Flutter's [FloatingActionButtonThemeData].
-extension PhlutsFloatingActionThemeParser on PhlutsFloatingActionButtonThemeData {
+extension PhlutsFloatingActionThemeParser
+    on PhlutsFloatingActionButtonThemeData {
   FloatingActionButtonThemeData parse(BuildContext context) {
     return FloatingActionButtonThemeData(
       foregroundColor: foregroundColor?.toColor(context),

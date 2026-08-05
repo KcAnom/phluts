@@ -12,8 +12,8 @@ PhlutsWidget clipOvalExample() {
         children: [
           PhlutsText(
             data: 'Basic ClipOval with Image',
-            style:
-                PhlutsTextStyle(fontSize: 18.0, fontWeight: PhlutsFontWeight.w600),
+            style: PhlutsTextStyle(
+                fontSize: 18.0, fontWeight: PhlutsFontWeight.w600),
           ),
           PhlutsSizedBox(height: 16.0),
           PhlutsClipOval(
@@ -28,8 +28,8 @@ PhlutsWidget clipOvalExample() {
           PhlutsSizedBox(height: 32.0),
           PhlutsText(
             data: 'ClipOval with Container',
-            style:
-                PhlutsTextStyle(fontSize: 18.0, fontWeight: PhlutsFontWeight.w600),
+            style: PhlutsTextStyle(
+                fontSize: 18.0, fontWeight: PhlutsFontWeight.w600),
           ),
           PhlutsSizedBox(height: 16.0),
           PhlutsClipOval(
@@ -39,8 +39,8 @@ PhlutsWidget clipOvalExample() {
           PhlutsSizedBox(height: 32.0),
           PhlutsText(
             data: 'ClipOval with Text',
-            style:
-                PhlutsTextStyle(fontSize: 18.0, fontWeight: PhlutsFontWeight.w600),
+            style: PhlutsTextStyle(
+                fontSize: 18.0, fontWeight: PhlutsFontWeight.w600),
           ),
           PhlutsSizedBox(height: 16.0),
           PhlutsClipOval(

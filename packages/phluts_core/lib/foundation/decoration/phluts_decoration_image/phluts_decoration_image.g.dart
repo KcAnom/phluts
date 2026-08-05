@@ -6,26 +6,27 @@ part of 'phluts_decoration_image.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-PhlutsDecorationImage _$PhlutsDecorationImageFromJson(Map<String, dynamic> json) =>
-    PhlutsDecorationImage(
-      src: json['src'] as String,
-      fit: $enumDecodeNullable(_$PhlutsBoxFitEnumMap, json['fit']),
-      imageType: $enumDecodeNullable(_$PhlutsImageTypeEnumMap, json['imageType']),
-      alignment: $enumDecodeNullable(_$PhlutsAlignmentEnumMap, json['alignment']),
-      centerSlice: json['centerSlice'] == null
-          ? null
-          : PhlutsRect.fromJson(json['centerSlice'] as Map<String, dynamic>),
-      repeat: $enumDecodeNullable(_$PhlutsImageRepeatEnumMap, json['repeat']),
-      matchTextDirection: json['matchTextDirection'] as bool?,
-      scale: (json['scale'] as num?)?.toDouble(),
-      opacity: (json['opacity'] as num?)?.toDouble(),
-      filterQuality: $enumDecodeNullable(
-        _$PhlutsFilterQualityEnumMap,
-        json['filterQuality'],
-      ),
-      invertColors: json['invertColors'] as bool?,
-      isAntiAlias: json['isAntiAlias'] as bool?,
-    );
+PhlutsDecorationImage _$PhlutsDecorationImageFromJson(
+  Map<String, dynamic> json,
+) => PhlutsDecorationImage(
+  src: json['src'] as String,
+  fit: $enumDecodeNullable(_$PhlutsBoxFitEnumMap, json['fit']),
+  imageType: $enumDecodeNullable(_$PhlutsImageTypeEnumMap, json['imageType']),
+  alignment: $enumDecodeNullable(_$PhlutsAlignmentEnumMap, json['alignment']),
+  centerSlice: json['centerSlice'] == null
+      ? null
+      : PhlutsRect.fromJson(json['centerSlice'] as Map<String, dynamic>),
+  repeat: $enumDecodeNullable(_$PhlutsImageRepeatEnumMap, json['repeat']),
+  matchTextDirection: json['matchTextDirection'] as bool?,
+  scale: (json['scale'] as num?)?.toDouble(),
+  opacity: (json['opacity'] as num?)?.toDouble(),
+  filterQuality: $enumDecodeNullable(
+    _$PhlutsFilterQualityEnumMap,
+    json['filterQuality'],
+  ),
+  invertColors: json['invertColors'] as bool?,
+  isAntiAlias: json['isAntiAlias'] as bool?,
+);
 
 Map<String, dynamic> _$PhlutsDecorationImageToJson(
   PhlutsDecorationImage instance,

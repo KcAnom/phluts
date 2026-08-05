@@ -6,14 +6,15 @@ PhlutsWidget selectableTextExample() {
     appBar: PhlutsAppBar(title: PhlutsText(data: 'Selectable Text')),
     body: PhlutsSingleChildScrollView(
       child: PhlutsPadding(
-        padding: PhlutsEdgeInsets.only(top: 12, left: 12, right: 12, bottom: 12),
+        padding:
+            PhlutsEdgeInsets.only(top: 12, left: 12, right: 12, bottom: 12),
         child: PhlutsColumn(
           crossAxisAlignment: PhlutsCrossAxisAlignment.start,
           children: [
             PhlutsText(
               data: 'Standard Selectable Text',
-              style:
-                  PhlutsTextStyle(fontSize: 18, fontWeight: PhlutsFontWeight.w600),
+              style: PhlutsTextStyle(
+                  fontSize: 18, fontWeight: PhlutsFontWeight.w600),
             ),
             PhlutsSizedBox(height: 10),
             PhlutsSelectableText(
@@ -23,8 +24,8 @@ PhlutsWidget selectableTextExample() {
             PhlutsSizedBox(height: 32),
             PhlutsText(
               data: 'Rich Selectable Text',
-              style:
-                  PhlutsTextStyle(fontSize: 18, fontWeight: PhlutsFontWeight.w600),
+              style: PhlutsTextStyle(
+                  fontSize: 18, fontWeight: PhlutsFontWeight.w600),
             ),
             PhlutsSizedBox(height: 10),
             PhlutsSelectableText(
@@ -40,8 +41,8 @@ PhlutsWidget selectableTextExample() {
             PhlutsSizedBox(height: 32),
             PhlutsText(
               data: 'Custom Cursor Selectable Text',
-              style:
-                  PhlutsTextStyle(fontSize: 18, fontWeight: PhlutsFontWeight.w600),
+              style: PhlutsTextStyle(
+                  fontSize: 18, fontWeight: PhlutsFontWeight.w600),
             ),
             PhlutsSizedBox(height: 10),
             PhlutsSelectableText(
@@ -53,8 +54,8 @@ PhlutsWidget selectableTextExample() {
             PhlutsSizedBox(height: 32),
             PhlutsText(
               data: 'Interactive Selection Disabled',
-              style:
-                  PhlutsTextStyle(fontSize: 18, fontWeight: PhlutsFontWeight.w600),
+              style: PhlutsTextStyle(
+                  fontSize: 18, fontWeight: PhlutsFontWeight.w600),
             ),
             PhlutsSizedBox(height: 10),
             PhlutsSelectableText(

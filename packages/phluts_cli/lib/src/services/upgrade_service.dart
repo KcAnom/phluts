@@ -377,7 +377,9 @@ class UpgradeService {
       }
 
       if (response.statusCode != 200) {
-        throw PhlutsException('Failed to download: HTTP ${response.statusCode}');
+        throw PhlutsException(
+          'Failed to download: HTTP ${response.statusCode}',
+        );
       }
 
       final file = File(destPath);
@@ -464,7 +466,9 @@ class UpgradeService {
       throw PhlutsException('Refusing non-HTTPS download URL: $uri');
     }
     if (!_allowedDownloadHosts.contains(uri.host)) {
-      throw PhlutsException('Refusing download from untrusted host: ${uri.host}');
+      throw PhlutsException(
+        'Refusing download from untrusted host: ${uri.host}',
+      );
     }
   }
 

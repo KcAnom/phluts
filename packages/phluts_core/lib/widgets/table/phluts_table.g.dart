@@ -40,20 +40,21 @@ PhlutsTable _$PhlutsTableFromJson(Map<String, dynamic> json) => PhlutsTable(
   ),
 );
 
-Map<String, dynamic> _$PhlutsTableToJson(PhlutsTable instance) => <String, dynamic>{
-  'children': instance.children.map((e) => e.toJson()).toList(),
-  'columnWidths': instance.columnWidths?.map(
-    (k, e) => MapEntry(k.toString(), e.toJson()),
-  ),
-  'defaultColumnWidth': instance.defaultColumnWidth?.toJson(),
-  'textDirection': _$PhlutsTextDirectionEnumMap[instance.textDirection],
-  'border': instance.border?.toJson(),
-  'defaultVerticalAlignment':
-      _$PhlutsTableCellVerticalAlignmentEnumMap[instance
-          .defaultVerticalAlignment],
-  'textBaseline': _$PhlutsTextBaselineEnumMap[instance.textBaseline],
-  'type': instance.type,
-};
+Map<String, dynamic> _$PhlutsTableToJson(PhlutsTable instance) =>
+    <String, dynamic>{
+      'children': instance.children.map((e) => e.toJson()).toList(),
+      'columnWidths': instance.columnWidths?.map(
+        (k, e) => MapEntry(k.toString(), e.toJson()),
+      ),
+      'defaultColumnWidth': instance.defaultColumnWidth?.toJson(),
+      'textDirection': _$PhlutsTextDirectionEnumMap[instance.textDirection],
+      'border': instance.border?.toJson(),
+      'defaultVerticalAlignment':
+          _$PhlutsTableCellVerticalAlignmentEnumMap[instance
+              .defaultVerticalAlignment],
+      'textBaseline': _$PhlutsTextBaselineEnumMap[instance.textBaseline],
+      'type': instance.type,
+    };
 
 const _$PhlutsTextDirectionEnumMap = {
   PhlutsTextDirection.rtl: 'rtl',

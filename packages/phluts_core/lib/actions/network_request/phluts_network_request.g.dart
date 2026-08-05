@@ -22,17 +22,18 @@ PhlutsNetworkRequest _$PhlutsNetworkRequestFromJson(
       const [],
 );
 
-Map<String, dynamic> _$PhlutsNetworkRequestToJson(PhlutsNetworkRequest instance) =>
-    <String, dynamic>{
-      'url': instance.url,
-      'method': _$MethodEnumMap[instance.method]!,
-      'queryParameters': instance.queryParameters,
-      'headers': instance.headers,
-      'contentType': instance.contentType,
-      'body': instance.body,
-      'results': instance.results.map((e) => e.toJson()).toList(),
-      'actionType': instance.actionType,
-    };
+Map<String, dynamic> _$PhlutsNetworkRequestToJson(
+  PhlutsNetworkRequest instance,
+) => <String, dynamic>{
+  'url': instance.url,
+  'method': _$MethodEnumMap[instance.method]!,
+  'queryParameters': instance.queryParameters,
+  'headers': instance.headers,
+  'contentType': instance.contentType,
+  'body': instance.body,
+  'results': instance.results.map((e) => e.toJson()).toList(),
+  'actionType': instance.actionType,
+};
 
 const _$MethodEnumMap = {
   Method.get: 'get',
@@ -47,8 +48,9 @@ PhlutsNetworkResult _$PhlutsNetworkResultFromJson(Map<String, dynamic> json) =>
       action: json['action'] as Map<String, dynamic>,
     );
 
-Map<String, dynamic> _$PhlutsNetworkResultToJson(PhlutsNetworkResult instance) =>
-    <String, dynamic>{
-      'statusCode': instance.statusCode,
-      'action': instance.action,
-    };
+Map<String, dynamic> _$PhlutsNetworkResultToJson(
+  PhlutsNetworkResult instance,
+) => <String, dynamic>{
+  'statusCode': instance.statusCode,
+  'action': instance.action,
+};

@@ -6,7 +6,9 @@ part of 'phluts_snack_bar.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-PhlutsSnackBar _$PhlutsSnackBarFromJson(Map<String, dynamic> json) => PhlutsSnackBar(
+PhlutsSnackBar _$PhlutsSnackBarFromJson(
+  Map<String, dynamic> json,
+) => PhlutsSnackBar(
   content: json['content'] as Map<String, dynamic>,
   backgroundColor: json['backgroundColor'] as String?,
   elevation: (json['elevation'] as num?)?.toDouble(),
@@ -64,7 +66,8 @@ Map<String, dynamic> _$PhlutsSnackBarToJson(
   'closeIconColor': instance.closeIconColor,
   'duration': instance.duration?.toJson(),
   'onVisible': instance.onVisible,
-  'dismissDirection': _$PhlutsDismissDirectionEnumMap[instance.dismissDirection],
+  'dismissDirection':
+      _$PhlutsDismissDirectionEnumMap[instance.dismissDirection],
   'clipBehavior': _$PhlutsClipEnumMap[instance.clipBehavior],
   'actionType': instance.actionType,
 };

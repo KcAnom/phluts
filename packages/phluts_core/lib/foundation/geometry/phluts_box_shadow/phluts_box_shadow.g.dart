@@ -14,7 +14,10 @@ PhlutsBoxShadow _$PhlutsBoxShadowFromJson(Map<String, dynamic> json) =>
           ? null
           : PhlutsOffset.fromJson(json['offset'] as Map<String, dynamic>),
       spreadRadius: const DoubleConverter().fromJson(json['spreadRadius']),
-      blurStyle: $enumDecodeNullable(_$PhlutsBlurStyleEnumMap, json['blurStyle']),
+      blurStyle: $enumDecodeNullable(
+        _$PhlutsBlurStyleEnumMap,
+        json['blurStyle'],
+      ),
     );
 
 Map<String, dynamic> _$PhlutsBoxShadowToJson(PhlutsBoxShadow instance) =>

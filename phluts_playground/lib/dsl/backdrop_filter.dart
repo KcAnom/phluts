@@ -15,8 +15,8 @@ PhlutsWidget backdropFilterExample() {
               data:
                   'Backdrop filters apply visual effects to everything behind a widget.',
               textAlign: PhlutsTextAlign.center,
-              style:
-                  PhlutsTextStyle(fontSize: 16, fontWeight: PhlutsFontWeight.w700),
+              style: PhlutsTextStyle(
+                  fontSize: 16, fontWeight: PhlutsFontWeight.w700),
             ),
           ),
           PhlutsDivider(height: 20),

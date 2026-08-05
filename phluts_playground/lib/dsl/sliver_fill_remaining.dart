@@ -6,7 +6,7 @@ PhlutsWidget sliverFillRemainingExample() {
       body: PhlutsCustomScrollView(slivers: [
     PhlutsSliverFillRemaining(
         hasScrollBody: false,
-        child:
-            PhlutsCenter(child: PhlutsText(data: 'This fills the remaining space')))
+        child: PhlutsCenter(
+            child: PhlutsText(data: 'This fills the remaining space')))
   ]));
 }

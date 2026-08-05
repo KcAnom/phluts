@@ -11,7 +11,8 @@ PhlutsBottomNavigationBar _$PhlutsBottomNavigationBarFromJson(
 ) => PhlutsBottomNavigationBar(
   items: (json['items'] as List<dynamic>)
       .map(
-        (e) => PhlutsBottomNavigationBarItem.fromJson(e as Map<String, dynamic>),
+        (e) =>
+            PhlutsBottomNavigationBarItem.fromJson(e as Map<String, dynamic>),
       )
       .toList(),
   elevation: const DoubleConverter().fromJson(json['elevation']),
@@ -64,7 +65,8 @@ Map<String, dynamic> _$PhlutsBottomNavigationBarToJson(
   'showUnselectedLabels': instance.showUnselectedLabels,
   'enableFeedback': instance.enableFeedback,
   'landscapeLayout':
-      _$PhlutsBottomNavigationBarLandscapeLayoutEnumMap[instance.landscapeLayout],
+      _$PhlutsBottomNavigationBarLandscapeLayoutEnumMap[instance
+          .landscapeLayout],
   'type': instance.type,
 };
 

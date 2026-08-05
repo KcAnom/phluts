@@ -6,7 +6,9 @@ part of 'phluts_page_view.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-PhlutsPageView _$PhlutsPageViewFromJson(Map<String, dynamic> json) => PhlutsPageView(
+PhlutsPageView _$PhlutsPageViewFromJson(
+  Map<String, dynamic> json,
+) => PhlutsPageView(
   scrollDirection: $enumDecodeNullable(
     _$PhlutsAxisEnumMap,
     json['scrollDirection'],

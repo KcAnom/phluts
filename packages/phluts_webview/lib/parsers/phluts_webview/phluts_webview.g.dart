@@ -6,7 +6,8 @@ part of 'phluts_webview.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-PhlutsWebView _$PhlutsWebViewFromJson(Map<String, dynamic> json) => PhlutsWebView(
+PhlutsWebView _$PhlutsWebViewFromJson(Map<String, dynamic> json) =>
+    PhlutsWebView(
       url: json['url'] as String,
       javaScriptMode:
           $enumDecodeNullable(_$JavaScriptModeEnumMap, json['javaScriptMode']),

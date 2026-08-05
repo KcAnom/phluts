@@ -190,7 +190,8 @@ class BuildService {
       final content = await FileUtils.readFile(optionsPath);
 
       final name =
-          RegExp(r"name:\s*'([^']*)'").firstMatch(content)?.group(1) ?? 'Phluts';
+          RegExp(r"name:\s*'([^']*)'").firstMatch(content)?.group(1) ??
+          'Phluts';
 
       final description =
           RegExp(r"description:\s*'([^']*)'").firstMatch(content)?.group(1) ??

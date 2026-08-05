@@ -6,24 +6,26 @@ part of 'phluts_backdrop_filter.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-PhlutsBackdropFilter _$PhlutsBackdropFilterFromJson(Map<String, dynamic> json) =>
-    PhlutsBackdropFilter(
-      filter: PhlutsImageFilter.fromJson(json['filter'] as Map<String, dynamic>),
-      child: json['child'] == null
-          ? null
-          : PhlutsWidget.fromJson(json['child'] as Map<String, dynamic>),
-      enabled: json['enabled'] as bool?,
-      blendMode: $enumDecodeNullable(_$PhlutsBlendModeEnumMap, json['blendMode']),
-    );
+PhlutsBackdropFilter _$PhlutsBackdropFilterFromJson(
+  Map<String, dynamic> json,
+) => PhlutsBackdropFilter(
+  filter: PhlutsImageFilter.fromJson(json['filter'] as Map<String, dynamic>),
+  child: json['child'] == null
+      ? null
+      : PhlutsWidget.fromJson(json['child'] as Map<String, dynamic>),
+  enabled: json['enabled'] as bool?,
+  blendMode: $enumDecodeNullable(_$PhlutsBlendModeEnumMap, json['blendMode']),
+);
 
-Map<String, dynamic> _$PhlutsBackdropFilterToJson(PhlutsBackdropFilter instance) =>
-    <String, dynamic>{
-      'filter': instance.filter.toJson(),
-      'child': instance.child?.toJson(),
-      'enabled': instance.enabled,
-      'blendMode': _$PhlutsBlendModeEnumMap[instance.blendMode],
-      'type': instance.type,
-    };
+Map<String, dynamic> _$PhlutsBackdropFilterToJson(
+  PhlutsBackdropFilter instance,
+) => <String, dynamic>{
+  'filter': instance.filter.toJson(),
+  'child': instance.child?.toJson(),
+  'enabled': instance.enabled,
+  'blendMode': _$PhlutsBlendModeEnumMap[instance.blendMode],
+  'type': instance.type,
+};
 
 const _$PhlutsBlendModeEnumMap = {
   PhlutsBlendMode.clear: 'clear',

@@ -60,7 +60,10 @@ void main(List<String> arguments) async {
   await ConfigService.instance.initialize();
 
   final runner =
-      CommandRunner<int>('phluts', 'Phluts CLI - Manage your Phluts SDUI projects')
+      CommandRunner<int>(
+          'phluts',
+          'Phluts CLI - Manage your Phluts SDUI projects',
+        )
         ..addCommand(LoginCommand())
         ..addCommand(LogoutCommand())
         ..addCommand(StatusCommand())

@@ -12,7 +12,8 @@ PhlutsWidget cardExample() {
         PhlutsCard(
           elevation: 20,
           borderOnForeground: true,
-          margin: PhlutsEdgeInsets.only(top: 20, bottom: 20, right: 20, left: 20),
+          margin:
+              PhlutsEdgeInsets.only(top: 20, bottom: 20, right: 20, left: 20),
           child: PhlutsListTile(
             leading: PhlutsImage(
               src:

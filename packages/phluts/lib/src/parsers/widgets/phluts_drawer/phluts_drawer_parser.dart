@@ -13,7 +13,8 @@ class PhlutsDrawerParser extends PhlutsParser<PhlutsDrawer> {
   String get type => WidgetType.drawer.name;
 
   @override
-  PhlutsDrawer getModel(Map<String, dynamic> json) => PhlutsDrawer.fromJson(json);
+  PhlutsDrawer getModel(Map<String, dynamic> json) =>
+      PhlutsDrawer.fromJson(json);
 
   @override
   Widget parse(BuildContext context, PhlutsDrawer model) {

@@ -8,7 +8,10 @@ part of 'phluts_wrap.dart';
 
 PhlutsWrap _$PhlutsWrapFromJson(Map<String, dynamic> json) => PhlutsWrap(
   direction: $enumDecodeNullable(_$PhlutsAxisEnumMap, json['direction']),
-  alignment: $enumDecodeNullable(_$PhlutsWrapAlignmentEnumMap, json['alignment']),
+  alignment: $enumDecodeNullable(
+    _$PhlutsWrapAlignmentEnumMap,
+    json['alignment'],
+  ),
   spacing: const DoubleConverter().fromJson(json['spacing']),
   runAlignment: $enumDecodeNullable(
     _$PhlutsWrapAlignmentEnumMap,
@@ -33,21 +36,22 @@ PhlutsWrap _$PhlutsWrapFromJson(Map<String, dynamic> json) => PhlutsWrap(
       .toList(),
 );
 
-Map<String, dynamic> _$PhlutsWrapToJson(PhlutsWrap instance) => <String, dynamic>{
-  'direction': _$PhlutsAxisEnumMap[instance.direction],
-  'alignment': _$PhlutsWrapAlignmentEnumMap[instance.alignment],
-  'spacing': const DoubleConverter().toJson(instance.spacing),
-  'runAlignment': _$PhlutsWrapAlignmentEnumMap[instance.runAlignment],
-  'runSpacing': const DoubleConverter().toJson(instance.runSpacing),
-  'crossAxisAlignment':
-      _$PhlutsWrapCrossAlignmentEnumMap[instance.crossAxisAlignment],
-  'textDirection': _$PhlutsTextDirectionEnumMap[instance.textDirection],
-  'verticalDirection':
-      _$PhlutsVerticalDirectionEnumMap[instance.verticalDirection],
-  'clipBehavior': _$PhlutsClipEnumMap[instance.clipBehavior],
-  'children': instance.children?.map((e) => e.toJson()).toList(),
-  'type': instance.type,
-};
+Map<String, dynamic> _$PhlutsWrapToJson(PhlutsWrap instance) =>
+    <String, dynamic>{
+      'direction': _$PhlutsAxisEnumMap[instance.direction],
+      'alignment': _$PhlutsWrapAlignmentEnumMap[instance.alignment],
+      'spacing': const DoubleConverter().toJson(instance.spacing),
+      'runAlignment': _$PhlutsWrapAlignmentEnumMap[instance.runAlignment],
+      'runSpacing': const DoubleConverter().toJson(instance.runSpacing),
+      'crossAxisAlignment':
+          _$PhlutsWrapCrossAlignmentEnumMap[instance.crossAxisAlignment],
+      'textDirection': _$PhlutsTextDirectionEnumMap[instance.textDirection],
+      'verticalDirection':
+          _$PhlutsVerticalDirectionEnumMap[instance.verticalDirection],
+      'clipBehavior': _$PhlutsClipEnumMap[instance.clipBehavior],
+      'children': instance.children?.map((e) => e.toJson()).toList(),
+      'type': instance.type,
+    };
 
 const _$PhlutsAxisEnumMap = {
   PhlutsAxis.horizontal: 'horizontal',

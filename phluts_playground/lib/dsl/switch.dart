@@ -16,11 +16,14 @@ PhlutsWidget switchExample() {
               mainAxisAlignment: PhlutsMainAxisAlignment.center,
               crossAxisAlignment: PhlutsCrossAxisAlignment.center,
               children: [
-                PhlutsSwitch(switchType: PhlutsSwitchType.cupertino, value: true),
+                PhlutsSwitch(
+                    switchType: PhlutsSwitchType.cupertino, value: true),
                 PhlutsSizedBox(width: 20),
-                PhlutsSwitch(switchType: PhlutsSwitchType.adaptive, value: true),
+                PhlutsSwitch(
+                    switchType: PhlutsSwitchType.adaptive, value: true),
                 PhlutsSizedBox(width: 20),
-                PhlutsSwitch(switchType: PhlutsSwitchType.material, value: false),
+                PhlutsSwitch(
+                    switchType: PhlutsSwitchType.material, value: false),
               ],
             ),
             PhlutsSizedBox(height: 12),

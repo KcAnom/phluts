@@ -80,7 +80,11 @@ class PhlutsImageFilter {
   /// - [radiusX]: Horizontal radius.
   /// - [radiusY]: Vertical radius. Defaults to [radiusX] when omitted.
   const PhlutsImageFilter.erode({required double radiusX, double? radiusY})
-    : this(type: PhlutsImageFilterType.erode, radiusX: radiusX, radiusY: radiusY);
+    : this(
+        type: PhlutsImageFilterType.erode,
+        radiusX: radiusX,
+        radiusY: radiusY,
+      );
 
   /// Composes two filters where [inner] is applied first, then [outer].
   const PhlutsImageFilter.compose({

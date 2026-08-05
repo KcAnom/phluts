@@ -18,13 +18,14 @@ PhlutsAlign _$PhlutsAlignFromJson(Map<String, dynamic> json) => PhlutsAlign(
       : PhlutsWidget.fromJson(json['child'] as Map<String, dynamic>),
 );
 
-Map<String, dynamic> _$PhlutsAlignToJson(PhlutsAlign instance) => <String, dynamic>{
-  'alignment': _$PhlutsAlignmentDirectionalEnumMap[instance.alignment],
-  'widthFactor': const DoubleConverter().toJson(instance.widthFactor),
-  'heightFactor': const DoubleConverter().toJson(instance.heightFactor),
-  'child': instance.child?.toJson(),
-  'type': instance.type,
-};
+Map<String, dynamic> _$PhlutsAlignToJson(PhlutsAlign instance) =>
+    <String, dynamic>{
+      'alignment': _$PhlutsAlignmentDirectionalEnumMap[instance.alignment],
+      'widthFactor': const DoubleConverter().toJson(instance.widthFactor),
+      'heightFactor': const DoubleConverter().toJson(instance.heightFactor),
+      'child': instance.child?.toJson(),
+      'type': instance.type,
+    };
 
 const _$PhlutsAlignmentDirectionalEnumMap = {
   PhlutsAlignmentDirectional.topStart: 'topStart',

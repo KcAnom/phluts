@@ -15,7 +15,8 @@ class PhlutsSliderParser extends PhlutsParser<PhlutsSlider> {
   String get type => WidgetType.slider.name;
 
   @override
-  PhlutsSlider getModel(Map<String, dynamic> json) => PhlutsSlider.fromJson(json);
+  PhlutsSlider getModel(Map<String, dynamic> json) =>
+      PhlutsSlider.fromJson(json);
 
   @override
   Widget parse(BuildContext context, PhlutsSlider model) {

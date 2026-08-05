@@ -23,20 +23,21 @@ PhlutsImage _$PhlutsImageFromJson(Map<String, dynamic> json) => PhlutsImage(
   excludeFromSemantics: json['excludeFromSemantics'] as bool?,
 );
 
-Map<String, dynamic> _$PhlutsImageToJson(PhlutsImage instance) => <String, dynamic>{
-  'src': instance.src,
-  'alignment': _$PhlutsAlignmentEnumMap[instance.alignment],
-  'imageType': _$PhlutsImageTypeEnumMap[instance.imageType],
-  'color': instance.color,
-  'width': const DoubleConverter().toJson(instance.width),
-  'height': const DoubleConverter().toJson(instance.height),
-  'fit': _$PhlutsBoxFitEnumMap[instance.fit],
-  'repeat': _$PhlutsImageRepeatEnumMap[instance.repeat],
-  'filterQuality': _$PhlutsFilterQualityEnumMap[instance.filterQuality],
-  'semanticLabel': instance.semanticLabel,
-  'excludeFromSemantics': instance.excludeFromSemantics,
-  'type': instance.type,
-};
+Map<String, dynamic> _$PhlutsImageToJson(PhlutsImage instance) =>
+    <String, dynamic>{
+      'src': instance.src,
+      'alignment': _$PhlutsAlignmentEnumMap[instance.alignment],
+      'imageType': _$PhlutsImageTypeEnumMap[instance.imageType],
+      'color': instance.color,
+      'width': const DoubleConverter().toJson(instance.width),
+      'height': const DoubleConverter().toJson(instance.height),
+      'fit': _$PhlutsBoxFitEnumMap[instance.fit],
+      'repeat': _$PhlutsImageRepeatEnumMap[instance.repeat],
+      'filterQuality': _$PhlutsFilterQualityEnumMap[instance.filterQuality],
+      'semanticLabel': instance.semanticLabel,
+      'excludeFromSemantics': instance.excludeFromSemantics,
+      'type': instance.type,
+    };
 
 const _$PhlutsAlignmentEnumMap = {
   PhlutsAlignment.topLeft: 'topLeft',

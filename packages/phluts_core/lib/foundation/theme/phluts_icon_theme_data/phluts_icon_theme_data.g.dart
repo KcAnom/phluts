@@ -20,14 +20,15 @@ PhlutsIconThemeData _$PhlutsIconThemeDataFromJson(Map<String, dynamic> json) =>
           .toList(),
     );
 
-Map<String, dynamic> _$PhlutsIconThemeDataToJson(PhlutsIconThemeData instance) =>
-    <String, dynamic>{
-      'size': instance.size,
-      'fill': instance.fill,
-      'weight': instance.weight,
-      'grade': instance.grade,
-      'opticalSize': instance.opticalSize,
-      'color': instance.color,
-      'opacity': instance.opacity,
-      'shadows': instance.shadows?.map((e) => e.toJson()).toList(),
-    };
+Map<String, dynamic> _$PhlutsIconThemeDataToJson(
+  PhlutsIconThemeData instance,
+) => <String, dynamic>{
+  'size': instance.size,
+  'fill': instance.fill,
+  'weight': instance.weight,
+  'grade': instance.grade,
+  'opticalSize': instance.opticalSize,
+  'color': instance.color,
+  'opacity': instance.opacity,
+  'shadows': instance.shadows?.map((e) => e.toJson()).toList(),
+};

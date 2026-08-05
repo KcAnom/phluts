@@ -9,7 +9,8 @@ import 'package:phluts/src/parsers/foundation/layout/phluts_clip_parser.dart';
 import 'package:phluts_core/phluts_core.dart';
 import 'package:phluts_framework/phluts_framework.dart';
 
-class PhlutsCustomScrollViewParser extends PhlutsParser<PhlutsCustomScrollView> {
+class PhlutsCustomScrollViewParser
+    extends PhlutsParser<PhlutsCustomScrollView> {
   const PhlutsCustomScrollViewParser();
   @override
   String get type => WidgetType.customScrollView.name;

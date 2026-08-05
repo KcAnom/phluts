@@ -15,10 +15,11 @@ PhlutsSliverOpacity _$PhlutsSliverOpacityFromJson(Map<String, dynamic> json) =>
           : PhlutsWidget.fromJson(json['sliver'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$PhlutsSliverOpacityToJson(PhlutsSliverOpacity instance) =>
-    <String, dynamic>{
-      'opacity': instance.opacity,
-      'alwaysIncludeSemantics': instance.alwaysIncludeSemantics,
-      'sliver': instance.sliver?.toJson(),
-      'type': instance.type,
-    };
+Map<String, dynamic> _$PhlutsSliverOpacityToJson(
+  PhlutsSliverOpacity instance,
+) => <String, dynamic>{
+  'opacity': instance.opacity,
+  'alwaysIncludeSemantics': instance.alwaysIncludeSemantics,
+  'sliver': instance.sliver?.toJson(),
+  'type': instance.type,
+};

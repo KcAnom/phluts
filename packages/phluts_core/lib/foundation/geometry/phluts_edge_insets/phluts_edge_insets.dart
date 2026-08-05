@@ -81,7 +81,8 @@ class PhlutsEdgeInsets extends PhlutsElement {
     : this.symmetric(horizontal: value);
 
   /// Creates edge insets with only vertical (top and bottom) values.
-  const PhlutsEdgeInsets.vertical(double value) : this.symmetric(vertical: value);
+  const PhlutsEdgeInsets.vertical(double value)
+    : this.symmetric(vertical: value);
 
   /// Creates a [PhlutsEdgeInsets] from dynamic JSON input.
   ///

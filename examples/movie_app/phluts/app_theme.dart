@@ -121,7 +121,9 @@ PhlutsButtonStyle _buildFilledButtonTheme() {
       height: 1.3,
     ),
     padding: PhlutsEdgeInsets.only(left: 10, right: 10, top: 8, bottom: 8),
-    shape: PhlutsRoundedRectangleBorder(borderRadius: PhlutsBorderRadius.all(8)),
+    shape: PhlutsRoundedRectangleBorder(
+      borderRadius: PhlutsBorderRadius.all(8),
+    ),
   );
 }
 
@@ -135,7 +137,9 @@ PhlutsButtonStyle _buildOutlinedButtonTheme() {
     ),
     padding: PhlutsEdgeInsets.only(left: 10, right: 10, top: 8, bottom: 8),
     side: PhlutsBorderSide(color: '#95E183', width: 1.0),
-    shape: PhlutsRoundedRectangleBorder(borderRadius: PhlutsBorderRadius.all(8)),
+    shape: PhlutsRoundedRectangleBorder(
+      borderRadius: PhlutsBorderRadius.all(8),
+    ),
   );
 }
 

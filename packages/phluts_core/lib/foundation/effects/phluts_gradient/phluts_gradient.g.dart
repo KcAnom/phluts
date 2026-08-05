@@ -6,25 +6,28 @@ part of 'phluts_gradient.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-PhlutsGradient _$PhlutsGradientFromJson(Map<String, dynamic> json) => PhlutsGradient(
-  gradientType: $enumDecodeNullable(
-    _$PhlutsGradientTypeEnumMap,
-    json['gradientType'],
-  ),
-  colors: (json['colors'] as List<dynamic>?)?.map((e) => e as String).toList(),
-  stops: (json['stops'] as List<dynamic>?)
-      ?.map((e) => (e as num).toDouble())
-      .toList(),
-  begin: $enumDecodeNullable(_$PhlutsAlignmentEnumMap, json['begin']),
-  end: $enumDecodeNullable(_$PhlutsAlignmentEnumMap, json['end']),
-  center: $enumDecodeNullable(_$PhlutsAlignmentEnumMap, json['center']),
-  focal: $enumDecodeNullable(_$PhlutsAlignmentEnumMap, json['focal']),
-  tileMode: $enumDecodeNullable(_$PhlutsTileModeEnumMap, json['tileMode']),
-  focalRadius: (json['focalRadius'] as num?)?.toDouble(),
-  radius: (json['radius'] as num?)?.toDouble(),
-  startAngle: (json['startAngle'] as num?)?.toDouble(),
-  endAngle: (json['endAngle'] as num?)?.toDouble(),
-);
+PhlutsGradient _$PhlutsGradientFromJson(Map<String, dynamic> json) =>
+    PhlutsGradient(
+      gradientType: $enumDecodeNullable(
+        _$PhlutsGradientTypeEnumMap,
+        json['gradientType'],
+      ),
+      colors: (json['colors'] as List<dynamic>?)
+          ?.map((e) => e as String)
+          .toList(),
+      stops: (json['stops'] as List<dynamic>?)
+          ?.map((e) => (e as num).toDouble())
+          .toList(),
+      begin: $enumDecodeNullable(_$PhlutsAlignmentEnumMap, json['begin']),
+      end: $enumDecodeNullable(_$PhlutsAlignmentEnumMap, json['end']),
+      center: $enumDecodeNullable(_$PhlutsAlignmentEnumMap, json['center']),
+      focal: $enumDecodeNullable(_$PhlutsAlignmentEnumMap, json['focal']),
+      tileMode: $enumDecodeNullable(_$PhlutsTileModeEnumMap, json['tileMode']),
+      focalRadius: (json['focalRadius'] as num?)?.toDouble(),
+      radius: (json['radius'] as num?)?.toDouble(),
+      startAngle: (json['startAngle'] as num?)?.toDouble(),
+      endAngle: (json['endAngle'] as num?)?.toDouble(),
+    );
 
 Map<String, dynamic> _$PhlutsGradientToJson(PhlutsGradient instance) =>
     <String, dynamic>{

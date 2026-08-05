@@ -18,7 +18,8 @@ class PhlutsTabBarParser extends PhlutsParser<PhlutsTabBar> {
   final TabController? controller;
 
   @override
-  PhlutsTabBar getModel(Map<String, dynamic> json) => PhlutsTabBar.fromJson(json);
+  PhlutsTabBar getModel(Map<String, dynamic> json) =>
+      PhlutsTabBar.fromJson(json);
 
   @override
   String get type => WidgetType.tabBar.name;

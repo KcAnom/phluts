@@ -25,19 +25,20 @@ PhlutsCard _$PhlutsCardFromJson(Map<String, dynamic> json) => PhlutsCard(
   semanticContainer: json['semanticContainer'] as bool?,
 );
 
-Map<String, dynamic> _$PhlutsCardToJson(PhlutsCard instance) => <String, dynamic>{
-  'color': instance.color,
-  'shadowColor': instance.shadowColor,
-  'surfaceTintColor': instance.surfaceTintColor,
-  'elevation': const DoubleConverter().toJson(instance.elevation),
-  'shape': instance.shape?.toJson(),
-  'borderOnForeground': instance.borderOnForeground,
-  'margin': instance.margin?.toJson(),
-  'clipBehavior': _$PhlutsClipEnumMap[instance.clipBehavior],
-  'child': instance.child?.toJson(),
-  'semanticContainer': instance.semanticContainer,
-  'type': instance.type,
-};
+Map<String, dynamic> _$PhlutsCardToJson(PhlutsCard instance) =>
+    <String, dynamic>{
+      'color': instance.color,
+      'shadowColor': instance.shadowColor,
+      'surfaceTintColor': instance.surfaceTintColor,
+      'elevation': const DoubleConverter().toJson(instance.elevation),
+      'shape': instance.shape?.toJson(),
+      'borderOnForeground': instance.borderOnForeground,
+      'margin': instance.margin?.toJson(),
+      'clipBehavior': _$PhlutsClipEnumMap[instance.clipBehavior],
+      'child': instance.child?.toJson(),
+      'semanticContainer': instance.semanticContainer,
+      'type': instance.type,
+    };
 
 const _$PhlutsClipEnumMap = {
   PhlutsClip.none: 'none',

@@ -6,7 +6,8 @@ class PhlutsSpacerParser extends PhlutsParser<PhlutsSpacer> {
   const PhlutsSpacerParser();
 
   @override
-  PhlutsSpacer getModel(Map<String, dynamic> json) => PhlutsSpacer.fromJson(json);
+  PhlutsSpacer getModel(Map<String, dynamic> json) =>
+      PhlutsSpacer.fromJson(json);
 
   @override
   String get type => WidgetType.spacer.name;

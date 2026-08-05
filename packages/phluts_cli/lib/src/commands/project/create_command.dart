@@ -49,7 +49,9 @@ class CreateCommand extends BaseCommand {
       ConsoleLogger.info('Name: ${project.name}');
       ConsoleLogger.info('Description: ${project.description}');
       ConsoleLogger.info('');
-      ConsoleLogger.info('Run "phluts init" to initialize this project locally.');
+      ConsoleLogger.info(
+        'Run "phluts init" to initialize this project locally.',
+      );
 
       return 0;
     } catch (e) {

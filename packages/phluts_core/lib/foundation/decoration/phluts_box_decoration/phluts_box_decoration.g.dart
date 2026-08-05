@@ -11,7 +11,9 @@ PhlutsBoxDecoration _$PhlutsBoxDecorationFromJson(Map<String, dynamic> json) =>
       color: json['color'] as String?,
       image: json['image'] == null
           ? null
-          : PhlutsDecorationImage.fromJson(json['image'] as Map<String, dynamic>),
+          : PhlutsDecorationImage.fromJson(
+              json['image'] as Map<String, dynamic>,
+            ),
       border: json['border'] == null
           ? null
           : PhlutsBorder.fromJson(json['border'] as Map<String, dynamic>),

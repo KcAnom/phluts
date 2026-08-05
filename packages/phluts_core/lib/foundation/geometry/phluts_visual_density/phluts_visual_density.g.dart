@@ -12,8 +12,9 @@ PhlutsVisualDensity _$PhlutsVisualDensityFromJson(Map<String, dynamic> json) =>
       vertical: const DoubleConverter().fromJson(json['vertical']),
     );
 
-Map<String, dynamic> _$PhlutsVisualDensityToJson(PhlutsVisualDensity instance) =>
-    <String, dynamic>{
-      'horizontal': const DoubleConverter().toJson(instance.horizontal),
-      'vertical': const DoubleConverter().toJson(instance.vertical),
-    };
+Map<String, dynamic> _$PhlutsVisualDensityToJson(
+  PhlutsVisualDensity instance,
+) => <String, dynamic>{
+  'horizontal': const DoubleConverter().toJson(instance.horizontal),
+  'vertical': const DoubleConverter().toJson(instance.vertical),
+};

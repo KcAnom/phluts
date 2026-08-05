@@ -34,22 +34,23 @@ PhlutsText _$PhlutsTextFromJson(Map<String, dynamic> json) => PhlutsText(
   selectionColor: json['selectionColor'] as String?,
 );
 
-Map<String, dynamic> _$PhlutsTextToJson(PhlutsText instance) => <String, dynamic>{
-  'data': instance.data,
-  'children': instance.children?.map((e) => e.toJson()).toList(),
-  'style': instance.style?.toJson(),
-  'copyWithStyle': instance.copyWithStyle?.toJson(),
-  'textAlign': _$PhlutsTextAlignEnumMap[instance.textAlign],
-  'textDirection': _$PhlutsTextDirectionEnumMap[instance.textDirection],
-  'softWrap': instance.softWrap,
-  'overflow': _$PhlutsTextOverflowEnumMap[instance.overflow],
-  'textScaleFactor': instance.textScaleFactor,
-  'maxLines': instance.maxLines,
-  'semanticsLabel': instance.semanticsLabel,
-  'textWidthBasis': _$PhlutsTextWidthBasisEnumMap[instance.textWidthBasis],
-  'selectionColor': instance.selectionColor,
-  'type': instance.type,
-};
+Map<String, dynamic> _$PhlutsTextToJson(PhlutsText instance) =>
+    <String, dynamic>{
+      'data': instance.data,
+      'children': instance.children?.map((e) => e.toJson()).toList(),
+      'style': instance.style?.toJson(),
+      'copyWithStyle': instance.copyWithStyle?.toJson(),
+      'textAlign': _$PhlutsTextAlignEnumMap[instance.textAlign],
+      'textDirection': _$PhlutsTextDirectionEnumMap[instance.textDirection],
+      'softWrap': instance.softWrap,
+      'overflow': _$PhlutsTextOverflowEnumMap[instance.overflow],
+      'textScaleFactor': instance.textScaleFactor,
+      'maxLines': instance.maxLines,
+      'semanticsLabel': instance.semanticsLabel,
+      'textWidthBasis': _$PhlutsTextWidthBasisEnumMap[instance.textWidthBasis],
+      'selectionColor': instance.selectionColor,
+      'type': instance.type,
+    };
 
 const _$PhlutsTextAlignEnumMap = {
   PhlutsTextAlign.left: 'left',

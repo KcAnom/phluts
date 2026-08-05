@@ -6,16 +6,17 @@ part of 'phluts_set_value.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-PhlutsSetValue _$PhlutsSetValueFromJson(Map<String, dynamic> json) => PhlutsSetValue(
-  values:
-      (json['values'] as List<dynamic>?)
-          ?.map((e) => e as Map<String, dynamic>)
-          .toList() ??
-      const [],
-  child: json['child'] == null
-      ? null
-      : PhlutsWidget.fromJson(json['child'] as Map<String, dynamic>),
-);
+PhlutsSetValue _$PhlutsSetValueFromJson(Map<String, dynamic> json) =>
+    PhlutsSetValue(
+      values:
+          (json['values'] as List<dynamic>?)
+              ?.map((e) => e as Map<String, dynamic>)
+              .toList() ??
+          const [],
+      child: json['child'] == null
+          ? null
+          : PhlutsWidget.fromJson(json['child'] as Map<String, dynamic>),
+    );
 
 Map<String, dynamic> _$PhlutsSetValueToJson(PhlutsSetValue instance) =>
     <String, dynamic>{

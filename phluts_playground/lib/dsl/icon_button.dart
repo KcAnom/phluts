@@ -34,7 +34,8 @@ PhlutsWidget iconButtonExample() {
                       children: [
                         PhlutsIconButton(
                             icon: PhlutsIcon(
-                                iconType: PhlutsIconType.material, icon: 'add')),
+                                iconType: PhlutsIconType.material,
+                                icon: 'add')),
                         PhlutsSizedBox(width: 20),
                         PhlutsIconButton(
                             icon: PhlutsIcon(

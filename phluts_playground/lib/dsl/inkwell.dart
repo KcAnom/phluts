@@ -10,8 +10,8 @@ PhlutsWidget inkwellExample() {
         PhlutsCenter(
           child: PhlutsInkWell(
             child: PhlutsPadding(
-              padding:
-                  PhlutsEdgeInsets.only(top: 20, bottom: 20, right: 20, left: 20),
+              padding: PhlutsEdgeInsets.only(
+                  top: 20, bottom: 20, right: 20, left: 20),
               child: PhlutsText(
                 data: 'Hello, World! from Inkwell',
                 textAlign: PhlutsTextAlign.center,

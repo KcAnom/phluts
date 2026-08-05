@@ -6,7 +6,9 @@ part of 'phluts_scaffold.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-PhlutsScaffold _$PhlutsScaffoldFromJson(Map<String, dynamic> json) => PhlutsScaffold(
+PhlutsScaffold _$PhlutsScaffoldFromJson(
+  Map<String, dynamic> json,
+) => PhlutsScaffold(
   appBar: json['appBar'] == null
       ? null
       : PhlutsWidget.fromJson(json['appBar'] as Map<String, dynamic>),
@@ -53,7 +55,9 @@ PhlutsScaffold _$PhlutsScaffoldFromJson(Map<String, dynamic> json) => PhlutsScaf
       : PhlutsAction.fromJson(json['onDrawerChanged'] as Map<String, dynamic>),
   onEndDrawerChanged: json['onEndDrawerChanged'] == null
       ? null
-      : PhlutsAction.fromJson(json['onEndDrawerChanged'] as Map<String, dynamic>),
+      : PhlutsAction.fromJson(
+          json['onEndDrawerChanged'] as Map<String, dynamic>,
+        ),
   persistentFooterAlignment: $enumDecodeNullable(
     _$PhlutsAlignmentDirectionalEnumMap,
     json['persistentFooterAlignment'],
@@ -66,39 +70,40 @@ PhlutsScaffold _$PhlutsScaffoldFromJson(Map<String, dynamic> json) => PhlutsScaf
   restorationId: json['restorationId'] as String?,
 );
 
-Map<String, dynamic> _$PhlutsScaffoldToJson(PhlutsScaffold instance) =>
-    <String, dynamic>{
-      'appBar': instance.appBar?.toJson(),
-      'backgroundColor': instance.backgroundColor,
-      'body': instance.body?.toJson(),
-      'bottomNavigationBar': instance.bottomNavigationBar?.toJson(),
-      'bottomSheet': instance.bottomSheet?.toJson(),
-      'drawer': instance.drawer?.toJson(),
-      'drawerDragStartBehavior':
-          _$PhlutsDragStartBehaviorEnumMap[instance.drawerDragStartBehavior],
-      'drawerEdgeDragWidth': instance.drawerEdgeDragWidth,
-      'drawerEnableOpenDragGesture': instance.drawerEnableOpenDragGesture,
-      'drawerScrimColor': instance.drawerScrimColor,
-      'endDrawer': instance.endDrawer?.toJson(),
-      'endDrawerEnableOpenDragGesture': instance.endDrawerEnableOpenDragGesture,
-      'extendBody': instance.extendBody,
-      'extendBodyBehindAppBar': instance.extendBodyBehindAppBar,
-      'floatingActionButton': instance.floatingActionButton?.toJson(),
-      'floatingActionButtonLocation':
-          _$PhlutsFloatingActionButtonLocationEnumMap[instance
-              .floatingActionButtonLocation],
-      'onDrawerChanged': instance.onDrawerChanged?.toJson(),
-      'onEndDrawerChanged': instance.onEndDrawerChanged?.toJson(),
-      'persistentFooterAlignment':
-          _$PhlutsAlignmentDirectionalEnumMap[instance.persistentFooterAlignment],
-      'persistentFooterButtons': instance.persistentFooterButtons
-          ?.map((e) => e.toJson())
-          .toList(),
-      'primary': instance.primary,
-      'resizeToAvoidBottomInset': instance.resizeToAvoidBottomInset,
-      'restorationId': instance.restorationId,
-      'type': instance.type,
-    };
+Map<String, dynamic> _$PhlutsScaffoldToJson(
+  PhlutsScaffold instance,
+) => <String, dynamic>{
+  'appBar': instance.appBar?.toJson(),
+  'backgroundColor': instance.backgroundColor,
+  'body': instance.body?.toJson(),
+  'bottomNavigationBar': instance.bottomNavigationBar?.toJson(),
+  'bottomSheet': instance.bottomSheet?.toJson(),
+  'drawer': instance.drawer?.toJson(),
+  'drawerDragStartBehavior':
+      _$PhlutsDragStartBehaviorEnumMap[instance.drawerDragStartBehavior],
+  'drawerEdgeDragWidth': instance.drawerEdgeDragWidth,
+  'drawerEnableOpenDragGesture': instance.drawerEnableOpenDragGesture,
+  'drawerScrimColor': instance.drawerScrimColor,
+  'endDrawer': instance.endDrawer?.toJson(),
+  'endDrawerEnableOpenDragGesture': instance.endDrawerEnableOpenDragGesture,
+  'extendBody': instance.extendBody,
+  'extendBodyBehindAppBar': instance.extendBodyBehindAppBar,
+  'floatingActionButton': instance.floatingActionButton?.toJson(),
+  'floatingActionButtonLocation':
+      _$PhlutsFloatingActionButtonLocationEnumMap[instance
+          .floatingActionButtonLocation],
+  'onDrawerChanged': instance.onDrawerChanged?.toJson(),
+  'onEndDrawerChanged': instance.onEndDrawerChanged?.toJson(),
+  'persistentFooterAlignment':
+      _$PhlutsAlignmentDirectionalEnumMap[instance.persistentFooterAlignment],
+  'persistentFooterButtons': instance.persistentFooterButtons
+      ?.map((e) => e.toJson())
+      .toList(),
+  'primary': instance.primary,
+  'resizeToAvoidBottomInset': instance.resizeToAvoidBottomInset,
+  'restorationId': instance.restorationId,
+  'type': instance.type,
+};
 
 const _$PhlutsDragStartBehaviorEnumMap = {
   PhlutsDragStartBehavior.down: 'down',

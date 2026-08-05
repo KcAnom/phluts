@@ -8,7 +8,8 @@ class PhlutsAppBarParser extends PhlutsParser<PhlutsAppBar> {
   String get type => WidgetType.appBar.name;
 
   @override
-  PhlutsAppBar getModel(Map<String, dynamic> json) => PhlutsAppBar.fromJson(json);
+  PhlutsAppBar getModel(Map<String, dynamic> json) =>
+      PhlutsAppBar.fromJson(json);
 
   @override
   Widget parse(BuildContext context, PhlutsAppBar model) {

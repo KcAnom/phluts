@@ -20,7 +20,8 @@ PhlutsWidget containerExample() {
                     child: PhlutsText(
                         data: 'Flutter',
                         style: PhlutsTextStyle(
-                            fontSize: 23, fontWeight: PhlutsFontWeight.w600))))),
+                            fontSize: 23,
+                            fontWeight: PhlutsFontWeight.w600))))),
         PhlutsSizedBox(height: 52),
         PhlutsCenter(
             child: PhlutsContainer(

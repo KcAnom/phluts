@@ -3,7 +3,8 @@ import 'package:phluts/src/parsers/core/phluts_widget_parser.dart';
 import 'package:phluts_core/phluts_core.dart';
 import 'package:phluts_framework/phluts_framework.dart';
 
-class PhlutsSliverToBoxAdapterParser extends PhlutsParser<PhlutsSliverToBoxAdapter> {
+class PhlutsSliverToBoxAdapterParser
+    extends PhlutsParser<PhlutsSliverToBoxAdapter> {
   const PhlutsSliverToBoxAdapterParser();
 
   @override

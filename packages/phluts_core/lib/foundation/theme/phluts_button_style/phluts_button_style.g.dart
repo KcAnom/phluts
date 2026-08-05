@@ -45,7 +45,10 @@ PhlutsButtonStyle _$PhlutsButtonStyleFromJson(Map<String, dynamic> json) =>
           ? null
           : PhlutsShapeBorder.fromJson(json['shape'] as Map<String, dynamic>),
       enableFeedback: json['enableFeedback'] as bool?,
-      alignment: $enumDecodeNullable(_$PhlutsAlignmentEnumMap, json['alignment']),
+      alignment: $enumDecodeNullable(
+        _$PhlutsAlignmentEnumMap,
+        json['alignment'],
+      ),
       tapTargetSize: $enumDecodeNullable(
         _$PhlutsMaterialTapTargetSizeEnumMap,
         json['tapTargetSize'],
@@ -97,7 +100,8 @@ Map<String, dynamic> _$PhlutsButtonStyleToJson(
   'tapTargetSize': _$PhlutsMaterialTapTargetSizeEnumMap[instance.tapTargetSize],
   'animationDuration': instance.animationDuration?.toJson(),
   'enabledMouseCursor': _$PhlutsMouseCursorEnumMap[instance.enabledMouseCursor],
-  'disabledMouseCursor': _$PhlutsMouseCursorEnumMap[instance.disabledMouseCursor],
+  'disabledMouseCursor':
+      _$PhlutsMouseCursorEnumMap[instance.disabledMouseCursor],
   'visualDensity': instance.visualDensity?.toJson(),
 };
 

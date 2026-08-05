@@ -13,8 +13,10 @@ PhlutsWidget chipExample() {
           crossAxisAlignment: PhlutsCrossAxisAlignment.center,
           children: [
             PhlutsChip(
-              avatar: PhlutsIcon(iconType: PhlutsIconType.material, icon: 'tune'),
-              label: PhlutsText(data: 'Chip', style: PhlutsTextStyle(fontSize: 21)),
+              avatar:
+                  PhlutsIcon(iconType: PhlutsIconType.material, icon: 'tune'),
+              label: PhlutsText(
+                  data: 'Chip', style: PhlutsTextStyle(fontSize: 21)),
             ),
             PhlutsSizedBox(width: 20),
             PhlutsChip(
@@ -24,7 +26,8 @@ PhlutsWidget chipExample() {
                 icon: 'close',
                 size: 20,
               ),
-              label: PhlutsText(data: 'Chip', style: PhlutsTextStyle(fontSize: 21)),
+              label: PhlutsText(
+                  data: 'Chip', style: PhlutsTextStyle(fontSize: 21)),
             ),
           ],
         ),
@@ -33,7 +36,8 @@ PhlutsWidget chipExample() {
           crossAxisAlignment: PhlutsCrossAxisAlignment.center,
           children: [
             PhlutsChip(
-              avatar: PhlutsIcon(iconType: PhlutsIconType.material, icon: 'tune'),
+              avatar:
+                  PhlutsIcon(iconType: PhlutsIconType.material, icon: 'tune'),
               label: PhlutsText(
                 data: 'Round Chip',
                 style: PhlutsTextStyle(fontSize: 21),

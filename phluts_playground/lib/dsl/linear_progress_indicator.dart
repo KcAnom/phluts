@@ -3,7 +3,8 @@ import 'package:phluts_core/phluts_core.dart';
 @PhlutsScreen(screenName: 'linear_progress_indicator')
 PhlutsWidget linearProgressIndicatorExample() {
   return PhlutsScaffold(
-      appBar: PhlutsAppBar(title: PhlutsText(data: 'Linear Progress Indicator')),
+      appBar:
+          PhlutsAppBar(title: PhlutsText(data: 'Linear Progress Indicator')),
       body: PhlutsPadding(
           padding: PhlutsEdgeInsets.only(left: 10, right: 10),
           child: PhlutsColumn(

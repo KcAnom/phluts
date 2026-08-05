@@ -6,7 +6,9 @@ part of 'phluts_tool_tip.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-PhlutsTooltip _$PhlutsTooltipFromJson(Map<String, dynamic> json) => PhlutsTooltip(
+PhlutsTooltip _$PhlutsTooltipFromJson(
+  Map<String, dynamic> json,
+) => PhlutsTooltip(
   message: json['message'] as String?,
   richMessage: json['richMessage'] == null
       ? null
@@ -27,7 +29,9 @@ PhlutsTooltip _$PhlutsTooltipFromJson(Map<String, dynamic> json) => PhlutsToolti
   excludeFromSemantics: json['excludeFromSemantics'] as bool?,
   decoration: json['decoration'] == null
       ? null
-      : PhlutsBoxDecoration.fromJson(json['decoration'] as Map<String, dynamic>),
+      : PhlutsBoxDecoration.fromJson(
+          json['decoration'] as Map<String, dynamic>,
+        ),
   textStyle: json['textStyle'] == null
       ? null
       : PhlutsTextStyle.fromJson(json['textStyle']),

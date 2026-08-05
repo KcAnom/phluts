@@ -16,11 +16,12 @@ PhlutsWidget sliverAppBarExample() {
                   iconType: PhlutsIconType.cupertino, icon: 'heart_solid'),
               onPressed: PhlutsAction()),
           PhlutsIconButton(
-              icon: PhlutsIcon(iconType: PhlutsIconType.material, icon: 'search'),
+              icon:
+                  PhlutsIcon(iconType: PhlutsIconType.material, icon: 'search'),
               onPressed: PhlutsAction()),
           PhlutsIconButton(
-              icon:
-                  PhlutsIcon(iconType: PhlutsIconType.material, icon: 'more_horiz'),
+              icon: PhlutsIcon(
+                  iconType: PhlutsIconType.material, icon: 'more_horiz'),
               onPressed: PhlutsAction())
         ])
   ]));

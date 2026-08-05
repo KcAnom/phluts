@@ -8,7 +8,10 @@ part of 'phluts_slider.dart';
 
 PhlutsSlider _$PhlutsSliderFromJson(Map<String, dynamic> json) => PhlutsSlider(
   id: json['id'] as String?,
-  sliderType: $enumDecodeNullable(_$PhlutsSliderTypeEnumMap, json['sliderType']),
+  sliderType: $enumDecodeNullable(
+    _$PhlutsSliderTypeEnumMap,
+    json['sliderType'],
+  ),
   value: (json['value'] as num).toDouble(),
   secondaryTrackValue: const DoubleConverter().fromJson(
     json['secondaryTrackValue'],

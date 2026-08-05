@@ -6,7 +6,9 @@ part of 'phluts_ink_well.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-PhlutsInkWell _$PhlutsInkWellFromJson(Map<String, dynamic> json) => PhlutsInkWell(
+PhlutsInkWell _$PhlutsInkWellFromJson(
+  Map<String, dynamic> json,
+) => PhlutsInkWell(
   child: json['child'] == null
       ? null
       : PhlutsWidget.fromJson(json['child'] as Map<String, dynamic>),
@@ -36,7 +38,9 @@ PhlutsInkWell _$PhlutsInkWellFromJson(Map<String, dynamic> json) => PhlutsInkWel
       : PhlutsAction.fromJson(json['onSecondaryTapUp'] as Map<String, dynamic>),
   onSecondaryTapDown: json['onSecondaryTapDown'] == null
       ? null
-      : PhlutsAction.fromJson(json['onSecondaryTapDown'] as Map<String, dynamic>),
+      : PhlutsAction.fromJson(
+          json['onSecondaryTapDown'] as Map<String, dynamic>,
+        ),
   onSecondaryTapCancel: json['onSecondaryTapCancel'] == null
       ? null
       : PhlutsAction.fromJson(
@@ -44,7 +48,9 @@ PhlutsInkWell _$PhlutsInkWellFromJson(Map<String, dynamic> json) => PhlutsInkWel
         ),
   onHighlightChanged: json['onHighlightChanged'] == null
       ? null
-      : PhlutsAction.fromJson(json['onHighlightChanged'] as Map<String, dynamic>),
+      : PhlutsAction.fromJson(
+          json['onHighlightChanged'] as Map<String, dynamic>,
+        ),
   onHover: json['onHover'] == null
       ? null
       : PhlutsAction.fromJson(json['onHover'] as Map<String, dynamic>),
@@ -63,7 +69,9 @@ PhlutsInkWell _$PhlutsInkWellFromJson(Map<String, dynamic> json) => PhlutsInkWel
       : PhlutsBorderRadius.fromJson(json['borderRadius']),
   customBorder: json['customBorder'] == null
       ? null
-      : PhlutsShapeBorder.fromJson(json['customBorder'] as Map<String, dynamic>),
+      : PhlutsShapeBorder.fromJson(
+          json['customBorder'] as Map<String, dynamic>,
+        ),
   enableFeedback: json['enableFeedback'] as bool?,
   excludeFromSemantics: json['excludeFromSemantics'] as bool?,
   canRequestFocus: json['canRequestFocus'] as bool?,

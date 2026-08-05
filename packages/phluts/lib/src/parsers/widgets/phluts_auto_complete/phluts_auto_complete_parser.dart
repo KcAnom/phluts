@@ -28,7 +28,8 @@ class PhlutsAutoCompleteParser extends PhlutsParser<PhlutsAutoComplete> {
       onSelected: (String val) => model.onSelected?.parse(context),
       optionsMaxHeight: model.optionsMaxHeight ?? 200,
       optionsViewOpenDirection:
-          (model.optionsViewOpenDirection ?? PhlutsOptionsViewOpenDirection.down)
+          (model.optionsViewOpenDirection ??
+                  PhlutsOptionsViewOpenDirection.down)
               .parse,
       initialValue: model.initialValue != null
           ? TextEditingValue(text: model.initialValue!)

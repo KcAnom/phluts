@@ -18,7 +18,9 @@ PhlutsDynamicView _$PhlutsDynamicViewFromJson(Map<String, dynamic> json) =>
       resultTarget: json['resultTarget'] as String?,
       emptyTemplate: json['emptyTemplate'] == null
           ? null
-          : PhlutsWidget.fromJson(json['emptyTemplate'] as Map<String, dynamic>),
+          : PhlutsWidget.fromJson(
+              json['emptyTemplate'] as Map<String, dynamic>,
+            ),
       loaderWidget: json['loaderWidget'] == null
           ? null
           : PhlutsWidget.fromJson(json['loaderWidget'] as Map<String, dynamic>),

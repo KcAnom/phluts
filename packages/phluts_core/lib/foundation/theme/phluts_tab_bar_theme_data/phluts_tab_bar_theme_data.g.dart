@@ -6,32 +6,31 @@ part of 'phluts_tab_bar_theme_data.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-PhlutsTabBarThemeData _$PhlutsTabBarThemeDataFromJson(Map<String, dynamic> json) =>
-    PhlutsTabBarThemeData(
-      indicator: json['indicator'] == null
-          ? null
-          : PhlutsBoxDecoration.fromJson(
-              json['indicator'] as Map<String, dynamic>,
-            ),
-      indicatorColor: json['indicatorColor'] as String?,
-      indicatorSize: $enumDecodeNullable(
-        _$PhlutsTabBarIndicatorSizeEnumMap,
-        json['indicatorSize'],
-      ),
-      dividerColor: json['dividerColor'] as String?,
-      labelColor: json['labelColor'] as String?,
-      labelPadding: json['labelPadding'] == null
-          ? null
-          : PhlutsEdgeInsets.fromJson(json['labelPadding']),
-      labelStyle: json['labelStyle'] == null
-          ? null
-          : PhlutsTextStyle.fromJson(json['labelStyle']),
-      unselectedLabelColor: json['unselectedLabelColor'] as String?,
-      unselectedLabelStyle: json['unselectedLabelStyle'] == null
-          ? null
-          : PhlutsTextStyle.fromJson(json['unselectedLabelStyle']),
-      overlayColor: json['overlayColor'] as String?,
-    );
+PhlutsTabBarThemeData _$PhlutsTabBarThemeDataFromJson(
+  Map<String, dynamic> json,
+) => PhlutsTabBarThemeData(
+  indicator: json['indicator'] == null
+      ? null
+      : PhlutsBoxDecoration.fromJson(json['indicator'] as Map<String, dynamic>),
+  indicatorColor: json['indicatorColor'] as String?,
+  indicatorSize: $enumDecodeNullable(
+    _$PhlutsTabBarIndicatorSizeEnumMap,
+    json['indicatorSize'],
+  ),
+  dividerColor: json['dividerColor'] as String?,
+  labelColor: json['labelColor'] as String?,
+  labelPadding: json['labelPadding'] == null
+      ? null
+      : PhlutsEdgeInsets.fromJson(json['labelPadding']),
+  labelStyle: json['labelStyle'] == null
+      ? null
+      : PhlutsTextStyle.fromJson(json['labelStyle']),
+  unselectedLabelColor: json['unselectedLabelColor'] as String?,
+  unselectedLabelStyle: json['unselectedLabelStyle'] == null
+      ? null
+      : PhlutsTextStyle.fromJson(json['unselectedLabelStyle']),
+  overlayColor: json['overlayColor'] as String?,
+);
 
 Map<String, dynamic> _$PhlutsTabBarThemeDataToJson(
   PhlutsTabBarThemeData instance,

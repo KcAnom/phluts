@@ -27,7 +27,9 @@ PhlutsNavigationBar _$PhlutsNavigationBarFromJson(Map<String, dynamic> json) =>
       indicatorColor: json['indicatorColor'] as String?,
       indicatorShape: json['indicatorShape'] == null
           ? null
-          : PhlutsBorder.fromJson(json['indicatorShape'] as Map<String, dynamic>),
+          : PhlutsBorder.fromJson(
+              json['indicatorShape'] as Map<String, dynamic>,
+            ),
       height: const DoubleConverter().fromJson(json['height']),
       labelBehavior: $enumDecodeNullable(
         _$PhlutsNavigationDestinationLabelBehaviorEnumMap,

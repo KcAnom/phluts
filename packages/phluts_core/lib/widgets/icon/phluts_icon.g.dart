@@ -29,22 +29,23 @@ PhlutsIcon _$PhlutsIconFromJson(Map<String, dynamic> json) => PhlutsIcon(
   blendMode: $enumDecodeNullable(_$PhlutsBlendModeEnumMap, json['blendMode']),
 );
 
-Map<String, dynamic> _$PhlutsIconToJson(PhlutsIcon instance) => <String, dynamic>{
-  'icon': instance.icon,
-  'iconType': _$PhlutsIconTypeEnumMap[instance.iconType]!,
-  'size': const DoubleConverter().toJson(instance.size),
-  'fill': const DoubleConverter().toJson(instance.fill),
-  'weight': const DoubleConverter().toJson(instance.weight),
-  'grade': const DoubleConverter().toJson(instance.grade),
-  'opticalSize': const DoubleConverter().toJson(instance.opticalSize),
-  'color': instance.color,
-  'shadows': instance.shadows?.map((e) => e.toJson()).toList(),
-  'semanticLabel': instance.semanticLabel,
-  'textDirection': _$PhlutsTextDirectionEnumMap[instance.textDirection],
-  'applyTextScaling': instance.applyTextScaling,
-  'blendMode': _$PhlutsBlendModeEnumMap[instance.blendMode],
-  'type': instance.type,
-};
+Map<String, dynamic> _$PhlutsIconToJson(PhlutsIcon instance) =>
+    <String, dynamic>{
+      'icon': instance.icon,
+      'iconType': _$PhlutsIconTypeEnumMap[instance.iconType]!,
+      'size': const DoubleConverter().toJson(instance.size),
+      'fill': const DoubleConverter().toJson(instance.fill),
+      'weight': const DoubleConverter().toJson(instance.weight),
+      'grade': const DoubleConverter().toJson(instance.grade),
+      'opticalSize': const DoubleConverter().toJson(instance.opticalSize),
+      'color': instance.color,
+      'shadows': instance.shadows?.map((e) => e.toJson()).toList(),
+      'semanticLabel': instance.semanticLabel,
+      'textDirection': _$PhlutsTextDirectionEnumMap[instance.textDirection],
+      'applyTextScaling': instance.applyTextScaling,
+      'blendMode': _$PhlutsBlendModeEnumMap[instance.blendMode],
+      'type': instance.type,
+    };
 
 const _$PhlutsIconTypeEnumMap = {
   PhlutsIconType.material: 'material',

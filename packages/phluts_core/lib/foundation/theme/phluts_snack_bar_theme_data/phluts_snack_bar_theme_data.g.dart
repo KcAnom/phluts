@@ -52,7 +52,8 @@ Map<String, dynamic> _$PhlutsSnackBarThemeDataToJson(
   'actionTextColor': instance.actionTextColor,
   'disabledActionTextColor': instance.disabledActionTextColor,
   'insetPadding': instance.insetPadding?.toJson(),
-  'dismissDirection': _$PhlutsDismissDirectionEnumMap[instance.dismissDirection],
+  'dismissDirection':
+      _$PhlutsDismissDirectionEnumMap[instance.dismissDirection],
   'showCloseIcon': instance.showCloseIcon,
   'closeIconColor': instance.closeIconColor,
   'actionOverflowThreshold': instance.actionOverflowThreshold,

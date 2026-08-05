@@ -77,53 +77,56 @@ PhlutsTextField _$PhlutsTextFieldFromJson(
       : PhlutsAction.fromJson(json['onChanged'] as Map<String, dynamic>),
   onEditingComplete: json['onEditingComplete'] == null
       ? null
-      : PhlutsAction.fromJson(json['onEditingComplete'] as Map<String, dynamic>),
+      : PhlutsAction.fromJson(
+          json['onEditingComplete'] as Map<String, dynamic>,
+        ),
   onSubmitted: json['onSubmitted'] == null
       ? null
       : PhlutsAction.fromJson(json['onSubmitted'] as Map<String, dynamic>),
 );
 
-Map<String, dynamic> _$PhlutsTextFieldToJson(PhlutsTextField instance) =>
-    <String, dynamic>{
-      'initialValue': instance.initialValue,
-      'decoration': instance.decoration?.toJson(),
-      'keyboardType': _$PhlutsTextInputTypeEnumMap[instance.keyboardType],
-      'textInputAction': _$PhlutsTextInputActionEnumMap[instance.textInputAction],
-      'textCapitalization':
-          _$PhlutsTextCapitalizationEnumMap[instance.textCapitalization],
-      'style': instance.style?.toJson(),
-      'textAlign': _$PhlutsTextAlignEnumMap[instance.textAlign],
-      'textDirection': _$PhlutsTextDirectionEnumMap[instance.textDirection],
-      'readOnly': instance.readOnly,
-      'showCursor': instance.showCursor,
-      'autofocus': instance.autofocus,
-      'obscuringCharacter': instance.obscuringCharacter,
-      'obscureText': instance.obscureText,
-      'autocorrect': instance.autocorrect,
-      'enableSuggestions': instance.enableSuggestions,
-      'maxLines': instance.maxLines,
-      'minLines': instance.minLines,
-      'expands': instance.expands,
-      'maxLength': instance.maxLength,
-      'enabled': instance.enabled,
-      'cursorColor': instance.cursorColor,
-      'cursorWidth': const DoubleConverter().toJson(instance.cursorWidth),
-      'cursorHeight': const DoubleConverter().toJson(instance.cursorHeight),
-      'scrollPadding': instance.scrollPadding?.toJson(),
-      'enableInteractiveSelection': instance.enableInteractiveSelection,
-      'mouseCursor': _$PhlutsMouseCursorEnumMap[instance.mouseCursor],
-      'dragStartBehavior':
-          _$PhlutsDragStartBehaviorEnumMap[instance.dragStartBehavior],
-      'scrollPhysics': _$PhlutsScrollPhysicsEnumMap[instance.scrollPhysics],
-      'restorationId': instance.restorationId,
-      'clipBehavior': _$PhlutsClipEnumMap[instance.clipBehavior],
-      'autofillHints': instance.autofillHints,
-      'onTap': instance.onTap?.toJson(),
-      'onChanged': instance.onChanged?.toJson(),
-      'onEditingComplete': instance.onEditingComplete?.toJson(),
-      'onSubmitted': instance.onSubmitted?.toJson(),
-      'type': instance.type,
-    };
+Map<String, dynamic> _$PhlutsTextFieldToJson(
+  PhlutsTextField instance,
+) => <String, dynamic>{
+  'initialValue': instance.initialValue,
+  'decoration': instance.decoration?.toJson(),
+  'keyboardType': _$PhlutsTextInputTypeEnumMap[instance.keyboardType],
+  'textInputAction': _$PhlutsTextInputActionEnumMap[instance.textInputAction],
+  'textCapitalization':
+      _$PhlutsTextCapitalizationEnumMap[instance.textCapitalization],
+  'style': instance.style?.toJson(),
+  'textAlign': _$PhlutsTextAlignEnumMap[instance.textAlign],
+  'textDirection': _$PhlutsTextDirectionEnumMap[instance.textDirection],
+  'readOnly': instance.readOnly,
+  'showCursor': instance.showCursor,
+  'autofocus': instance.autofocus,
+  'obscuringCharacter': instance.obscuringCharacter,
+  'obscureText': instance.obscureText,
+  'autocorrect': instance.autocorrect,
+  'enableSuggestions': instance.enableSuggestions,
+  'maxLines': instance.maxLines,
+  'minLines': instance.minLines,
+  'expands': instance.expands,
+  'maxLength': instance.maxLength,
+  'enabled': instance.enabled,
+  'cursorColor': instance.cursorColor,
+  'cursorWidth': const DoubleConverter().toJson(instance.cursorWidth),
+  'cursorHeight': const DoubleConverter().toJson(instance.cursorHeight),
+  'scrollPadding': instance.scrollPadding?.toJson(),
+  'enableInteractiveSelection': instance.enableInteractiveSelection,
+  'mouseCursor': _$PhlutsMouseCursorEnumMap[instance.mouseCursor],
+  'dragStartBehavior':
+      _$PhlutsDragStartBehaviorEnumMap[instance.dragStartBehavior],
+  'scrollPhysics': _$PhlutsScrollPhysicsEnumMap[instance.scrollPhysics],
+  'restorationId': instance.restorationId,
+  'clipBehavior': _$PhlutsClipEnumMap[instance.clipBehavior],
+  'autofillHints': instance.autofillHints,
+  'onTap': instance.onTap?.toJson(),
+  'onChanged': instance.onChanged?.toJson(),
+  'onEditingComplete': instance.onEditingComplete?.toJson(),
+  'onSubmitted': instance.onSubmitted?.toJson(),
+  'type': instance.type,
+};
 
 const _$PhlutsTextInputTypeEnumMap = {
   PhlutsTextInputType.text: 'text',

@@ -45,32 +45,33 @@ PhlutsRadio _$PhlutsRadioFromJson(Map<String, dynamic> json) => PhlutsRadio(
   innerRadius: const DoubleConverter().fromJson(json['innerRadius']),
 );
 
-Map<String, dynamic> _$PhlutsRadioToJson(PhlutsRadio instance) => <String, dynamic>{
-  'radioType': _$PhlutsRadioTypeEnumMap[instance.radioType],
-  'value': instance.value,
-  'groupId': instance.groupId,
-  'onChanged': instance.onChanged?.toJson(),
-  'mouseCursor': _$PhlutsMouseCursorEnumMap[instance.mouseCursor],
-  'toggleable': instance.toggleable,
-  'activeColor': instance.activeColor,
-  'inactiveColor': instance.inactiveColor,
-  'fillColor': instance.fillColor,
-  'focusColor': instance.focusColor,
-  'hoverColor': instance.hoverColor,
-  'overlayColor': instance.overlayColor,
-  'splashRadius': const DoubleConverter().toJson(instance.splashRadius),
-  'materialTapTargetSize':
-      _$PhlutsMaterialTapTargetSizeEnumMap[instance.materialTapTargetSize],
-  'visualDensity': instance.visualDensity?.toJson(),
-  'autofocus': instance.autofocus,
-  'useCheckmarkStyle': instance.useCheckmarkStyle,
-  'useCupertinoCheckmarkStyle': instance.useCupertinoCheckmarkStyle,
-  'enabled': instance.enabled,
-  'backgroundColor': instance.backgroundColor,
-  'side': instance.side?.toJson(),
-  'innerRadius': const DoubleConverter().toJson(instance.innerRadius),
-  'type': instance.type,
-};
+Map<String, dynamic> _$PhlutsRadioToJson(PhlutsRadio instance) =>
+    <String, dynamic>{
+      'radioType': _$PhlutsRadioTypeEnumMap[instance.radioType],
+      'value': instance.value,
+      'groupId': instance.groupId,
+      'onChanged': instance.onChanged?.toJson(),
+      'mouseCursor': _$PhlutsMouseCursorEnumMap[instance.mouseCursor],
+      'toggleable': instance.toggleable,
+      'activeColor': instance.activeColor,
+      'inactiveColor': instance.inactiveColor,
+      'fillColor': instance.fillColor,
+      'focusColor': instance.focusColor,
+      'hoverColor': instance.hoverColor,
+      'overlayColor': instance.overlayColor,
+      'splashRadius': const DoubleConverter().toJson(instance.splashRadius),
+      'materialTapTargetSize':
+          _$PhlutsMaterialTapTargetSizeEnumMap[instance.materialTapTargetSize],
+      'visualDensity': instance.visualDensity?.toJson(),
+      'autofocus': instance.autofocus,
+      'useCheckmarkStyle': instance.useCheckmarkStyle,
+      'useCupertinoCheckmarkStyle': instance.useCupertinoCheckmarkStyle,
+      'enabled': instance.enabled,
+      'backgroundColor': instance.backgroundColor,
+      'side': instance.side?.toJson(),
+      'innerRadius': const DoubleConverter().toJson(instance.innerRadius),
+      'type': instance.type,
+    };
 
 const _$PhlutsRadioTypeEnumMap = {
   PhlutsRadioType.adaptive: 'adaptive',

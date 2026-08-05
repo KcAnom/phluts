@@ -8,7 +8,8 @@ import 'package:phluts/src/utils/utils.dart';
 /// Parser extension for [PhlutsNavigationDrawerThemeData].
 ///
 /// Converts [PhlutsNavigationDrawerThemeData] to Flutter's [NavigationDrawerThemeData].
-extension PhlutsNavigationDrawerThemeDataParser on PhlutsNavigationDrawerThemeData {
+extension PhlutsNavigationDrawerThemeDataParser
+    on PhlutsNavigationDrawerThemeData {
   NavigationDrawerThemeData parse(BuildContext context) {
     return NavigationDrawerThemeData(
       tileHeight: tileHeight,

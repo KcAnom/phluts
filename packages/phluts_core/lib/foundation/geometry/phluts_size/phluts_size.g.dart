@@ -11,7 +11,5 @@ PhlutsSize _$PhlutsSizeFromJson(Map<String, dynamic> json) => PhlutsSize(
   (json['height'] as num).toDouble(),
 );
 
-Map<String, dynamic> _$PhlutsSizeToJson(PhlutsSize instance) => <String, dynamic>{
-  'width': instance.width,
-  'height': instance.height,
-};
+Map<String, dynamic> _$PhlutsSizeToJson(PhlutsSize instance) =>
+    <String, dynamic>{'width': instance.width, 'height': instance.height};

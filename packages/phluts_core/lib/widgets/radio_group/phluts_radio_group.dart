@@ -48,7 +48,12 @@ part 'phluts_radio_group.g.dart';
 @JsonSerializable()
 class PhlutsRadioGroup extends PhlutsWidget {
   /// Creates a [PhlutsRadioGroup].
-  const PhlutsRadioGroup({this.id, this.groupValue, this.child, this.onChanged});
+  const PhlutsRadioGroup({
+    this.id,
+    this.groupValue,
+    this.child,
+    this.onChanged,
+  });
 
   /// The identifier under which the selected value will be saved in a [PhlutsFormScope]'s form data.
   final String? id;

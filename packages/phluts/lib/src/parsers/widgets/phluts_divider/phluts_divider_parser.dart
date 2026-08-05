@@ -10,7 +10,8 @@ class PhlutsDividerParser extends PhlutsParser<PhlutsDivider> {
   String get type => WidgetType.divider.name;
 
   @override
-  PhlutsDivider getModel(Map<String, dynamic> json) => PhlutsDivider.fromJson(json);
+  PhlutsDivider getModel(Map<String, dynamic> json) =>
+      PhlutsDivider.fromJson(json);
 
   @override
   Widget parse(BuildContext context, PhlutsDivider model) {

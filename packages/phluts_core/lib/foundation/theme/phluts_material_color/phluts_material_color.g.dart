@@ -21,17 +21,18 @@ PhlutsMaterialColor _$PhlutsMaterialColorFromJson(Map<String, dynamic> json) =>
       shade900: json['shade900'] as String,
     );
 
-Map<String, dynamic> _$PhlutsMaterialColorToJson(PhlutsMaterialColor instance) =>
-    <String, dynamic>{
-      'primary': instance.primary,
-      'shade50': instance.shade50,
-      'shade100': instance.shade100,
-      'shade200': instance.shade200,
-      'shade300': instance.shade300,
-      'shade400': instance.shade400,
-      'shade500': instance.shade500,
-      'shade600': instance.shade600,
-      'shade700': instance.shade700,
-      'shade800': instance.shade800,
-      'shade900': instance.shade900,
-    };
+Map<String, dynamic> _$PhlutsMaterialColorToJson(
+  PhlutsMaterialColor instance,
+) => <String, dynamic>{
+  'primary': instance.primary,
+  'shade50': instance.shade50,
+  'shade100': instance.shade100,
+  'shade200': instance.shade200,
+  'shade300': instance.shade300,
+  'shade400': instance.shade400,
+  'shade500': instance.shade500,
+  'shade600': instance.shade600,
+  'shade700': instance.shade700,
+  'shade800': instance.shade800,
+  'shade900': instance.shade900,
+};

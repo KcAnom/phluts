@@ -10,7 +10,8 @@ class PhlutsSwitchParser extends PhlutsParser<PhlutsSwitch> {
   String get type => "switch";
 
   @override
-  PhlutsSwitch getModel(Map<String, dynamic> json) => PhlutsSwitch.fromJson(json);
+  PhlutsSwitch getModel(Map<String, dynamic> json) =>
+      PhlutsSwitch.fromJson(json);
 
   @override
   Widget parse(BuildContext context, PhlutsSwitch model) {

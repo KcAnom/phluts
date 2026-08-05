@@ -13,16 +13,19 @@ PhlutsNetworkWidget _$PhlutsNetworkWidgetFromJson(Map<String, dynamic> json) =>
       ),
       loadingWidget: json['loadingWidget'] == null
           ? null
-          : PhlutsWidget.fromJson(json['loadingWidget'] as Map<String, dynamic>),
+          : PhlutsWidget.fromJson(
+              json['loadingWidget'] as Map<String, dynamic>,
+            ),
       errorWidget: json['errorWidget'] == null
           ? null
           : PhlutsWidget.fromJson(json['errorWidget'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$PhlutsNetworkWidgetToJson(PhlutsNetworkWidget instance) =>
-    <String, dynamic>{
-      'request': instance.request.toJson(),
-      'loadingWidget': instance.loadingWidget?.toJson(),
-      'errorWidget': instance.errorWidget?.toJson(),
-      'type': instance.type,
-    };
+Map<String, dynamic> _$PhlutsNetworkWidgetToJson(
+  PhlutsNetworkWidget instance,
+) => <String, dynamic>{
+  'request': instance.request.toJson(),
+  'loadingWidget': instance.loadingWidget?.toJson(),
+  'errorWidget': instance.errorWidget?.toJson(),
+  'type': instance.type,
+};

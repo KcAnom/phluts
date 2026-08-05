@@ -3,7 +3,8 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:phluts/phluts.dart';
 
-class PhlutsSetValueActionParser extends PhlutsActionParser<PhlutsSetValueAction> {
+class PhlutsSetValueActionParser
+    extends PhlutsActionParser<PhlutsSetValueAction> {
   const PhlutsSetValueActionParser();
 
   @override

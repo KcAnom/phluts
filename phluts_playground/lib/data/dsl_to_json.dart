@@ -163,10 +163,15 @@ const Set<String> _widgetClasses = {
 
 /// Classes whose `fromJson` expands a bare number into all four sides, so
 /// `.all(8)` / `.circular(8)` can serialize as just `8`.
-const Set<String> _scalarExpandable = {'PhlutsEdgeInsets', 'PhlutsBorderRadius'};
+const Set<String> _scalarExpandable = {
+  'PhlutsEdgeInsets',
+  'PhlutsBorderRadius'
+};
 
 /// The one class whose JSON type isn't the lower-camel form of its name.
-const Map<String, String> _typeOverrides = {'PhlutsAutoComplete': 'autocomplete'};
+const Map<String, String> _typeOverrides = {
+  'PhlutsAutoComplete': 'autocomplete'
+};
 
 String _typeForClass(String className) {
   final override = _typeOverrides[className];

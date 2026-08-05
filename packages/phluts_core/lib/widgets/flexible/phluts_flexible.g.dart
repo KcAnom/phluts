@@ -6,13 +6,14 @@ part of 'phluts_flexible.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-PhlutsFlexible _$PhlutsFlexibleFromJson(Map<String, dynamic> json) => PhlutsFlexible(
-  flex: (json['flex'] as num?)?.toInt(),
-  fit: $enumDecodeNullable(_$PhlutsFlexFitEnumMap, json['fit']),
-  child: json['child'] == null
-      ? null
-      : PhlutsWidget.fromJson(json['child'] as Map<String, dynamic>),
-);
+PhlutsFlexible _$PhlutsFlexibleFromJson(Map<String, dynamic> json) =>
+    PhlutsFlexible(
+      flex: (json['flex'] as num?)?.toInt(),
+      fit: $enumDecodeNullable(_$PhlutsFlexFitEnumMap, json['fit']),
+      child: json['child'] == null
+          ? null
+          : PhlutsWidget.fromJson(json['child'] as Map<String, dynamic>),
+    );
 
 Map<String, dynamic> _$PhlutsFlexibleToJson(PhlutsFlexible instance) =>
     <String, dynamic>{

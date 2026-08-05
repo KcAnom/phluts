@@ -13,5 +13,6 @@ PhlutsWidget appBarExample() {
           forceMaterialTransparency: false,
           useDefaultSemanticsOrder: true),
       body: PhlutsCenter(
-          child: PhlutsText(data: 'Home', style: PhlutsTextStyle(fontSize: 17))));
+          child:
+              PhlutsText(data: 'Home', style: PhlutsTextStyle(fontSize: 17))));
 }

@@ -17,7 +17,10 @@ PhlutsIconButton _$PhlutsIconButtonFromJson(Map<String, dynamic> json) =>
       padding: json['padding'] == null
           ? null
           : PhlutsEdgeInsets.fromJson(json['padding']),
-      alignment: $enumDecodeNullable(_$PhlutsAlignmentEnumMap, json['alignment']),
+      alignment: $enumDecodeNullable(
+        _$PhlutsAlignmentEnumMap,
+        json['alignment'],
+      ),
       splashRadius: (json['splashRadius'] as num?)?.toDouble(),
       color: json['color'] as String?,
       focusColor: json['focusColor'] as String?,

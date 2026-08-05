@@ -10,7 +10,8 @@ class PhlutsOpacityParser extends PhlutsParser<PhlutsOpacity> {
   String get type => WidgetType.opacity.name;
 
   @override
-  PhlutsOpacity getModel(Map<String, dynamic> json) => PhlutsOpacity.fromJson(json);
+  PhlutsOpacity getModel(Map<String, dynamic> json) =>
+      PhlutsOpacity.fromJson(json);
 
   @override
   Widget parse(BuildContext context, PhlutsOpacity model) {
